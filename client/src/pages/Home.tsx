@@ -213,7 +213,7 @@ export default function Home() {
       </section>
 
       {/* Ecosystem Section */}
-      <section id="ecosystem" className="py-12 md:py-20 bg-white">
+      <section id="ecosystem" className="py-12 md:py-20 bg-white" style={{paddingBottom: '60px', paddingTop: '55px'}}>
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
