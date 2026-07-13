@@ -126,9 +126,20 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-primary);
 }
 
-h1 { font-size: 3.5rem; }
-h2 { font-size: 2.5rem; }
-h3 { font-size: 1.875rem; }
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.05;
+}
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+h3 {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
 h4 { font-size: 1.5rem; }
 h5 { font-size: 1.25rem; }
 h6 { font-size: 1rem; }
@@ -269,6 +280,10 @@ textarea:focus-visible {
   color: var(--color-navy);
   border-color: var(--color-primary-green);
   box-shadow: 0 8px 16px rgba(19, 196, 107, 0.25);
+  font-size: 0.75rem;
+  padding: 0.875rem 1.5rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 .btn-primary:hover:not(:disabled) {
@@ -287,15 +302,15 @@ textarea:focus-visible {
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.375rem 1rem;
+  padding: 0.5rem 1.25rem;
   border-radius: 9999px;
-  font-size: 0.625rem;
-  font-weight: bold;
+  font-size: 0.65rem;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .badge-primary {
@@ -309,7 +324,7 @@ textarea:focus-visible {
   position: relative;
   overflow: hidden;
   background-color: rgba(15, 30, 51, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(19, 196, 107, 0.15);
   border-radius: 0.75rem;
   padding: 2rem;
   transition: all var(--transition-slow);
@@ -327,9 +342,9 @@ textarea:focus-visible {
 }
 
 .card-premium:hover {
-  border-color: rgba(19, 196, 107, 0.3);
-  transform: translateY(-8px);
-  box-shadow: 0 20px 25px -5px rgba(19, 196, 107, 0.1);
+  border-color: rgba(19, 196, 107, 0.5);
+  transform: translateY(-12px);
+  box-shadow: 0 0 40px rgba(19, 196, 107, 0.3), 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .card-premium:hover::before {
@@ -351,21 +366,21 @@ textarea:focus-visible {
 
 /* Section Styles */
 .section-padding {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 @media (min-width: 768px) {
   .section-padding {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section-padding {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
 }
 
