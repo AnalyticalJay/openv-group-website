@@ -177,7 +177,8 @@ export default function Home() {
               <div key={i} className="text-center group hover:scale-105 transition-transform duration-300">
                 <item.icon className="w-12 h-12 text-navy mx-auto mb-4 group-hover:text-green-500 transition-colors" />
                 <p className="text-sm font-bold text-navy uppercase tracking-wider mb-2">{item.label}</p>
-                <p className="text-xs text-gray-600 leading-relaxed">{item.desc}</p>
+                <p className="text-xs text-gray-600 leading-relaxed mb-4">{item.desc}</p>
+                <div className="h-1 bg-gradient-to-r from-blue-500 via-green-500 to-blue-500 rounded-full"></div>
               </div>
             ))}
           </div>
