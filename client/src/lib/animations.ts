@@ -1,8 +1,31 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import type Lenis from 'lenis';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
+
+/**
+ * Initialize GSAP with Lenis for smooth scroll compatibility
+ */
+export const initLenisGSAPIntegration = (lenis: Lenis | null | undefined) => {
+  if (!lenis) return;
+
+  // Update ScrollTrigger on Lenis scroll
+  lenis.on('scroll', () => {
+    ScrollTrigger.update();
+  });
+
+  // Sync GSAP animations with Lenis
+  gsap.ticker.add((time) => {
+    ScrollTrigger.update();
+  });
+
+  // Refresh ScrollTrigger on window resize
+  window.addEventListener('resize', () => {
+    ScrollTrigger.refresh();
+  });
+};
 
 /**
  * Animate element with fade-in effect
@@ -117,4 +140,7 @@ export const animateScale = (element: HTMLElement, delay = 0) => {
  */
 export const killScrollTriggers = () => {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  gsap.ticker.remove(() => {
+    ScrollTrigger.update();
+  });
 };
