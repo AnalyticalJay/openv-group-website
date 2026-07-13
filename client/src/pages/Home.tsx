@@ -234,9 +234,18 @@ export default function Home() {
 
           {/* Partner Logos Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-12 items-center">
-            {['Vodacom', 'Citrix', 'Microsoft', 'Cisco', 'Fortinet', 'Dell', 'Nikon', 'CSI'].map((partner, i) => (
-              <div key={i} className="bg-white/10 border border-white/10 rounded-lg p-6 flex items-center justify-center h-24 hover:border-green-500/50 transition-colors">
-                <span className="text-white/60 font-bold text-sm">{partner}</span>
+            {[
+              { name: 'Vodacom', logo: '/manus-storage/logo-vodacom_59076cbe.png' },
+              { name: 'Citrix', logo: '/manus-storage/logo-citrix_69ed1026.png' },
+              { name: 'Microsoft', logo: '/manus-storage/logo-microsoft_2384180c.png' },
+              { name: 'Cisco', logo: '/manus-storage/logo-cisco_47b2b265.png' },
+              { name: 'Fortinet', logo: '/manus-storage/logo-fortinet_989f697b.png' },
+              { name: 'Dell', logo: '/manus-storage/logo-dell_bc7519d8.png' },
+              { name: 'Nikon', logo: '/manus-storage/logo-nikon_0f9a3ad8.png' },
+              { name: 'CSI', logo: '/manus-storage/logo-csi_cf8c6ef2.png' },
+            ].map((partner, i) => (
+              <div key={i} className="bg-white/10 border border-white/10 rounded-lg p-6 flex items-center justify-center h-24 hover:border-green-500/50 transition-colors group">
+                <img src={partner.logo} alt={partner.name} className="max-h-16 max-w-full object-contain group-hover:scale-110 transition-transform duration-300" />
               </div>
             ))}
           </div>
