@@ -1,0 +1,20 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Disallow crawling of certain paths if needed
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://openv.co.za/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1

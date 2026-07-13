@@ -1,0 +1,392 @@
+/* ============================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================================================ */
+
+/**
+ * GPU Acceleration & Will-Change Hints
+ * Strategic use of will-change and GPU acceleration for animated elements
+ */
+
+/* Interactive elements that will be animated */
+.btn,
+.card-premium,
+a,
+.badge,
+svg,
+[data-animation],
+#custom-cursor,
+#custom-cursor-trail {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Elements with frequent scroll-based animations */
+.scroll-progress-bar {
+  will-change: width;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Header with scroll effects */
+#main-header {
+  will-change: background-color, backdrop-filter;
+  backface-visibility: hidden;
+}
+
+/* ============================================================================
+   TRANSFORM-BASED ANIMATIONS ONLY
+   ============================================================================ */
+
+/**
+ * Replace expensive property animations with transforms
+ * This ensures GPU acceleration and 60fps performance
+ */
+
+/* Button hover - use scale instead of box-shadow */
+.btn:hover {
+  transform: scale(1.05) translateZ(0);
+}
+
+.btn:active {
+  transform: scale(0.98) translateZ(0);
+}
+
+/* Card hover - use translateY instead of box-shadow */
+.card-premium:hover {
+  transform: translateY(-8px) translateZ(0);
+}
+
+/* Link hover - subtle scale */
+a:hover {
+  transform: scale(1.02) translateZ(0);
+}
+
+/* Badge hover - scale */
+.badge:hover {
+  transform: scale(1.05) translateZ(0);
+}
+
+/* ============================================================================
+   REMOVE EXPENSIVE ANIMATIONS
+   ============================================================================ */
+
+/**
+ * Disable expensive property animations that cause layout thrashing
+ */
+
+/* Remove box-shadow animations */
+.btn,
+.card-premium,
+.badge {
+  box-shadow: none !important;
+}
+
+/* Remove background-color animations on scroll */
+#main-header {
+  background-color: transparent;
+  backdrop-filter: none;
+}
+
+#main-header.header-scrolled {
+  background-color: rgba(7, 17, 28, 0.85);
+  backdrop-filter: blur(16px);
+}
+
+/* ============================================================================
+   SCROLL PERFORMANCE
+   ============================================================================ */
+
+/**
+ * Optimize scroll-related performance
+ */
+
+/* Prevent layout shift on scroll */
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis {
+  scroll-behavior: auto !important;
+}
+
+/* Optimize scrollbar performance */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  will-change: background-color;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================================================
+   ANIMATION PERFORMANCE
+   ============================================================================ */
+
+/**
+ * Optimize animation performance across the site
+ */
+
+/* Reduce animation complexity */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+/* ============================================================================
+   REDUCED MOTION
+   ============================================================================ */
+
+/**
+ * Respect user motion preferences
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Remove will-change for reduced motion */
+  .btn,
+  .card-premium,
+  a,
+  .badge,
+  svg,
+  [data-animation],
+  #custom-cursor,
+  #custom-cursor-trail {
+    will-change: auto;
+  }
+
+  /* Disable transforms on hover */
+  .btn:hover,
+  .btn:active,
+  .card-premium:hover,
+  a:hover,
+  .badge:hover {
+    transform: none !important;
+  }
+
+  /* Disable all animations */
+  [data-animation] {
+    animation: none !important;
+  }
+
+  /* Disable smooth scroll */
+  html.lenis {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================================
+   LAZY LOADING OPTIMIZATION
+   ============================================================================ */
+
+/**
+ * Optimize lazy-loaded images
+ */
+
+img {
+  loading: lazy;
+}
+
+/* Critical images above the fold */
+[data-critical] img {
+  loading: eager;
+}
+
+/* ============================================================================
+   FONT LOADING OPTIMIZATION
+   ============================================================================ */
+
+/**
+ * Optimize font loading with font-display
+ */
+
+@font-face {
+  font-family: 'Manrope';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+}
+
+/* ============================================================================
+   CONTAINMENT & LAYOUT OPTIMIZATION
+   ============================================================================ */
+
+/**
+ * Use CSS containment to isolate layout calculations
+ */
+
+.card-premium,
+.btn,
+.badge,
+[data-animation] {
+  contain: layout style paint;
+}
+
+/* ============================================================================
+   TRANSITION OPTIMIZATION
+   ============================================================================ */
+
+/**
+ * Optimize CSS transitions for performance
+ */
+
+/* Use GPU-accelerated transitions */
+.btn,
+.card-premium,
+a,
+.badge,
+svg {
+  transition-property: transform, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Disable expensive transitions */
+* {
+  transition-property: none !important;
+}
+
+/* Re-enable only necessary transitions */
+.btn,
+.card-premium,
+a,
+.badge,
+svg {
+  transition-property: transform, opacity;
+}
+
+/* ============================================================================
+   RENDERING OPTIMIZATION
+   ============================================================================ */
+
+/**
+ * Optimize rendering performance
+   */
+
+/* Prevent layout shift */
+body {
+  overflow-x: hidden;
+}
+
+/* Optimize stacking context */
+#main-header,
+#custom-cursor,
+#custom-cursor-trail,
+.scroll-progress-bar {
+  z-index: auto;
+}
+
+/* ============================================================================
+   BROWSER-SPECIFIC OPTIMIZATIONS
+   ============================================================================ */
+
+/**
+ * Browser-specific performance tweaks
+ */
+
+/* Chrome/Edge: Enable GPU acceleration */
+@supports (-webkit-appearance: none) {
+  .btn,
+  .card-premium,
+  a,
+  .badge,
+  svg,
+  [data-animation] {
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+/* Firefox: Optimize rendering */
+@-moz-document url-prefix() {
+  .btn,
+  .card-premium,
+  a,
+  .badge,
+  svg,
+  [data-animation] {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}

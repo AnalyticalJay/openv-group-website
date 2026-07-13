@@ -1,0 +1,471 @@
+/* ============================================================================
+   PREMIUM ANIMATIONS & TRANSITIONS
+   ============================================================================ */
+
+/* Smooth Scroll Behavior */
+html.lenis {
+  scroll-behavior: smooth;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Reduce Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Page Transitions */
+body {
+  animation: pageEnter 0.4s ease-out forwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Down Animation */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide In Left Animation */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide In Right Animation */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(19, 196, 107, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(19, 196, 107, 0.8);
+  }
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Spin Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Float Animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Gradient Shift Animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Button Hover Effects */
+.btn {
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left var(--transition-base);
+  z-index: -1;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+/* Card Hover Effects */
+.card-premium {
+  transition: all var(--transition-base);
+}
+
+.card-premium:hover {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Link Hover Effects */
+a {
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-primary-green);
+}
+
+/* Badge Animations */
+.badge {
+  transition: all var(--transition-base);
+}
+
+.badge:hover {
+  animation: pulse 1s ease-in-out;
+}
+
+/* Icon Animations */
+svg {
+  transition: all var(--transition-base);
+}
+
+/* Header Animations */
+#main-header {
+  transition: all var(--transition-base);
+}
+
+#main-header.header-scrolled {
+  animation: slideInDown 0.4s ease-out;
+}
+
+/* Section Header Animations */
+.section-header {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Custom Scrollbar Animation */
+::-webkit-scrollbar-thumb {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Loading Spinner */
+@keyframes spin-smooth {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#loading-overlay {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Preloader */
+#preloader {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Scroll to Top Button */
+#scroll-to-top {
+  transition: all var(--transition-base);
+  animation: float 2s ease-in-out infinite;
+}
+
+#scroll-to-top:hover {
+  animation: bounce 0.6s ease-in-out;
+}
+
+/* Custom Cursor */
+#custom-cursor {
+  transition: all 0.1s ease-out;
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+#custom-cursor-trail {
+  transition: all 0.3s ease-out;
+}
+
+/* Data Animation Elements */
+[data-animation] {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+[data-animation="fade-in"] {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+[data-animation="fade-in-up"] {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+[data-animation="fade-in-down"] {
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+[data-animation="slide-in-left"] {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+[data-animation="slide-in-right"] {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+[data-animation="scale-in"] {
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+/* Stagger Animation Delays */
+[data-delay="0.1"] {
+  animation-delay: 0.1s;
+}
+
+[data-delay="0.2"] {
+  animation-delay: 0.2s;
+}
+
+[data-delay="0.3"] {
+  animation-delay: 0.3s;
+}
+
+[data-delay="0.4"] {
+  animation-delay: 0.4s;
+}
+
+/* Reduced Motion Styles */
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* No Animations Class */
+.no-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Smooth Transitions */
+* {
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              border-color var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+/* Performance Optimization */
+@supports (will-change: transform) {
+  [data-animation],
+  .card-premium,
+  .btn,
+  a,
+  svg {
+    will-change: transform, opacity;
+  }
+}
+
+/* GPU Acceleration */
+.card-premium,
+.btn,
+a,
+svg,
+[data-animation] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth Color Transitions */
+a,
+.btn,
+.badge,
+svg {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-timing-function: var(--transition-base);
+}
+
+/* Focus Visible Styles */
+:focus-visible {
+  outline: 2px solid var(--color-primary-green);
+  outline-offset: 2px;
+}
+
+/* Link Focus Styles */
+a:focus-visible {
+  outline: 2px solid var(--color-primary-green);
+  outline-offset: 2px;
+}
+
+/* Button Focus Styles */
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary-green);
+  outline-offset: 2px;
+}
+
+/* Input Focus Styles */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-primary-green);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(19, 196, 107, 0.1);
+}
+
+/* Smooth Opacity Transitions */
+.fade-in,
+.fade-out {
+  transition: opacity var(--transition-base);
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+/* Smooth Transform Transitions */
+.slide-in,
+.slide-out {
+  transition: transform var(--transition-base);
+}
+
+.slide-in {
+  transform: translateX(0);
+}
+
+.slide-out {
+  transform: translateX(100%);
+}
+
+/* Smooth Scale Transitions */
+.scale-in,
+.scale-out {
+  transition: transform var(--transition-base);
+}
+
+.scale-in {
+  transform: scale(1);
+}
+
+.scale-out {
+  transform: scale(0.95);
+}
