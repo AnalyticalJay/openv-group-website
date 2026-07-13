@@ -158,7 +158,7 @@ export default function Home() {
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-navy uppercase tracking-widest text-xs font-bold mb-2">
+            <h2 className="text-navy uppercase tracking-widest text-lg md:text-2xl font-bold mb-2 font-manrope">
               ALL THE SOLUTIONS. <span className="text-green-500">WORKING TOGETHER.</span>
             </h2>
             <p className="text-gray-600 text-sm">From infrastructure to innovation, we've got your business covered.</p>
@@ -198,7 +198,7 @@ export default function Home() {
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-green-500 uppercase tracking-widest text-xs font-bold mb-4">One Ecosystem. Endless Possibilities.</h2>
+            <h2 className="text-green-500 uppercase tracking-widest text-lg md:text-2xl font-bold mb-4 font-manrope">One Ecosystem. Endless Possibilities.</h2>
             <p className="text-gray-600">Our three brands work together to deliver complete technology solutions.</p>
           </div>
 
@@ -242,7 +242,7 @@ export default function Home() {
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-white uppercase tracking-widest text-xs font-bold mb-4">Our Technology Partners</h2>
+            <h2 className="text-white uppercase tracking-widest text-lg md:text-2xl font-bold mb-4 font-manrope">Our Technology Partners</h2>
             <p className="text-white/70">World-class brands. Strategic partnerships. Real results.</p>
           </div>
 
@@ -279,7 +279,7 @@ export default function Home() {
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-navy uppercase tracking-widest text-xs font-bold mb-4">Solutions For Every Industry</h2>
+            <h2 className="text-navy uppercase tracking-widest text-lg md:text-2xl font-bold mb-4 font-manrope">Solutions For Every Industry</h2>
             <p className="text-gray-600">Technology that understands your industry and drives your success.</p>
           </div>
 
