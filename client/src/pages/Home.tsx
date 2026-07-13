@@ -218,7 +218,7 @@ export default function Home() {
                 <div key={i} className="text-center group relative">
                   <div className="flex flex-col items-center">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-green-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:from-blue-400 group-hover:via-green-400 group-hover:to-cyan-400 transition-all duration-300 border border-green-500/40 group-hover:border-green-500/80 shadow-lg shadow-green-500/40 group-hover:shadow-xl group-hover:shadow-green-500/60">
-                      <item.icon className="w-8 h-8 text-green-500 group-hover:scale-110 transition-transform duration-300" />
+                      <item.icon className="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <h3 className="text-navy font-bold mb-3 uppercase tracking-wider text-sm">{item.label}</h3>
                     <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
