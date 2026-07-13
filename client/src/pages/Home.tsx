@@ -194,12 +194,12 @@ export default function Home() {
       </section>
 
       {/* Ecosystem Section */}
-      <section id="ecosystem" className="py-20 md:py-32 bg-navy">
+      <section id="ecosystem" className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-green-500 uppercase tracking-widest text-xs font-bold mb-4">One Ecosystem. Endless Possibilities.</h2>
-            <p className="text-white/70">Our three brands work together to deliver complete technology solutions.</p>
+            <p className="text-gray-600">Our three brands work together to deliver complete technology solutions.</p>
           </div>
 
           {/* Process Flow with Connectors */}
@@ -220,8 +220,8 @@ export default function Home() {
                     <div className="w-16 h-16 bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:from-green-500/30 group-hover:to-green-500/20 transition-all duration-300 border border-green-500/20 group-hover:border-green-500/40 shadow-lg shadow-green-500/10">
                       <item.icon className="w-8 h-8 text-green-500 group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <h3 className="text-white font-bold mb-3 uppercase tracking-wider text-sm">{item.label}</h3>
-                    <p className="text-sm text-white/60 leading-relaxed">{item.desc}</p>
+                    <h3 className="text-navy font-bold mb-3 uppercase tracking-wider text-sm">{item.label}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -231,8 +231,15 @@ export default function Home() {
       </section>
 
       {/* Partners Section */}
-      <section id="partners" className="py-20 md:py-32 bg-navy">
-        <div className="container mx-auto px-4 max-w-7xl">
+      <section id="partners" className="py-20 md:py-32 bg-navy relative overflow-hidden">
+        {/* Isometric Background */}
+        <div className="absolute inset-0 opacity-30" style={{
+          backgroundImage: 'url(/manus-storage/partners-bg-isometric_aabc2946.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}></div>
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-white uppercase tracking-widest text-xs font-bold mb-4">Our Technology Partners</h2>
@@ -268,12 +275,12 @@ export default function Home() {
       </section>
 
       {/* Industries Section */}
-      <section id="industries" className="py-20 md:py-32 bg-navy">
+      <section id="industries" className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-white uppercase tracking-widest text-xs font-bold mb-4">Solutions For Every Industry</h2>
-            <p className="text-white/70">Technology that understands your industry and drives your success.</p>
+            <h2 className="text-navy uppercase tracking-widest text-xs font-bold mb-4">Solutions For Every Industry</h2>
+            <p className="text-gray-600">Technology that understands your industry and drives your success.</p>
           </div>
 
           {/* Industry Icons Grid */}
@@ -290,7 +297,7 @@ export default function Home() {
             ].map((item, i) => (
               <div key={i} className="text-center">
                 <item.icon className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                <p className="text-sm font-bold text-white/70 uppercase">{item.label}</p>
+                <p className="text-sm font-bold text-gray-700 uppercase">{item.label}</p>
               </div>
             ))}
           </div>
