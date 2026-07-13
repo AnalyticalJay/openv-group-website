@@ -3,7 +3,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@layer base {
+  :root {
+    --color-navy: #07111C;
+    --color-navy-medium: #0F1E33;
+    --color-green: #13C46B;
+  }
+}
+
 @theme inline {
+  --color-navy: #07111C;
+  --color-navy-medium: #0F1E33;
+  --color-green: #13C46B;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
