@@ -167,18 +167,17 @@ export default function Home() {
           {/* Solution Icons Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
             {[
-              { icon: Wifi, label: 'Infrastructure' },
-              { icon: Shield, label: 'Cybersecurity' },
-              { icon: TrendingUp, label: 'Digital Growth' },
-              { icon: Cog, label: 'Business Software' },
-              { icon: Brain, label: 'AI & Automation' },
-              { icon: Headphones, label: 'Support' },
+              { icon: Wifi, label: 'Infrastructure', desc: 'Networks, connectivity and cloud solutions you can rely on.' },
+              { icon: Shield, label: 'Cybersecurity', desc: 'Protecting your data, systems and people.' },
+              { icon: TrendingUp, label: 'Digital Growth', desc: 'Websites, marketing and branding that grow your business.' },
+              { icon: Cog, label: 'Business Software', desc: 'Smart platforms and automation that drive results.' },
+              { icon: Brain, label: 'AI & Automation', desc: 'Intelligent tools that increase productivity and efficiency.' },
+              { icon: Headphones, label: 'Support', desc: 'Expert support whenever and wherever you need it.' },
             ].map((item, i) => (
-              <div key={i} className="text-center group hover:scale-110 transition-transform duration-300">
-                <div className="w-16 h-16 bg-green-500/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500/20 transition-colors">
-                  <item.icon className="w-8 h-8 text-green-500" />
-                </div>
-                <p className="text-sm font-bold text-navy uppercase tracking-wider">{item.label}</p>
+              <div key={i} className="text-center group hover:scale-105 transition-transform duration-300">
+                <item.icon className="w-12 h-12 text-navy mx-auto mb-4 group-hover:text-green-500 transition-colors" />
+                <p className="text-sm font-bold text-navy uppercase tracking-wider mb-2">{item.label}</p>
+                <p className="text-xs text-gray-600 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
