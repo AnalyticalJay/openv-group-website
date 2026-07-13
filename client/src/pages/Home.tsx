@@ -9,11 +9,11 @@ export default function Home() {
       <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-navy/50 z-10"></div>
+          <div className="absolute inset-0 bg-navy/40 z-10"></div>
           <img 
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop" 
+            src="/manus-storage/hero-background_85f8ac75.png" 
             alt="Hero Background" 
-            className="w-full h-full object-cover opacity-50"
+            className="w-full h-full object-cover opacity-70"
           />
         </div>
 
@@ -104,12 +104,15 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* OpenV Business */}
             <div className="group relative overflow-hidden bg-navy-medium/50 border border-green-500/15 rounded-lg p-8 backdrop-blur-xl hover:border-green-500/50 hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-500 hover:-translate-y-3">
-              <div className="mb-8 h-10">
+              <div className="absolute inset-0 opacity-30">
+                <img src="/manus-storage/openv-business-card_c98957d4.png" alt="" className="w-full h-full object-cover" />
+              </div>
+              <div className="relative z-10 mb-8 h-10">
                 <div className="text-white font-bold text-lg">OpenV Business</div>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Managed IT & Cybersecurity</h3>
-              <p className="text-sm text-white/70 mb-8">Reliable infrastructure, secure networks and expert support that keeps your business running at its best.</p>
-              <a href="#" className="text-xs font-bold tracking-widest text-green-500 uppercase flex items-center hover:underline">
+              <h3 className="relative z-10 text-xl font-bold mb-4 text-white">Managed IT & Cybersecurity</h3>
+              <p className="relative z-10 text-sm text-white/70 mb-8">Reliable infrastructure, secure networks and expert support that keeps your business running at its best.</p>
+              <a href="#" className="relative z-10 text-xs font-bold tracking-widest text-green-500 uppercase flex items-center hover:underline">
                 EXPLORE OPENV
                 <ArrowRight className="ml-2 w-3 h-3" />
               </a>
@@ -117,12 +120,15 @@ export default function Home() {
 
             {/* NextFour */}
             <div className="group relative overflow-hidden bg-navy-medium/50 border border-green-500/15 rounded-lg p-8 backdrop-blur-xl hover:border-green-500/50 hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-500 hover:-translate-y-3">
-              <div className="mb-8 h-10">
+              <div className="absolute inset-0 opacity-30">
+                <img src="/manus-storage/nextfour-card_9955f2a7.png" alt="" className="w-full h-full object-cover" />
+              </div>
+              <div className="relative z-10 mb-8 h-10">
                 <div className="text-white font-bold text-lg">NextFour</div>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Digital Marketing & Web Solutions</h3>
-              <p className="text-sm text-white/70 mb-8">Websites, marketing, SEO, ads and branding that attract attention and drive growth.</p>
-              <a href="#" className="text-xs font-bold tracking-widest text-green-500 uppercase flex items-center hover:underline">
+              <h3 className="relative z-10 text-xl font-bold mb-4 text-white">Digital Marketing & Web Solutions</h3>
+              <p className="relative z-10 text-sm text-white/70 mb-8">Websites, marketing, SEO, ads and branding that attract attention and drive growth.</p>
+              <a href="#" className="relative z-10 text-xs font-bold tracking-widest text-green-500 uppercase flex items-center hover:underline">
                 EXPLORE NEXTFOUR
                 <ArrowRight className="ml-2 w-3 h-3" />
               </a>
@@ -130,12 +136,15 @@ export default function Home() {
 
             {/* ShiftBridge */}
             <div className="group relative overflow-hidden bg-navy-medium/50 border border-green-500/15 rounded-lg p-8 backdrop-blur-xl hover:border-green-500/50 hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-500 hover:-translate-y-3">
-              <div className="mb-8 h-10">
+              <div className="absolute inset-0 opacity-30">
+                <img src="/manus-storage/shiftbridge-card_1201b067.png" alt="" className="w-full h-full object-cover" />
+              </div>
+              <div className="relative z-10 mb-8 h-10">
                 <div className="text-white font-bold text-lg">ShiftBridge</div>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Business Software & Automation</h3>
-              <p className="text-sm text-white/70 mb-8">Powerful CRM and business platforms that streamline operations and boost productivity.</p>
-              <a href="#" className="text-xs font-bold tracking-widest text-green-500 uppercase flex items-center hover:underline">
+              <h3 className="relative z-10 text-xl font-bold mb-4 text-white">Business Software & Automation</h3>
+              <p className="relative z-10 text-sm text-white/70 mb-8">Powerful CRM and business platforms that streamline operations and boost productivity.</p>
+              <a href="#" className="relative z-10 text-xs font-bold tracking-widest text-green-500 uppercase flex items-center hover:underline">
                 EXPLORE SHIFTBRIDGE
                 <ArrowRight className="ml-2 w-3 h-3" />
               </a>
@@ -165,9 +174,11 @@ export default function Home() {
               { icon: Brain, label: 'AI & Automation' },
               { icon: Headphones, label: 'Support' },
             ].map((item, i) => (
-              <div key={i} className="text-center">
-                <item.icon className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                <p className="text-sm font-bold text-navy uppercase">{item.label}</p>
+              <div key={i} className="text-center group hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 bg-green-500/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500/20 transition-colors">
+                  <item.icon className="w-8 h-8 text-green-500" />
+                </div>
+                <p className="text-sm font-bold text-navy uppercase tracking-wider">{item.label}</p>
               </div>
             ))}
           </div>
@@ -200,10 +211,12 @@ export default function Home() {
               { icon: Zap, label: 'Automate', desc: 'AI and automation that drives efficiency' },
               { icon: TrendingUp, label: 'Grow', desc: 'Together we help you scale with confidence' },
             ].map((item, i) => (
-              <div key={i} className="text-center">
-                <item.icon className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                <h3 className="text-white font-bold mb-2 uppercase">{item.label}</h3>
-                <p className="text-sm text-white/60">{item.desc}</p>
+              <div key={i} className="text-center group">
+                <div className="w-14 h-14 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500/20 transition-colors">
+                  <item.icon className="w-7 h-7 text-green-500" />
+                </div>
+                <h3 className="text-white font-bold mb-2 uppercase tracking-wider text-sm">{item.label}</h3>
+                <p className="text-sm text-white/60 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -270,7 +283,10 @@ export default function Home() {
 
       {/* CTA Section */}
       <section id="cta" className="py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 opacity-90"></div>
+        <div className="absolute inset-0">
+          <img src="/manus-storage/cta-section-background_582c596e.png" alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 opacity-85"></div>
+        </div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Ready to transform your business?</h2>
