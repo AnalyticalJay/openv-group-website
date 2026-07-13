@@ -28,7 +28,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="./src/css/main-standalone.css">
+    <style>
+      /* Inline CSS will be added here */
+    </style>
 </head>
 <body class="bg-navy text-white/70 font-inter">
     <!-- Skip to Main Content Link -->
@@ -634,28 +636,7 @@
 
     <!-- Scripts -->
     <script>
-      // Basic smooth scroll and animation initialization
-      document.addEventListener('DOMContentLoaded', function() {
-        // Add header scroll effect
-        const header = document.getElementById('main-header');
-        window.addEventListener('scroll', function() {
-          if (window.scrollY > 50) {
-            header.classList.add('header-scrolled');
-          } else {
-            header.classList.remove('header-scrolled');
-          }
-        });
-        
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuBtn && mobileMenu) {
-          mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-            this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
-          });
-        }
-      });
+      // Inline JavaScript will be added here
     </script>
 </body>
 </html>
