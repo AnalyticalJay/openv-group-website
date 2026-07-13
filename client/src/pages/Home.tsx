@@ -58,7 +58,7 @@ export default function Home() {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap gap-6 pb-40 md:pb-48">
               <button className="inline-flex items-center px-6 py-3 bg-green-500 text-navy font-bold tracking-widest text-xs uppercase rounded hover:bg-green-600 transition-colors">
                 EXPLORE THE GROUP
                 <ArrowRight className="ml-2 w-4 h-4" />
