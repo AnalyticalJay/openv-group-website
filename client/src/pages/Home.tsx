@@ -294,7 +294,7 @@ export default function Home() {
       </section>
 
       {/* Industries Section */}
-      <section id="industries" className="py-20 md:py-32 bg-white">
+      <section id="industries" className="py-20 md:py-32 bg-white" style={{paddingBottom: '84px', paddingTop: '84px'}}>
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
