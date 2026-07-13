@@ -1,7 +1,26 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
+import { animateStaggerChildren, animateSlideUp } from '@/lib/animations';
+import { useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
 
 export default function Home() {
+  // Animation refs for each section
+  const brandCardsRef = useRef<HTMLDivElement>(null);
+  const solutionsRef = useRef<HTMLDivElement>(null);
+  const ecosystemRef = useRef<HTMLDivElement>(null);
+  const partnersRef = useRef<HTMLDivElement>(null);
+  const industriesRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+
+  // Apply animations
+  useEffect(() => {
+    if (brandCardsRef.current) animateStaggerChildren(brandCardsRef.current, '.group', 0.15);
+    if (solutionsRef.current) animateStaggerChildren(solutionsRef.current, '.text-center', 0.1);
+    if (ecosystemRef.current) animateStaggerChildren(ecosystemRef.current, '.relative.z-10', 0.12);
+    if (partnersRef.current) animateStaggerChildren(partnersRef.current, '.bg-white\\/10', 0.08);
+    if (industriesRef.current) animateStaggerChildren(industriesRef.current, '.text-center', 0.1);
+    if (ctaRef.current) animateSlideUp(ctaRef.current, 0);
+  }, []);
   return (
     <div className="min-h-screen bg-navy text-white">
       <Navigation />
@@ -101,7 +120,7 @@ export default function Home() {
           </div>
 
           {/* Brand Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div ref={brandCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* OpenV Business */}
             <div className="group relative overflow-hidden bg-navy-medium/50 border border-green-500/15 rounded-lg p-8 backdrop-blur-xl hover:border-green-500/50 hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-500 hover:-translate-y-3">
               <div className="absolute inset-0 opacity-30">
@@ -165,7 +184,7 @@ export default function Home() {
           </div>
 
           {/* Solution Icons Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
+          <div ref={solutionsRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
             {[
               { icon: Wifi, label: 'Infrastructure', desc: 'Networks, connectivity and cloud solutions you can rely on.' },
               { icon: Shield, label: 'Cybersecurity', desc: 'Protecting your data, systems and people.' },
@@ -207,7 +226,7 @@ export default function Home() {
             {/* Horizontal divider line for desktop */}
             <div className="hidden lg:block absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500 to-transparent shadow-lg shadow-green-500/50"></div>
             
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
+            <div ref={ecosystemRef} className="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
               {[
                 { icon: ZapIcon, label: 'Connect', desc: 'Integrate your existing systems' },
                 { icon: Target, label: 'Engage', desc: 'Digital marketing to reach your audience' },
@@ -247,7 +266,7 @@ export default function Home() {
           </div>
 
           {/* Partner Logos Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-12 items-center">
+          <div ref={partnersRef} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-12 items-center">
             {[
               { name: 'Vodacom', logo: '/manus-storage/logo-vodacom_59076cbe.png' },
               { name: 'Citrix', logo: '/manus-storage/logo-citrix_69ed1026.png' },
@@ -284,7 +303,7 @@ export default function Home() {
           </div>
 
           {/* Industry Icons Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8">
+          <div ref={industriesRef} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8">
             {[
               { icon: Building2, label: 'Manufacturing' },
               { icon: HelpCircle, label: 'Healthcare' },
@@ -311,7 +330,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 opacity-85"></div>
         </div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
-          <div className="text-center">
+          <div ref={ctaRef} className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Ready to transform your business?</h2>
             <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
               Book us for team loyalty and discover how Open V Group can do more with your technology. Businesses across South Africa trust us.
