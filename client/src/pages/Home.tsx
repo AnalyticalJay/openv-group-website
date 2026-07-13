@@ -250,13 +250,13 @@ export default function Home() {
       </section>
 
       {/* Partners Section */}
-      <section id="partners" className="py-20 md:py-32 bg-navy relative overflow-hidden">
+      <section id="partners" className="py-20 md:py-32 bg-navy relative overflow-hidden" style={{paddingBottom: '70px', paddingTop: '59px'}}>
         {/* Isometric Background */}
         <div className="absolute inset-0 opacity-30" style={{
           backgroundImage: 'url(/manus-storage/partners-bg-isometric_aabc2946.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          backgroundAttachment: 'fixed', height: '551px'
         }}></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
