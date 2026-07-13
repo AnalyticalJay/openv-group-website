@@ -202,23 +202,30 @@ export default function Home() {
             <p className="text-white/70">Our three brands work together to deliver complete technology solutions.</p>
           </div>
 
-          {/* Process Flow */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-            {[
-              { icon: ZapIcon, label: 'Connect', desc: 'Integrate your existing systems' },
-              { icon: Target, label: 'Engage', desc: 'Digital marketing to reach your audience' },
-              { icon: Monitor, label: 'Manage', desc: 'Business software manages operations' },
-              { icon: Zap, label: 'Automate', desc: 'AI and automation that drives efficiency' },
-              { icon: TrendingUp, label: 'Grow', desc: 'Together we help you scale with confidence' },
-            ].map((item, i) => (
-              <div key={i} className="text-center group">
-                <div className="w-14 h-14 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500/20 transition-colors">
-                  <item.icon className="w-7 h-7 text-green-500" />
+          {/* Process Flow with Connectors */}
+          <div className="relative">
+            {/* Horizontal divider line for desktop */}
+            <div className="hidden lg:block absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/40 to-transparent"></div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
+              {[
+                { icon: ZapIcon, label: 'Connect', desc: 'Integrate your existing systems' },
+                { icon: Target, label: 'Engage', desc: 'Digital marketing to reach your audience' },
+                { icon: Monitor, label: 'Manage', desc: 'Business software manages operations' },
+                { icon: Zap, label: 'Automate', desc: 'AI and automation that drives efficiency' },
+                { icon: TrendingUp, label: 'Grow', desc: 'Together we help you scale with confidence' },
+              ].map((item, i) => (
+                <div key={i} className="text-center group relative">
+                  <div className="flex flex-col items-center">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:from-green-500/30 group-hover:to-green-500/20 transition-all duration-300 border border-green-500/20 group-hover:border-green-500/40 shadow-lg shadow-green-500/10">
+                      <item.icon className="w-8 h-8 text-green-500 group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <h3 className="text-white font-bold mb-3 uppercase tracking-wider text-sm">{item.label}</h3>
+                    <p className="text-sm text-white/60 leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
-                <h3 className="text-white font-bold mb-2 uppercase tracking-wider text-sm">{item.label}</h3>
-                <p className="text-sm text-white/60 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
