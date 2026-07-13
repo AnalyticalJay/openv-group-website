@@ -173,7 +173,7 @@ export default function Home() {
       </section>
 
       {/* Solutions Section */}
-      <section id="solutions" className="py-20 md:py-32 bg-white border-t border-gray-200">
+      <section id="solutions" className="py-20 md:py-32 bg-white border-t border-gray-200" style={{paddingBottom: '80px', paddingTop: '96px'}}>
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
