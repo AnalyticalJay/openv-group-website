@@ -194,7 +194,7 @@ export default function Home() {
       </section>
 
       {/* Ecosystem Section */}
-      <section id="ecosystem" className="py-20 md:py-32 bg-white">
+      <section id="ecosystem" className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -205,7 +205,7 @@ export default function Home() {
           {/* Process Flow with Connectors */}
           <div className="relative">
             {/* Horizontal divider line for desktop */}
-            <div className="hidden lg:block absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/40 to-transparent"></div>
+            <div className="hidden lg:block absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500 to-transparent shadow-lg shadow-green-500/50"></div>
             
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
               {[
@@ -217,7 +217,7 @@ export default function Home() {
               ].map((item, i) => (
                 <div key={i} className="text-center group relative">
                   <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:from-green-500/30 group-hover:to-green-500/20 transition-all duration-300 border border-green-500/20 group-hover:border-green-500/40 shadow-lg shadow-green-500/10">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-green-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:from-blue-400 group-hover:via-green-400 group-hover:to-cyan-400 transition-all duration-300 border border-green-500/40 group-hover:border-green-500/80 shadow-lg shadow-green-500/40 group-hover:shadow-xl group-hover:shadow-green-500/60">
                       <item.icon className="w-8 h-8 text-green-500 group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <h3 className="text-navy font-bold mb-3 uppercase tracking-wider text-sm">{item.label}</h3>
