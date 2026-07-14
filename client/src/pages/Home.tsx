@@ -204,7 +204,7 @@ export default function Home() {
 
           {/* View All Button */}
           <div className="text-center">
-            <button className="inline-flex items-center px-6 py-3 border-2 border-orange-500 text-orange-500 font-bold tracking-widest text-xs uppercase rounded hover:bg-orange-500 hover:text-white transition-colors">
+            <button className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold tracking-widest text-xs uppercase rounded hover:from-orange-600 hover:to-red-600 transition-colors">
               VIEW ALL SOLUTIONS
               <ArrowRight className="ml-2 w-4 h-4" />
             </button>
