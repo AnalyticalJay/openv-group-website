@@ -327,7 +327,7 @@ export default function Home() {
       <section id="cta" className="py-20 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0">
           <img src="/manus-storage/cta-section-background_582c596e.png" alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 opacity-85"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 opacity-85" style={{opacity: '0'}}></div>
         </div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div ref={ctaRef} className="text-center">
