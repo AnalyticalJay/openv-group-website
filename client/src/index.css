@@ -8,6 +8,8 @@
     --color-navy: #07111C;
     --color-navy-medium: #0F1E33;
     --color-green: #13C46B;
+    --color-accent-orange: #FF6B35;
+    --color-accent-red: #D32F2F;
   }
 }
 
@@ -15,6 +17,8 @@
   --color-navy: #07111C;
   --color-navy-medium: #0F1E33;
   --color-green: #13C46B;
+  --color-accent-orange: #FF6B35;
+  --color-accent-red: #D32F2F;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
