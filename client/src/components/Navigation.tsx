@@ -39,17 +39,17 @@ export default function Navigation() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center space-x-4">
-          <button className="px-6 py-2 bg-green-500 text-navy font-bold tracking-widest text-xs uppercase rounded hover:bg-green-600 transition-colors">
+          <button className="px-6 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold tracking-widest text-xs uppercase rounded hover:from-orange-600 hover:to-red-600 transition-colors">
             BOOK A CONSULTATION
           </button>
-          <button className="text-white/70 hover:text-green-500 transition-colors">
+          <button className="text-white/70 hover:text-orange-500 transition-colors">
             <Menu className="w-6 h-6" />
           </button>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden text-white/70 hover:text-green-500 transition-colors"
+          className="lg:hidden text-white/70 hover:text-orange-500 transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -70,7 +70,7 @@ export default function Navigation() {
                 {link.label}
               </a>
             ))}
-            <button className="w-full mt-4 px-6 py-3 bg-green-500 text-navy font-bold tracking-widest text-xs uppercase rounded hover:bg-green-600 transition-colors">
+            <button className="w-full mt-4 px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold tracking-widest text-xs uppercase rounded hover:from-orange-600 hover:to-red-600 transition-colors">
               BOOK A CONSULTATION
             </button>
           </div>
