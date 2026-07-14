@@ -42,9 +42,6 @@ export default function Navigation() {
           <button className="px-6 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold tracking-widest text-xs uppercase rounded hover:from-orange-600 hover:to-red-600 transition-colors">
             BOOK A CONSULTATION
           </button>
-          <button className="text-white/70 hover:text-orange-500 transition-colors">
-            <Menu className="w-6 h-6" />
-          </button>
         </div>
 
         {/* Mobile Menu Toggle */}
