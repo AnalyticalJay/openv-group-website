@@ -142,16 +142,7 @@ export default function Home() {
       </section>
 
       {/* Brands Section */}
-      <section id="companies" className="py-20 md:py-32 relative overflow-hidden border-t border-white/5">
-        {/* Background continues from hero with parallax */}
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'url(/manus-storage/hero-background_85f8ac75.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-          opacity: 0.25
-        }}></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-navy/70 to-navy"></div>
+      <section id="companies" className="py-20 md:py-32 relative overflow-hidden border-t border-white/5 bg-navy">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
           <div className="text-center mb-16">
