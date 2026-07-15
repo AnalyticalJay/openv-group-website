@@ -14,17 +14,32 @@ export default function Home() {
   const industriesRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
-  // Parallax scroll effect for hero background
+  // Add CSS animations for globe and connector movement
   useEffect(() => {
-    const handleScroll = () => {
-      if (heroBackgroundRef.current) {
-        const scrollY = window.scrollY;
-        heroBackgroundRef.current.style.transform = `translateY(${scrollY * 0.5}px)`;
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes floatGlobe {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-20px) scale(1.02); }
+      }
+      @keyframes rotateConnectors {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 20px rgba(19, 196, 107, 0.3)); }
+        50% { opacity: 0.9; filter: drop-shadow(0 0 40px rgba(19, 196, 107, 0.6)); }
+      }
+      .hero-background-animated {
+        animation: floatGlobe 6s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      if (style.parentNode) {
+        document.head.removeChild(style);
       }
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Apply animations
@@ -40,21 +55,21 @@ export default function Home() {
     <div className="min-h-screen bg-navy text-white">
       <Navigation />
       {/* Hero Section */}
-      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        {/* Background with parallax effect */}
+      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-navy">
+        {/* Static Background with animated globe and connectors */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div 
             ref={heroBackgroundRef}
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full hero-background-animated"
             style={{
               backgroundImage: 'url(/manus-storage/hero-background_85f8ac75.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              backgroundAttachment: 'fixed',
+              backgroundRepeat: 'no-repeat',
               opacity: 0.7
             }}
           />
-          <div className="absolute inset-0 bg-navy/40 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-navy/20 via-navy/40 to-navy/60 z-10"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-20 max-w-7xl">
