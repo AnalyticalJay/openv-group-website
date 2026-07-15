@@ -37,7 +37,7 @@ export default function Navigation() {
 
         {/* Desktop CTA - Right */}
         <div className="hidden lg:flex items-center flex-shrink-0">
-          <button className="px-6 py-2 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #1B8EFF 50%, #6B5B95 100%)'}}> 
+          <button className="px-6 py-2 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #0F9B6F 40%, #0F1E33 100%)'}}> 
             BOOK A CONSULTATION
           </button>
         </div>
@@ -65,7 +65,7 @@ export default function Navigation() {
                 {link.label}
               </a>
             ))}
-            <button className="w-full mt-4 px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #1B8EFF 50%, #6B5B95 100%)'}}> 
+            <button className="w-full mt-4 px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #0F9B6F 40%, #0F1E33 100%)'}}> 
               BOOK A CONSULTATION
             </button>
           </div>
