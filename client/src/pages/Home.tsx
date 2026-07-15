@@ -106,8 +106,17 @@ export default function Home() {
       </section>
 
       {/* Brands Section */}
-      <section id="companies" className="py-20 md:py-32 bg-navy border-t border-white/5">
-        <div className="container mx-auto px-4 max-w-7xl">
+      <section id="companies" className="py-20 md:py-32 relative overflow-hidden border-t border-white/5">
+        {/* Background with globe and connectors flowing from hero */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'url(/manus-storage/hero-globe-background_a1b2c3d4.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+          backgroundAttachment: 'fixed',
+          opacity: 0.15
+        }}></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-navy/60 to-navy"></div>
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-white uppercase tracking-widest text-xs font-bold mb-2">THREE SPECIALIST BRANDS. <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>ONE POWERFUL GROUP.</span></h2>
