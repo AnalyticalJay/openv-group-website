@@ -146,7 +146,7 @@ export default function Home() {
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-white uppercase tracking-widest text-xs font-bold mb-2">THREE SPECIALIST BRANDS. <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>ONE POWERFUL GROUP.</span></h2>
+            <h2 className="text-white uppercase tracking-widest text-lg md:text-2xl font-bold mb-4 font-manrope">THREE SPECIALIST BRANDS. <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>ONE POWERFUL GROUP.</span></h2>
             <p className="text-white/60 text-sm">Different expertise. One seamless partnership.</p>
           </div>
 
