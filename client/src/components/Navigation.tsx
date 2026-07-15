@@ -18,10 +18,8 @@ export default function Navigation() {
     <header className="fixed top-0 left-0 w-full z-50 bg-navy/80 backdrop-blur-md border-b border-white/10">
       <div className="container mx-auto px-4 max-w-7xl py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center">
-          <div className="w-8 h-8 bg-white rounded flex items-center justify-center font-bold text-navy">
-            G
-          </div>
+        <a href="/" className="flex items-center bg-gray-200/20 backdrop-blur-sm px-3 py-2 rounded-lg hover:bg-gray-200/30 transition-colors">
+          <img src="/manus-storage/OpenVGrouplogotransparent_0e3dcb89.svg" alt="OpenV Group" className="h-8 w-auto" />
         </a>
 
         {/* Desktop Navigation */}
