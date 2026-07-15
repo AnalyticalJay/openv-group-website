@@ -5,12 +5,27 @@ import Navigation from '@/components/Navigation';
 
 export default function Home() {
   // Animation refs for each section
+  const heroRef = useRef<HTMLDivElement>(null);
+  const heroBackgroundRef = useRef<HTMLDivElement>(null);
   const brandCardsRef = useRef<HTMLDivElement>(null);
   const solutionsRef = useRef<HTMLDivElement>(null);
   const ecosystemRef = useRef<HTMLDivElement>(null);
   const partnersRef = useRef<HTMLDivElement>(null);
   const industriesRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+
+  // Parallax scroll effect for hero background
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroBackgroundRef.current) {
+        const scrollY = window.scrollY;
+        heroBackgroundRef.current.style.transform = `translateY(${scrollY * 0.5}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Apply animations
   useEffect(() => {
@@ -25,15 +40,21 @@ export default function Home() {
     <div className="min-h-screen bg-navy text-white">
       <Navigation />
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-navy/40 z-10"></div>
-          <img 
-            src="/manus-storage/hero-background_85f8ac75.png" 
-            alt="Hero Background" 
-            className="w-full h-full object-cover opacity-70"
+      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* Background with parallax effect */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div 
+            ref={heroBackgroundRef}
+            className="absolute inset-0 w-full h-full"
+            style={{
+              backgroundImage: 'url(/manus-storage/hero-background_85f8ac75.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: 'fixed',
+              opacity: 0.7
+            }}
           />
+          <div className="absolute inset-0 bg-navy/40 z-10"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-20 max-w-7xl">
@@ -107,15 +128,15 @@ export default function Home() {
 
       {/* Brands Section */}
       <section id="companies" className="py-20 md:py-32 relative overflow-hidden border-t border-white/5">
-        {/* Background with globe and connectors flowing from hero */}
+        {/* Background continues from hero with parallax */}
         <div className="absolute inset-0" style={{
-          backgroundImage: 'url(/manus-storage/hero-globe-background_a1b2c3d4.png)',
+          backgroundImage: 'url(/manus-storage/hero-background_85f8ac75.png)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center top',
+          backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          opacity: 0.15
+          opacity: 0.25
         }}></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-navy/60 to-navy"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-navy/70 to-navy"></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
           <div className="text-center mb-16">
