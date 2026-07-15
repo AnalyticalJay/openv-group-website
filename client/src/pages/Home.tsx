@@ -80,7 +80,7 @@ export default function Home() {
             <h1 className="text-5xl md:text-7xl font-manrope font-extrabold text-white mb-8 leading-tight">
               Smart technology.<br />
               Seamless solutions.<br />
-              <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent', textShadow: '0 10px 30px rgba(19, 196, 107, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3)', filter: 'drop-shadow(0 10px 20px rgba(19, 196, 107, 0.3))'}}>Stronger business.</span>
+              <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent', textShadow: '0 4px 12px rgba(0, 0, 0, 0.6)', filter: 'drop-shadow(0 3px 8px rgba(0, 0, 0, 0.5))'}}>Stronger business.</span>
             </h1>
 
             {/* Subheading */}
