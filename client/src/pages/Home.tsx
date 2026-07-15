@@ -38,18 +38,13 @@ export default function Home() {
 
         <div className="container mx-auto px-4 relative z-20 max-w-7xl">
           <div className="max-w-4xl">
-            {/* Badge */}
-            <div className="mb-8">
-              <span className="inline-flex items-center px-4 py-2 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-xs font-bold tracking-widest uppercase">
-                Welcome to OpenV Group
-              </span>
-            </div>
+
 
             {/* Headline */}
             <h1 className="text-5xl md:text-7xl font-manrope font-extrabold text-white mb-8 leading-tight">
               Smart technology.<br />
               Seamless solutions.<br />
-              <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Stronger business.</span>
+              <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>Stronger business.</span>
             </h1>
 
             {/* Subheading */}
@@ -59,13 +54,13 @@ export default function Home() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-6 pb-40 md:pb-48">
-              <button className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold tracking-widest text-xs uppercase rounded hover:from-orange-600 hover:to-red-600 transition-colors">
+              <button className="inline-flex items-center px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #0F9B6F 40%, #0F1E33 100%)'}}>
                 EXPLORE THE GROUP
                 <ArrowRight className="ml-2 w-4 h-4" />
               </button>
-              <button className="inline-flex items-center text-white font-bold tracking-widest text-xs uppercase hover:text-orange-400 transition-colors">
-                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center mr-4 hover:border-orange-500 transition-colors">
-                  <Play className="w-5 h-5 text-orange-500 ml-1" />
+              <button className="inline-flex items-center text-white font-bold tracking-widest text-xs uppercase hover:text-green-400 transition-colors">
+                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center mr-4 hover:border-green-500 transition-colors">
+                  <Play className="w-5 h-5 ml-1" style={{color: '#13C46B'}} />
                 </div>
                 WATCH VIDEO
               </button>
@@ -78,28 +73,28 @@ export default function Home() {
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
               <div className="flex items-center space-x-4">
-                <Building2 className="w-8 h-8 text-orange-500 flex-shrink-0" />
+                <Building2 className="w-8 h-8 flex-shrink-0" style={{color: '#13C46B'}} />
                 <div>
                   <span className="text-3xl font-manrope font-bold text-white block">20+</span>
                   <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Years in<br />South Africa</span>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <Users className="w-8 h-8 text-orange-500 flex-shrink-0" />
+                <Users className="w-8 h-8 flex-shrink-0" style={{color: '#13C46B'}} />
                 <div>
                   <span className="text-3xl font-manrope font-bold text-white block">45</span>
                   <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">ICT<br />Professionals</span>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <Users className="w-8 h-8 text-orange-500 flex-shrink-0" />
+                <Users className="w-8 h-8 flex-shrink-0" style={{color: '#13C46B'}} />
                 <div>
                   <span className="text-3xl font-manrope font-bold text-white block">8</span>
                   <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Corporate<br />Partners</span>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <Building2 className="w-8 h-8 text-orange-500 flex-shrink-0" />
+                <Building2 className="w-8 h-8 flex-shrink-0" style={{color: '#13C46B'}} />
                 <div>
                   <span className="text-3xl font-manrope font-bold text-white block">3</span>
                   <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Integrated<br />Brands</span>
@@ -115,14 +110,14 @@ export default function Home() {
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-white uppercase tracking-widest text-xs font-bold mb-2">THREE SPECIALIST BRANDS. <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">ONE POWERFUL GROUP.</span></h2>
+            <h2 className="text-white uppercase tracking-widest text-xs font-bold mb-2">THREE SPECIALIST BRANDS. <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>ONE POWERFUL GROUP.</span></h2>
             <p className="text-white/60 text-sm">Different expertise. One seamless partnership.</p>
           </div>
 
           {/* Brand Cards */}
           <div ref={brandCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* OpenV Business */}
-            <div className="group relative overflow-hidden bg-navy-medium/50 border border-orange-500/15 rounded-lg p-8 backdrop-blur-xl hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-500 hover:-translate-y-3">
+            <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.15)'}>
               <div className="absolute inset-0 opacity-30">
                 <img src="/manus-storage/openv-business-card_c98957d4.png" alt="" className="w-full h-full object-cover" />
               </div>
@@ -131,14 +126,14 @@ export default function Home() {
               </div>
               <h3 className="relative z-10 text-xl font-bold mb-4 text-white">Managed IT & Cybersecurity</h3>
               <p className="relative z-10 text-sm text-white/70 mb-8">Reliable infrastructure, secure networks and expert support that keeps your business running at its best.</p>
-              <a href="#" className="relative z-10 text-xs font-bold tracking-widest text-orange-500 uppercase flex items-center hover:underline">
+              <a href="#" className="relative z-10 text-xs font-bold tracking-widest uppercase flex items-center hover:underline" style={{color: '#13C46B'}}>
                 EXPLORE OPENV
                 <ArrowRight className="ml-2 w-3 h-3" />
               </a>
             </div>
 
             {/* NextFour */}
-            <div className="group relative overflow-hidden bg-navy-medium/50 border border-orange-500/15 rounded-lg p-8 backdrop-blur-xl hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-500 hover:-translate-y-3">
+            <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}}>
               <div className="absolute inset-0 opacity-30">
                 <img src="/manus-storage/nextfour-card_9955f2a7.png" alt="" className="w-full h-full object-cover" />
               </div>
@@ -147,14 +142,14 @@ export default function Home() {
               </div>
               <h3 className="relative z-10 text-xl font-bold mb-4 text-white">Digital Marketing & Web Solutions</h3>
               <p className="relative z-10 text-sm text-white/70 mb-8">Websites, marketing, SEO, ads and branding that attract attention and drive growth.</p>
-              <a href="#" className="relative z-10 text-xs font-bold tracking-widest text-orange-500 uppercase flex items-center hover:underline">
+              <a href="#" className="relative z-10 text-xs font-bold tracking-widest uppercase flex items-center hover:underline" style={{color: '#13C46B'}}>
                 EXPLORE NEXTFOUR
                 <ArrowRight className="ml-2 w-3 h-3" />
               </a>
             </div>
 
             {/* ShiftBridge */}
-            <div className="group relative overflow-hidden bg-navy-medium/50 border border-orange-500/15 rounded-lg p-8 backdrop-blur-xl hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-500 hover:-translate-y-3">
+            <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}}>
               <div className="absolute inset-0 opacity-30">
                 <img src="/manus-storage/shiftbridge-card_1201b067.png" alt="" className="w-full h-full object-cover" />
               </div>
@@ -163,7 +158,7 @@ export default function Home() {
               </div>
               <h3 className="relative z-10 text-xl font-bold mb-4 text-white">Business Software & Automation</h3>
               <p className="relative z-10 text-sm text-white/70 mb-8">Powerful CRM and business platforms that streamline operations and boost productivity.</p>
-              <a href="#" className="relative z-10 text-xs font-bold tracking-widest text-orange-500 uppercase flex items-center hover:underline">
+              <a href="#" className="relative z-10 text-xs font-bold tracking-widest uppercase flex items-center hover:underline" style={{color: '#13C46B'}}>
                 EXPLORE SHIFTBRIDGE
                 <ArrowRight className="ml-2 w-3 h-3" />
               </a>
@@ -178,7 +173,7 @@ export default function Home() {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-navy uppercase tracking-widest text-lg md:text-2xl font-bold mb-2 font-manrope">
-              ALL THE SOLUTIONS. <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">WORKING TOGETHER.</span>
+              ALL THE SOLUTIONS. <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>WORKING TOGETHER.</span>
             </h2>
             <p className="text-gray-600 text-sm">From infrastructure to innovation, we've got your business covered.</p>
           </div>
@@ -194,17 +189,17 @@ export default function Home() {
               { icon: Headphones, label: 'Support', desc: 'Expert support whenever and wherever you need it.' },
             ].map((item, i) => (
               <div key={i} className="text-center group hover:scale-105 transition-transform duration-300">
-                <item.icon className="w-12 h-12 text-navy mx-auto mb-4 group-hover:text-orange-500 transition-colors" />
+                <item.icon className="w-12 h-12 text-navy mx-auto mb-4 transition-colors" style={{color: '#1f2937'}} onMouseEnter={(e) => e.currentTarget.style.color = '#13C46B'} onMouseLeave={(e) => e.currentTarget.style.color = '#1f2937'} />
                 <p className="text-sm font-bold text-navy uppercase tracking-wider mb-2">{item.label}</p>
                 <p className="text-xs text-gray-600 leading-relaxed mb-4">{item.desc}</p>
-                <div className="h-1 bg-gradient-to-r from-blue-500 via-orange-500 to-blue-500 rounded-full"></div>
+                <div className="h-1 rounded-full" style={{background: 'linear-gradient(to right, #1B8EFF, #13C46B, #1B8EFF)'}}></div>
               </div>
             ))}
           </div>
 
           {/* View All Button */}
           <div className="text-center">
-            <button className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold tracking-widest text-xs uppercase rounded hover:from-orange-600 hover:to-red-600 transition-colors">
+            <button className="inline-flex items-center px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #0F9B6F 40%, #0F1E33 100%)'}}>
               VIEW ALL SOLUTIONS
               <ArrowRight className="ml-2 w-4 h-4" />
             </button>
@@ -217,14 +212,14 @@ export default function Home() {
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent uppercase tracking-widest text-lg md:text-2xl font-bold mb-4 font-manrope">One Ecosystem. Endless Possibilities.</h2>
+            <h2 className="uppercase tracking-widest text-lg md:text-2xl font-bold mb-4 font-manrope" style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>One Ecosystem. Endless Possibilities.</h2>
             <p className="text-gray-600">Our three brands work together to deliver complete technology solutions.</p>
           </div>
 
           {/* Process Flow with Connectors */}
           <div className="relative">
             {/* Horizontal divider line for desktop */}
-            <div className="hidden lg:block absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500 to-transparent shadow-lg shadow-orange-500/50"></div>
+            <div className="hidden lg:block absolute top-8 left-0 right-0 h-px" style={{background: 'linear-gradient(to right, transparent, #13C46B, transparent)', boxShadow: '0 0 20px rgba(19, 196, 107, 0.5)'}}></div>
             
             <div ref={ecosystemRef} className="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
               {[
@@ -236,7 +231,7 @@ export default function Home() {
               ].map((item, i) => (
                 <div key={i} className="text-center group relative">
                   <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-orange-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:from-blue-400 group-hover:via-orange-400 group-hover:to-cyan-400 transition-all duration-300 border border-orange-500/40 group-hover:border-orange-500/80 shadow-lg shadow-orange-500/40 group-hover:shadow-xl group-hover:shadow-orange-500/60">
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 transition-all duration-300 shadow-lg" style={{background: 'linear-gradient(to bottom right, #1B8EFF, #13C46B, #00D9FF)', border: '1px solid rgba(19, 196, 107, 0.4)', boxShadow: '0 0 20px rgba(19, 196, 107, 0.4)'}}>
                       <item.icon className="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <h3 className="text-navy font-bold mb-3 uppercase tracking-wider text-sm">{item.label}</h3>
@@ -277,7 +272,7 @@ export default function Home() {
               { name: 'Nikon', logo: '/manus-storage/logo-nikon_0f9a3ad8.png' },
               { name: 'CSI', logo: '/manus-storage/logo-csi_cf8c6ef2.png' },
             ].map((partner, i) => (
-              <div key={i} className="bg-white/10 border border-white/10 rounded-lg p-6 flex items-center justify-center h-24 hover:border-orange-500/50 transition-colors group">
+              <div key={i} className="bg-white/10 border rounded-lg p-6 flex items-center justify-center h-24 transition-colors group" style={{borderColor: 'rgba(255, 255, 255, 0.1)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'}>
                 <img src={partner.logo} alt={partner.name} className="max-h-16 max-w-full object-contain group-hover:scale-110 transition-transform duration-300" />
               </div>
             ))}
@@ -285,7 +280,7 @@ export default function Home() {
 
           {/* View All Button */}
           <div className="text-center">
-            <button className="inline-flex items-center px-6 py-3 border-2 border-orange-500 text-orange-500 font-bold tracking-widest text-xs uppercase rounded hover:bg-orange-500 hover:text-white transition-colors">
+            <button className="inline-flex items-center px-6 py-3 border-2 font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{borderColor: '#13C46B', color: '#13C46B'}} onMouseEnter={(e) => {e.currentTarget.style.background = '#13C46B'; e.currentTarget.style.color = 'white';}} onMouseLeave={(e) => {e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#13C46B';}}>
               VIEW ALL PARTNERS
               <ArrowRight className="ml-2 w-4 h-4" />
             </button>
