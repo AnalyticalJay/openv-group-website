@@ -16,14 +16,14 @@ export default function Navigation() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-navy/80 backdrop-blur-md border-b border-white/10">
-      <div className="container mx-auto px-4 max-w-7xl py-4 flex items-center justify-between">
-        {/* Logo */}
-        <a href="/" className="flex items-center bg-gray-200/20 backdrop-blur-sm px-3 py-2 rounded-lg hover:bg-gray-200/30 transition-colors">
+      <div className="container mx-auto px-4 max-w-7xl py-4 flex items-center">
+        {/* Logo - Left */}
+        <a href="/" className="flex-shrink-0">
           <img src="/manus-storage/OpenVGrouplogotransparent_0e3dcb89.svg" alt="OpenV Group" className="h-8 w-auto" />
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-8">
+        {/* Desktop Navigation - Center */}
+        <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -35,8 +35,8 @@ export default function Navigation() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center space-x-4">
+        {/* Desktop CTA - Right */}
+        <div className="hidden lg:flex items-center flex-shrink-0">
           <button className="px-6 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold tracking-widest text-xs uppercase rounded hover:from-orange-600 hover:to-red-600 transition-colors">
             BOOK A CONSULTATION
           </button>
