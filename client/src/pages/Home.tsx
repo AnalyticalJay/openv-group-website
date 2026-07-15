@@ -320,10 +320,14 @@ export default function Home() {
 
       {/* CTA Section */}
       <section id="cta" className="py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src="/manus-storage/cta-section-background_582c596e.png" alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 opacity-85" style={{opacity: '0'}}></div>
-        </div>
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'url(/manus-storage/partners-bg-isometric_aabc2946.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          opacity: 0.4
+        }}></div>
+        <div className="absolute inset-0 bg-navy/60"></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div ref={ctaRef} className="text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Ready to transform your business?</h2>
@@ -331,13 +335,10 @@ export default function Home() {
               Book us for team loyalty and discover how Open V Group can do more with your technology. Businesses across South Africa trust us.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold tracking-widest text-sm uppercase rounded hover:from-orange-600 hover:to-red-600 transition-colors">
+              <button className="inline-flex items-center px-8 py-4 text-white font-bold tracking-widest text-sm uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #0F9B6F 40%, #0F1E33 100%)'}}>
                 BOOK A CONSULTATION
                 <ArrowRight className="ml-2 w-4 h-4" />
               </button>
-              <a href="tel:0413790550" className="text-white font-bold tracking-widest text-sm">
-                📞 041 379 0550
-              </a>
             </div>
           </div>
         </div>
