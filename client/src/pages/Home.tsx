@@ -40,8 +40,8 @@ export default function Home() {
     <div className="min-h-screen bg-navy text-white">
       <Navigation />
       {/* Hero Section */}
-      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-navy">
-        {/* Background - Connectors only with parallax effect */}
+      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* Background with parallax effect */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div 
             ref={heroBackgroundRef}
@@ -49,13 +49,12 @@ export default function Home() {
             style={{
               backgroundImage: 'url(/manus-storage/hero-background_85f8ac75.png)',
               backgroundSize: 'cover',
-              backgroundPosition: 'center top',
+              backgroundPosition: 'center',
               backgroundAttachment: 'fixed',
-              opacity: 0.3,
-              backgroundRepeat: 'no-repeat'
+              opacity: 0.7
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/20 via-navy/50 to-navy z-10"></div>
+          <div className="absolute inset-0 bg-navy/40 z-10"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-20 max-w-7xl">
@@ -128,17 +127,16 @@ export default function Home() {
       </section>
 
       {/* Brands Section */}
-      <section id="companies" className="py-20 md:py-32 relative overflow-hidden border-t border-white/5 bg-navy">
-        {/* Background continues connectors from hero with parallax */}
+      <section id="companies" className="py-20 md:py-32 relative overflow-hidden border-t border-white/5">
+        {/* Background continues from hero with parallax */}
         <div className="absolute inset-0" style={{
           backgroundImage: 'url(/manus-storage/hero-background_85f8ac75.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          opacity: 0.15,
-          backgroundRepeat: 'no-repeat'
+          opacity: 0.25
         }}></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-navy/60 to-navy"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-navy/70 to-navy"></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
           <div className="text-center mb-16">
