@@ -1,7 +1,8 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
-import { animateStaggerChildren, animateSlideUp } from '@/lib/animations';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration } from '@/lib/animations';
 import { useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
+import { useLenis } from '@/contexts/LenisContext';
 
 export default function Home() {
   // Animation refs for each section
@@ -42,20 +43,27 @@ export default function Home() {
     };
   }, []);
 
-  // Apply animations
+  // Get Lenis instance for scroll integration
+  const lenis = useLenis();
+
+  // Initialize GSAP with Lenis and apply section animations
   useEffect(() => {
-    if (brandCardsRef.current) animateStaggerChildren(brandCardsRef.current, '.group', 0.15);
-    if (solutionsRef.current) animateStaggerChildren(solutionsRef.current, '.text-center', 0.1);
-    if (ecosystemRef.current) animateStaggerChildren(ecosystemRef.current, '.relative.z-10', 0.12);
-    if (partnersRef.current) animateStaggerChildren(partnersRef.current, '.bg-white\\/10', 0.08);
-    if (industriesRef.current) animateStaggerChildren(industriesRef.current, '.text-center', 0.1);
+    // Initialize Lenis-GSAP integration
+    initLenisGSAPIntegration(lenis);
+
+    // Apply scroll-triggered animations to sections
+    if (brandCardsRef.current) animateStaggerChildren(brandCardsRef.current, '[class*="group"]', 0.15);
+    if (solutionsRef.current) animateStaggerChildren(solutionsRef.current, '[class*="text-center"]', 0.1);
+    if (ecosystemRef.current) animateStaggerChildren(ecosystemRef.current, '[class*="relative"]', 0.12);
+    if (partnersRef.current) animateStaggerChildren(partnersRef.current, '[class*="bg-white"]', 0.08);
+    if (industriesRef.current) animateStaggerChildren(industriesRef.current, '[class*="text-center"]', 0.1);
     if (ctaRef.current) animateSlideUp(ctaRef.current, 0);
-  }, []);
+  }, [lenis]);
   return (
     <div className="min-h-screen bg-navy text-white">
       <Navigation />
       {/* Hero Section */}
-      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-32 md:pt-40 pb-24 md:pb-32 overflow-hidden bg-navy">
+      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-32 md:pt-40 pb-24 md:pb-32 overflow-hidden bg-navy" style={{opacity: 1}}>
         {/* Static Background with animated globe and connectors */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div 
@@ -145,7 +153,7 @@ export default function Home() {
       <section id="companies" className="py-12 md:py-20 lg:py-32 relative overflow-hidden border-t border-white/5 bg-navy">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-12 md:mb-16" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
             <h2 className="text-white uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 md:mb-4 font-manrope">THREE SPECIALIST BRANDS. <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>ONE POWERFUL GROUP.</span></h2>
             <p className="text-white/60 text-xs sm:text-sm">Different expertise. One seamless partnership.</p>
           </div>
@@ -207,7 +215,7 @@ export default function Home() {
       <section id="solutions" className="py-12 md:py-20 lg:py-32 bg-white border-t border-gray-200">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-12 md:mb-16" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
             <h2 className="text-navy uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 font-manrope">
               ALL THE SOLUTIONS. <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>WORKING TOGETHER.</span>
             </h2>
@@ -247,7 +255,7 @@ export default function Home() {
       <section id="ecosystem" className="py-12 md:py-20 lg:py-32 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-12 md:mb-16" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
             <h2 className="uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 md:mb-4 font-manrope" style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>One Ecosystem. Endless Possibilities.</h2>
             <p className="text-gray-600 text-xs sm:text-sm">Our three brands work together to deliver complete technology solutions.</p>
           </div>
@@ -291,7 +299,7 @@ export default function Home() {
         }}></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-12 md:mb-16" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
             <h2 className="text-white uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 md:mb-4 font-manrope">Our Technology Partners</h2>
             <p className="text-white/70 text-xs sm:text-sm">World-class brands. Strategic partnerships. Real results.</p>
           </div>
@@ -328,7 +336,7 @@ export default function Home() {
       <section id="industries" className="py-12 md:py-20 lg:py-32 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-12 md:mb-16" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
             <h2 className="text-navy uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 md:mb-4 font-manrope">Solutions For Every Industry</h2>
             <p className="text-gray-600 text-xs sm:text-sm">Technology that understands your industry and drives your success.</p>
           </div>
@@ -365,7 +373,7 @@ export default function Home() {
         }}></div>
         <div className="absolute inset-0 bg-navy/60"></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
-          <div ref={ctaRef} className="text-center">
+          <div className="text-center" style={{opacity: 0, transform: 'scale(0.95)'}} ref={(el) => { if (el && ctaRef.current === null) { ctaRef.current = el; animateScale(el); } }}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6">Ready to transform your business?</h2>
             <p className="text-base sm:text-lg text-white/90 mb-6 md:mb-8 max-w-2xl mx-auto">
               Book us for team loyalty and discover how Open V Group can do more with your technology. Businesses across South Africa trust us.
