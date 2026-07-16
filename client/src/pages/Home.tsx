@@ -2,7 +2,6 @@ import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones
 import { animateStaggerChildren, animateSlideUp } from '@/lib/animations';
 import { useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
-import Globe3D from '@/components/Globe3D';
 
 export default function Home() {
   // Animation refs for each section
@@ -56,10 +55,20 @@ export default function Home() {
     <div className="min-h-screen bg-navy text-white">
       <Navigation />
       {/* Hero Section */}
-      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-navy">
-        {/* 3D Interactive Globe Background */}
+      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-40 pb-32 overflow-hidden bg-navy">
+        {/* Static Background with animated globe and connectors */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <Globe3D />
+          <div 
+            ref={heroBackgroundRef}
+            className="absolute inset-0 w-full h-full hero-background-animated"
+            style={{
+              backgroundImage: 'url(/manus-storage/hero-background_85f8ac75.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              opacity: 0.7
+            }}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-navy/20 via-navy/40 to-navy/60 z-10"></div>
         </div>
 
