@@ -1,5 +1,5 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
-import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration } from '@/lib/animations';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect } from '@/lib/animations';
 import { useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
 import { useLenis } from '@/contexts/LenisContext';
@@ -8,6 +8,7 @@ export default function Home() {
   // Animation refs for each section
   const heroRef = useRef<HTMLDivElement>(null);
   const heroBackgroundRef = useRef<HTMLDivElement>(null);
+  const ctaBackgroundRef = useRef<HTMLDivElement>(null);
   const brandCardsRef = useRef<HTMLDivElement>(null);
   const solutionsRef = useRef<HTMLDivElement>(null);
   const ecosystemRef = useRef<HTMLDivElement>(null);
@@ -58,6 +59,10 @@ export default function Home() {
     if (partnersRef.current) animateStaggerChildren(partnersRef.current, '[class*="bg-white"]', 0.08);
     if (industriesRef.current) animateStaggerChildren(industriesRef.current, '[class*="text-center"]', 0.1);
     if (ctaRef.current) animateSlideUp(ctaRef.current, 0);
+
+    // Apply parallax effects to background images
+    if (heroBackgroundRef.current) createParallaxEffect(heroBackgroundRef.current, 0.4);
+    if (ctaBackgroundRef.current) createParallaxEffect(ctaBackgroundRef.current, 0.35);
   }, [lenis]);
   return (
     <div className="min-h-screen bg-navy text-white">
@@ -364,7 +369,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section id="cta" className="py-12 md:py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0" style={{
+        <div ref={ctaBackgroundRef} className="absolute inset-0" style={{
           backgroundImage: 'url(/manus-storage/partners-bg-isometric_aabc2946.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',

@@ -136,6 +136,25 @@ export const animateScale = (element: HTMLElement, delay = 0) => {
 };
 
 /**
+ * Create parallax effect using yPercent for smooth scrolling
+ * @param element - The element to apply parallax to
+ * @param speed - Parallax speed multiplier (0.3-0.7 recommended)
+ */
+export const createParallaxEffect = (element: HTMLElement, speed = 0.5) => {
+  gsap.to(element, {
+    yPercent: speed * 50,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: element.parentElement || element,
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 0.5,
+      markers: false,
+    },
+  });
+};
+
+/**
  * Kill all ScrollTrigger instances for cleanup
  */
 export const killScrollTriggers = () => {
