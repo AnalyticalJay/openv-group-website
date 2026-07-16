@@ -15,7 +15,7 @@ export default function Navigation() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 border-b border-white/10" style={{backgroundColor: '#dbdbdb'}}>
+    <header className="fixed top-0 left-0 w-full z-50 border-b border-white/10" style={{backgroundColor: '#F8FAFC'}}>
       <div className="container mx-auto px-4 max-w-7xl py-4 flex items-center">
         {/* Logo - Left */}
         <a href="/" className="flex-shrink-0">
