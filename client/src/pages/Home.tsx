@@ -55,7 +55,7 @@ export default function Home() {
     <div className="min-h-screen bg-navy text-white">
       <Navigation />
       {/* Hero Section */}
-      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-40 pb-32 overflow-hidden bg-navy">
+      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-32 md:pt-40 pb-24 md:pb-32 overflow-hidden bg-navy">
         {/* Static Background with animated globe and connectors */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div 
@@ -77,24 +77,24 @@ export default function Home() {
 
 
             {/* Headline */}
-            <h1 className="text-6xl md:text-8xl font-manrope font-black text-white mb-8 leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-manrope font-black text-white mb-6 md:mb-8 leading-tight tracking-tight">
               Smart technology.<br />
               Seamless solutions.<br />
               <span style={{background: 'linear-gradient(to right, #1FE084, #13C46B, #0FD68F)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent', fontWeight: '900', letterSpacing: '-0.02em'}}>Stronger business.</span>
             </h1>
 
             {/* Subheading */}
-            <p className="text-xl md:text-2xl text-white/70 mb-12 max-w-3xl font-light leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/70 mb-8 md:mb-12 max-w-3xl font-light leading-relaxed">
               Three expert brands. One connected ecosystem. All the technology your business needs to operate, grow and thrive.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-6 pb-40 md:pb-48">
-              <button className="inline-flex items-center px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #0F9B6F 40%, #0F1E33 100%)'}}>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 md:gap-6 pb-32 md:pb-40 lg:pb-48">
+              <button className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #0F9B6F 40%, #0F1E33 100%)'}}>
                 EXPLORE THE GROUP
                 <ArrowRight className="ml-2 w-4 h-4" />
               </button>
-              <button className="inline-flex items-center text-white font-bold tracking-widest text-xs uppercase hover:text-green-400 transition-colors">
+              <button className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto text-white font-bold tracking-widest text-xs uppercase hover:text-green-400 transition-colors">
                 <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center mr-4 hover:border-green-500 transition-colors">
                   <Play className="w-5 h-5 ml-1" style={{color: '#13C46B'}} />
                 </div>
@@ -105,35 +105,35 @@ export default function Home() {
         </div>
 
         {/* Stats Bar */}
-        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-medium/90 to-navy-medium/40 backdrop-blur-md border-t border-white/5 py-12 z-20">
+        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-medium/90 to-navy-medium/40 backdrop-blur-md border-t border-white/5 py-8 md:py-12 z-20">
           <div className="container mx-auto px-4 max-w-7xl">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-              <div className="flex items-center space-x-4">
-                <Building2 className="w-8 h-8 flex-shrink-0" style={{color: '#13C46B'}} />
+            <div className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-12">
+              <div className="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
+                <Building2 className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" style={{color: '#13C46B'}} />
                 <div>
-                  <span className="text-3xl font-manrope font-bold text-white block">20+</span>
-                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Years in<br />South Africa</span>
+                  <span className="text-2xl sm:text-3xl font-manrope font-bold text-white block">20+</span>
+                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Years in SA</span>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <Users className="w-8 h-8 flex-shrink-0" style={{color: '#13C46B'}} />
+              <div className="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
+                <Users className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" style={{color: '#13C46B'}} />
                 <div>
-                  <span className="text-3xl font-manrope font-bold text-white block">45</span>
-                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">ICT<br />Professionals</span>
+                  <span className="text-2xl sm:text-3xl font-manrope font-bold text-white block">45</span>
+                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">ICT Pros</span>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <Users className="w-8 h-8 flex-shrink-0" style={{color: '#13C46B'}} />
+              <div className="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
+                <Users className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" style={{color: '#13C46B'}} />
                 <div>
-                  <span className="text-3xl font-manrope font-bold text-white block">8</span>
-                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Corporate<br />Partners</span>
+                  <span className="text-2xl sm:text-3xl font-manrope font-bold text-white block">8</span>
+                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Partners</span>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <Building2 className="w-8 h-8 flex-shrink-0" style={{color: '#13C46B'}} />
+              <div className="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
+                <Building2 className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" style={{color: '#13C46B'}} />
                 <div>
-                  <span className="text-3xl font-manrope font-bold text-white block">3</span>
-                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Integrated<br />Brands</span>
+                  <span className="text-2xl sm:text-3xl font-manrope font-bold text-white block">3</span>
+                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Brands</span>
                 </div>
               </div>
             </div>
@@ -142,26 +142,26 @@ export default function Home() {
       </section>
 
       {/* Brands Section */}
-      <section id="companies" className="py-20 md:py-32 relative overflow-hidden border-t border-white/5 bg-navy">
+      <section id="companies" className="py-12 md:py-20 lg:py-32 relative overflow-hidden border-t border-white/5 bg-navy">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-white uppercase tracking-widest text-lg md:text-2xl font-bold mb-4 font-manrope">THREE SPECIALIST BRANDS. <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>ONE POWERFUL GROUP.</span></h2>
-            <p className="text-white/60 text-sm">Different expertise. One seamless partnership.</p>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-white uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 md:mb-4 font-manrope">THREE SPECIALIST BRANDS. <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>ONE POWERFUL GROUP.</span></h2>
+            <p className="text-white/60 text-xs sm:text-sm">Different expertise. One seamless partnership.</p>
           </div>
 
           {/* Brand Cards */}
-          <div ref={brandCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div ref={brandCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* OpenV Business */}
-            <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.15)'}>
+            <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-6 md:p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.15)'}>
               <div className="absolute inset-0 opacity-30">
                 <img src="/manus-storage/openv-business-card_c98957d4.png" alt="" className="w-full h-full object-cover" />
               </div>
-              <div className="relative z-10 mb-8 h-10">
-                <div className="text-white font-bold text-lg">OpenV Business</div>
+              <div className="relative z-10 mb-6 md:mb-8 h-10">
+                <div className="text-white font-bold text-base md:text-lg">OpenV Business</div>
               </div>
-              <h3 className="relative z-10 text-xl font-bold mb-4 text-white">Managed IT & Cybersecurity</h3>
-              <p className="relative z-10 text-sm text-white/70 mb-8">Reliable infrastructure, secure networks and expert support that keeps your business running at its best.</p>
+              <h3 className="relative z-10 text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Managed IT & Cybersecurity</h3>
+              <p className="relative z-10 text-xs md:text-sm text-white/70 mb-6 md:mb-8">Reliable infrastructure, secure networks and expert support that keeps your business running at its best.</p>
               <a href="#" className="relative z-10 text-xs font-bold tracking-widest uppercase flex items-center hover:underline" style={{color: '#13C46B'}}>
                 EXPLORE OPENV
                 <ArrowRight className="ml-2 w-3 h-3" />
@@ -169,15 +169,15 @@ export default function Home() {
             </div>
 
             {/* NextFour */}
-            <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}}>
+            <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-6 md:p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}}>
               <div className="absolute inset-0 opacity-30">
                 <img src="/manus-storage/nextfour-card_9955f2a7.png" alt="" className="w-full h-full object-cover" />
               </div>
-              <div className="relative z-10 mb-8 h-10">
-                <div className="text-white font-bold text-lg">NextFour</div>
+              <div className="relative z-10 mb-6 md:mb-8 h-10">
+                <div className="text-white font-bold text-base md:text-lg">NextFour</div>
               </div>
-              <h3 className="relative z-10 text-xl font-bold mb-4 text-white">Digital Marketing & Web Solutions</h3>
-              <p className="relative z-10 text-sm text-white/70 mb-8">Websites, marketing, SEO, ads and branding that attract attention and drive growth.</p>
+              <h3 className="relative z-10 text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Digital Marketing & Web Solutions</h3>
+              <p className="relative z-10 text-xs md:text-sm text-white/70 mb-6 md:mb-8">Websites, marketing, SEO, ads and branding that attract attention and drive growth.</p>
               <a href="#" className="relative z-10 text-xs font-bold tracking-widest uppercase flex items-center hover:underline" style={{color: '#13C46B'}}>
                 EXPLORE NEXTFOUR
                 <ArrowRight className="ml-2 w-3 h-3" />
@@ -185,15 +185,15 @@ export default function Home() {
             </div>
 
             {/* ShiftBridge */}
-            <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}}>
+            <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-6 md:p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}}>
               <div className="absolute inset-0 opacity-30">
                 <img src="/manus-storage/shiftbridge-card_1201b067.png" alt="" className="w-full h-full object-cover" />
               </div>
-              <div className="relative z-10 mb-8 h-10">
-                <div className="text-white font-bold text-lg">ShiftBridge</div>
+              <div className="relative z-10 mb-6 md:mb-8 h-10">
+                <div className="text-white font-bold text-base md:text-lg">ShiftBridge</div>
               </div>
-              <h3 className="relative z-10 text-xl font-bold mb-4 text-white">Business Software & Automation</h3>
-              <p className="relative z-10 text-sm text-white/70 mb-8">Powerful CRM and business platforms that streamline operations and boost productivity.</p>
+              <h3 className="relative z-10 text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Business Software & Automation</h3>
+              <p className="relative z-10 text-xs md:text-sm text-white/70 mb-6 md:mb-8">Powerful CRM and business platforms that streamline operations and boost productivity.</p>
               <a href="#" className="relative z-10 text-xs font-bold tracking-widest uppercase flex items-center hover:underline" style={{color: '#13C46B'}}>
                 EXPLORE SHIFTBRIDGE
                 <ArrowRight className="ml-2 w-3 h-3" />
@@ -204,18 +204,18 @@ export default function Home() {
       </section>
 
       {/* Solutions Section */}
-      <section id="solutions" className="py-20 md:py-32 bg-white border-t border-gray-200" style={{paddingBottom: '80px', paddingTop: '96px'}}>
+      <section id="solutions" className="py-12 md:py-20 lg:py-32 bg-white border-t border-gray-200">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-navy uppercase tracking-widest text-lg md:text-2xl font-bold mb-2 font-manrope">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-navy uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 font-manrope">
               ALL THE SOLUTIONS. <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>WORKING TOGETHER.</span>
             </h2>
-            <p className="text-gray-600 text-sm">From infrastructure to innovation, we've got your business covered.</p>
+            <p className="text-gray-600 text-xs sm:text-sm">From infrastructure to innovation, we've got your business covered.</p>
           </div>
 
           {/* Solution Icons Grid */}
-          <div ref={solutionsRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
+          <div ref={solutionsRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-12">
             {[
               { icon: Wifi, label: 'Infrastructure', desc: 'Networks, connectivity and cloud solutions you can rely on.' },
               { icon: Shield, label: 'Cybersecurity', desc: 'Protecting your data, systems and people.' },
@@ -225,9 +225,9 @@ export default function Home() {
               { icon: Headphones, label: 'Support', desc: 'Expert support whenever and wherever you need it.' },
             ].map((item, i) => (
               <div key={i} className="text-center group hover:scale-105 transition-transform duration-300">
-                <item.icon className="w-12 h-12 text-navy mx-auto mb-4 transition-colors" style={{color: '#1f2937'}} onMouseEnter={(e) => e.currentTarget.style.color = '#13C46B'} onMouseLeave={(e) => e.currentTarget.style.color = '#1f2937'} />
-                <p className="text-sm font-bold text-navy uppercase tracking-wider mb-2">{item.label}</p>
-                <p className="text-xs text-gray-600 leading-relaxed mb-4">{item.desc}</p>
+                <item.icon className="w-10 md:w-12 h-10 md:h-12 text-navy mx-auto mb-3 md:mb-4 transition-colors" style={{color: '#1f2937'}} onMouseEnter={(e) => e.currentTarget.style.color = '#13C46B'} onMouseLeave={(e) => e.currentTarget.style.color = '#1f2937'} />
+                <p className="text-xs md:text-sm font-bold text-navy uppercase tracking-wider mb-2">{item.label}</p>
+                <p className="text-xs text-gray-600 leading-relaxed mb-3 md:mb-4">{item.desc}</p>
                 <div className="h-1 rounded-full" style={{background: 'linear-gradient(to right, #1B8EFF, #13C46B, #1B8EFF)'}}></div>
               </div>
             ))}
@@ -244,12 +244,12 @@ export default function Home() {
       </section>
 
       {/* Ecosystem Section */}
-      <section id="ecosystem" className="py-12 md:py-20 bg-white" style={{paddingBottom: '60px', paddingTop: '55px'}}>
+      <section id="ecosystem" className="py-12 md:py-20 lg:py-32 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="uppercase tracking-widest text-lg md:text-2xl font-bold mb-4 font-manrope" style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>One Ecosystem. Endless Possibilities.</h2>
-            <p className="text-gray-600">Our three brands work together to deliver complete technology solutions.</p>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 md:mb-4 font-manrope" style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>One Ecosystem. Endless Possibilities.</h2>
+            <p className="text-gray-600 text-xs sm:text-sm">Our three brands work together to deliver complete technology solutions.</p>
           </div>
 
           {/* Process Flow with Connectors */}
@@ -257,7 +257,7 @@ export default function Home() {
             {/* Horizontal divider line for desktop */}
             <div className="hidden lg:block absolute top-8 left-0 right-0 h-px" style={{background: 'linear-gradient(to right, transparent, #13C46B, transparent)', boxShadow: '0 0 20px rgba(19, 196, 107, 0.5)'}}></div>
             
-            <div ref={ecosystemRef} className="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
+            <div ref={ecosystemRef} className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8 relative z-10">
               {[
                 { icon: ZapIcon, label: 'Connect', desc: 'Integrate your existing systems' },
                 { icon: Target, label: 'Engage', desc: 'Digital marketing to reach your audience' },
@@ -267,11 +267,11 @@ export default function Home() {
               ].map((item, i) => (
                 <div key={i} className="text-center group relative">
                   <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 transition-all duration-300 shadow-lg" style={{background: 'linear-gradient(to bottom right, #1B8EFF, #13C46B, #00D9FF)', border: '1px solid rgba(19, 196, 107, 0.4)', boxShadow: '0 0 20px rgba(19, 196, 107, 0.4)'}}>
-                      <item.icon className="w-8 h-8 text-white group-hover:scale-110 transition-transform duration-300" />
+                    <div className="w-14 md:w-16 h-14 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 transition-all duration-300 shadow-lg" style={{background: 'linear-gradient(to bottom right, #1B8EFF, #13C46B, #00D9FF)', border: '1px solid rgba(19, 196, 107, 0.4)', boxShadow: '0 0 20px rgba(19, 196, 107, 0.4)'}}>
+                      <item.icon className="w-7 md:w-8 h-7 md:h-8 text-white group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <h3 className="text-navy font-bold mb-3 uppercase tracking-wider text-sm">{item.label}</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+                    <h3 className="text-navy font-bold mb-2 md:mb-3 uppercase tracking-wider text-xs md:text-sm">{item.label}</h3>
+                    <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -281,23 +281,23 @@ export default function Home() {
       </section>
 
       {/* Partners Section */}
-      <section id="partners" className="py-20 md:py-32 bg-navy relative overflow-hidden" style={{paddingBottom: '70px', paddingTop: '59px'}}>
+      <section id="partners" className="py-12 md:py-20 lg:py-32 bg-navy relative overflow-hidden">
         {/* Isometric Background */}
         <div className="absolute inset-0 opacity-30" style={{
           backgroundImage: 'url(/manus-storage/partners-bg-isometric_aabc2946.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed', height: '551px'
+          backgroundAttachment: 'fixed'
         }}></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-white uppercase tracking-widest text-lg md:text-2xl font-bold mb-4 font-manrope">Our Technology Partners</h2>
-            <p className="text-white/70">World-class brands. Strategic partnerships. Real results.</p>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-white uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 md:mb-4 font-manrope">Our Technology Partners</h2>
+            <p className="text-white/70 text-xs sm:text-sm">World-class brands. Strategic partnerships. Real results.</p>
           </div>
 
           {/* Partner Logos Grid */}
-          <div ref={partnersRef} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-12 items-center">
+          <div ref={partnersRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-4 md:gap-6 mb-8 md:mb-12 items-center">
             {[
               { name: 'Vodacom', logo: '/manus-storage/logo-vodacom_59076cbe.png' },
               { name: 'Citrix', logo: '/manus-storage/logo-citrix_69ed1026.png' },
@@ -308,8 +308,8 @@ export default function Home() {
               { name: 'Nikon', logo: '/manus-storage/logo-nikon_0f9a3ad8.png' },
               { name: 'CSI', logo: '/manus-storage/logo-csi_cf8c6ef2.png' },
             ].map((partner, i) => (
-              <div key={i} className="bg-white/10 border rounded-lg p-6 flex items-center justify-center h-24 transition-colors group" style={{borderColor: 'rgba(255, 255, 255, 0.1)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'}>
-                <img src={partner.logo} alt={partner.name} className="max-h-16 max-w-full object-contain group-hover:scale-110 transition-transform duration-300" />
+              <div key={i} className="bg-white/10 border rounded-lg p-4 md:p-6 flex items-center justify-center h-20 md:h-24 transition-colors group" style={{borderColor: 'rgba(255, 255, 255, 0.1)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'}>
+                <img src={partner.logo} alt={partner.name} className="max-h-12 md:max-h-16 max-w-full object-contain group-hover:scale-110 transition-transform duration-300" />
               </div>
             ))}
           </div>
@@ -325,16 +325,16 @@ export default function Home() {
       </section>
 
       {/* Industries Section */}
-      <section id="industries" className="py-20 md:py-32 bg-white" style={{paddingBottom: '84px', paddingTop: '84px'}}>
+      <section id="industries" className="py-12 md:py-20 lg:py-32 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-navy uppercase tracking-widest text-lg md:text-2xl font-bold mb-4 font-manrope">Solutions For Every Industry</h2>
-            <p className="text-gray-600">Technology that understands your industry and drives your success.</p>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-navy uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 md:mb-4 font-manrope">Solutions For Every Industry</h2>
+            <p className="text-gray-600 text-xs sm:text-sm">Technology that understands your industry and drives your success.</p>
           </div>
 
           {/* Industry Icons Grid */}
-          <div ref={industriesRef} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8">
+          <div ref={industriesRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-4 md:gap-6 lg:gap-8">
             {[
               { icon: Building2, label: 'Manufacturing' },
               { icon: HelpCircle, label: 'Healthcare' },
@@ -346,8 +346,8 @@ export default function Home() {
               { icon: Hotel, label: 'Hospitality' },
             ].map((item, i) => (
               <div key={i} className="text-center">
-                <item.icon className="w-12 h-12 text-orange-500 mx-auto mb-4" />
-                <p className="text-sm font-bold text-gray-700 uppercase">{item.label}</p>
+                <item.icon className="w-10 md:w-12 h-10 md:h-12 text-orange-500 mx-auto mb-3 md:mb-4" />
+                <p className="text-xs md:text-sm font-bold text-gray-700 uppercase">{item.label}</p>
               </div>
             ))}
           </div>
@@ -355,7 +355,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="cta" className="py-20 md:py-32 relative overflow-hidden">
+      <section id="cta" className="py-12 md:py-20 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0" style={{
           backgroundImage: 'url(/manus-storage/partners-bg-isometric_aabc2946.png)',
           backgroundSize: 'cover',
@@ -366,12 +366,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-navy/60"></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div ref={ctaRef} className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Ready to transform your business?</h2>
-            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6">Ready to transform your business?</h2>
+            <p className="text-base sm:text-lg text-white/90 mb-6 md:mb-8 max-w-2xl mx-auto">
               Book us for team loyalty and discover how Open V Group can do more with your technology. Businesses across South Africa trust us.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button className="inline-flex items-center px-8 py-4 text-white font-bold tracking-widest text-sm uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #0F9B6F 40%, #0F1E33 100%)'}}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
+              <button className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 md:py-4 text-white font-bold tracking-widest text-xs md:text-sm uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #0F9B6F 40%, #0F1E33 100%)'}}>
                 BOOK A CONSULTATION
                 <ArrowRight className="ml-2 w-4 h-4" />
               </button>
@@ -381,51 +381,51 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-navy border-t border-white/10 py-12 md:py-16">
+      <footer className="bg-navy border-t border-white/10 py-8 md:py-12 lg:py-16">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-6 md:mb-8">
             {/* Company Info */}
             <div>
-              <h3 className="text-white font-bold mb-4">OpenV Group</h3>
-              <p className="text-sm text-white/60">Three expert brands. One connected ecosystem. Empowering businesses across South Africa.</p>
+              <h3 className="text-white font-bold mb-3 md:mb-4 text-sm md:text-base">OpenV Group</h3>
+              <p className="text-xs md:text-sm text-white/60">Three expert brands. One connected ecosystem. Empowering businesses across South Africa.</p>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-white font-bold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm text-white/60">
-                <li><a href="#" className="hover:text-orange-500 transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-orange-500 transition-colors">Solutions</a></li>
-                <li><a href="#" className="hover:text-orange-500 transition-colors">Contact</a></li>
+              <h4 className="text-white font-bold mb-3 md:mb-4 text-sm md:text-base">Quick Links</h4>
+              <ul className="space-y-2 text-xs md:text-sm text-white/60">
+                <li><a href="#" className="hover:text-green-400 transition-colors">About Us</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">Solutions</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">Contact</a></li>
               </ul>
             </div>
 
             {/* Our Companies */}
             <div>
-              <h4 className="text-white font-bold mb-4">Our Companies</h4>
-              <ul className="space-y-2 text-sm text-white/60">
-                <li><a href="#" className="hover:text-orange-500 transition-colors">OpenV Business Solutions</a></li>
-                <li><a href="#" className="hover:text-orange-500 transition-colors">NextFour</a></li>
-                <li><a href="#" className="hover:text-orange-500 transition-colors">ShiftBridge</a></li>
+              <h4 className="text-white font-bold mb-3 md:mb-4 text-sm md:text-base">Our Companies</h4>
+              <ul className="space-y-2 text-xs md:text-sm text-white/60">
+                <li><a href="#" className="hover:text-green-400 transition-colors">OpenV Business Solutions</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">NextFour</a></li>
+                <li><a href="#" className="hover:text-green-400 transition-colors">ShiftBridge</a></li>
               </ul>
             </div>
 
             {/* Contact */}
             <div>
-              <h4 className="text-white font-bold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-white/60">
-                <li><a href="tel:0413790550" className="hover:text-orange-500 transition-colors">041 379 0550</a></li>
-                <li><a href="mailto:info@openv.co.za" className="hover:text-orange-500 transition-colors">info@openv.co.za</a></li>
+              <h4 className="text-white font-bold mb-3 md:mb-4 text-sm md:text-base">Contact</h4>
+              <ul className="space-y-2 text-xs md:text-sm text-white/60">
+                <li><a href="tel:0413790550" className="hover:text-green-400 transition-colors">041 379 0550</a></li>
+                <li><a href="mailto:info@openv.co.za" className="hover:text-green-400 transition-colors">info@openv.co.za</a></li>
               </ul>
             </div>
           </div>
 
           {/* Footer Bottom */}
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/60">
+          <div className="border-t border-white/10 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center text-xs md:text-sm text-white/60 gap-4 md:gap-0">
             <p>&copy; 2025 OpenV Group. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-orange-500 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-orange-500 transition-colors">Terms & Conditions</a>
+            <div className="flex gap-4 md:gap-6">
+              <a href="#" className="hover:text-green-400 transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-green-400 transition-colors">Terms & Conditions</a>
             </div>
           </div>
         </div>
