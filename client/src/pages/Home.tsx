@@ -77,14 +77,14 @@ export default function Home() {
 
 
             {/* Headline */}
-            <h1 className="text-5xl md:text-7xl font-manrope font-extrabold text-white mb-8 leading-tight">
+            <h1 className="text-6xl md:text-8xl font-manrope font-black text-white mb-8 leading-tight tracking-tight">
               Smart technology.<br />
               Seamless solutions.<br />
-              <span style={{background: 'linear-gradient(to right, #1FE084, #13C46B, #0FD68F)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent', textShadow: '0 4px 12px rgba(0, 0, 0, 0.6)', filter: 'drop-shadow(0 3px 8px rgba(0, 0, 0, 0.5))'}}>Stronger business.</span>
+              <span style={{background: 'linear-gradient(to right, #1FE084, #13C46B, #0FD68F)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent', fontWeight: '900', letterSpacing: '-0.02em'}}>Stronger business.</span>
             </h1>
 
             {/* Subheading */}
-            <p className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl">
+            <p className="text-xl md:text-2xl text-white/70 mb-12 max-w-3xl font-light leading-relaxed">
               Three expert brands. One connected ecosystem. All the technology your business needs to operate, grow and thrive.
             </p>
 
