@@ -77,10 +77,10 @@ export default function Home() {
 
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-manrope font-black text-white mb-6 md:mb-8 leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-manrope font-black text-white mb-6 md:mb-8 leading-tight tracking-tight">
               Smart technology.<br />
               Seamless solutions.<br />
-              <span style={{background: 'linear-gradient(to right, #1FE084, #13C46B, #0FD68F)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent', fontWeight: '900', letterSpacing: '-0.02em'}}>Stronger business.</span>
+              <span style={{background: 'linear-gradient(135deg, #1FE084 0%, #13C46B 50%, #0FD68F 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '900', letterSpacing: '-0.02em'}}>Stronger business.</span>
             </h1>
 
             {/* Subheading */}
