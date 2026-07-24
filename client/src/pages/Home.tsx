@@ -66,7 +66,7 @@ export default function Home() {
     <div className="min-h-screen bg-navy text-white">
       <Navigation />
       {/* Hero Section */}
-      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-32 md:pt-40 pb-24 md:pb-32 overflow-hidden bg-navy" style={{opacity: 1}}>
+      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-32 md:pt-40 pb-48 md:pb-56 lg:pb-64 overflow-hidden bg-navy" style={{opacity: 1}}>
         {/* Static Background with animated globe and connectors */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div 
@@ -100,7 +100,7 @@ export default function Home() {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4 md:gap-6 pb-32 md:pb-40 lg:pb-48">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 md:gap-6 pb-20 md:pb-24 lg:pb-32">
               <button className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{background: 'linear-gradient(135deg, #13C46B 0%, #0F9B6F 40%, #0F1E33 100%)'}}>
                 EXPLORE THE GROUP
                 <ArrowRight className="ml-2 w-4 h-4" />
