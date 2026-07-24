@@ -164,12 +164,12 @@ export default function Home() {
           {/* Brand Cards */}
           <div ref={brandCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* OpenV Business - Video */}
-            <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.15)'}>
+            <a href="https://www.openv.co.za/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer block" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.15)'}>
               <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
-                <source src="/manus-storage/OpenVBusinessSolutions_22cbc561.mp4" type="video/mp4" />
+                <source src="/manus-storage/OpenVBusiness_f232029e.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-            </div>
+            </a>
 
             {/* NextFour */}
             <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-6 md:p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}}>
