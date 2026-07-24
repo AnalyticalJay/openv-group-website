@@ -171,21 +171,13 @@ export default function Home() {
               </video>
             </a>
 
-            {/* NextFour */}
-            <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-6 md:p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}}>
-              <div className="absolute inset-0 opacity-30">
-                <img src="/manus-storage/nextfour-card_9955f2a7.png" alt="" className="w-full h-full object-cover" />
-              </div>
-              <div className="relative z-10 mb-6 md:mb-8 h-10">
-                <div className="text-white font-bold text-base md:text-lg">NextFour</div>
-              </div>
-              <h3 className="relative z-10 text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Digital Marketing & Web Solutions</h3>
-              <p className="relative z-10 text-xs md:text-sm text-white/70 mb-6 md:mb-8">Websites, marketing, SEO, ads and branding that attract attention and drive growth.</p>
-              <a href="#" className="relative z-10 text-xs font-bold tracking-widest uppercase flex items-center hover:underline" style={{color: '#13C46B'}}>
-                EXPLORE NEXTFOUR
-                <ArrowRight className="ml-2 w-3 h-3" />
-              </a>
-            </div>
+            {/* NextFour - Video */}
+            <a href="https://nextfour.co.za/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer block" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.15)'}>
+              <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
+                <source src="/manus-storage/NextFour_5c187475.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </a>
 
             {/* ShiftBridge */}
             <div className="group relative overflow-hidden bg-navy-medium/50 rounded-lg p-6 md:p-8 backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}}>
