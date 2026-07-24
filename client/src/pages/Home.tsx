@@ -337,9 +337,9 @@ export default function Home() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          opacity: 0.4
+          opacity: 0.3
         }}></div>
-        <div className="absolute inset-0 bg-navy/60"></div>
+        <div className="absolute inset-0 bg-navy/50"></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="text-center" style={{opacity: 0, transform: 'scale(0.95)'}} ref={(el) => { if (el && ctaRef.current === null) { ctaRef.current = el; animateScale(el); } }}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6">Ready to transform your business?</h2>
