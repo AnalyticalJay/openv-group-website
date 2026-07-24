@@ -11,7 +11,6 @@ export default function Home() {
   const ctaBackgroundRef = useRef<HTMLDivElement>(null);
   const brandCardsRef = useRef<HTMLDivElement>(null);
   const solutionsRef = useRef<HTMLDivElement>(null);
-  const ecosystemRef = useRef<HTMLDivElement>(null);
   const partnersRef = useRef<HTMLDivElement>(null);
   const industriesRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -55,7 +54,6 @@ export default function Home() {
     // Apply scroll-triggered animations to sections
     if (brandCardsRef.current) animateStaggerChildren(brandCardsRef.current, '[class*="group"]', 0.15);
     if (solutionsRef.current) animateStaggerChildren(solutionsRef.current, '[class*="text-center"]', 0.1);
-    if (ecosystemRef.current) animateStaggerChildren(ecosystemRef.current, '[class*="relative"]', 0.12);
     if (partnersRef.current) animateStaggerChildren(partnersRef.current, '[class*="bg-white"]', 0.08);
     if (industriesRef.current) animateStaggerChildren(industriesRef.current, '[class*="text-center"]', 0.1);
     if (ctaRef.current) animateSlideUp(ctaRef.current, 0);
@@ -117,37 +115,37 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Stats Bar */}
-        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-medium/90 to-navy-medium/40 backdrop-blur-md border-t border-white/5 py-8 md:py-12 z-20">
+        {/* Ecosystem Strip Bar */}
+        <div className="absolute bottom-0 left-0 w-full bg-white border-t border-gray-200 py-6 md:py-10 z-20">
           <div className="container mx-auto px-4 max-w-7xl">
-            <div className="grid grid-cols-4 gap-4 md:gap-8 lg:gap-12">
-              <div className="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-                <Building2 className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" style={{color: '#13C46B'}} />
-                <div>
-                  <span className="text-2xl sm:text-3xl font-manrope font-bold text-white block">20+</span>
-                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Years in SA</span>
-                </div>
-              </div>
-              <div className="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-                <Users className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" style={{color: '#13C46B'}} />
-                <div>
-                  <span className="text-2xl sm:text-3xl font-manrope font-bold text-white block">45</span>
-                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">ICT Pros</span>
-                </div>
-              </div>
-              <div className="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-                <Users className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" style={{color: '#13C46B'}} />
-                <div>
-                  <span className="text-2xl sm:text-3xl font-manrope font-bold text-white block">8</span>
-                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Partners</span>
-                </div>
-              </div>
-              <div className="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-                <Building2 className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" style={{color: '#13C46B'}} />
-                <div>
-                  <span className="text-2xl sm:text-3xl font-manrope font-bold text-white block">3</span>
-                  <span className="text-xs font-bold tracking-widest text-white/40 uppercase leading-tight">Brands</span>
-                </div>
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="uppercase tracking-widest text-sm sm:text-base md:text-lg font-bold mb-1 md:mb-2 font-manrope" style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>One Ecosystem. Endless Possibilities.</h2>
+              <p className="text-gray-600 text-xs sm:text-sm">Our three brands work together to deliver complete technology solutions.</p>
+            </div>
+            
+            {/* Process Flow with Connectors */}
+            <div className="relative">
+              {/* Horizontal divider line for desktop */}
+              <div className="hidden lg:block absolute top-6 left-0 right-0 h-px" style={{background: 'linear-gradient(to right, transparent, #13C46B, transparent)', boxShadow: '0 0 20px rgba(19, 196, 107, 0.5)'}}></div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 lg:gap-8 relative z-10">
+                {[
+                  { icon: ZapIcon, label: 'Connect', desc: 'Integrate your existing systems' },
+                  { icon: Target, label: 'Engage', desc: 'Digital marketing to reach your audience' },
+                  { icon: Monitor, label: 'Manage', desc: 'Business software manages operations' },
+                  { icon: Zap, label: 'Automate', desc: 'AI and automation that drives efficiency' },
+                  { icon: TrendingUp, label: 'Grow', desc: 'Together we help you scale with confidence' },
+                ].map((item, i) => (
+                  <div key={i} className="text-center group relative">
+                    <div className="flex flex-col items-center">
+                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 transition-all duration-300 shadow-lg" style={{background: 'linear-gradient(to bottom right, #1B8EFF, #13C46B, #00D9FF)', border: '1px solid rgba(19, 196, 107, 0.4)', boxShadow: '0 0 20px rgba(19, 196, 107, 0.4)'}}>
+                        <item.icon className="w-5 md:w-6 h-5 md:h-6 text-white group-hover:scale-110 transition-transform duration-300" />
+                      </div>
+                      <h3 className="text-navy font-bold mb-1 uppercase tracking-wider text-xs md:text-sm">{item.label}</h3>
+                      <p className="text-xs text-gray-600 leading-tight hidden md:block">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -256,42 +254,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ecosystem Section */}
-      <section id="ecosystem" className="py-12 md:py-20 lg:py-32 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
-          {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
-            <h2 className="uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 md:mb-4 font-manrope" style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>One Ecosystem. Endless Possibilities.</h2>
-            <p className="text-gray-600 text-xs sm:text-sm">Our three brands work together to deliver complete technology solutions.</p>
-          </div>
 
-          {/* Process Flow with Connectors */}
-          <div className="relative">
-            {/* Horizontal divider line for desktop */}
-            <div className="hidden lg:block absolute top-8 left-0 right-0 h-px" style={{background: 'linear-gradient(to right, transparent, #13C46B, transparent)', boxShadow: '0 0 20px rgba(19, 196, 107, 0.5)'}}></div>
-            
-            <div ref={ecosystemRef} className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8 relative z-10">
-              {[
-                { icon: ZapIcon, label: 'Connect', desc: 'Integrate your existing systems' },
-                { icon: Target, label: 'Engage', desc: 'Digital marketing to reach your audience' },
-                { icon: Monitor, label: 'Manage', desc: 'Business software manages operations' },
-                { icon: Zap, label: 'Automate', desc: 'AI and automation that drives efficiency' },
-                { icon: TrendingUp, label: 'Grow', desc: 'Together we help you scale with confidence' },
-              ].map((item, i) => (
-                <div key={i} className="text-center group relative">
-                  <div className="flex flex-col items-center">
-                    <div className="w-14 md:w-16 h-14 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 transition-all duration-300 shadow-lg" style={{background: 'linear-gradient(to bottom right, #1B8EFF, #13C46B, #00D9FF)', border: '1px solid rgba(19, 196, 107, 0.4)', boxShadow: '0 0 20px rgba(19, 196, 107, 0.4)'}}>
-                      <item.icon className="w-7 md:w-8 h-7 md:h-8 text-white group-hover:scale-110 transition-transform duration-300" />
-                    </div>
-                    <h3 className="text-navy font-bold mb-2 md:mb-3 uppercase tracking-wider text-xs md:text-sm">{item.label}</h3>
-                    <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Partners Section */}
       <section id="partners" className="py-12 md:py-20 lg:py-32 bg-navy relative overflow-hidden">
