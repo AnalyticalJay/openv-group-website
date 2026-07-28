@@ -19,7 +19,7 @@ export default function Navigation() {
       <div className="container mx-auto px-4 max-w-7xl py-4 flex items-center">
         {/* Logo - Left */}
         <a href="/" className="flex-shrink-0">
-          <img src="/manus-storage/OpenVGroupLogo_31f1a2bc.png" alt="OpenV Group" className="h-12 w-auto" />
+          <img src="/manus-storage/OpenVGroupLogo(1)_a1e90051.png" alt="OpenV Group" className="h-12 w-auto" />
         </a>
 
         {/* Desktop Navigation - Center */}
