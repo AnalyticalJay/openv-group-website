@@ -260,7 +260,7 @@ export default function Home() {
               { name: 'Nikon', logo: '/manus-storage/logo-nikon_0f9a3ad8.png' },
               { name: 'CSI', logo: '/manus-storage/logo-csi_cf8c6ef2.png' },
             ].map((partner, i) => (
-              <div key={i} className="bg-white/10 border rounded-lg p-4 md:p-6 flex items-center justify-center h-20 md:h-24 transition-colors group" style={{borderColor: 'rgba(255, 255, 255, 0.1)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'}>
+              <div key={i} className="bg-white/10 border rounded-lg p-4 md:p-6 flex items-center justify-center h-20 md:h-24 transition-colors group" style={{borderColor: 'rgba(255, 255, 255, 0.1)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'}>
                 <img src={partner.logo} alt={partner.name} className="max-h-12 md:max-h-16 max-w-full object-contain group-hover:scale-110 transition-transform duration-300" />
               </div>
             ))}
@@ -268,7 +268,7 @@ export default function Home() {
 
           {/* View All Button */}
           <div className="text-center">
-            <button className="inline-flex items-center px-6 py-3 border-2 font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{borderColor: '#13C46B', color: '#13C46B'}} onMouseEnter={(e) => {e.currentTarget.style.background = '#13C46B'; e.currentTarget.style.color = 'white';}} onMouseLeave={(e) => {e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#13C46B';}}>
+            <button className="inline-flex items-center px-6 py-3 border-2 font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{borderColor: '#FF6B35', color: '#FF6B35'}} onMouseEnter={(e) => {e.currentTarget.style.background = '#FF6B35'; e.currentTarget.style.color = 'white';}} onMouseLeave={(e) => {e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#FF6B35';}}>
               VIEW ALL PARTNERS
               <ArrowRight className="ml-2 w-4 h-4" />
             </button>
