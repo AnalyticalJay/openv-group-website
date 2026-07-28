@@ -3,6 +3,7 @@ import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, in
 import { useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
 import { useLenis } from '@/contexts/LenisContext';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 
 export default function Home() {
   // Animation refs for each section
@@ -248,23 +249,29 @@ export default function Home() {
             <p className="text-white/70 text-xs sm:text-sm">World-class brands. Strategic partnerships. Real results.</p>
           </div>
 
-          {/* Partner Logos Grid */}
-          <div ref={partnersRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-4 md:gap-6 mb-8 md:mb-12 items-center">
-            {[
-              { name: 'Vodacom', logo: '/manus-storage/logo-vodacom_59076cbe.png' },
-              { name: 'Citrix', logo: '/manus-storage/logo-citrix_69ed1026.png' },
-              { name: 'Microsoft', logo: '/manus-storage/logo-microsoft_2384180c.png' },
-              { name: 'Cisco', logo: '/manus-storage/logo-cisco_47b2b265.png' },
-              { name: 'Fortinet', logo: '/manus-storage/logo-fortinet_989f697b.png' },
-              { name: 'Dell', logo: '/manus-storage/logo-dell_bc7519d8.png' },
-              { name: 'Nikon', logo: '/manus-storage/logo-nikon_0f9a3ad8.png' },
-              { name: 'CSI', logo: '/manus-storage/logo-csi_cf8c6ef2.png' },
-            ].map((partner, i) => (
-              <div key={i} className="bg-white/10 border rounded-lg p-4 md:p-6 flex items-center justify-center h-20 md:h-24 transition-colors group" style={{borderColor: 'rgba(255, 255, 255, 0.1)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'}>
-                <img src={partner.logo} alt={partner.name} className="max-h-12 md:max-h-16 max-w-full object-contain group-hover:scale-110 transition-transform duration-300" />
-              </div>
-            ))}
-          </div>
+          {/* Partner Logos Carousel */}
+          <Carousel className="w-full mb-8 md:mb-12" opts={{ align: 'center', loop: true, slidesToScroll: 1 }}>
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {[
+                { name: 'Vodacom', logo: '/manus-storage/logo-vodacom_59076cbe.png' },
+                { name: 'Citrix', logo: '/manus-storage/logo-citrix_69ed1026.png' },
+                { name: 'Microsoft', logo: '/manus-storage/logo-microsoft_2384180c.png' },
+                { name: 'Cisco', logo: '/manus-storage/logo-cisco_47b2b265.png' },
+                { name: 'Fortinet', logo: '/manus-storage/logo-fortinet_989f697b.png' },
+                { name: 'Dell', logo: '/manus-storage/logo-dell_bc7519d8.png' },
+                { name: 'Nikon', logo: '/manus-storage/logo-nikon_0f9a3ad8.png' },
+                { name: 'CSI', logo: '/manus-storage/logo-csi_cf8c6ef2.png' },
+              ].map((partner, i) => (
+                <CarouselItem key={i} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+                  <div className="flex items-center justify-center h-24 md:h-32 transition-transform duration-300 hover:scale-110">
+                    <img src={partner.logo} alt={partner.name} className="max-h-20 md:max-h-28 max-w-full object-contain" />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex -left-12 lg:-left-16" />
+            <CarouselNext className="hidden md:flex -right-12 lg:-right-16" />
+          </Carousel>
 
           {/* View All Button */}
           <div className="text-center">
