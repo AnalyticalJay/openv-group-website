@@ -410,8 +410,8 @@ export default function Home() {
           backgroundImage: 'url(/manus-storage/partners-bg-isometric_aabc2946.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-          opacity: 0.3
+          opacity: 0.3,
+          transform: 'translateY(0)'
         }}></div>
         <div className="absolute inset-0 bg-navy/50"></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
