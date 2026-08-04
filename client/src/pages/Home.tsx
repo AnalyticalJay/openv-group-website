@@ -1,5 +1,5 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
-import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, addIconPulseEffect, animateLineReveal, animateEcosystemIcons, addEcosystemIconLift, animateSolutionCards, addSolutionIconHover, addAccentBarAnimation, animateCounter, addLogoHoverEffect, addNavButtonHoverEffect, setupCarouselAutoScroll, addCarouselFadeTransition, addIndustryIconHover, animateIndustryIcons, animatePageLoad, animateSectionTransition, addMicroInteractions } from '@/lib/animations';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, addIconPulseEffect, animateLineReveal, animateEcosystemIcons, addEcosystemIconLift, animateSolutionCards, addSolutionIconHover, addAccentBarAnimation, animateCounter, addLogoHoverEffect, addNavButtonHoverEffect, setupCarouselAutoScroll, addCarouselFadeTransition, addIndustryIconHover, animateIndustryIcons, animatePageLoad, animateSectionTransition, addMicroInteractions, prefersReducedMotion, optimizeElementsForGPU, lazyLoadAnimation, cleanupAnimations } from '@/lib/animations';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -112,6 +112,17 @@ export default function Home() {
     // Apply parallax effects to background images
     if (heroBackgroundRef.current) createParallaxEffect(heroBackgroundRef.current, 0.4);
     if (ctaBackgroundRef.current) createParallaxEffect(ctaBackgroundRef.current, 0.35);
+    
+    // Performance optimization: GPU acceleration for animated elements
+    if (!prefersReducedMotion()) {
+      const animatedElements = document.querySelectorAll('[class*="animate"], button, a, .ecosystem-icon, .solution-card, .partner-logo, .industry-icon-container');
+      optimizeElementsForGPU(animatedElements as NodeListOf<Element>);
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      cleanupAnimations();
+    };
   }, [lenis]);
 
   // Auto-scroll carousel effect

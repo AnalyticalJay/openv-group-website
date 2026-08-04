@@ -857,3 +857,213 @@ export const animateMobileMenuClose = (menuElement: HTMLElement) => {
     delay: 0.1,
   });
 };
+
+
+/**
+ * PERFORMANCE OPTIMIZATION UTILITIES
+ * GPU-accelerated transforms and lazy-load animations
+ */
+
+/**
+ * Check if user prefers reduced motion
+ */
+export const prefersReducedMotion = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};
+
+/**
+ * Optimize element for GPU acceleration
+ */
+export const optimizeForGPU = (element: HTMLElement) => {
+  if (prefersReducedMotion()) return;
+  
+  gsap.set(element, {
+    backfaceVisibility: 'hidden',
+    perspective: 1000,
+    willChange: 'transform, opacity',
+  });
+};
+
+/**
+ * Batch optimize multiple elements for GPU
+ */
+export const optimizeElementsForGPU = (elements: HTMLElement[] | NodeListOf<Element>) => {
+  if (prefersReducedMotion()) return;
+  
+  elements.forEach(element => {
+    optimizeForGPU(element as HTMLElement);
+  });
+};
+
+/**
+ * Lazy-load animations only when element is in viewport
+ */
+export const lazyLoadAnimation = (
+  element: HTMLElement,
+  animationFn: (el: HTMLElement) => void,
+  options: { threshold?: number; margin?: string } = {}
+) => {
+  if (prefersReducedMotion()) {
+    // Still apply the animation but instantly
+    gsap.set(element, { opacity: 1 });
+    return;
+  }
+  
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animationFn(element);
+          observer.unobserve(element);
+        }
+      });
+    },
+    {
+      threshold: options.threshold || 0.1,
+      rootMargin: options.margin || '50px',
+    }
+  );
+  
+  observer.observe(element);
+  return observer;
+};
+
+/**
+ * Optimize ScrollTrigger animations for performance
+ */
+export const optimizeScrollTrigger = (trigger: gsap.core.Tween) => {
+  if (!trigger.scrollTrigger) return;
+  
+  // Batch animations to reduce repaints
+  ScrollTrigger.batch('[data-scroll-trigger]', {
+    onEnter: (batch) => {
+      gsap.to(batch, { opacity: 1, duration: 0.5, stagger: 0.1 });
+    },
+    onLeave: (batch) => {
+      gsap.to(batch, { opacity: 0, duration: 0.5 });
+    },
+    interval: 0.1,
+  });
+};
+
+/**
+ * Debounce scroll events for better performance
+ */
+export const debounceScroll = (callback: () => void, delay: number = 100): (() => void) => {
+  let timeoutId: NodeJS.Timeout;
+  
+  return () => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(callback, delay);
+  };
+};
+
+/**
+ * Request animation frame wrapper for smooth animations
+ */
+export const animateWithRAF = (callback: (progress: number) => void, duration: number = 1000) => {
+  let startTime: number | null = null;
+  
+  const animate = (currentTime: number) => {
+    if (startTime === null) startTime = currentTime;
+    
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    
+    callback(progress);
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  };
+  
+  requestAnimationFrame(animate);
+};
+
+/**
+ * Optimize animations to use only GPU-accelerated properties
+ * (transform and opacity only)
+ */
+export const createGPUOptimizedAnimation = (
+  element: HTMLElement,
+  fromState: gsap.TweenVars,
+  toState: gsap.TweenVars,
+  duration: number = 0.6,
+  ease: string = 'power2.out'
+) => {
+  if (prefersReducedMotion()) {
+    gsap.set(element, toState);
+    return;
+  }
+  
+  // Ensure only GPU-accelerated properties are animated
+  const gpuSafeToState = {
+    ...toState,
+    // Remove non-GPU properties
+    width: undefined,
+    height: undefined,
+    padding: undefined,
+    margin: undefined,
+    left: undefined,
+    top: undefined,
+    right: undefined,
+    bottom: undefined,
+  };
+  
+  optimizeForGPU(element);
+  
+  return gsap.fromTo(element, fromState, {
+    ...gpuSafeToState,
+    duration,
+    ease,
+  });
+};
+
+/**
+ * Monitor animation performance
+ */
+export const monitorAnimationPerformance = () => {
+  if (typeof window === 'undefined' || !('PerformanceObserver' in window)) return;
+  
+  try {
+    const observer = new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        if (entry.duration > 50) {
+          console.warn(`Long animation detected: ${entry.name} took ${entry.duration.toFixed(2)}ms`);
+        }
+      }
+    });
+    
+    observer.observe({ entryTypes: ['measure'] });
+    return observer;
+  } catch (e) {
+    // PerformanceObserver not supported
+    return null;
+  }
+};
+
+/**
+ * Cleanup animations and observers to prevent memory leaks
+ */
+export const cleanupAnimations = () => {
+  // Kill all GSAP animations
+  gsap.killTweensOf('*');
+  
+  // Clear ScrollTrigger
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+};
+
+/**
+ * Disable animations globally (useful for testing or accessibility)
+ */
+export const disableAnimations = () => {
+  gsap.globalTimeline.timeScale(0);
+};
+
+/**
+ * Re-enable animations globally
+ */
+export const enableAnimations = () => {
+  gsap.globalTimeline.timeScale(1);
+};

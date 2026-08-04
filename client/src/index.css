@@ -192,3 +192,125 @@
     }
   }
 }
+
+
+/**
+ * PERFORMANCE OPTIMIZATIONS
+ * GPU-accelerated animations and accessibility support
+ */
+
+/* Prefers Reduced Motion - Accessibility Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Disable scroll progress indicator animation */
+  #scroll-progress-bar {
+    transition: none !important;
+  }
+  
+  /* Disable hero animations */
+  .hero-headline,
+  .hero-gradient,
+  .hero-button {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  /* Disable section transitions */
+  section {
+    animation: none !important;
+  }
+  
+  /* Keep hover states but remove transitions */
+  button:hover,
+  a:hover {
+    transition: none !important;
+  }
+}
+
+/* GPU-Accelerated Transforms */
+@supports (transform: translateZ(0)) {
+  /* Use will-change sparingly for animated elements */
+  .hero-headline,
+  .hero-gradient,
+  .hero-button,
+  .ecosystem-icon,
+  .solution-card,
+  .partner-logo,
+  .industry-icon-container,
+  button,
+  a {
+    /* will-change is applied dynamically via JavaScript to avoid performance impact */
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}
+
+/* Optimize animations for performance */
+.animate-in,
+.animate-out,
+[class*="animate"] {
+  /* Use GPU-accelerated properties only */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scroll behavior (when not reduced-motion) */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Optimize images for performance */
+img {
+  /* Lazy loading support */
+  loading: lazy;
+  /* Prevent layout shift */
+  aspect-ratio: auto;
+}
+
+/* Optimize SVG animations */
+svg {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Optimize transitions */
+@media (prefers-reduced-motion: no-preference) {
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+/* ScrollTrigger performance optimization */
+.scroll-trigger {
+  /* Prevent layout thrashing */
+  contain: layout style paint;
+}
+
+/* Reduce repaints on scroll */
+[data-scroll-trigger] {
+  will-change: auto;
+}
+
+/* Optimize fixed elements */
+header,
+#scroll-progress-bar {
+  will-change: auto;
+  contain: layout style;
+}
