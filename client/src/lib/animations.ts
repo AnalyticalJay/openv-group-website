@@ -287,3 +287,114 @@ export const addFloatingAnimation = (element: HTMLElement) => {
     yoyo: true,
   });
 };
+
+
+/**
+ * Add pulse animation to icon on hover with glow effect
+ */
+export const addIconPulseEffect = (element: HTMLElement) => {
+  element.addEventListener('mouseenter', () => {
+    gsap.to(element, {
+      scale: 1.15,
+      boxShadow: '0 0 30px rgba(255, 107, 53, 0.6)',
+      duration: 0.4,
+      ease: 'back.out(1.5)',
+    });
+    
+    // Create pulse animation
+    gsap.to(element, {
+      scale: 1.05,
+      duration: 0.6,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+    });
+  });
+  
+  element.addEventListener('mouseleave', () => {
+    gsap.killTweensOf(element);
+    gsap.to(element, {
+      scale: 1,
+      boxShadow: '0 0 0px rgba(255, 107, 53, 0)',
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+};
+
+/**
+ * Animate connecting line from left to right
+ */
+export const animateLineReveal = (element: HTMLElement) => {
+  gsap.fromTo(
+    element,
+    {
+      scaleX: 0,
+      transformOrigin: 'left center',
+    },
+    {
+      scaleX: 1,
+      duration: 1.2,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: element.parentElement || element,
+        start: 'top 80%',
+        end: 'top 20%',
+        toggleActions: 'play none none none',
+      },
+    }
+  );
+};
+
+/**
+ * Add staggered entrance to ecosystem icons
+ */
+export const animateEcosystemIcons = (container: HTMLElement) => {
+  const icons = container.querySelectorAll('[class*="ecosystem-icon"]');
+  
+  gsap.fromTo(
+    icons,
+    {
+      opacity: 0,
+      scale: 0.8,
+      y: 30,
+    },
+    {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.12,
+      ease: 'back.out(1.5)',
+      scrollTrigger: {
+        trigger: container,
+        start: 'top 80%',
+        end: 'top 20%',
+        toggleActions: 'play none none none',
+      },
+    }
+  );
+};
+
+/**
+ * Add lift effect to ecosystem icons on hover
+ */
+export const addEcosystemIconLift = (element: HTMLElement) => {
+  element.addEventListener('mouseenter', () => {
+    gsap.to(element, {
+      y: -12,
+      boxShadow: '0 15px 35px rgba(255, 107, 53, 0.25)',
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+  
+  element.addEventListener('mouseleave', () => {
+    gsap.to(element, {
+      y: 0,
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+};

@@ -1,5 +1,5 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
-import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation } from '@/lib/animations';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, addIconPulseEffect, animateLineReveal, animateEcosystemIcons, addEcosystemIconLift } from '@/lib/animations';
 import { useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
 import { useLenis } from '@/contexts/LenisContext';
@@ -21,6 +21,9 @@ export default function Home() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<any>(null);
   const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const ecosystemRef = useRef<HTMLDivElement>(null);
+  const ecosystemLineRef = useRef<HTMLDivElement>(null);
+  const ecosystemIconsRef = useRef<HTMLDivElement>(null);
 
   // Add CSS animations for globe and connector movement
   useEffect(() => {
@@ -64,6 +67,19 @@ export default function Home() {
     if (exploreButtonRef.current) animateButtonEntrance(exploreButtonRef.current, 0);
     if (watchVideoButtonRef.current) animateButtonEntrance(watchVideoButtonRef.current, 0.1);
     if (heroBackgroundRef.current) addFloatingAnimation(heroBackgroundRef.current);
+
+    // Ecosystem animations
+    if (ecosystemLineRef.current) animateLineReveal(ecosystemLineRef.current);
+    if (ecosystemIconsRef.current) animateEcosystemIcons(ecosystemIconsRef.current);
+    
+    // Apply ecosystem icon effects
+    if (ecosystemRef.current) {
+      const icons = ecosystemRef.current.querySelectorAll('[class*="ecosystem-icon"]');
+      icons.forEach(icon => {
+        addIconPulseEffect(icon as HTMLElement);
+        addEcosystemIconLift(icon as HTMLElement);
+      });
+    }
 
     // Apply scroll-triggered animations to sections
     if (brandCardsRef.current) animateStaggerChildren(brandCardsRef.current, '[class*="group"]', 0.15);
@@ -155,7 +171,7 @@ export default function Home() {
         </div>
 
         {/* Ecosystem Strip Bar */}
-        <div className="absolute bottom-0 left-0 w-full bg-white border-t border-gray-200 py-6 md:py-10 z-20">
+        <div ref={ecosystemRef} className="absolute bottom-0 left-0 w-full bg-white border-t border-gray-200 py-6 md:py-10 z-20">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="text-center mb-6 md:mb-8">
               <h2 className="uppercase tracking-widest text-sm sm:text-base md:text-lg font-bold mb-1 md:mb-2 font-manrope" style={{background: 'linear-gradient(to right, #FF6B35, #FF1744)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>One Ecosystem. Endless Possibilities.</h2>
@@ -165,9 +181,9 @@ export default function Home() {
             {/* Process Flow with Connectors */}
             <div className="relative">
               {/* Horizontal divider line for desktop */}
-              <div className="hidden lg:block absolute top-6 left-0 right-0 h-px" style={{background: 'linear-gradient(to right, transparent, #FF6B35, #FF1744, transparent)', boxShadow: '0 0 20px rgba(255, 107, 53, 0.5)'}}></div>
+              <div ref={ecosystemLineRef} className="hidden lg:block absolute top-6 left-0 right-0 h-px" style={{background: 'linear-gradient(to right, transparent, #FF6B35, #FF1744, transparent)', boxShadow: '0 0 20px rgba(255, 107, 53, 0.5)'}}></div>
               
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 lg:gap-8 relative z-10">
+              <div ref={ecosystemIconsRef} className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 lg:gap-8 relative z-10">
                 {[
                   { icon: ZapIcon, label: 'Connect', desc: 'Integrate your existing systems' },
                   { icon: Target, label: 'Engage', desc: 'Digital marketing to reach your audience' },
@@ -175,9 +191,9 @@ export default function Home() {
                   { icon: Zap, label: 'Automate', desc: 'AI and automation that drives efficiency' },
                   { icon: TrendingUp, label: 'Grow', desc: 'Together we help you scale with confidence' },
                 ].map((item, i) => (
-                  <div key={i} className="text-center group relative">
+                  <div key={i} className="text-center group relative ecosystem-icon">
                     <div className="flex flex-col items-center">
-                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 transition-all duration-300 shadow-lg" style={{background: 'linear-gradient(135deg, #FF6B35, #FF1744)', border: '1px solid rgba(255, 107, 53, 0.4)', boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)'}}>
+                      <div className="ecosystem-icon w-10 md:w-12 h-10 md:h-12 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 transition-all duration-300 shadow-lg" style={{background: 'linear-gradient(135deg, #FF6B35, #FF1744)', border: '1px solid rgba(255, 107, 53, 0.4)', boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)'}}>
                         <item.icon className="w-5 md:w-6 h-5 md:h-6 text-white group-hover:scale-110 transition-transform duration-300" />
                       </div>
                       <h3 className="text-navy font-bold mb-1 uppercase tracking-wider text-xs md:text-sm">{item.label}</h3>
