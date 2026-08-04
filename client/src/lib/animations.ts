@@ -180,17 +180,19 @@ export const animateHeroHeadline = (element: HTMLElement) => {
 };
 
 /**
- * Animate gradient text fill
+ * Animate gradient text fill with smooth reveal
  */
 export const animateGradientText = (element: HTMLElement) => {
   gsap.fromTo(
     element,
     {
       backgroundPosition: '200% center',
+      opacity: 0,
     },
     {
       backgroundPosition: '0% center',
-      duration: 1.2,
+      opacity: 1,
+      duration: 1.4,
       ease: 'power2.out',
       delay: 0.6,
     }
@@ -270,5 +272,18 @@ export const killScrollTriggers = () => {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   gsap.ticker.remove(() => {
     ScrollTrigger.update();
+  });
+};
+
+/**
+ * Add floating animation to globe/background element
+ */
+export const addFloatingAnimation = (element: HTMLElement) => {
+  gsap.to(element, {
+    y: -20,
+    duration: 3,
+    ease: 'sine.inOut',
+    repeat: -1,
+    yoyo: true,
   });
 };

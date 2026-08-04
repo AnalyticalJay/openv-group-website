@@ -1,5 +1,5 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
-import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect } from '@/lib/animations';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation } from '@/lib/animations';
 import { useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
 import { useLenis } from '@/contexts/LenisContext';
@@ -63,6 +63,7 @@ export default function Home() {
     if (heroGradientRef.current) animateGradientText(heroGradientRef.current);
     if (exploreButtonRef.current) animateButtonEntrance(exploreButtonRef.current, 0);
     if (watchVideoButtonRef.current) animateButtonEntrance(watchVideoButtonRef.current, 0.1);
+    if (heroBackgroundRef.current) addFloatingAnimation(heroBackgroundRef.current);
 
     // Apply scroll-triggered animations to sections
     if (brandCardsRef.current) animateStaggerChildren(brandCardsRef.current, '[class*="group"]', 0.15);
@@ -114,6 +115,7 @@ export default function Home() {
               backgroundRepeat: 'no-repeat',
               opacity: 0.7
             }}
+            onLoad={(e) => { if (heroBackgroundRef.current) addFloatingAnimation(heroBackgroundRef.current); }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-navy/20 via-navy/40 to-navy/60 z-10"></div>
         </div>
