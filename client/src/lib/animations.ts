@@ -398,3 +398,106 @@ export const addEcosystemIconLift = (element: HTMLElement) => {
     });
   });
 };
+
+
+/**
+ * Animate solution cards with staggered entrance from different directions
+ */
+export const animateSolutionCards = (container: HTMLElement) => {
+  const cards = container.querySelectorAll('[class*="solution-card"]');
+  
+  gsap.fromTo(
+    cards,
+    {
+      opacity: 0,
+      y: 40,
+      x: (i) => {
+        // Alternate direction: odd from left, even from right
+        return i % 2 === 0 ? -30 : 30;
+      },
+    },
+    {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: container,
+        start: 'top 80%',
+        end: 'top 20%',
+        toggleActions: 'play none none none',
+      },
+    }
+  );
+};
+
+/**
+ * Add icon scale and rotate animation on hover
+ */
+export const addSolutionIconHover = (element: HTMLElement) => {
+  element.addEventListener('mouseenter', () => {
+    gsap.to(element, {
+      scale: 1.2,
+      rotation: 8,
+      duration: 0.4,
+      ease: 'back.out(1.5)',
+    });
+  });
+  
+  element.addEventListener('mouseleave', () => {
+    gsap.to(element, {
+      scale: 1,
+      rotation: 0,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+};
+
+/**
+ * Add accent bar animation on hover
+ */
+export const addAccentBarAnimation = (element: HTMLElement) => {
+  const bar = element.querySelector('[class*="accent-bar"]') as HTMLElement;
+  if (!bar) return;
+  
+  element.addEventListener('mouseenter', () => {
+    gsap.to(bar, {
+      scaleX: 1.1,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+  
+  element.addEventListener('mouseleave', () => {
+    gsap.to(bar, {
+      scaleX: 1,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+};
+
+/**
+ * Animate counter numbers on scroll
+ */
+export const animateCounter = (element: HTMLElement, target: number, duration: number = 2) => {
+  const obj = { value: 0 };
+  
+  gsap.to(obj, {
+    value: target,
+    duration: duration,
+    ease: 'power2.out',
+    onUpdate: () => {
+      element.textContent = Math.floor(obj.value).toString();
+    },
+    scrollTrigger: {
+      trigger: element.parentElement || element,
+      start: 'top 80%',
+      end: 'top 20%',
+      toggleActions: 'play none none none',
+    },
+  });
+};

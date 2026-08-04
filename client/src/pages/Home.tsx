@@ -1,5 +1,5 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
-import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, addIconPulseEffect, animateLineReveal, animateEcosystemIcons, addEcosystemIconLift } from '@/lib/animations';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, addIconPulseEffect, animateLineReveal, animateEcosystemIcons, addEcosystemIconLift, animateSolutionCards, addSolutionIconHover, addAccentBarAnimation, animateCounter } from '@/lib/animations';
 import { useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
 import { useLenis } from '@/contexts/LenisContext';
@@ -83,6 +83,7 @@ export default function Home() {
 
     // Apply scroll-triggered animations to sections
     if (brandCardsRef.current) animateStaggerChildren(brandCardsRef.current, '[class*="group"]', 0.15);
+    if (solutionsRef.current) animateSolutionCards(solutionsRef.current);
     if (solutionsRef.current) animateStaggerChildren(solutionsRef.current, '[class*="text-center"]', 0.1);
     if (partnersRef.current) animateStaggerChildren(partnersRef.current, '[class*="bg-white"]', 0.08);
     if (industriesRef.current) animateStaggerChildren(industriesRef.current, '[class*="text-center"]', 0.1);
@@ -257,7 +258,7 @@ export default function Home() {
           </div>
 
           {/* Solution Icons Grid */}
-          <div ref={solutionsRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-12">
+          <div ref={solutionsRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-12" style={{opacity: 0}}>
             {[
               { icon: Wifi, label: 'Infrastructure', desc: 'Networks, connectivity and cloud solutions you can rely on.' },
               { icon: Shield, label: 'Cybersecurity', desc: 'Protecting your data, systems and people.' },
@@ -266,11 +267,11 @@ export default function Home() {
               { icon: Brain, label: 'AI & Automation', desc: 'Intelligent tools that increase productivity and efficiency.' },
               { icon: Headphones, label: 'Support', desc: 'Expert support whenever and wherever you need it.' },
             ].map((item, i) => (
-              <div key={i} className="text-center group" ref={(el) => { if (el) { const svg = el.querySelector('svg'); if (svg) addIconHoverEffect(svg as unknown as HTMLElement); } }}>
-                <item.icon className="w-10 md:w-12 h-10 md:h-12 text-navy mx-auto mb-3 md:mb-4 transition-colors" style={{color: '#1f2937'}} onMouseEnter={(e) => e.currentTarget.style.color = '#FF6B35'} onMouseLeave={(e) => e.currentTarget.style.color = '#1f2937'} />
+              <div key={i} className="solution-card text-center group" ref={(el) => { if (el) { addAccentBarAnimation(el); const svg = el.querySelector('svg'); if (svg) addSolutionIconHover(svg as unknown as HTMLElement); } }}>
+                <item.icon className="solution-icon w-10 md:w-12 h-10 md:h-12 text-navy mx-auto mb-3 md:mb-4 transition-colors" style={{color: '#1f2937'}} onMouseEnter={(e) => e.currentTarget.style.color = '#FF6B35'} onMouseLeave={(e) => e.currentTarget.style.color = '#1f2937'} />
                 <p className="text-xs md:text-sm font-bold text-navy uppercase tracking-wider mb-2">{item.label}</p>
                 <p className="text-xs text-gray-600 leading-relaxed mb-3 md:mb-4">{item.desc}</p>
-                <div className="h-1 rounded-full" style={{background: 'linear-gradient(to right, #FF6B35, #FF1744, #FF6B35)'}}></div>
+                <div className="accent-bar h-1 rounded-full" style={{background: 'linear-gradient(to right, #FF6B35, #FF1744, #FF6B35)', transformOrigin: 'center'}}></div>
               </div>
             ))}
           </div>
