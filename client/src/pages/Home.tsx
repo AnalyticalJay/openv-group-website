@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navigation from '@/components/Navigation';
+import BackToTop from '@/components/BackToTop';
 import { useLenis } from '@/contexts/LenisContext';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 
@@ -149,6 +150,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-navy text-white">
       <Navigation />
+      <BackToTop />
       {/* Hero Section */}
       <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-32 md:pt-40 pb-48 md:pb-56 lg:pb-64 overflow-hidden bg-navy" style={{opacity: 1}}>
         {/* Static Background with animated globe and connectors */}
