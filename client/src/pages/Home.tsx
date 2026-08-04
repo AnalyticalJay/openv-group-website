@@ -258,7 +258,7 @@ export default function Home() {
           </div>
 
           {/* Solution Icons Grid */}
-          <div ref={solutionsRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-12" style={{opacity: 0}}>
+          <div ref={solutionsRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-12">
             {[
               { icon: Wifi, label: 'Infrastructure', desc: 'Networks, connectivity and cloud solutions you can rely on.' },
               { icon: Shield, label: 'Cybersecurity', desc: 'Protecting your data, systems and people.' },
