@@ -1,5 +1,5 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
-import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, addIconPulseEffect, animateLineReveal, animateEcosystemIcons, addEcosystemIconLift, animateSolutionCards, addSolutionIconHover, addAccentBarAnimation, animateCounter } from '@/lib/animations';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, addIconPulseEffect, animateLineReveal, animateEcosystemIcons, addEcosystemIconLift, animateSolutionCards, addSolutionIconHover, addAccentBarAnimation, animateCounter, addLogoHoverEffect, addNavButtonHoverEffect, setupCarouselAutoScroll, addCarouselFadeTransition } from '@/lib/animations';
 import { useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
 import { useLenis } from '@/contexts/LenisContext';
@@ -21,6 +21,9 @@ export default function Home() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<any>(null);
   const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const swiperRef = useRef<any>(null);
+  const partnersCarouselRef = useRef<HTMLDivElement>(null);
+  const partnersNavButtonsRef = useRef<HTMLDivElement>(null);
   const ecosystemRef = useRef<HTMLDivElement>(null);
   const ecosystemLineRef = useRef<HTMLDivElement>(null);
   const ecosystemIconsRef = useRef<HTMLDivElement>(null);
@@ -305,8 +308,8 @@ export default function Home() {
           </div>
 
           {/* Partner Logos Carousel */}
-          <Carousel ref={carouselRef} className="w-full mb-8 md:mb-12" opts={{ align: 'center', loop: true, slidesToScroll: 1 }}>
-            <CarouselContent className="-ml-2 md:-ml-4">
+          <Carousel ref={(el) => { carouselRef.current = el; }} className="w-full mb-8 md:mb-12" opts={{ align: 'center', loop: true, slidesToScroll: 1 }}>
+            <CarouselContent className="-ml-2 md:-ml-4" ref={partnersCarouselRef}>
               {[
                 { name: 'Vodacom', logo: '/manus-storage/logo-vodacom_59076cbe.png' },
                 { name: 'Citrix', logo: '/manus-storage/logo-citrix_69ed1026.png' },
@@ -318,19 +321,19 @@ export default function Home() {
                 { name: 'CSI', logo: '/manus-storage/logo-csi_cf8c6ef2.png' },
               ].map((partner, i) => (
                 <CarouselItem key={i} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
-                  <div className="flex items-center justify-center h-24 md:h-32 transition-transform duration-300 hover:scale-110">
+                  <div className="flex items-center justify-center h-24 md:h-32 transition-all duration-300" ref={(el) => { if (el) addLogoHoverEffect(el); }}>
                     <img src={partner.logo} alt={partner.name} className="max-h-20 md:max-h-28 max-w-full object-contain" />
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12 lg:-left-16" />
-            <CarouselNext className="hidden md:flex -right-12 lg:-right-16" />
+            <CarouselPrevious className="hidden md:flex -left-12 lg:-left-16" ref={(el) => { if (el) addNavButtonHoverEffect(el); }} />
+            <CarouselNext className="hidden md:flex -right-12 lg:-right-16" ref={(el) => { if (el) addNavButtonHoverEffect(el); }} />
           </Carousel>
 
           {/* View All Button */}
-          <div className="text-center">
-            <button className="inline-flex items-center px-6 py-3 border-2 font-bold tracking-widest text-xs uppercase rounded transition-colors" style={{borderColor: '#FF6B35', color: '#FF6B35'}} onMouseEnter={(e) => {e.currentTarget.style.background = '#FF6B35'; e.currentTarget.style.color = 'white';}} onMouseLeave={(e) => {e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#FF6B35';}}>
+          <div className="text-center" ref={partnersNavButtonsRef}>
+            <button className="inline-flex items-center px-6 py-3 border-2 font-bold tracking-widest text-xs uppercase rounded transition-all" style={{borderColor: '#FF6B35', color: '#FF6B35'}} onMouseEnter={(e) => {e.currentTarget.style.background = '#FF6B35'; e.currentTarget.style.color = 'white';}} onMouseLeave={(e) => {e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#FF6B35';}}>
               VIEW ALL PARTNERS
               <ArrowRight className="ml-2 w-4 h-4" />
             </button>

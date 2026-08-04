@@ -501,3 +501,102 @@ export const animateCounter = (element: HTMLElement, target: number, duration: n
     },
   });
 };
+
+/**
+ * Add logo scale and glow effect on hover
+ */
+export const addLogoHoverEffect = (element: HTMLElement) => {
+  element.addEventListener('mouseenter', () => {
+    gsap.to(element, {
+      scale: 1.15,
+      filter: 'drop-shadow(0 0 20px rgba(255, 107, 53, 0.5))',
+      duration: 0.4,
+      ease: 'back.out(1.5)',
+    });
+  });
+  
+  element.addEventListener('mouseleave', () => {
+    gsap.to(element, {
+      scale: 1,
+      filter: 'drop-shadow(0 0 0px rgba(255, 107, 53, 0))',
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+};
+
+/**
+ * Add animated hover state to carousel navigation buttons
+ */
+export const addNavButtonHoverEffect = (button: HTMLElement) => {
+  const icon = button.querySelector('svg');
+  
+  button.addEventListener('mouseenter', () => {
+    gsap.to(button, {
+      scale: 1.1,
+      boxShadow: '0 8px 24px rgba(255, 107, 53, 0.3)',
+      duration: 0.3,
+      ease: 'back.out(1.5)',
+    });
+    
+    if (icon) {
+      gsap.to(icon, {
+        x: button.classList.contains('swiper-button-next') ? 4 : -4,
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+    }
+  });
+  
+  button.addEventListener('mouseleave', () => {
+    gsap.to(button, {
+      scale: 1,
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+    
+    if (icon) {
+      gsap.to(icon, {
+        x: 0,
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+    }
+  });
+};
+
+/**
+ * Setup carousel auto-scroll with pause-on-hover
+ */
+export const setupCarouselAutoScroll = (swiperInstance: any, speed: number = 4000) => {
+  if (!swiperInstance) return;
+  
+  // Start auto-scroll
+  swiperInstance.autoplay.start();
+  
+  // Pause on hover
+  const container = swiperInstance.$el;
+  if (container) {
+    container.addEventListener('mouseenter', () => {
+      swiperInstance.autoplay.stop();
+    });
+    
+    container.addEventListener('mouseleave', () => {
+      swiperInstance.autoplay.start();
+    });
+  }
+};
+
+/**
+ * Add smooth fade transition to carousel slides
+ */
+export const addCarouselFadeTransition = (container: HTMLElement) => {
+  const slides = container.querySelectorAll('[class*="swiper-slide"]');
+  
+  slides.forEach((slide) => {
+    gsap.set(slide, {
+      opacity: 0.7,
+    });
+  });
+};
