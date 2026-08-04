@@ -1,5 +1,5 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
-import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect } from '@/lib/animations';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect } from '@/lib/animations';
 import { useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
 import { useLenis } from '@/contexts/LenisContext';
@@ -9,12 +9,18 @@ export default function Home() {
   // Animation refs for each section
   const heroRef = useRef<HTMLDivElement>(null);
   const heroBackgroundRef = useRef<HTMLDivElement>(null);
+  const heroHeadlineRef = useRef<HTMLDivElement>(null);
+  const heroGradientRef = useRef<HTMLSpanElement>(null);
+  const exploreButtonRef = useRef<HTMLButtonElement>(null);
+  const watchVideoButtonRef = useRef<HTMLButtonElement>(null);
   const ctaBackgroundRef = useRef<HTMLDivElement>(null);
   const brandCardsRef = useRef<HTMLDivElement>(null);
   const solutionsRef = useRef<HTMLDivElement>(null);
   const partnersRef = useRef<HTMLDivElement>(null);
   const industriesRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<any>(null);
+  const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Add CSS animations for globe and connector movement
   useEffect(() => {
@@ -52,6 +58,12 @@ export default function Home() {
     // Initialize Lenis-GSAP integration
     initLenisGSAPIntegration(lenis);
 
+    // Hero section animations
+    if (heroHeadlineRef.current) animateHeroHeadline(heroHeadlineRef.current);
+    if (heroGradientRef.current) animateGradientText(heroGradientRef.current);
+    if (exploreButtonRef.current) animateButtonEntrance(exploreButtonRef.current, 0);
+    if (watchVideoButtonRef.current) animateButtonEntrance(watchVideoButtonRef.current, 0.1);
+
     // Apply scroll-triggered animations to sections
     if (brandCardsRef.current) animateStaggerChildren(brandCardsRef.current, '[class*="group"]', 0.15);
     if (solutionsRef.current) animateStaggerChildren(solutionsRef.current, '[class*="text-center"]', 0.1);
@@ -63,6 +75,28 @@ export default function Home() {
     if (heroBackgroundRef.current) createParallaxEffect(heroBackgroundRef.current, 0.4);
     if (ctaBackgroundRef.current) createParallaxEffect(ctaBackgroundRef.current, 0.35);
   }, [lenis]);
+
+  // Auto-scroll carousel effect
+  useEffect(() => {
+    const startAutoScroll = () => {
+      autoScrollIntervalRef.current = setInterval(() => {
+        if (carouselRef.current?.scrollNext) {
+          carouselRef.current.scrollNext();
+        }
+      }, 4000); // Scroll every 4 seconds
+    };
+
+    const stopAutoScroll = () => {
+      if (autoScrollIntervalRef.current) {
+        clearInterval(autoScrollIntervalRef.current);
+      }
+    };
+
+    startAutoScroll();
+
+    return () => stopAutoScroll();
+  }, []);
+
   return (
     <div className="min-h-screen bg-navy text-white">
       <Navigation />
@@ -89,10 +123,12 @@ export default function Home() {
 
 
             {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-manrope font-black text-white mb-6 md:mb-8 leading-tight tracking-tight">
-              Smart technology.<br />
-              Seamless solutions.<br />
-              <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '900', letterSpacing: '-0.02em'}}>Stronger business.</span>
+            <h1 ref={heroHeadlineRef} className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-manrope font-black text-white mb-6 md:mb-8 leading-tight tracking-tight">
+              <div className="headline-line">Smart technology.</div>
+              <div className="headline-line">Seamless solutions.</div>
+              <div className="headline-line">
+                <span ref={heroGradientRef} style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '900', letterSpacing: '-0.02em', backgroundSize: '200% 100%', display: 'inline-block'}}>Stronger business.</span>
+              </div>
             </h1>
 
             {/* Subheading */}
@@ -102,11 +138,11 @@ export default function Home() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 md:gap-6 pb-20 md:pb-24 lg:pb-32">
-              <button className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}>
+              <button ref={exploreButtonRef} className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}>
                 EXPLORE THE GROUP
                 <ArrowRight className="ml-2 w-4 h-4" />
               </button>
-              <button className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto text-white font-bold tracking-widest text-xs uppercase hover:text-orange-400 transition-colors">
+              <button ref={watchVideoButtonRef} className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto text-white font-bold tracking-widest text-xs uppercase hover:text-orange-400 transition-colors">
                 <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center mr-4 hover:border-orange-500 transition-colors">
                   <Play className="w-5 h-5 ml-1" style={{color: '#FF6B35'}} />
                 </div>
@@ -165,7 +201,7 @@ export default function Home() {
           {/* Brand Cards */}
           <div ref={brandCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* OpenV Business - Video */}
-            <a href="https://www.openv.co.za/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer block" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.15)'}>
+            <a href="https://www.openv.co.za/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl cursor-pointer block" style={{border: '1px solid rgba(255, 107, 53, 0.3)', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'}} onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.8)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(255, 107, 53, 0.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.3)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)'; }} ref={(el) => { if (el) addCardHoverEffect(el); }}>
               <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
                 <source src="/manus-storage/OpenV(1)_7faeea8b.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
@@ -173,7 +209,7 @@ export default function Home() {
             </a>
 
             {/* NextFour - Video */}
-            <a href="https://nextfour.co.za/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer block" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.15)'}>
+            <a href="https://nextfour.co.za/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl cursor-pointer block" style={{border: '1px solid rgba(255, 107, 53, 0.3)', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'}} onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.8)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(255, 107, 53, 0.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.3)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)'; }} ref={(el) => { if (el) addCardHoverEffect(el); }}>
               <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
                 <source src="/manus-storage/NextFour(3)_1389b015.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
@@ -181,7 +217,7 @@ export default function Home() {
             </a>
 
             {/* ShiftBridge - Video */}
-            <a href="https://shiftbridge.co.za/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer block" style={{border: '1px solid rgba(19, 196, 107, 0.15)'}} onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.5)'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(19, 196, 107, 0.15)'}>
+            <a href="https://shiftbridge.co.za/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl cursor-pointer block" style={{border: '1px solid rgba(255, 107, 53, 0.3)', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'}} onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.8)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(255, 107, 53, 0.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.3)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)'; }} ref={(el) => { if (el) addCardHoverEffect(el); }}>
               <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
                 <source src="/manus-storage/ShiftBridge(1)_ae346aab.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
@@ -212,7 +248,7 @@ export default function Home() {
               { icon: Brain, label: 'AI & Automation', desc: 'Intelligent tools that increase productivity and efficiency.' },
               { icon: Headphones, label: 'Support', desc: 'Expert support whenever and wherever you need it.' },
             ].map((item, i) => (
-              <div key={i} className="text-center group hover:scale-105 transition-transform duration-300">
+              <div key={i} className="text-center group" ref={(el) => { if (el) { const svg = el.querySelector('svg'); if (svg) addIconHoverEffect(svg as unknown as HTMLElement); } }}>
                 <item.icon className="w-10 md:w-12 h-10 md:h-12 text-navy mx-auto mb-3 md:mb-4 transition-colors" style={{color: '#1f2937'}} onMouseEnter={(e) => e.currentTarget.style.color = '#FF6B35'} onMouseLeave={(e) => e.currentTarget.style.color = '#1f2937'} />
                 <p className="text-xs md:text-sm font-bold text-navy uppercase tracking-wider mb-2">{item.label}</p>
                 <p className="text-xs text-gray-600 leading-relaxed mb-3 md:mb-4">{item.desc}</p>
@@ -250,7 +286,7 @@ export default function Home() {
           </div>
 
           {/* Partner Logos Carousel */}
-          <Carousel className="w-full mb-8 md:mb-12" opts={{ align: 'center', loop: true, slidesToScroll: 1 }}>
+          <Carousel ref={carouselRef} className="w-full mb-8 md:mb-12" opts={{ align: 'center', loop: true, slidesToScroll: 1 }}>
             <CarouselContent className="-ml-2 md:-ml-4">
               {[
                 { name: 'Vodacom', logo: '/manus-storage/logo-vodacom_59076cbe.png' },

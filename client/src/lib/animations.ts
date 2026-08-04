@@ -155,6 +155,115 @@ export const createParallaxEffect = (element: HTMLElement, speed = 0.5) => {
 };
 
 /**
+ * Animate hero headline with staggered line reveals
+ */
+export const animateHeroHeadline = (element: HTMLElement) => {
+  const lines = element.querySelectorAll('.headline-line');
+  
+  gsap.fromTo(
+    lines,
+    {
+      opacity: 0,
+      y: 40,
+      clipPath: 'inset(0 0 100% 0)',
+    },
+    {
+      opacity: 1,
+      y: 0,
+      clipPath: 'inset(0 0 0% 0)',
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power2.out',
+      delay: 0.3,
+    }
+  );
+};
+
+/**
+ * Animate gradient text fill
+ */
+export const animateGradientText = (element: HTMLElement) => {
+  gsap.fromTo(
+    element,
+    {
+      backgroundPosition: '200% center',
+    },
+    {
+      backgroundPosition: '0% center',
+      duration: 1.2,
+      ease: 'power2.out',
+      delay: 0.6,
+    }
+  );
+};
+
+/**
+ * Animate button entrance with scale and fade
+ */
+export const animateButtonEntrance = (element: HTMLElement, delay = 0) => {
+  gsap.fromTo(
+    element,
+    {
+      opacity: 0,
+      scale: 0.9,
+      y: 20,
+    },
+    {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      duration: 0.6,
+      ease: 'back.out(1.5)',
+      delay: delay + 0.8,
+    }
+  );
+};
+
+/**
+ * Add hover lift effect to cards
+ */
+export const addCardHoverEffect = (element: HTMLElement) => {
+  element.addEventListener('mouseenter', () => {
+    gsap.to(element, {
+      y: -8,
+      boxShadow: '0 20px 40px rgba(255, 107, 53, 0.2)',
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+  
+  element.addEventListener('mouseleave', () => {
+    gsap.to(element, {
+      y: 0,
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+};
+
+/**
+ * Add icon hover scale effect
+ */
+export const addIconHoverEffect = (element: HTMLElement) => {
+  element.addEventListener('mouseenter', () => {
+    gsap.to(element, {
+      scale: 1.1,
+      duration: 0.3,
+      ease: 'back.out(1.5)',
+    });
+  });
+  
+  element.addEventListener('mouseleave', () => {
+    gsap.to(element, {
+      scale: 1,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+};
+
+/**
  * Kill all ScrollTrigger instances for cleanup
  */
 export const killScrollTriggers = () => {
