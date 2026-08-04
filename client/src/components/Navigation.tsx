@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
+import gsap from 'gsap';
+import { createScrollProgressIndicator, animateMobileMenuOpen, animateMobileMenuClose } from '@/lib/animations';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('#about');
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const navLinks = [
     { label: 'About Us', href: '#about' },
@@ -13,6 +17,44 @@ export default function Navigation() {
     { label: 'Insights', href: '#insights' },
     { label: 'Contact', href: '#contact' },
   ];
+
+  useEffect(() => {
+    // Create scroll progress indicator
+    createScrollProgressIndicator();
+
+    // Track active section on scroll
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + 100;
+
+      navLinks.forEach(link => {
+        const section = document.querySelector(link.href);
+        if (!section) return;
+
+        const sectionTop = (section as HTMLElement).offsetTop;
+        const sectionHeight = (section as HTMLElement).offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          setActiveSection(link.href);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', updateActiveSection);
+    updateActiveSection();
+    return () => window.removeEventListener('scroll', updateActiveSection);
+  }, []);
+
+  useEffect(() => {
+    if (mobileMenuOpen && mobileMenuRef.current) {
+      animateMobileMenuOpen(mobileMenuRef.current);
+    } else if (!mobileMenuOpen && mobileMenuRef.current) {
+      animateMobileMenuClose(mobileMenuRef.current);
+    }
+  }, [mobileMenuOpen]);
+
+  const handleMobileMenuClose = () => {
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 border-b border-white/10" style={{backgroundColor: '#F8FAFC'}}>
@@ -28,9 +70,15 @@ export default function Navigation() {
             <a
               key={link.href}
               href={link.href}
-              className="text-xs font-bold tracking-widest uppercase transition-colors hover:text-gray-800" style={{color: '#4b5563'}}
+              className={`relative text-xs font-bold tracking-widest uppercase transition-colors py-1 ${
+                activeSection === link.href ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800'
+              }`}
             >
               {link.label}
+              <span 
+                className="nav-underline absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-orange-500 to-red-500 origin-left" 
+                style={{transform: activeSection === link.href ? 'scaleX(1)' : 'scaleX(0)'}}
+              ></span>
             </a>
           ))}
         </nav>
@@ -53,14 +101,19 @@ export default function Navigation() {
 
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <nav className="lg:hidden border-t px-4 py-6" style={{backgroundColor: '#f0f0f0', borderColor: '#d1d1d1'}}>
+        <nav ref={mobileMenuRef} className="lg:hidden border-t px-4 py-6" style={{backgroundColor: '#f0f0f0', borderColor: '#d1d1d1'}}>
           <div className="space-y-4">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="block text-sm font-bold tracking-widest text-white/70 hover:text-white uppercase py-2 border-b border-white/5 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+                className={`block text-sm font-bold tracking-widest uppercase py-2 border-b border-white/5 transition-colors ${
+                  activeSection === link.href ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800'
+                }`}
+                onClick={() => {
+                  handleMobileMenuClose();
+                  setActiveSection(link.href);
+                }}
               >
                 {link.label}
               </a>

@@ -654,3 +654,206 @@ export const animateIndustryIcons = (container: HTMLElement) => {
     }
   );
 };
+
+/**
+ * Create scroll progress indicator at top of page
+ */
+export const createScrollProgressIndicator = () => {
+  // Check if progress bar already exists
+  if (document.getElementById('scroll-progress-bar')) return;
+  
+  const progressBar = document.createElement('div');
+  progressBar.id = 'scroll-progress-bar';
+  progressBar.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #FF6B35 0%, #FF1744 100%);
+    z-index: 9999;
+    width: 0%;
+    transition: width 0.1s ease-out;
+  `;
+  document.body.appendChild(progressBar);
+  
+  // Update progress on scroll
+  const updateProgress = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+  };
+  
+  window.addEventListener('scroll', updateProgress);
+  
+  return () => {
+    window.removeEventListener('scroll', updateProgress);
+  };
+};
+
+/**
+ * Track active section and update navigation
+ */
+export const trackActiveSection = (navLinks: { label: string; href: string }[]) => {
+  const updateActiveLink = () => {
+    const scrollPosition = window.scrollY + 100;
+    
+    navLinks.forEach(link => {
+      const section = document.querySelector(link.href);
+      if (!section) return;
+      
+      const sectionTop = (section as HTMLElement).offsetTop;
+      const sectionHeight = (section as HTMLElement).offsetHeight;
+      
+      const navLink = document.querySelector(`a[href="${link.href}"]`) as HTMLElement;
+      if (!navLink) return;
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        // Remove active from all links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+          link.classList.remove('active-nav-link');
+          const underline = link.querySelector('.nav-underline');
+          if (underline) {
+            gsap.to(underline, {
+              scaleX: 0,
+              duration: 0.3,
+              ease: 'power2.out',
+            });
+          }
+        });
+        
+        // Add active to current link
+        navLink.classList.add('active-nav-link');
+        const underline = navLink.querySelector('.nav-underline');
+        if (underline) {
+          gsap.to(underline, {
+            scaleX: 1,
+            duration: 0.4,
+            ease: 'power2.out',
+          });
+        }
+      }
+    });
+  };
+  
+  window.addEventListener('scroll', updateActiveLink);
+  updateActiveLink();
+  
+  return () => {
+    window.removeEventListener('scroll', updateActiveLink);
+  };
+};
+
+/**
+ * Animate section transitions with fade and scale
+ */
+export const animateSectionTransition = (section: HTMLElement) => {
+  gsap.fromTo(
+    section,
+    {
+      opacity: 0,
+      scale: 0.98,
+    },
+    {
+      opacity: 1,
+      scale: 1,
+      duration: 0.8,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 80%',
+        end: 'top 20%',
+        toggleActions: 'play none none reverse',
+      },
+    }
+  );
+};
+
+/**
+ * Page load sequence with staggered element reveals
+ */
+export const animatePageLoad = () => {
+  // Animate header
+  const header = document.querySelector('header');
+  if (header) {
+    gsap.fromTo(
+      header,
+      { opacity: 0, y: -20 },
+      { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+    );
+  }
+  
+  // Animate hero section
+  const hero = document.querySelector('section:first-of-type');
+  if (hero) {
+    gsap.fromTo(
+      hero,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.8, delay: 0.2, ease: 'power2.out' }
+    );
+  }
+};
+
+/**
+ * Add smooth micro-interactions to all interactive elements
+ */
+export const addMicroInteractions = () => {
+  // Button interactions
+  const buttons = document.querySelectorAll('button, a[href*="#"]');
+  buttons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+      gsap.to(button, {
+        duration: 0.2,
+        ease: 'power2.out',
+      });
+    });
+  });
+  
+  // Link color transitions
+  const links = document.querySelectorAll('a');
+  links.forEach(link => {
+    gsap.set(link, { color: getComputedStyle(link).color });
+  });
+};
+
+/**
+ * Animate mobile menu slide-in with staggered links
+ */
+export const animateMobileMenuOpen = (menuElement: HTMLElement) => {
+  const links = menuElement.querySelectorAll('a');
+  
+  gsap.fromTo(
+    menuElement,
+    { opacity: 0, y: -20 },
+    { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }
+  );
+  
+  gsap.fromTo(
+    links,
+    { opacity: 0, x: -20 },
+    { opacity: 1, x: 0, duration: 0.3, stagger: 0.05, ease: 'power2.out', delay: 0.1 }
+  );
+};
+
+/**
+ * Animate mobile menu slide-out
+ */
+export const animateMobileMenuClose = (menuElement: HTMLElement) => {
+  const links = menuElement.querySelectorAll('a');
+  
+  gsap.to(links, {
+    opacity: 0,
+    x: -20,
+    duration: 0.2,
+    stagger: 0.03,
+    ease: 'power2.in',
+  });
+  
+  gsap.to(menuElement, {
+    opacity: 0,
+    y: -20,
+    duration: 0.3,
+    ease: 'power2.in',
+    delay: 0.1,
+  });
+};
