@@ -600,3 +600,57 @@ export const addCarouselFadeTransition = (container: HTMLElement) => {
     });
   });
 };
+
+/**
+ * Add industry icon hover effects with scale, rotation, and color transition
+ */
+export const addIndustryIconHover = (element: HTMLElement) => {
+  const wrapper = element.querySelector('.industry-icon-wrapper') as HTMLElement;
+  if (!wrapper) return;
+  
+  element.addEventListener('mouseenter', () => {
+    gsap.to(wrapper, {
+      scale: 1.2,
+      rotation: 8,
+      duration: 0.4,
+      ease: 'back.out(1.5)',
+    });
+  });
+  
+  element.addEventListener('mouseleave', () => {
+    gsap.to(wrapper, {
+      scale: 1,
+      rotation: 0,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  });
+};
+
+/**
+ * Animate industry icons with staggered bounce entrance on scroll
+ */
+export const animateIndustryIcons = (container: HTMLElement) => {
+  const icons = container.querySelectorAll('.industry-icon-container');
+  
+  gsap.fromTo(
+    icons,
+    {
+      opacity: 0,
+      y: 30,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: 'back.out(1.7)',
+      scrollTrigger: {
+        trigger: container,
+        start: 'top center+=100',
+        end: 'top center',
+        toggleActions: 'play none none reverse',
+      },
+    }
+  );
+};

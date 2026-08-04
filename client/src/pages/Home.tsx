@@ -1,9 +1,13 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
-import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, addIconPulseEffect, animateLineReveal, animateEcosystemIcons, addEcosystemIconLift, animateSolutionCards, addSolutionIconHover, addAccentBarAnimation, animateCounter, addLogoHoverEffect, addNavButtonHoverEffect, setupCarouselAutoScroll, addCarouselFadeTransition } from '@/lib/animations';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, addIconPulseEffect, animateLineReveal, animateEcosystemIcons, addEcosystemIconLift, animateSolutionCards, addSolutionIconHover, addAccentBarAnimation, animateCounter, addLogoHoverEffect, addNavButtonHoverEffect, setupCarouselAutoScroll, addCarouselFadeTransition, addIndustryIconHover, animateIndustryIcons } from '@/lib/animations';
 import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navigation from '@/components/Navigation';
 import { useLenis } from '@/contexts/LenisContext';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   // Animation refs for each section
@@ -89,7 +93,14 @@ export default function Home() {
     if (solutionsRef.current) animateSolutionCards(solutionsRef.current);
     if (solutionsRef.current) animateStaggerChildren(solutionsRef.current, '[class*="text-center"]', 0.1);
     if (partnersRef.current) animateStaggerChildren(partnersRef.current, '[class*="bg-white"]', 0.08);
-    if (industriesRef.current) animateStaggerChildren(industriesRef.current, '[class*="text-center"]', 0.1);
+    // Apply industry icon animations
+    if (industriesRef.current) {
+      animateIndustryIcons(industriesRef.current);
+      const icons = industriesRef.current.querySelectorAll('.industry-icon-container');
+      icons.forEach(icon => {
+        addIndustryIconHover(icon as HTMLElement);
+      });
+    }
     if (ctaRef.current) animateSlideUp(ctaRef.current, 0);
 
     // Apply parallax effects to background images
@@ -353,17 +364,20 @@ export default function Home() {
           {/* Industry Icons Grid */}
           <div ref={industriesRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-4 md:gap-6 lg:gap-8">
             {[
-              { icon: Building2, label: 'Manufacturing' },
-              { icon: HelpCircle, label: 'Healthcare' },
-              { icon: Users, label: 'Professional Services' },
-              { icon: Building2, label: 'Construction' },
-              { icon: ShoppingCart, label: 'Retail' },
-              { icon: DollarSign, label: 'Financial Services' },
-              { icon: BookOpen, label: 'Education' },
-              { icon: Hotel, label: 'Hospitality' },
+              { image: '/manus-storage/icon-manufacturing-3d_ed5d4a90.png', label: 'Manufacturing' },
+              { image: '/manus-storage/icon-healthcare-3d_2f2b24b0.png', label: 'Healthcare' },
+              { image: '/manus-storage/icon-professional-services-3d_33ae95a0.png', label: 'Professional Services' },
+              { image: '/manus-storage/icon-construction-3d_904a266f.png', label: 'Construction' },
+              { image: '/manus-storage/icon-retail-3d_df5ed49f.png', label: 'Retail' },
+              { image: '/manus-storage/icon-financial-services-3d_211e4de2.png', label: 'Financial Services' },
+              { image: '/manus-storage/icon-education-3d_a1e06121.png', label: 'Education' },
+              { image: '/manus-storage/icon-hospitality-3d_c6ac832e.png', label: 'Hospitality' },
             ].map((item, i) => (
-              <div key={i} className="text-center">
-                <item.icon className="w-10 md:w-12 h-10 md:h-12 text-orange-500 mx-auto mb-3 md:mb-4" />
+              <div key={i} className="text-center industry-icon-container" style={{opacity: 0}}>
+                <div className="industry-icon-wrapper relative inline-block mb-3 md:mb-4 cursor-pointer group">
+                  <img src={item.image} alt={item.label} className="w-16 md:w-20 h-16 md:h-20 object-contain" />
+                  <div className="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/10 rounded-lg transition-colors duration-300"></div>
+                </div>
                 <p className="text-xs md:text-sm font-bold text-gray-700 uppercase">{item.label}</p>
               </div>
             ))}
