@@ -1,10 +1,11 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
 import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, addIconPulseEffect, animateLineReveal, animateEcosystemIcons, addEcosystemIconLift, animateSolutionCards, addSolutionIconHover, addAccentBarAnimation, animateCounter, addLogoHoverEffect, addNavButtonHoverEffect, setupCarouselAutoScroll, addCarouselFadeTransition, addIndustryIconHover, animateIndustryIcons, animatePageLoad, animateSectionTransition, addMicroInteractions, prefersReducedMotion, optimizeElementsForGPU, lazyLoadAnimation, cleanupAnimations } from '@/lib/animations';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navigation from '@/components/Navigation';
 import BackToTop from '@/components/BackToTop';
+import ContactFormModal from '@/components/ContactFormModal';
 import { useLenis } from '@/contexts/LenisContext';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 
@@ -146,6 +147,9 @@ export default function Home() {
 
     return () => stopAutoScroll();
   }, []);
+
+  // Contact form modal state
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-navy text-white">
@@ -421,7 +425,7 @@ export default function Home() {
               Book us for team loyalty and discover how Open V Group can do more with your technology. Businesses across South Africa trust us.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-              <button className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 md:py-4 text-white font-bold tracking-widest text-xs md:text-sm uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}>
+              <button onClick={() => setIsContactModalOpen(true)} className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 md:py-4 text-white font-bold tracking-widest text-xs md:text-sm uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}>
                 BOOK A CONSULTATION
                 <ArrowRight className="ml-2 w-4 h-4" />
               </button>
@@ -480,6 +484,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Contact Form Modal */}
+      <ContactFormModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </div>
   );
 }
