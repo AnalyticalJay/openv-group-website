@@ -6,6 +6,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LenisProvider } from "./contexts/LenisContext";
+import { PageTransitionProvider } from "./contexts/PageTransitionContext";
 import { SplashScreen } from "./components/SplashScreen";
 import Home from "./pages/Home";
 
@@ -38,17 +39,19 @@ function App() {
   return (
     <ErrorBoundary>
       {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-      <LenisProvider>
-        <ThemeProvider
-          defaultTheme="light"
-          // switchable
-        >
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
-        </ThemeProvider>
-      </LenisProvider>
+      <PageTransitionProvider>
+        <LenisProvider>
+          <ThemeProvider
+            defaultTheme="light"
+            // switchable
+          >
+            <TooltipProvider>
+              <Toaster />
+              <Router />
+            </TooltipProvider>
+          </ThemeProvider>
+        </LenisProvider>
+      </PageTransitionProvider>
     </ErrorBoundary>
   );
 }

@@ -80,15 +80,43 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
   const handleExplore = () => {
     if (!containerRef.current) return;
 
-    // Fade out splash screen
-    gsap.to(containerRef.current, {
+    // Create transition overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'fixed inset-0 z-[10000] bg-white';
+    overlay.style.opacity = '0';
+    document.body.appendChild(overlay);
+
+    // Animate splash screen out and overlay in
+    const timeline = gsap.timeline();
+    
+    // Fade out splash content
+    timeline.to(containerRef.current, {
       opacity: 0,
-      duration: 0.8,
+      duration: 0.6,
+      ease: 'power2.inOut',
+    }, 0);
+
+    // Fade in white overlay
+    timeline.to(overlay, {
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power2.inOut',
+    }, 0.3);
+
+    // Complete transition and show homepage
+    timeline.call(() => {
+      onComplete();
+    }, [], 0.8);
+
+    // Fade out overlay to reveal homepage
+    timeline.to(overlay, {
+      opacity: 0,
+      duration: 0.6,
       ease: 'power2.inOut',
       onComplete: () => {
-        onComplete();
+        overlay.remove();
       },
-    });
+    }, 0.9);
   };
 
   return (
