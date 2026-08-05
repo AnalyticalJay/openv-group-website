@@ -112,7 +112,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
         {/* Logo Container */}
         <div
           ref={logoRef}
-          className="mb-12 md:mb-16"
+          className="mb-6 md:mb-8"
           style={{
             filter: 'drop-shadow(0 20px 40px rgba(19, 196, 107, 0.2))',
           }}
@@ -123,7 +123,8 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
             alt="OpenV Group Logo"
             className="w-48 h-48 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-contain drop-shadow-2xl"
             style={{
-              filter: 'drop-shadow(0 0 60px rgba(255, 107, 53, 0.4)) drop-shadow(0 0 30px rgba(27, 142, 255, 0.3))',
+              filter: 'drop-shadow(0 0 60px rgba(255, 107, 53, 0.4)) drop-shadow(0 0 30px rgba(27, 142, 255, 0.3)) brightness(1.3) contrast(1.1)',
+              opacity: 0.95,
             }}
           />
         </div>
