@@ -10,7 +10,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [showButton, setShowButton] = useState(true);
+  const [showButton, setShowButton] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
 
   // Handler function for swipe and button click
@@ -75,16 +75,6 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       { opacity: 1, duration: 0.5 }
     );
 
-    // Button entrance - show immediately
-    if (buttonRef.current) {
-      timeline.fromTo(
-        buttonRef.current,
-        { opacity: 0, scale: 0.9 },
-        { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out' },
-        0.2
-      );
-    }
-
     return () => {
       timeline.kill();
     };
@@ -97,6 +87,18 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       videoRef.current.play().catch((error) => {
         console.log('Video autoplay failed:', error);
       });
+    }
+  };
+
+  // Handle video end - show button when video completes
+  const handleVideoEnd = () => {
+    setShowButton(true);
+    if (buttonRef.current) {
+      gsap.fromTo(
+        buttonRef.current,
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out' }
+      );
     }
   };
 
@@ -117,7 +119,6 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
         className="absolute inset-0 w-full h-full object-cover"
         muted
         playsInline
-        loop
         onCanPlay={handleVideoCanPlay}
         onLoadedMetadata={() => {
           if (videoRef.current) {
@@ -126,6 +127,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
             });
           }
         }}
+        onEnded={handleVideoEnd}
         style={{
           width: '100%',
           height: '100%',
@@ -141,7 +143,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
 
       {/* Content overlay */}
       <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 h-full">
-        {/* Explore Button - Overlaid on video */}
+        {/* Explore Button - Overlaid on video - Only shows after video ends */}
         {showButton && (
           <button
             ref={buttonRef}
@@ -152,15 +154,17 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
           </button>
         )}
 
-        {/* Swipe hint for mobile */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden z-20">
-          <div className="flex flex-col items-center gap-2 text-white text-sm animate-bounce">
-            <span>Swipe up to explore</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m0 0l4 4m10-4v12m0 0l4-4m0 0l-4-4" />
-            </svg>
+        {/* Swipe hint for mobile - Only shows after video ends */}
+        {showButton && (
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden z-20">
+            <div className="flex flex-col items-center gap-2 text-white text-sm animate-bounce">
+              <span>Swipe up to explore</span>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m0 0l4 4m10-4v12m0 0l4-4m0 0l-4-4" />
+              </svg>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Video loading indicator */}
         {!videoReady && (
