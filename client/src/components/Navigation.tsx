@@ -2,11 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import gsap from 'gsap';
 import { createScrollProgressIndicator, animateMobileMenuOpen, animateMobileMenuClose } from '@/lib/animations';
+import { useContactForm } from '@/contexts/ContactFormContext';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#companies');
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const { openContactForm } = useContactForm();
 
   const navLinks = [
     { label: 'Our Companies', href: '#companies' },
@@ -65,10 +67,19 @@ export default function Navigation() {
         {/* Desktop Navigation - Center */}
         <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.href}
-              href={link.href}
-              className={`relative text-xs font-bold tracking-widest uppercase transition-colors py-1 ${
+              onClick={() => {
+                if (link.label === 'Contact') {
+                  openContactForm();
+                } else {
+                  const element = document.querySelector(link.href);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }
+              }}
+              className={`relative text-xs font-bold tracking-widest uppercase transition-colors py-1 bg-none border-none cursor-pointer ${
                 activeSection === link.href ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800'
               }`}
             >
@@ -77,13 +88,13 @@ export default function Navigation() {
                 className="nav-underline absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-orange-500 to-red-500 origin-left" 
                 style={{transform: activeSection === link.href ? 'scaleX(1)' : 'scaleX(0)'}}
               ></span>
-            </a>
+            </button>
           ))}
         </nav>
 
         {/* Desktop CTA - Right */}
         <div className="hidden lg:flex items-center flex-shrink-0">
-          <button className="px-6 py-2 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}> 
+          <button onClick={openContactForm} className="px-6 py-2 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}> 
             BOOK A CONSULTATION
           </button>
         </div>
@@ -102,21 +113,28 @@ export default function Navigation() {
         <nav ref={mobileMenuRef} className="lg:hidden border-t px-4 py-6" style={{backgroundColor: '#f0f0f0', borderColor: '#d1d1d1'}}>
           <div className="space-y-4">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.href}
-                href={link.href}
-                className={`block text-sm font-bold tracking-widest uppercase py-2 border-b border-white/5 transition-colors ${
-                  activeSection === link.href ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800'
-                }`}
                 onClick={() => {
                   handleMobileMenuClose();
-                  setActiveSection(link.href);
+                  if (link.label === 'Contact') {
+                    openContactForm();
+                  } else {
+                    const element = document.querySelector(link.href);
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    setActiveSection(link.href);
+                  }
                 }}
+                className={`block w-full text-left text-sm font-bold tracking-widest uppercase py-2 border-b border-white/5 transition-colors bg-none border-none cursor-pointer ${
+                  activeSection === link.href ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800'
+                }`}
               >
                 {link.label}
-              </a>
+              </button>
             ))}
-            <button className="w-full mt-4 px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}> 
+            <button onClick={() => { handleMobileMenuClose(); openContactForm(); }} className="w-full mt-4 px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}> 
               BOOK A CONSULTATION
             </button>
           </div>

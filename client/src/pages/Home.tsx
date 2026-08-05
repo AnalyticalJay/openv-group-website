@@ -1,17 +1,19 @@
 import { ArrowRight, Play, Building2, Shield, TrendingUp, Zap, Users, Headphones, Wifi, Lock, BarChart3, Cog, Brain, HelpCircle, Zap as ZapIcon, Target, Monitor, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
 import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, addIconPulseEffect, animateLineReveal, animateEcosystemIcons, addEcosystemIconLift, animateSolutionCards, addSolutionIconHover, addAccentBarAnimation, animateCounter, addLogoHoverEffect, addNavButtonHoverEffect, setupCarouselAutoScroll, addCarouselFadeTransition, addIndustryIconHover, animateIndustryIcons, animatePageLoad, animateSectionTransition, addMicroInteractions, prefersReducedMotion, optimizeElementsForGPU, lazyLoadAnimation, cleanupAnimations } from '@/lib/animations';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navigation from '@/components/Navigation';
 import BackToTop from '@/components/BackToTop';
 import ContactFormModal from '@/components/ContactFormModal';
 import { useLenis } from '@/contexts/LenisContext';
+import { useContactForm } from '@/contexts/ContactFormContext';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const { openContactForm } = useContactForm();
   // Animation refs for each section
   const heroRef = useRef<HTMLDivElement>(null);
   const heroBackgroundRef = useRef<HTMLDivElement>(null);
@@ -146,8 +148,8 @@ export default function Home() {
     return () => stopAutoScroll();
   }, []);
 
-  // Contact form modal state
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  // Get contact form state from context
+  const { isOpen: isContactModalOpen, closeContactForm } = useContactForm();
 
   return (
     <div className="min-h-screen bg-navy text-white">
@@ -423,7 +425,7 @@ export default function Home() {
 
           {/* CTA Button */}
           <div className="text-center" ref={ctaRef}>
-            <button onClick={() => setIsContactModalOpen(true)} className="inline-flex items-center px-6 py-3 border-2 font-bold tracking-widest text-xs uppercase rounded transition-all" style={{borderColor: '#FF6B35', color: '#FF6B35'}} onMouseEnter={(e) => {e.currentTarget.style.background = '#FF6B35'; e.currentTarget.style.color = 'white';}} onMouseLeave={(e) => {e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#FF6B35'}}>
+            <button onClick={openContactForm} className="inline-flex items-center px-6 py-3 border-2 font-bold tracking-widest text-xs uppercase rounded transition-all" style={{borderColor: '#FF6B35', color: '#FF6B35'}} onMouseEnter={(e) => {e.currentTarget.style.background = '#FF6B35'; e.currentTarget.style.color = 'white';}} onMouseLeave={(e) => {e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#FF6B35'}}>
               BOOK A CONSULTATION
               <ArrowRight className="ml-2 w-4 h-4" />
             </button>
@@ -483,7 +485,7 @@ export default function Home() {
       </footer>
 
       {/* Contact Form Modal */}
-      <ContactFormModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+      <ContactFormModal isOpen={isContactModalOpen} onClose={closeContactForm} />
     </div>
   );
 }
