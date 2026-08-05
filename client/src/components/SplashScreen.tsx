@@ -81,18 +81,23 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       });
     }
 
-    // Show button after video completes (approximately 5 seconds)
-    timeline.call(() => setShowButton(true), [], 5.2);
+    // Show button after video starts (approximately 0.5 seconds)
+    timeline.call(() => setShowButton(true), [], 0.5);
 
     // Button entrance
     if (buttonRef.current) {
       timeline.fromTo(
         buttonRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'back.out' },
-        5.2
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out' },
+        0.5
       );
     }
+
+    // Auto-transition after video completes (5 seconds)
+    timeline.call(() => {
+      handleExplore();
+    }, [], 5.2);
 
     return () => {
       timeline.kill();
@@ -104,45 +109,35 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       ref={containerRef}
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden touch-none"
       style={{
-        background: 'linear-gradient(135deg, #f0f4f8 0%, #e8eef5 100%)',
+        background: '#000000',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
       }}
     >
-      {/* Animated background overlay */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-200/10"></div>
-      </div>
+      {/* Full viewport video background */}
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        playsInline
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+        }}
+      >
+        <source src="/manus-storage/openv_logo_reveal_5sec_0bcf26ab.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
-        {/* Logo Reveal Video Container */}
-        <div
-          className="mb-6 md:mb-8 flex items-center justify-center"
-          style={{
-            filter: 'drop-shadow(0 20px 40px rgba(19, 196, 107, 0.2))',
-          }}
-        >
-          {/* Premium Logo Reveal Video */}
-          <video
-            ref={videoRef}
-            className="w-full max-w-2xl h-auto object-contain"
-            autoPlay
-            muted
-            playsInline
-            style={{
-              maxWidth: '100%',
-              height: 'auto',
-              aspectRatio: '16 / 9',
-            }}
-          >
-            <source src="/manus-storage/openv_logo_reveal_5sec_0bcf26ab.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+      {/* Dark overlay for button visibility */}
+      <div className="absolute inset-0 bg-black/20 z-10"></div>
 
-        {/* Explore Button */}
+      {/* Content overlay */}
+      <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 h-full">
+        {/* Explore Button - Overlaid on video */}
         {showButton && (
           <button
             ref={buttonRef}
@@ -154,8 +149,8 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
         )}
 
         {/* Swipe hint for mobile */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden">
-          <div className="flex flex-col items-center gap-2 text-slate-500 text-sm animate-bounce">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden z-20">
+          <div className="flex flex-col items-center gap-2 text-white text-sm animate-bounce">
             <span>Swipe up to explore</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m0 0l4 4m10-4v12m0 0l4-4m0 0l-4-4" />
@@ -163,36 +158,6 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
           </div>
         </div>
       </div>
-
-      {/* Animated particles/dots */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-slate-400 rounded-full opacity-40"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 2}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Floating animation keyframes */}
-      <style>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px) translateX(0px);
-            opacity: 0.3;
-          }
-          50% {
-            transform: translateY(-20px) translateX(10px);
-            opacity: 0.6;
-          }
-        }
-      `}</style>
     </div>
   );
 }
