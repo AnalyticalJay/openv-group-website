@@ -385,18 +385,18 @@ export default function Home() {
           {/* Industry Icons Grid */}
           <div ref={industriesRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-4 md:gap-6 lg:gap-8">
             {[
-              { image: '/manus-storage/icon-manufacturing-3d_ed5d4a90.png', label: 'Manufacturing' },
-              { image: '/manus-storage/icon-healthcare-3d_2f2b24b0.png', label: 'Healthcare' },
-              { image: '/manus-storage/icon-professional-services-3d_33ae95a0.png', label: 'Professional Services' },
-              { image: '/manus-storage/icon-construction-3d_904a266f.png', label: 'Construction' },
-              { image: '/manus-storage/icon-retail-3d_df5ed49f.png', label: 'Retail' },
-              { image: '/manus-storage/icon-financial-services-3d_211e4de2.png', label: 'Financial Services' },
-              { image: '/manus-storage/icon-education-3d_a1e06121.png', label: 'Education' },
-              { image: '/manus-storage/icon-hospitality-3d_c6ac832e.png', label: 'Hospitality' },
+              { image: '/manus-storage/icon-manufacturing-line_cde69b24.png', label: 'Manufacturing' },
+              { image: '/manus-storage/icon-healthcare-line_27b562b3.png', label: 'Healthcare' },
+              { image: '/manus-storage/icon-professional-services-line_6c4a34c4.png', label: 'Professional Services' },
+              { image: '/manus-storage/icon-construction-line_9dc1005d.png', label: 'Construction' },
+              { image: '/manus-storage/icon-retail-line_19deec17.png', label: 'Retail' },
+              { image: '/manus-storage/icon-financial-services-line_aeff72e1.png', label: 'Financial Services' },
+              { image: '/manus-storage/icon-education-line_c9fc44a3.png', label: 'Education' },
+              { image: '/manus-storage/icon-hospitality-line_3f641817.png', label: 'Hospitality' },
             ].map((item, i) => (
               <div key={i} className="text-center industry-icon-container" style={{opacity: 0}}>
                 <div className="industry-icon-wrapper relative inline-block mb-3 md:mb-4 cursor-pointer group">
-                  <img src={item.image} alt={item.label} className="w-16 md:w-20 h-16 md:h-20 object-contain" />
+                  <img src={item.image} alt={item.label} className="w-12 md:w-16 h-12 md:h-16 object-contain" />
                   <div className="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/10 rounded-lg transition-colors duration-300"></div>
                 </div>
                 <p className="text-xs md:text-sm font-bold text-gray-700 uppercase">{item.label}</p>
