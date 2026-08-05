@@ -96,15 +96,15 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       ref={containerRef}
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #1a2a4a 0%, #2a3f5f 100%)',
+        background: 'linear-gradient(135deg, #f0f4f8 0%, #e8eef5 100%)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
       }}
     >
       {/* Animated background overlay */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy/10"></div>
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-200/10"></div>
       </div>
 
       {/* Content */}
@@ -146,7 +146,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-green-400 rounded-full opacity-30"
+            className="absolute w-1 h-1 bg-slate-400 rounded-full opacity-40"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
