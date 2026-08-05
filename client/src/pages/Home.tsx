@@ -111,13 +111,7 @@ export default function Home() {
     }
     // Apply parallax effects to background images
     if (heroBackgroundRef.current) createParallaxEffect(heroBackgroundRef.current, 0.4);
-    
-    // Animate CTA section
-    const ctaSection = document.querySelector('#cta');
-    if (ctaSection) {
-      const bgElement = ctaSection.querySelector('.absolute');
-      if (bgElement) createParallaxEffect(bgElement as HTMLElement, 0.5);
-    }
+    // CTA section uses CSS backgroundAttachment: 'fixed' for parallax (like Partners section)
     
     // Performance optimization: GPU acceleration for animated elements
     if (!prefersReducedMotion()) {
