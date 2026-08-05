@@ -113,7 +113,7 @@ export default function Home() {
 
     // Apply parallax effects to background images
     if (heroBackgroundRef.current) createParallaxEffect(heroBackgroundRef.current, 0.4);
-    if (ctaBackgroundRef.current) createParallaxEffect(ctaBackgroundRef.current, 0.35);
+    if (ctaBackgroundRef.current) createParallaxEffect(ctaBackgroundRef.current, 0.5);
     
     // Performance optimization: GPU acceleration for animated elements
     if (!prefersReducedMotion()) {
