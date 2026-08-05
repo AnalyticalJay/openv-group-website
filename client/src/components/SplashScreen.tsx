@@ -8,7 +8,7 @@ interface SplashScreenProps {
 
 export function SplashScreen({ onComplete }: SplashScreenProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [showButton, setShowButton] = useState(false);
 
@@ -63,7 +63,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
   });
 
   useEffect(() => {
-    if (!containerRef.current || !logoRef.current) return;
+    if (!containerRef.current || !videoRef.current) return;
 
     const timeline = gsap.timeline();
 
@@ -74,41 +74,15 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       { opacity: 1, duration: 0.5 }
     );
 
-    // Logo entrance animation - scale and fade in with enhanced effect
-    timeline.fromTo(
-      logoRef.current,
-      { scale: 0.3, opacity: 0, rotateZ: -45 },
-      { scale: 1, opacity: 1, rotateZ: 0, duration: 1.2, ease: 'back.out' },
-      0.2
-    );
-
-    // Logo floating animation with more pronounced movement
-    timeline.to(
-      logoRef.current,
-      {
-        y: -40,
-        duration: 4,
-        ease: 'sine.inOut',
-        repeat: -1,
-        yoyo: true,
-      },
-      0.5
-    );
-
-    // Add subtle scale pulse for emphasis
-    if (logoRef.current) {
-      gsap.to(logoRef.current, {
-        scale: 1.08,
-        duration: 2.5,
-        ease: 'sine.inOut',
-        repeat: -1,
-        yoyo: true,
-        delay: 0.5,
+    // Play video
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.log('Video autoplay failed:', error);
       });
     }
 
-    // Show button after animations
-    timeline.call(() => setShowButton(true), [], 1.5);
+    // Show button after video completes (approximately 5 seconds)
+    timeline.call(() => setShowButton(true), [], 5.2);
 
     // Button entrance
     if (buttonRef.current) {
@@ -116,7 +90,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
         buttonRef.current,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.6, ease: 'back.out' },
-        2
+        5.2
       );
     }
 
@@ -143,24 +117,29 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4">
-        {/* Logo Container */}
+        {/* Logo Reveal Video Container */}
         <div
-          ref={logoRef}
-          className="mb-6 md:mb-8"
+          className="mb-6 md:mb-8 flex items-center justify-center"
           style={{
             filter: 'drop-shadow(0 20px 40px rgba(19, 196, 107, 0.2))',
           }}
         >
-          {/* OpenV Logo - Image with glow effect */}
-          <img
-            src="/manus-storage/openv-logo-splash-new_b4d91942.png"
-            alt="OpenV Group Logo"
-            className="w-48 h-48 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-contain drop-shadow-2xl"
+          {/* Premium Logo Reveal Video */}
+          <video
+            ref={videoRef}
+            className="w-full max-w-2xl h-auto object-contain"
+            autoPlay
+            muted
+            playsInline
             style={{
-              filter: 'drop-shadow(0 0 60px rgba(255, 107, 53, 0.4)) drop-shadow(0 0 30px rgba(27, 142, 255, 0.3)) brightness(1.3) contrast(1.1)',
-              opacity: 0.95,
+              maxWidth: '100%',
+              height: 'auto',
+              aspectRatio: '16 / 9',
             }}
-          />
+          >
+            <source src="/manus-storage/openv_logo_reveal_5sec_0bcf26ab.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
 
         {/* Explore Button */}
