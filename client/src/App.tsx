@@ -44,21 +44,23 @@ function App() {
   return (
     <ErrorBoundary>
       {showSplash && <AnimatedTextSplashScreen onComplete={handleSplashComplete} />}
-      <PageTransitionProvider>
-        <LenisProvider>
-          <ThemeProvider
-            defaultTheme="light"
-            // switchable
-          >
-            <TooltipProvider>
-              <ContactFormProvider>
-                <Toaster />
-                <Router />
-              </ContactFormProvider>
-            </TooltipProvider>
-          </ThemeProvider>
-        </LenisProvider>
-      </PageTransitionProvider>
+      {!showSplash && (
+        <PageTransitionProvider>
+          <LenisProvider>
+            <ThemeProvider
+              defaultTheme="light"
+              // switchable
+            >
+              <TooltipProvider>
+                <ContactFormProvider>
+                  <Toaster />
+                  <Router />
+                </ContactFormProvider>
+              </TooltipProvider>
+            </ThemeProvider>
+          </LenisProvider>
+        </PageTransitionProvider>
+      )}
     </ErrorBoundary>
   );
 }

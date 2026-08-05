@@ -37,8 +37,10 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
 
     // Create transition overlay
     const overlay = document.createElement('div');
-    overlay.className = 'fixed inset-0 z-[10000] bg-white';
+    overlay.className = 'fixed inset-0 bg-white';
     overlay.style.opacity = '0';
+    overlay.style.zIndex = '9999';
+    overlay.style.pointerEvents = 'none';
     document.body.appendChild(overlay);
 
     // Animate splash screen out and overlay in
@@ -70,6 +72,10 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
       ease: 'power2.inOut',
       onComplete: () => {
         overlay.remove();
+        // Ensure splash container is hidden
+        if (containerRef.current) {
+          containerRef.current.style.display = 'none';
+        }
       },
     }, 0.9);
   };
@@ -315,7 +321,7 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
     // Show button after all text animations complete
     timeline.call(() => {
       setShowButton(true);
-    }, [], 5.0);
+    }, [], 4.5);
 
     // Button entrance animation with scale and glow (only on desktop)
     if (buttonRef.current && !isMobile) {
@@ -342,7 +348,7 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
     return () => {
       timeline.kill();
     };
-  }, [isMobile]);
+  }, [isMobile, setShowButton]);
 
   return (
     <div
@@ -429,11 +435,11 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
         </div>
 
         {/* Explore Button - Desktop only */}
-        {showButton && !isMobile && (
+        {!isMobile && (
           <button
             ref={buttonRef}
             onClick={handleExplore}
-            className="mt-8 sm:mt-10 md:mt-12 px-6 sm:px-8 md:px-12 py-2.5 sm:py-3 md:py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold uppercase tracking-wider rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 active:scale-95 text-xs sm:text-sm md:text-base whitespace-nowrap"
+            className={`mt-8 sm:mt-10 md:mt-12 px-6 sm:px-8 md:px-12 py-2.5 sm:py-3 md:py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold uppercase tracking-wider rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105 active:scale-95 text-xs sm:text-sm md:text-base whitespace-nowrap transition-opacity duration-500 ${showButton ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             style={{
               textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
             }}
