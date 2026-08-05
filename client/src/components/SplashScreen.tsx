@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { useSwipeGesture } from '@/hooks/useSwipeGesture';
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -8,75 +9,10 @@ interface SplashScreenProps {
 export function SplashScreen({ onComplete }: SplashScreenProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [showButton, setShowButton] = useState(false);
 
-  useEffect(() => {
-    if (!containerRef.current || !logoRef.current) return;
-
-    const timeline = gsap.timeline();
-
-    // Fade in background
-    timeline.fromTo(
-      containerRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.5 }
-    );
-
-    // Logo entrance animation - scale and fade in with enhanced effect
-    timeline.fromTo(
-      logoRef.current,
-      { scale: 0.3, opacity: 0, rotateZ: -45 },
-      { scale: 1, opacity: 1, rotateZ: 0, duration: 1.2, ease: 'back.out' },
-      0.2
-    );
-
-    // Logo floating animation with more pronounced movement
-    timeline.to(
-      logoRef.current,
-      {
-        y: -40,
-        duration: 4,
-        ease: 'sine.inOut',
-        repeat: -1,
-        yoyo: true,
-      },
-      0.5
-    );
-
-    // Removed rotation animation - keeping only floating and scale pulse
-
-    // Add subtle scale pulse for emphasis
-    if (logoRef.current) {
-      gsap.to(logoRef.current, {
-        scale: 1.08,
-        duration: 2.5,
-        ease: 'sine.inOut',
-        repeat: -1,
-        yoyo: true,
-        delay: 0.5,
-      });
-    }
-
-    // Show button after animations
-    timeline.call(() => setShowButton(true), [], 1.5);
-
-    // Button entrance
-    if (buttonRef.current) {
-      timeline.fromTo(
-        buttonRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'back.out' },
-        2
-      );
-    }
-
-    return () => {
-      timeline.kill();
-    };
-  }, []);
-
+  // Handler function for swipe and button click
   const handleExplore = () => {
     if (!containerRef.current) return;
 
@@ -119,10 +55,80 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
     }, 0.9);
   };
 
+  // Add swipe gesture support for mobile
+  useSwipeGesture(containerRef, {
+    onSwipeUp: handleExplore,
+    threshold: 50,
+    timeThreshold: 500,
+  });
+
+  useEffect(() => {
+    if (!containerRef.current || !logoRef.current) return;
+
+    const timeline = gsap.timeline();
+
+    // Fade in background
+    timeline.fromTo(
+      containerRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.5 }
+    );
+
+    // Logo entrance animation - scale and fade in with enhanced effect
+    timeline.fromTo(
+      logoRef.current,
+      { scale: 0.3, opacity: 0, rotateZ: -45 },
+      { scale: 1, opacity: 1, rotateZ: 0, duration: 1.2, ease: 'back.out' },
+      0.2
+    );
+
+    // Logo floating animation with more pronounced movement
+    timeline.to(
+      logoRef.current,
+      {
+        y: -40,
+        duration: 4,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+      },
+      0.5
+    );
+
+    // Add subtle scale pulse for emphasis
+    if (logoRef.current) {
+      gsap.to(logoRef.current, {
+        scale: 1.08,
+        duration: 2.5,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+        delay: 0.5,
+      });
+    }
+
+    // Show button after animations
+    timeline.call(() => setShowButton(true), [], 1.5);
+
+    // Button entrance
+    if (buttonRef.current) {
+      timeline.fromTo(
+        buttonRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'back.out' },
+        2
+      );
+    }
+
+    return () => {
+      timeline.kill();
+    };
+  }, []);
+
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden touch-none"
       style={{
         background: 'linear-gradient(135deg, #f0f4f8 0%, #e8eef5 100%)',
         backgroundSize: 'cover',
@@ -167,6 +173,16 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
             Explore Now
           </button>
         )}
+
+        {/* Swipe hint for mobile */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden">
+          <div className="flex flex-col items-center gap-2 text-slate-500 text-sm animate-bounce">
+            <span>Swipe up to explore</span>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m0 0l4 4m10-4v12m0 0l4-4m0 0l-4-4" />
+            </svg>
+          </div>
+        </div>
       </div>
 
       {/* Animated particles/dots */}
