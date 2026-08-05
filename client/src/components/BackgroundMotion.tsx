@@ -1,9 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
 export function BackgroundMotion() {
   const containerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<SVGSVGElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     if (!containerRef.current || !gridRef.current) return;
@@ -117,6 +118,66 @@ export function BackgroundMotion() {
     return () => {
       timeline.kill();
     };
+  }, []);
+
+  // Mouse tracking for interactive shapes
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+
+      const shapes = containerRef.current?.querySelectorAll('[data-shape]');
+      if (!shapes) return;
+
+      shapes.forEach((shape: Element) => {
+        const rect = (shape as HTMLElement).getBoundingClientRect();
+        const shapeX = rect.left + rect.width / 2;
+        const shapeY = rect.top + rect.height / 2;
+
+        // Calculate distance from mouse to shape
+        const dx = e.clientX - shapeX;
+        const dy = e.clientY - shapeY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        // Interaction radius (pixels)
+        const interactionRadius = 200;
+
+        if (distance < interactionRadius) {
+          // Calculate angle from shape to mouse
+          const angle = Math.atan2(dy, dx);
+
+          // Calculate repulsion force (shapes push away from cursor)
+          const force = (1 - distance / interactionRadius) * 30;
+          const repelX = Math.cos(angle) * force;
+          const repelY = Math.sin(angle) * force;
+
+          // Apply subtle glow effect
+          const glowIntensity = (1 - distance / interactionRadius) * 0.6;
+          const glowColor = (shape as HTMLElement).style.borderColor || '#13C46B';
+
+          gsap.to(shape, {
+            x: repelX,
+            y: repelY,
+            boxShadow: `0 0 ${20 + glowIntensity * 30}px ${glowColor}`,
+            filter: `blur(${glowIntensity}px) brightness(${1 + glowIntensity * 0.3})`,
+            duration: 0.3,
+            overwrite: 'auto',
+          });
+        } else {
+          // Reset to original position when cursor moves away
+          gsap.to(shape, {
+            x: 0,
+            y: 0,
+            boxShadow: 'none',
+            filter: 'blur(0px) brightness(1)',
+            duration: 0.5,
+            overwrite: 'auto',
+          });
+        }
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
