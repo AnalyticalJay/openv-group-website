@@ -10,7 +10,8 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [showButton, setShowButton] = useState(false);
+  const [showButton, setShowButton] = useState(true);
+  const [videoReady, setVideoReady] = useState(false);
 
   // Handler function for swipe and button click
   const handleExplore = () => {
@@ -74,35 +75,30 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       { opacity: 1, duration: 0.5 }
     );
 
-    // Play video
-    if (videoRef.current) {
-      videoRef.current.play().catch((error) => {
-        console.log('Video autoplay failed:', error);
-      });
-    }
-
-    // Show button after video starts (approximately 0.5 seconds)
-    timeline.call(() => setShowButton(true), [], 0.5);
-
-    // Button entrance
+    // Button entrance - show immediately
     if (buttonRef.current) {
       timeline.fromTo(
         buttonRef.current,
         { opacity: 0, scale: 0.9 },
         { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out' },
-        0.5
+        0.2
       );
     }
-
-    // Auto-transition after video completes (5 seconds)
-    timeline.call(() => {
-      handleExplore();
-    }, [], 5.2);
 
     return () => {
       timeline.kill();
     };
   }, []);
+
+  // Handle video ready state for smooth playback
+  const handleVideoCanPlay = () => {
+    setVideoReady(true);
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.log('Video autoplay failed:', error);
+      });
+    }
+  };
 
   return (
     <div
@@ -119,9 +115,17 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
         muted
         playsInline
+        loop
+        onCanPlay={handleVideoCanPlay}
+        onLoadedMetadata={() => {
+          if (videoRef.current) {
+            videoRef.current.play().catch((error) => {
+              console.log('Video autoplay failed:', error);
+            });
+          }
+        }}
         style={{
           width: '100%',
           height: '100%',
@@ -157,6 +161,16 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
             </svg>
           </div>
         </div>
+
+        {/* Video loading indicator */}
+        {!videoReady && (
+          <div className="absolute inset-0 flex items-center justify-center z-30">
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-12 h-12 border-4 border-orange-500/30 border-t-orange-500 rounded-full animate-spin"></div>
+              <p className="text-white text-sm">Loading video...</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
