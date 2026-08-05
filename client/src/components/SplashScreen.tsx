@@ -24,20 +24,20 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       { opacity: 1, duration: 0.5 }
     );
 
-    // Logo entrance animation - scale and fade in
+    // Logo entrance animation - scale and fade in with enhanced effect
     timeline.fromTo(
       logoRef.current,
-      { scale: 0.5, opacity: 0, rotateZ: -10 },
-      { scale: 1, opacity: 1, rotateZ: 0, duration: 1, ease: 'back.out' },
+      { scale: 0.3, opacity: 0, rotateZ: -45 },
+      { scale: 1, opacity: 1, rotateZ: 0, duration: 1.2, ease: 'back.out' },
       0.2
     );
 
-    // Logo floating animation
+    // Logo floating animation with more pronounced movement
     timeline.to(
       logoRef.current,
       {
-        y: -20,
-        duration: 3,
+        y: -40,
+        duration: 4,
         ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
@@ -48,10 +48,22 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
     // Subtle rotation animation
     gsap.to(logoRef.current, {
       rotateZ: 360,
-      duration: 20,
+      duration: 25,
       ease: 'none',
       repeat: -1,
     });
+
+    // Add subtle scale pulse for emphasis
+    if (logoRef.current) {
+      gsap.to(logoRef.current, {
+        scale: 1.08,
+        duration: 2.5,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+        delay: 0.5,
+      });
+    }
 
     // Text fade in
     if (textRef.current) {
@@ -122,11 +134,14 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
             filter: 'drop-shadow(0 20px 40px rgba(19, 196, 107, 0.2))',
           }}
         >
-          {/* OpenV Logo - Image */}
+          {/* OpenV Logo - Image with glow effect */}
           <img
-            src="/manus-storage/openv-logo-splash_e931a5c2.png"
+            src="/manus-storage/openv-logo-splash-new_b4d91942.png"
             alt="OpenV Group Logo"
-            className="w-40 h-40 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain"
+            className="w-48 h-48 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-contain drop-shadow-2xl"
+            style={{
+              filter: 'drop-shadow(0 0 60px rgba(255, 107, 53, 0.4)) drop-shadow(0 0 30px rgba(27, 142, 255, 0.3))',
+            }}
           />
         </div>
 
