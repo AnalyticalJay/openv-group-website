@@ -205,19 +205,6 @@ function vitePluginStorageProxy(): Plugin {
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
-// Auto-detect HMR host from browser URL if available
-const getHmrConfig = () => {
-  if (process.env.VITE_HMR_HOST) {
-    return {
-      protocol: "wss",
-      host: process.env.VITE_HMR_HOST,
-      port: process.env.VITE_HMR_PORT ? parseInt(process.env.VITE_HMR_PORT) : 443,
-    };
-  }
-  // In development, let Vite auto-detect
-  return undefined;
-};
-
 export default defineConfig({
   plugins,
   resolve: {
@@ -250,6 +237,7 @@ export default defineConfig({
       strict: true,
       deny: ["**/..*"],
     },
-    hmr: getHmrConfig(),
+    // HMR configuration removed - let Vite auto-detect
+    // This prevents WebSocket connection issues in proxy environments
   },
 });
