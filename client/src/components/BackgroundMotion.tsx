@@ -48,49 +48,69 @@ export function BackgroundMotion() {
       0
     );
 
-    // Create floating geometric shapes
+    // Create floating geometric shapes with longer visibility
     const shapes = containerRef.current.querySelectorAll('[data-shape]');
     shapes.forEach((shape: Element, i: number) => {
-      const duration = 6 + i * 2;
-      const delay = i * 0.5;
+      const duration = 8 + i * 2;
+      const delay = i * 0.3;
 
-      // Floating animation
+      // Floating animation - longer and more pronounced
       gsap.to(shape, {
-        y: -30,
-        duration,
+        y: -50,
+        duration: duration * 1.2,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
         delay,
       });
 
-      // Rotation animation
+      // Rotation animation - continuous and smooth
       gsap.to(shape, {
         rotate: 360,
-        duration: 20 + i * 5,
+        duration: 25 + i * 3,
         repeat: -1,
         ease: 'none',
         delay,
       });
 
-      // Scale pulse
+      // Scale pulse - more pronounced
       gsap.to(shape, {
-        scale: 1.1,
-        duration: 2,
+        scale: 1.15,
+        duration: 3,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
         delay: delay + 0.5,
       });
 
-      // Opacity pulse
+      // Opacity pulse - stays more visible longer
       gsap.to(shape, {
-        opacity: 0.4,
-        duration: 3,
+        opacity: 0.5,
+        duration: 4,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
         delay: delay + 1,
+      });
+
+      // Color shift animation
+      gsap.to(shape, {
+        borderColor: i % 3 === 0 ? '#F97316' : i % 3 === 1 ? '#1B8EFF' : '#13C46B',
+        duration: 5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: delay + 2,
+      });
+
+      // Blur effect animation
+      gsap.to(shape, {
+        filter: 'blur(2px)',
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: delay + 1.5,
       });
     });
 
@@ -144,25 +164,50 @@ export function BackgroundMotion() {
         ))}
       </svg>
 
-      {/* Floating Geometric Shapes */}
+      {/* Floating Geometric Shapes - Expanded Set */}
+      {/* Top Row */}
       <div className="absolute top-1/4 left-1/4 w-40 h-40 border-2 border-[#13C46B] rounded-lg" data-shape />
       <div className="absolute top-1/3 right-1/4 w-32 h-32 border border-[#1B8EFF]" data-shape />
+      <div className="absolute top-1/5 left-1/2 w-24 h-24 border-2 border-[#F97316]" data-shape style={{ transform: 'rotate(45deg)' }} />
+      <div className="absolute top-1/3 left-1/3 w-28 h-28 border border-[#13C46B]" data-shape style={{ borderRadius: '50%' }} />
+
+      {/* Middle Row */}
       <div className="absolute bottom-1/4 left-1/3 w-48 h-24 border-2 border-[#F97316]" data-shape style={{ borderRadius: '50%' }} />
       <div className="absolute bottom-1/3 right-1/3 w-36 h-36 border border-[#13C46B]" data-shape style={{ transform: 'rotate(45deg)' }} />
+      <div className="absolute top-1/2 right-1/3 w-32 h-32 border-2 border-[#1B8EFF]" data-shape />
+      <div className="absolute top-2/3 left-1/4 w-40 h-20 border border-[#F97316]" data-shape />
+
+      {/* Bottom Row */}
+      <div className="absolute bottom-1/3 left-1/4 w-28 h-28 border-2 border-[#13C46B]" data-shape style={{ borderRadius: '50%' }} />
+      <div className="absolute bottom-1/4 right-1/4 w-36 h-36 border border-[#1B8EFF]" data-shape style={{ transform: 'rotate(45deg)' }} />
+      <div className="absolute bottom-1/5 left-1/2 w-32 h-32 border-2 border-[#F97316]" data-shape />
+      <div className="absolute bottom-1/3 right-1/5 w-40 h-40 border border-[#13C46B]" data-shape />
+
+      {/* Corner Shapes */}
+      <div className="absolute top-1/6 right-1/6 w-24 h-24 border-2 border-[#F97316]" data-shape style={{ transform: 'rotate(45deg)' }} />
+      <div className="absolute bottom-1/6 left-1/6 w-32 h-32 border border-[#1B8EFF]" data-shape />
+      <div className="absolute top-1/2 left-1/6 w-28 h-28 border-2 border-[#13C46B]" data-shape style={{ borderRadius: '50%' }} />
+      <div className="absolute bottom-1/2 right-1/6 w-36 h-36 border border-[#F97316]" data-shape />
+
+      {/* Additional Scattered Shapes */}
+      <div className="absolute top-1/3 left-1/6 w-20 h-20 border-2 border-[#1B8EFF]" data-shape style={{ transform: 'rotate(45deg)' }} />
+      <div className="absolute bottom-1/4 left-1/2 w-24 h-24 border border-[#13C46B]" data-shape />
+      <div className="absolute top-2/3 right-1/4 w-32 h-32 border-2 border-[#F97316]" data-shape style={{ borderRadius: '50%' }} />
+      <div className="absolute top-1/4 right-1/6 w-28 h-28 border border-[#1B8EFF]" data-shape />
 
       {/* Morphing Blobs */}
       <svg
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96"
         viewBox="0 0 200 200"
-        style={{ opacity: 0.1 }}
+        style={{ opacity: 0.15 }}
       >
         <defs>
           <filter id="blur">
             <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
           </filter>
         </defs>
-        <ellipse cx="100" cy="100" rx="80" ry="60" fill="#13C46B" filter="url(#blur)" opacity="0.3" data-shape />
-        <ellipse cx="100" cy="100" rx="60" ry="80" fill="#1B8EFF" filter="url(#blur)" opacity="0.3" data-shape />
+        <ellipse cx="100" cy="100" rx="80" ry="60" fill="#13C46B" filter="url(#blur)" opacity="0.4" data-shape />
+        <ellipse cx="100" cy="100" rx="60" ry="80" fill="#1B8EFF" filter="url(#blur)" opacity="0.4" data-shape />
       </svg>
 
       {/* Animated Light Rays */}
@@ -186,6 +231,47 @@ export function BackgroundMotion() {
             opacity="0.3"
           />
         ))}
+      </svg>
+
+      {/* Additional Geometric Accent Elements */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.1 }}>
+        {/* Hexagons */}
+        {Array.from({ length: 6 }).map((_, i) => {
+          const angle = (i * 360) / 6;
+          const x = 50 + 30 * Math.cos((angle * Math.PI) / 180);
+          const y = 50 + 30 * Math.sin((angle * Math.PI) / 180);
+          return (
+            <circle
+              key={`hex-${i}`}
+              cx={`${x}%`}
+              cy={`${y}%`}
+              r="20"
+              fill="none"
+              stroke={i % 3 === 0 ? '#13C46B' : i % 3 === 1 ? '#1B8EFF' : '#F97316'}
+              strokeWidth="2"
+              opacity="0.2"
+              data-shape
+            />
+          );
+        })}
+
+        {/* Triangles */}
+        {Array.from({ length: 4 }).map((_, i) => {
+          const angle = (i * 90);
+          const x = 50 + 35 * Math.cos((angle * Math.PI) / 180);
+          const y = 50 + 35 * Math.sin((angle * Math.PI) / 180);
+          return (
+            <polygon
+              key={`tri-${i}`}
+              points={`${x},${y} ${x + 15},${y + 15} ${x - 15},${y + 15}`}
+              fill="none"
+              stroke={i % 3 === 0 ? '#F97316' : i % 3 === 1 ? '#13C46B' : '#1B8EFF'}
+              strokeWidth="2"
+              opacity="0.2"
+              data-shape
+            />
+          );
+        })}
       </svg>
     </div>
   );
