@@ -59,18 +59,8 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       });
     }
 
-    // Text fade in
-    if (textRef.current) {
-      timeline.fromTo(
-        textRef.current,
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, duration: 0.8 },
-        0.8
-      );
-    }
-
     // Show button after animations
-    timeline.call(() => setShowButton(true), [], 2);
+    timeline.call(() => setShowButton(true), [], 1.5);
 
     // Button entrance
     if (buttonRef.current) {
@@ -107,7 +97,6 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
       style={{
         background: 'linear-gradient(135deg, #1a2a4a 0%, #2a3f5f 100%)',
-        backgroundImage: `url('/manus-storage/splash-background-pattern_6a271b24.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -123,7 +112,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
         {/* Logo Container */}
         <div
           ref={logoRef}
-          className="mb-8 md:mb-12"
+          className="mb-12 md:mb-16"
           style={{
             filter: 'drop-shadow(0 20px 40px rgba(19, 196, 107, 0.2))',
           }}
@@ -137,13 +126,6 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
               filter: 'drop-shadow(0 0 60px rgba(255, 107, 53, 0.4)) drop-shadow(0 0 30px rgba(27, 142, 255, 0.3))',
             }}
           />
-        </div>
-
-        {/* Text */}
-        <div ref={textRef} className="mb-8 md:mb-12">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white font-manrope text-center">
-            The OpenV Group
-          </h1>
         </div>
 
         {/* Explore Button */}
