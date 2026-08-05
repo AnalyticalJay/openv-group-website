@@ -8,7 +8,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LenisProvider } from "./contexts/LenisContext";
 import { PageTransitionProvider } from "./contexts/PageTransitionContext";
 import { ContactFormProvider } from "./contexts/ContactFormContext";
-import { SplashScreen } from "./components/SplashScreen";
+import { AnimatedTextSplashScreen } from "./components/AnimatedTextSplashScreen";
 import Home from "./pages/Home";
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -43,7 +43,7 @@ function App() {
 
   return (
     <ErrorBoundary>
-      {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
+      {showSplash && <AnimatedTextSplashScreen onComplete={handleSplashComplete} />}
       <PageTransitionProvider>
         <LenisProvider>
           <ThemeProvider

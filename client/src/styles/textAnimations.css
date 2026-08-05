@@ -1,0 +1,214 @@
+/* Geometric Kinetic Typography Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap');
+
+/* Text Animation Container */
+.animated-text-container {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* Primary Text Line */
+.text-line-primary {
+  font-size: clamp(2.5rem, 8vw, 7rem);
+  color: #f8fafc;
+  text-shadow: 0 0 20px rgba(19, 196, 107, 0.2);
+  font-weight: 800;
+}
+
+/* Secondary Text Line */
+.text-line-secondary {
+  font-size: clamp(2rem, 6vw, 5.5rem);
+  color: #1b8eff;
+  text-shadow: 0 0 20px rgba(27, 142, 255, 0.3);
+  font-weight: 700;
+}
+
+/* Tertiary Text Line */
+.text-line-tertiary {
+  font-size: clamp(1.5rem, 5vw, 4.5rem);
+  color: #13c46b;
+  text-shadow: 0 0 20px rgba(19, 196, 107, 0.4);
+  font-weight: 700;
+}
+
+/* Character Span for Stagger Animation */
+.char-span {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Geometric Accent Box */
+.geometric-accent {
+  position: absolute;
+  border: 2px solid #1b8eff;
+  opacity: 0.2;
+  will-change: transform, opacity;
+}
+
+.geometric-accent-small {
+  position: absolute;
+  border: 1px solid #13c46b;
+  opacity: 0.15;
+  will-change: transform;
+}
+
+/* Animated Grid Background */
+.animated-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.animated-grid svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Gradient Background */
+.splash-gradient-bg {
+  background: linear-gradient(135deg, #07111c 0%, #0f1e33 100%);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Glow Effect */
+.glow-effect {
+  filter: drop-shadow(0 0 10px rgba(19, 196, 107, 0.2)) 
+          drop-shadow(0 0 20px rgba(27, 142, 255, 0.1));
+}
+
+/* Button Styles */
+.explore-button {
+  padding: 0.75rem 2rem;
+  background: linear-gradient(to right, #f97316, #dc2626);
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  will-change: transform, box-shadow;
+}
+
+.explore-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+}
+
+.explore-button:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .text-line-primary {
+    font-size: 2.5rem;
+  }
+
+  .text-line-secondary {
+    font-size: 2rem;
+  }
+
+  .text-line-tertiary {
+    font-size: 1.5rem;
+  }
+
+  .explore-button {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+    letter-spacing: 0.05em;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    letter-spacing: 0.15em;
+  }
+}
+
+@keyframes charReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes accentRotate {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-45deg);
+  }
+  to {
+    opacity: 0.3;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(19, 196, 107, 0.2), 
+                 0 0 20px rgba(27, 142, 255, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(19, 196, 107, 0.4), 
+                 0 0 40px rgba(27, 142, 255, 0.2);
+  }
+}
+
+/* Utility Classes */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent Layout Shift */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
