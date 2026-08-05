@@ -109,11 +109,15 @@ export default function Home() {
         addIndustryIconHover(icon as HTMLElement);
       });
     }
-    if (ctaRef.current) animateSlideUp(ctaRef.current, 0);
-
     // Apply parallax effects to background images
     if (heroBackgroundRef.current) createParallaxEffect(heroBackgroundRef.current, 0.4);
-    if (ctaBackgroundRef.current) createParallaxEffect(ctaBackgroundRef.current, 0.5);
+    
+    // Animate CTA section
+    const ctaSection = document.querySelector('#cta');
+    if (ctaSection) {
+      const bgElement = ctaSection.querySelector('.absolute');
+      if (bgElement) createParallaxEffect(bgElement as HTMLElement, 0.5);
+    }
     
     // Performance optimization: GPU acceleration for animated elements
     if (!prefersReducedMotion()) {
@@ -409,27 +413,27 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="cta" className="py-12 md:py-20 lg:py-32 relative overflow-hidden">
-        <div ref={ctaBackgroundRef} className="absolute inset-0" style={{
+      <section id="cta" className="py-12 md:py-20 lg:py-32 bg-navy relative overflow-hidden">
+        {/* Isometric Background */}
+        <div className="absolute inset-0 opacity-30" style={{
           backgroundImage: 'url(/manus-storage/partners-bg-isometric_aabc2946.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          opacity: 0.3,
-          transform: 'translateY(0)'
+          backgroundAttachment: 'fixed'
         }}></div>
-        <div className="absolute inset-0 bg-navy/50"></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
-          <div className="text-center" style={{opacity: 0, transform: 'scale(0.95)'}} ref={(el) => { if (el && ctaRef.current === null) { ctaRef.current = el; animateScale(el); } }}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6">Ready to transform your business?</h2>
-            <p className="text-base sm:text-lg text-white/90 mb-6 md:mb-8 max-w-2xl mx-auto">
-              Book us for team loyalty and discover how Open V Group can do more with your technology. Businesses across South Africa trust us.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-              <button onClick={() => setIsContactModalOpen(true)} className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 md:py-4 text-white font-bold tracking-widest text-xs md:text-sm uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}>
-                BOOK A CONSULTATION
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </button>
-            </div>
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-16" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
+            <h2 className="text-white uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 md:mb-4 font-manrope">Ready to transform your business?</h2>
+            <p className="text-white/70 text-xs sm:text-sm">Book us for team loyalty and discover how Open V Group can do more with your technology. Businesses across South Africa trust us.</p>
+          </div>
+
+          {/* CTA Button */}
+          <div className="text-center" ref={ctaRef}>
+            <button onClick={() => setIsContactModalOpen(true)} className="inline-flex items-center px-6 py-3 border-2 font-bold tracking-widest text-xs uppercase rounded transition-all" style={{borderColor: '#FF6B35', color: '#FF6B35'}} onMouseEnter={(e) => {e.currentTarget.style.background = '#FF6B35'; e.currentTarget.style.color = 'white';}} onMouseLeave={(e) => {e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#FF6B35'}}>
+              BOOK A CONSULTATION
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </button>
           </div>
         </div>
       </section>
