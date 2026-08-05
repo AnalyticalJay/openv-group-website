@@ -1,6 +1,10 @@
 import { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { useSwipeGesture } from '@/hooks/useSwipeGesture';
+import { ParticleSystem } from './ParticleSystem';
+import { BackgroundMotion } from './BackgroundMotion';
+import { LightRays } from './LightRays';
+import * as advancedAnimations from '@/lib/advancedAnimations';
 
 interface AnimatedTextSplashScreenProps {
   onComplete: () => void;
@@ -74,31 +78,31 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
     timeline.fromTo(
       containerRef.current,
       { opacity: 0 },
-      { opacity: 1, duration: 0.3 }
+      { opacity: 1, duration: 0.5 }
     );
 
     // ===== LINE 1: "YOUR VISION" =====
-    // Animation 1: Slide in from left with letter spacing expansion
+    // Animation 1: Blur reveal with letter spacing
     timeline.fromTo(
       line1Ref.current,
       { 
         opacity: 0,
-        x: -150,
+        filter: 'blur(20px)',
         letterSpacing: '0.05em',
         scaleX: 0.8,
       },
       { 
         opacity: 1,
-        x: 0,
+        filter: 'blur(0px)',
         letterSpacing: '0.15em',
         scaleX: 1,
-        duration: 1.2,
+        duration: 1.4,
         ease: 'power2.out',
       },
       0.3
     );
 
-    // Animation 2: Add underline effect (geometric line)
+    // Animation 2: Add underline with gradient
     const line1Underline = document.createElement('div');
     line1Underline.className = 'absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#13C46B] to-[#1B8EFF]';
     line1Underline.style.width = '0%';
@@ -111,46 +115,70 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
       line1Underline,
       {
         width: '100%',
-        duration: 0.8,
+        duration: 1.0,
         ease: 'power2.out',
       },
       0.8
     );
 
+    // Animation 3: Add glitch effect
+    const glitchTimeline = gsap.timeline({ delay: 1.8 });
+    for (let i = 0; i < 3; i++) {
+      glitchTimeline.to(
+        line1Ref.current,
+        {
+          x: Math.random() * 8 - 4,
+          y: Math.random() * 8 - 4,
+          duration: 0.1,
+        }
+      );
+    }
+    glitchTimeline.to(line1Ref.current, { x: 0, y: 0, duration: 0.1 });
+
     // ===== ACCENT ELEMENT =====
-    // Animation: Rotate, scale, and fade in with glow
+    // Animation: Complex rotation with scale and blur
     if (accentRef.current) {
       timeline.fromTo(
         accentRef.current,
         { 
           opacity: 0,
-          scale: 0.3,
-          rotate: -90,
-          filter: 'blur(10px)',
+          scale: 0.2,
+          rotate: -180,
+          filter: 'blur(15px)',
         },
         { 
-          opacity: 0.3,
+          opacity: 0.4,
           scale: 1,
           rotate: 0,
           filter: 'blur(0px)',
-          duration: 1.4,
+          duration: 1.6,
           ease: 'back.out',
         },
         0.2
       );
 
-      // Add continuous rotation animation to accent
+      // Add continuous rotation animation
       gsap.to(accentRef.current, {
         rotate: 360,
-        duration: 20,
+        duration: 25,
         repeat: -1,
         ease: 'none',
+        delay: 2.0,
+      });
+
+      // Add scale pulse
+      gsap.to(accentRef.current, {
+        scale: 1.1,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
         delay: 2.0,
       });
     }
 
     // ===== LINE 2: "OUR EXPERTISE" =====
-    // Animation 1: Character stagger with scale and rotation
+    // Animation 1: Character stagger with rotation and scale
     const line2Text = line2Ref.current;
     const line2Chars = line2Text.querySelectorAll('span');
     
@@ -158,141 +186,143 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
       line2Chars,
       { 
         opacity: 0,
-        y: 40,
-        scale: 0.5,
-        rotate: -10,
+        y: 50,
+        scale: 0.3,
+        rotate: -20,
+        filter: 'blur(10px)',
       },
       { 
         opacity: 1,
         y: 0,
         scale: 1,
         rotate: 0,
-        duration: 0.7,
-        stagger: 0.08,
+        filter: 'blur(0px)',
+        duration: 0.8,
+        stagger: 0.1,
         ease: 'back.out',
       },
-      1.0
+      1.2
     );
 
-    // Animation 2: Add wave effect to characters
+    // Animation 2: Wave effect
     timeline.to(
       line2Chars,
       {
-        y: -10,
-        duration: 0.4,
-        stagger: 0.06,
+        y: -15,
+        duration: 0.5,
+        stagger: 0.08,
         ease: 'sine.inOut',
       },
-      2.2
+      2.4
     );
 
     timeline.to(
       line2Chars,
       {
         y: 0,
-        duration: 0.4,
-        stagger: 0.06,
+        duration: 0.5,
+        stagger: 0.08,
         ease: 'sine.inOut',
       },
-      2.6
+      2.9
+    );
+
+    // Animation 3: Color shift effect
+    timeline.to(
+      line2Chars,
+      {
+        color: '#F97316',
+        duration: 0.6,
+        stagger: 0.05,
+        ease: 'sine.inOut',
+      },
+      3.4
+    );
+
+    timeline.to(
+      line2Chars,
+      {
+        color: '#1B8EFF',
+        duration: 0.6,
+        stagger: 0.05,
+        ease: 'sine.inOut',
+      },
+      4.0
     );
 
     // ===== LINE 3: "UNLIMITED POSSIBILITIES" =====
-    // Animation 1: Split reveal from center
+    // Animation 1: Split reveal from center with 3D effect
     const line3Text = line3Ref.current;
     const line3Chars = line3Text.querySelectorAll('span');
     
     timeline.fromTo(
       line3Chars,
-      { 
+      (i: number) => ({
         opacity: 0,
-        x: (i) => {
-          const middle = line3Chars.length / 2;
-          return (i < middle ? -50 : 50);
-        },
-        scale: 0.8,
-      },
+        x: i % 2 === 0 ? -80 : 80,
+        scale: 0.5,
+        rotationY: i % 2 === 0 ? 90 : -90,
+      }),
       { 
         opacity: 1,
         x: 0,
         scale: 1,
-        duration: 0.9,
-        stagger: 0.04,
-        ease: 'power2.out',
+        rotationY: 0,
+        duration: 1.0,
+        stagger: 0.06,
+        ease: 'back.out',
       },
-      1.8
+      2.0
     );
 
-    // Animation 2: Add glow pulse effect
+    // Animation 2: Glow pulse effect
     timeline.to(
       line3Ref.current,
       {
-        textShadow: '0 0 30px rgba(19, 196, 107, 0.5), 0 0 60px rgba(19, 196, 107, 0.3)',
-        duration: 0.6,
+        textShadow: '0 0 40px rgba(19, 196, 107, 0.8), 0 0 80px rgba(19, 196, 107, 0.4)',
+        duration: 0.8,
         repeat: 1,
         yoyo: true,
       },
-      2.8
+      3.2
     );
 
     // ===== COMBINED EFFECTS =====
-    // Animation: Pulsing glow effect on all text
+    // Animation: Final pulsing glow on all text
     timeline.to(
       [line1Ref.current, line2Ref.current, line3Ref.current],
       {
-        textShadow: '0 0 20px rgba(19, 196, 107, 0.3), 0 0 40px rgba(27, 142, 255, 0.2)',
-        duration: 1.2,
+        textShadow: '0 0 30px rgba(19, 196, 107, 0.4), 0 0 60px rgba(27, 142, 255, 0.2)',
+        duration: 1.0,
         repeat: 1,
         yoyo: true,
       },
-      3.0
+      4.2
     );
-
-    // Animation: Geometric line animations (accent lines)
-    const horizontalLine = document.querySelector('line[y1="50%"]') as SVGLineElement;
-    const verticalLine = document.querySelector('line[x1="50%"]') as SVGLineElement;
-
-    if (horizontalLine) {
-      timeline.fromTo(
-        horizontalLine,
-        { opacity: 0, strokeDasharray: '1000', strokeDashoffset: '1000' },
-        { opacity: 0.1, strokeDashoffset: 0, duration: 1.0, ease: 'power2.out' },
-        0.5
-      );
-    }
-
-    if (verticalLine) {
-      timeline.fromTo(
-        verticalLine,
-        { opacity: 0, strokeDasharray: '1000', strokeDashoffset: '1000' },
-        { opacity: 0.1, strokeDashoffset: 0, duration: 1.0, ease: 'power2.out' },
-        0.7
-      );
-    }
 
     // Show button after all text animations complete
     timeline.call(() => {
       setShowButton(true);
-    }, [], 4.2);
+    }, [], 5.0);
 
     // Button entrance animation with scale and glow
     if (buttonRef.current) {
       timeline.fromTo(
         buttonRef.current,
-        { opacity: 0, scale: 0.7, y: 20 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: 'back.out' },
-        4.2
+        { opacity: 0, scale: 0.5, y: 30, filter: 'blur(10px)' },
+        { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 1.0, ease: 'back.out' },
+        5.0
       );
 
       // Add button glow animation
       gsap.to(
         buttonRef.current,
         {
-          boxShadow: '0 0 20px rgba(249, 115, 22, 0.6), 0 0 40px rgba(249, 115, 22, 0.3)',
-          duration: 1.5,
+          boxShadow: '0 0 30px rgba(249, 115, 22, 0.8), 0 0 60px rgba(249, 115, 22, 0.4)',
+          duration: 2.0,
           repeat: -1,
           yoyo: true,
-          delay: 4.2,
+          delay: 5.0,
         }
       );
     }
@@ -305,26 +335,25 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999] overflow-hidden bg-gradient-to-br from-[#07111c] via-[#0f1e33] to-[#07111c] flex items-center justify-center"
+      className="fixed inset-0 z-[9999] overflow-hidden bg-gradient-to-br from-[#07111c] via-[#0f1e33] to-[#07111c] flex items-center justify-center perspective"
     >
-      {/* Animated Grid Background */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.05 }}>
-        <defs>
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#13C46B" strokeWidth="0.5"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-      </svg>
+      {/* Background Motion Effects */}
+      <BackgroundMotion />
+
+      {/* Light Rays */}
+      <LightRays />
+
+      {/* Particle System */}
+      <ParticleSystem isActive={true} particleCount={80} colors={['#13C46B', '#1B8EFF', '#F97316']} />
 
       {/* Geometric Accent Elements */}
       <div
         ref={accentRef}
-        className="absolute top-1/4 right-1/4 w-32 h-32 border-2 border-[#1B8EFF]"
+        className="absolute top-1/4 right-1/4 w-40 h-40 border-2 border-[#1B8EFF]"
         style={{ opacity: 0 }}
       />
 
-      <div className="absolute bottom-1/4 left-1/3 w-24 h-24 border border-[#13C46B]" style={{ opacity: 0.1 }} />
+      <div className="absolute bottom-1/4 left-1/3 w-32 h-32 border border-[#13C46B]" style={{ opacity: 0.1 }} />
 
       {/* Main Content */}
       <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 h-full gap-8">
@@ -343,7 +372,7 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
           YOUR VISION
         </div>
 
-        {/* Line 2: OUR EXPERTISE - with character wrapping for stagger effect */}
+        {/* Line 2: OUR EXPERTISE */}
         <div
           ref={line2Ref}
           className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#1B8EFF]"
@@ -362,7 +391,7 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
           ))}
         </div>
 
-        {/* Line 3: UNLIMITED POSSIBILITIES - with character wrapping */}
+        {/* Line 3: UNLIMITED POSSIBILITIES */}
         <div
           ref={line3Ref}
           className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#13C46B]"
@@ -381,7 +410,7 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
           ))}
         </div>
 
-        {/* Explore Button - Only shows after animation */}
+        {/* Explore Button */}
         {showButton && (
           <button
             ref={buttonRef}
@@ -395,7 +424,7 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
           </button>
         )}
 
-        {/* Swipe hint for mobile - Only shows after animation */}
+        {/* Swipe hint for mobile */}
         {showButton && (
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden z-20">
             <div className="flex flex-col items-center gap-2 text-white text-sm animate-bounce">
@@ -407,12 +436,6 @@ export function AnimatedTextSplashScreen({ onComplete }: AnimatedTextSplashScree
           </div>
         )}
       </div>
-
-      {/* Animated accent lines */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.1 }}>
-        <line x1="0" y1="50%" x2="100%" y2="50%" stroke="#13C46B" strokeWidth="1" strokeDasharray="1000" />
-        <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#1B8EFF" strokeWidth="1" strokeDasharray="1000" />
-      </svg>
     </div>
   );
 }
