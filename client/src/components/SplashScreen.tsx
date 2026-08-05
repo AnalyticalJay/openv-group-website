@@ -45,13 +45,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       0.5
     );
 
-    // Subtle rotation animation
-    gsap.to(logoRef.current, {
-      rotateZ: 360,
-      duration: 25,
-      ease: 'none',
-      repeat: -1,
-    });
+    // Removed rotation animation - keeping only floating and scale pulse
 
     // Add subtle scale pulse for emphasis
     if (logoRef.current) {
@@ -147,12 +141,9 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
 
         {/* Text */}
         <div ref={textRef} className="mb-8 md:mb-12">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-manrope">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white font-manrope text-center">
             The OpenV Group
           </h1>
-          <p className="text-gray-300 text-sm md:text-base lg:text-lg max-w-md mx-auto">
-            Smart technology. Seamless solutions. Stronger business.
-          </p>
         </div>
 
         {/* Explore Button */}
