@@ -10,8 +10,8 @@ import { PageTransitionProvider } from "./contexts/PageTransitionContext";
 import { ContactFormProvider } from "./contexts/ContactFormContext";
 import { SplashScreen } from "./components/SplashScreen";
 import Home from "./pages/Home";
-
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />
