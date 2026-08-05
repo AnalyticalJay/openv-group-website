@@ -395,9 +395,8 @@ export default function Home() {
               { image: '/manus-storage/icon-hospitality-line_3f641817.png', label: 'Hospitality' },
             ].map((item, i) => (
               <div key={i} className="text-center industry-icon-container" style={{opacity: 0}}>
-                <div className="industry-icon-wrapper relative inline-block mb-3 md:mb-4 cursor-pointer group">
-                  <img src={item.image} alt={item.label} className="w-12 md:w-16 h-12 md:h-16 object-contain" />
-                  <div className="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/10 rounded-lg transition-colors duration-300"></div>
+                <div className="industry-icon-wrapper inline-block mb-3 md:mb-4 cursor-pointer group">
+                  <img src={item.image} alt={item.label} className="w-14 md:w-20 h-14 md:h-20 object-contain transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 <p className="text-xs md:text-sm font-bold text-gray-700 uppercase">{item.label}</p>
               </div>
