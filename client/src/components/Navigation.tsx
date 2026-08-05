@@ -5,16 +5,14 @@ import { createScrollProgressIndicator, animateMobileMenuOpen, animateMobileMenu
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('#about');
+  const [activeSection, setActiveSection] = useState('#companies');
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const navLinks = [
-    { label: 'About Us', href: '#about' },
     { label: 'Our Companies', href: '#companies' },
     { label: 'Solutions', href: '#solutions' },
     { label: 'Industries', href: '#industries' },
     { label: 'Partners', href: '#partners' },
-    { label: 'Insights', href: '#insights' },
     { label: 'Contact', href: '#contact' },
   ];
 
