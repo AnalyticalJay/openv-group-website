@@ -122,30 +122,12 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
             filter: 'drop-shadow(0 20px 40px rgba(19, 196, 107, 0.2))',
           }}
         >
-          {/* OpenV Logo - SVG */}
-          <svg
-            width="120"
-            height="120"
-            viewBox="0 0 120 120"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="md:w-40 md:h-40"
-          >
-            {/* Main G shape */}
-            <path
-              d="M30 60C30 41.1177 45.1177 26 64 26C82.8823 26 98 41.1177 98 60C98 78.8823 82.8823 94 64 94C45.1177 94 30 78.8823 30 60Z"
-              fill="none"
-              stroke="#13C46B"
-              strokeWidth="12"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-
-            {/* Squares */}
-            <rect x="70" y="52" width="14" height="14" fill="#13C46B" />
-            <rect x="70" y="70" width="14" height="14" fill="#13C46B" />
-            <rect x="88" y="61" width="14" height="14" fill="#13C46B" />
-          </svg>
+          {/* OpenV Logo - Image */}
+          <img
+            src="/manus-storage/openv-logo-splash_e931a5c2.png"
+            alt="OpenV Group Logo"
+            className="w-32 h-32 md:w-48 md:h-48 object-contain"
+          />
         </div>
 
         {/* Text */}
