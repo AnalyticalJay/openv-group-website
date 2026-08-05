@@ -98,9 +98,9 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #07111C 0%, #0F1E33 100%)',
+        background: 'linear-gradient(135deg, #1a2a4a 0%, #2a3f5f 100%)',
         backgroundImage: `url('/manus-storage/splash-background-pattern_6a271b24.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -108,8 +108,8 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       }}
     >
       {/* Animated background overlay */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy/20"></div>
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy/10"></div>
       </div>
 
       {/* Content */}
@@ -126,7 +126,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
           <img
             src="/manus-storage/openv-logo-splash_e931a5c2.png"
             alt="OpenV Group Logo"
-            className="w-32 h-32 md:w-48 md:h-48 object-contain"
+            className="w-40 h-40 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain"
           />
         </div>
 
