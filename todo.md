@@ -14,3 +14,8 @@
 - [x] Move the three brand video blocks directly beneath the hero content
 - [x] Blend the brand-block area into the hero section and keep the ecosystem strip below it
 - [x] Verify the revised section order and responsive layout on desktop and mobile
+
+- [x] Extend the hero background canvas behind the brand blocks so both sections share one continuous visual field
+- [x] Remove the visible border, color, and spacing seam between hero and brand blocks
+- [x] Preserve the brand-card grid and mobile stacking while matching the supplied continuous-background reference
+- [x] Verify the unified hero-and-brands composition on desktop and mobile

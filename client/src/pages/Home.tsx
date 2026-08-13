@@ -182,7 +182,8 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-navy/20 via-navy/40 to-navy/60 z-10"></div>
         </div>
 
-        <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-20 max-w-7xl">
+        <div className="relative z-20 w-full">
+          <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-20 max-w-7xl">
           <div className="max-w-4xl">
 
 
@@ -213,12 +214,10 @@ export default function Home() {
               </button>
             </div>
           </div>
-        </div>
-
-      </section>
+          </div>
 
       {/* Brands Section */}
-      <section id="companies" className="relative z-10 -mt-px overflow-hidden border-t border-white/5 bg-navy py-8 sm:py-10 md:py-14 lg:py-20">
+      <section id="companies" className="relative z-10 overflow-hidden bg-transparent py-8 sm:py-10 md:py-14 lg:py-20">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl relative z-10">
           {/* Brand Cards */}
           <div ref={brandCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
@@ -246,6 +245,8 @@ export default function Home() {
               </video>
             </a>
           </div>
+        </div>
+      </section>
         </div>
       </section>
 
