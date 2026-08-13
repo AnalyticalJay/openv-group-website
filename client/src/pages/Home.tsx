@@ -188,16 +188,15 @@ export default function Home() {
 
             {/* Headline */}
             <h1 ref={heroHeadlineRef} className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-manrope font-black text-white mb-4 sm:mb-6 md:mb-8 leading-tight tracking-tight">
-              <div className="headline-line">Smart technology.</div>
-              <div className="headline-line">Seamless solutions.</div>
+              <div className="headline-line">THREE SPECIALIST BRANDS.</div>
               <div className="headline-line">
-                <span ref={heroGradientRef} style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '900', letterSpacing: '-0.02em', backgroundSize: '200% 100%', display: 'inline-block'}}>Stronger business.</span>
+                <span ref={heroGradientRef} style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '900', letterSpacing: '-0.02em', backgroundSize: '200% 100%', display: 'inline-block'}}>ONE POWERFUL GROUP.</span>
               </div>
             </h1>
 
             {/* Subheading */}
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/70 mb-6 sm:mb-8 md:mb-12 max-w-3xl font-light leading-relaxed">
-              Three expert brands. One connected ecosystem. All the technology your business needs to operate, grow and thrive.
+              Different expertise. One seamless partnership.
             </p>
 
             {/* CTAs */}
@@ -256,12 +255,6 @@ export default function Home() {
       {/* Brands Section */}
       <section id="companies" className="py-8 sm:py-12 md:py-20 lg:py-32 relative overflow-hidden border-t border-white/5 bg-navy">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-8 sm:mb-12 md:mb-16" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
-            <h2 className="text-white uppercase tracking-wider text-sm sm:text-base md:text-xl lg:text-2xl font-bold mb-2 md:mb-4 font-manrope">THREE SPECIALIST BRANDS. <span style={{background: 'linear-gradient(to right, #13C46B, #0F9B6F, #0F1E33)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>ONE POWERFUL GROUP.</span></h2>
-            <p className="text-white/60 text-xs">Different expertise. One seamless partnership.</p>
-          </div>
-
           {/* Brand Cards */}
           <div ref={brandCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {/* OpenV Business - Video */}

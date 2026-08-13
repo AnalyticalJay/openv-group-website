@@ -8,7 +8,6 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LenisProvider } from "./contexts/LenisContext";
 import { PageTransitionProvider } from "./contexts/PageTransitionContext";
 import { ContactFormProvider } from "./contexts/ContactFormContext";
-import { AnimatedTextSplashScreen } from "./components/AnimatedTextSplashScreen";
 import Home from "./pages/Home";
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -31,36 +30,23 @@ function Router() {
 // - Use the useContactForm hook in any component to access openContactForm() and closeContactForm()
 
 function App() {
-  const [showSplash, setShowSplash] = useState(() => {
-    // Check if user has already seen splash screen in this session
-    return !sessionStorage.getItem('splashScreenSeen');
-  });
-
-  const handleSplashComplete = () => {
-    sessionStorage.setItem('splashScreenSeen', 'true');
-    setShowSplash(false);
-  };
-
   return (
     <ErrorBoundary>
-      {showSplash && <AnimatedTextSplashScreen onComplete={handleSplashComplete} />}
-      {!showSplash && (
-        <PageTransitionProvider>
-          <LenisProvider>
-            <ThemeProvider
-              defaultTheme="light"
-              // switchable
-            >
-              <TooltipProvider>
-                <ContactFormProvider>
-                  <Toaster />
-                  <Router />
-                </ContactFormProvider>
-              </TooltipProvider>
-            </ThemeProvider>
-          </LenisProvider>
-        </PageTransitionProvider>
-      )}
+      <PageTransitionProvider>
+        <LenisProvider>
+          <ThemeProvider
+            defaultTheme="light"
+            // switchable
+          >
+            <TooltipProvider>
+              <ContactFormProvider>
+                <Toaster />
+                <Router />
+              </ContactFormProvider>
+            </TooltipProvider>
+          </ThemeProvider>
+        </LenisProvider>
+      </PageTransitionProvider>
     </ErrorBoundary>
   );
 }
