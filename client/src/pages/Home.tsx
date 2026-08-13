@@ -164,14 +164,14 @@ export default function Home() {
       <Navigation />
       <BackToTop />
       {/* Hero Section */}
-      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-24 sm:pt-28 md:pt-40 pb-32 sm:pb-40 md:pb-56 lg:pb-64 overflow-hidden bg-navy" style={{opacity: 1}}>
-        {/* Static Background with animated globe and connectors */}
+      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-24 sm:pt-28 md:pt-40 pb-20 sm:pb-24 md:pb-28 lg:pb-32 overflow-hidden bg-navy" style={{opacity: 1}}>
+        {/* Abstract enterprise technology background with text-safe space */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div 
             ref={heroBackgroundRef}
             className="absolute inset-0 w-full h-full hero-background-animated"
             style={{
-              backgroundImage: 'url(/manus-storage/hero-background_85f8ac75.png)',
+              backgroundImage: 'url(/manus-storage/openv-hero-abstract-technology_3973bcae.jpg)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
@@ -215,45 +215,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Ecosystem Strip Bar */}
-        <div ref={ecosystemRef} className="absolute bottom-0 left-0 w-full bg-white border-t border-gray-200 py-4 sm:py-6 md:py-10 z-20">
-          <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl">
-            <div className="text-center mb-4 sm:mb-6 md:mb-8">
-              <h2 className="uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-lg font-bold mb-1 md:mb-2 font-manrope" style={{background: 'linear-gradient(to right, #FF6B35, #FF1744)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>One Ecosystem. Endless Possibilities.</h2>
-              <p className="text-gray-600 text-xs">Our three brands work together to deliver complete technology solutions.</p>
-            </div>
-            
-            {/* Process Flow with Connectors */}
-            <div className="relative">
-              {/* Horizontal divider line for desktop */}
-              <div ref={ecosystemLineRef} className="hidden lg:block absolute top-6 left-0 right-0 h-px" style={{background: 'linear-gradient(to right, transparent, #FF6B35, #FF1744, transparent)', boxShadow: '0 0 20px rgba(255, 107, 53, 0.5)'}}></div>
-              
-              <div ref={ecosystemIconsRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3 md:gap-6 lg:gap-8 relative z-10">
-                {[
-                  { icon: ZapIcon, label: 'Connect', desc: 'Integrate your existing systems' },
-                  { icon: Target, label: 'Engage', desc: 'Digital marketing to reach your audience' },
-                  { icon: Monitor, label: 'Manage', desc: 'Business software manages operations' },
-                  { icon: Zap, label: 'Automate', desc: 'AI and automation that drives efficiency' },
-                  { icon: TrendingUp, label: 'Grow', desc: 'Together we help you scale with confidence' },
-                ].map((item, i) => (
-                  <div key={i} className="text-center group relative ecosystem-icon">
-                    <div className="flex flex-col items-center">
-                      <div className="ecosystem-icon w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 rounded-full flex items-center justify-center mx-auto mb-1 sm:mb-2 md:mb-3 transition-all duration-300 shadow-lg" style={{background: 'linear-gradient(135deg, #FF6B35, #FF1744)', border: '1px solid rgba(255, 107, 53, 0.4)', boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)'}}>
-                        <item.icon className="w-5 md:w-6 h-5 md:h-6 text-white group-hover:scale-110 transition-transform duration-300" />
-                      </div>
-                      <h3 className="text-navy font-bold mb-1 uppercase tracking-wider text-xs md:text-sm">{item.label}</h3>
-                      <p className="text-xs text-gray-600 leading-tight hidden md:block">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* Brands Section */}
-      <section id="companies" className="py-8 sm:py-12 md:py-20 lg:py-32 relative overflow-hidden border-t border-white/5 bg-navy">
+      <section id="companies" className="relative z-10 -mt-px overflow-hidden border-t border-white/5 bg-navy py-8 sm:py-10 md:py-14 lg:py-20">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl relative z-10">
           {/* Brand Cards */}
           <div ref={brandCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
@@ -280,6 +245,38 @@ export default function Home() {
                 Your browser does not support the video tag.
               </video>
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Ecosystem Strip Section */}
+      <section ref={ecosystemRef} className="relative z-20 bg-white border-t border-gray-200 py-4 sm:py-6 md:py-10">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl">
+          <div className="text-center mb-4 sm:mb-6 md:mb-8">
+            <h2 className="uppercase tracking-wider text-xs sm:text-sm md:text-base lg:text-lg font-bold mb-1 md:mb-2 font-manrope" style={{background: 'linear-gradient(to right, #FF6B35, #FF1744)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>One Ecosystem. Endless Possibilities.</h2>
+            <p className="text-gray-600 text-xs">Our three brands work together to deliver complete technology solutions.</p>
+          </div>
+          <div className="relative">
+            <div ref={ecosystemLineRef} className="hidden lg:block absolute top-6 left-0 right-0 h-px" style={{background: 'linear-gradient(to right, transparent, #FF6B35, #FF1744, transparent)', boxShadow: '0 0 20px rgba(255, 107, 53, 0.5)'}}></div>
+            <div ref={ecosystemIconsRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3 md:gap-6 lg:gap-8 relative z-10">
+              {[
+                { icon: ZapIcon, label: 'Connect', desc: 'Integrate your existing systems' },
+                { icon: Target, label: 'Engage', desc: 'Digital marketing to reach your audience' },
+                { icon: Monitor, label: 'Manage', desc: 'Business software manages operations' },
+                { icon: Zap, label: 'Automate', desc: 'AI and automation that drives efficiency' },
+                { icon: TrendingUp, label: 'Grow', desc: 'Together we help you scale with confidence' },
+              ].map((item, i) => (
+                <div key={i} className="text-center group relative ecosystem-icon">
+                  <div className="flex flex-col items-center">
+                    <div className="ecosystem-icon w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 rounded-full flex items-center justify-center mx-auto mb-1 sm:mb-2 md:mb-3 transition-all duration-300 shadow-lg" style={{background: 'linear-gradient(135deg, #FF6B35, #FF1744)', border: '1px solid rgba(255, 107, 53, 0.4)', boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)'}}>
+                      <item.icon className="w-5 md:w-6 h-5 md:h-6 text-white group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <h3 className="text-navy font-bold mb-1 uppercase tracking-wider text-xs md:text-sm">{item.label}</h3>
+                    <p className="text-xs text-gray-600 leading-tight hidden md:block">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
