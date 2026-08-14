@@ -13,6 +13,48 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 
 gsap.registerPlugin(ScrollTrigger);
 
+type BrandVideoCardProps = {
+  href: string;
+  source: string;
+  name: string;
+};
+
+function BrandVideoCard({ href, source, name }: BrandVideoCardProps) {
+  const baseBorder = 'rgba(255, 107, 53, 0.32)';
+  const baseShadow = '0 8px 24px rgba(0, 0, 0, 0.16)';
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Visit ${name}`}
+      className="group relative block h-48 cursor-pointer overflow-hidden rounded-lg bg-navy-medium/50 backdrop-blur-xl transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07111C] sm:h-56 md:h-64"
+      style={{ border: `1px solid ${baseBorder}`, boxShadow: baseShadow }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.9)';
+        e.currentTarget.style.boxShadow = '0 20px 45px rgba(255, 107, 53, 0.22)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = baseBorder;
+        e.currentTarget.style.boxShadow = baseShadow;
+      }}
+      ref={(el) => {
+        if (el) addCardHoverEffect(el);
+      }}
+    >
+      <video className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+        <source src={source} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07111C]/70 via-transparent to-[#07111C]/10 opacity-70 transition-opacity duration-500 group-hover:opacity-95" />
+      <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-inset ring-white/10 transition-colors duration-500 group-hover:ring-[#FF6B35]/50" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FF6B35] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <span className="sr-only">{name}</span>
+    </a>
+  );
+}
+
 export default function Home() {
   // The useAuth hook provides authentication state.
   // To implement login/logout, call logout(), or start login from an event
@@ -164,7 +206,7 @@ export default function Home() {
       <Navigation />
       <BackToTop />
       {/* Hero Section */}
-      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-24 sm:pt-28 md:pt-40 pb-20 sm:pb-24 md:pb-28 lg:pb-32 overflow-hidden bg-navy" style={{opacity: 1}}>
+      <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-32 sm:pt-36 md:pt-48 lg:pt-52 pb-20 sm:pb-24 md:pb-28 lg:pb-32 overflow-hidden bg-navy" style={{opacity: 1}}>
         {/* Abstract enterprise technology background with text-safe space */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div 
@@ -201,7 +243,7 @@ export default function Home() {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 md:gap-6 pb-16 sm:pb-20 md:pb-24 lg:pb-32">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 md:gap-6 pb-8 sm:pb-10 md:pb-12 lg:pb-16">
               <button ref={exploreButtonRef} className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 text-white font-bold tracking-wider text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}>
                 EXPLORE THE GROUP
                 <ArrowRight className="ml-2 w-4 h-4" />
@@ -217,33 +259,15 @@ export default function Home() {
           </div>
 
       {/* Brands Section */}
-      <section id="companies" className="relative z-10 overflow-hidden bg-transparent py-8 sm:py-10 md:py-14 lg:py-20">
+      <section id="companies" className="relative z-10 overflow-hidden bg-transparent pt-8 sm:pt-10 md:pt-14 lg:pt-20 pb-1 sm:pb-2 md:pb-3 lg:pb-4">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl relative z-10">
           {/* Brand Cards */}
           <div ref={brandCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {/* OpenV Business - Video */}
-            <a href="https://www.openv.co.za/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl cursor-pointer block h-48 sm:h-56 md:h-64" style={{border: '1px solid rgba(255, 107, 53, 0.3)', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'}} onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.8)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(255, 107, 53, 0.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.3)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)'; }} ref={(el) => { if (el) addCardHoverEffect(el); }}>
-              <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
-                <source src="/manus-storage/OpenV(1)_7faeea8b.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </a>
+            <BrandVideoCard name="OpenV Business" href="https://www.openv.co.za/" source="/manus-storage/OpenV(1)_7faeea8b.mp4" />
 
-            {/* NextFour - Video */}
-            <a href="https://nextfour.co.za/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl cursor-pointer block h-48 sm:h-56 md:h-64" style={{border: '1px solid rgba(255, 107, 53, 0.3)', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'}} onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.8)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(255, 107, 53, 0.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.3)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)'; }} ref={(el) => { if (el) addCardHoverEffect(el); }}>
-              <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
-                <source src="/manus-storage/NextFour(3)_1389b015.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </a>
+            <BrandVideoCard name="NextFour" href="https://nextfour.co.za/" source="/manus-storage/NextFour(3)_1389b015.mp4" />
 
-            {/* ShiftBridge - Video */}
-            <a href="https://shiftbridge.co.za/" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden bg-navy-medium/50 rounded-lg backdrop-blur-xl cursor-pointer block h-48 sm:h-56 md:h-64" style={{border: '1px solid rgba(255, 107, 53, 0.3)', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'}} onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.8)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(255, 107, 53, 0.2)'; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.3)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)'; }} ref={(el) => { if (el) addCardHoverEffect(el); }}>
-              <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
-                <source src="/manus-storage/ShiftBridge(1)_ae346aab.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </a>
+            <BrandVideoCard name="ShiftBridge" href="https://shiftbridge.co.za/" source="/manus-storage/ShiftBridge(1)_ae346aab.mp4" />
           </div>
         </div>
       </section>

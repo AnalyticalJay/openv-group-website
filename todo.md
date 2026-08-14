@@ -19,3 +19,14 @@
 - [x] Remove the visible border, color, and spacing seam between hero and brand blocks
 - [x] Preserve the brand-card grid and mobile stacking while matching the supplied continuous-background reference
 - [x] Verify the unified hero-and-brands composition on desktop and mobile
+
+- [x] Reduce the vertical gap between the brand cards and the ecosystem section
+- [x] Enhance the brand cards with refined hover, focus, overlay, and media treatments while preserving the current design language
+- [x] Verify the revised brand-card spacing and interactions on desktop and mobile
+
+- [x] Reduce the bottom padding below the hero CTA buttons before the brand cards
+- [x] Reduce the remaining bottom padding below the brand cards before the ecosystem section
+- [x] Verify both spacing refinements on desktop and mobile
+
+- [x] Increase responsive top padding between the header and hero headline without changing the headline scale
+- [x] Verify the revised header-to-headline spacing on desktop and mobile
