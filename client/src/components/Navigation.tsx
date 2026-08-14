@@ -60,7 +60,7 @@ export default function Navigation() {
       <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl py-3 sm:py-4 flex items-center justify-between">
         {/* Logo - Left */}
         <a href="/" className="flex-shrink-0">
-          <img src="/manus-storage/OpenVGroupLogo(1)_a1e90051.png" alt="OpenV Group" className="h-12 sm:h-14 md:h-16 w-auto" />
+          <img src="/manus-storage/OpenVGroupLogo(1)_a1e90051.png" alt="OpenV Group" className="h-14 sm:h-16 md:h-20 w-auto" />
         </a>
 
         {/* Desktop Navigation - Center */}
@@ -93,7 +93,7 @@ export default function Navigation() {
 
         {/* Desktop CTA - Right */}
         <div className="hidden lg:flex items-center flex-shrink-0">
-          <button onClick={openContactForm} className="px-6 py-2 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}> 
+          <button data-motion-press onClick={openContactForm} className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 text-white font-bold tracking-wider text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}> 
             BOOK A CONSULTATION
           </button>
         </div>
@@ -134,7 +134,7 @@ export default function Navigation() {
                 {link.label}
               </button>
             ))}
-            <button onClick={() => { handleMobileMenuClose(); openContactForm(); }} className="w-full mt-4 px-6 py-3 text-white font-bold tracking-widest text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}> 
+            <button data-motion-press onClick={() => { handleMobileMenuClose(); openContactForm(); }} className="w-full mt-4 inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 text-white font-bold tracking-wider text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}> 
               BOOK A CONSULTATION
             </button>
           </div>

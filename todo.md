@@ -112,3 +112,7 @@
 - [x] Add explicit Vite manual chunks for React/runtime, GSAP motion, UI/icons, and data/auth vendors
 - [x] Preserve the current application behavior and production deployment configuration
 - [x] Compare post-build chunk sizes and verify tests before checkpoint
+
+- [x] Increase the header OpenV Group logo size while preserving mobile alignment
+- [x] Match the header consultation button padding, height, gradient, radius, and typography to the hero CTA
+- [x] Verify the revised header logo and button weight on desktop and mobile
