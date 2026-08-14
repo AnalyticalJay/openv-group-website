@@ -51,3 +51,47 @@ The desktop preview confirms the three capability blocks now read as distinct pr
 ## Final Capability Block QA
 
 The final desktop capture confirms the three capability blocks use the enhanced card treatment: separated surfaces, subtle depth, accent rails, numbered markers, theme pills, and directional arrows. The final mobile capture confirms the surrounding homepage flow remains stable and the card layout remains responsive. Each block now also has semantic group labeling, keyboard focusability, and visible focus-ring styling in addition to the hover treatment.
+
+## Partner Asset Check
+
+The direct Vodacom asset resolves successfully and renders as a visible 1920×1920 WebP logo image with a light background. The marquee now includes eager loading for primary logos plus an accessible wordmark fallback, so partner cards remain informative during asset loading or in the event of an image failure.
+
+## Live DOM Marquee Check
+
+The live browser page contains the Technology Partners section and the partner names VODACOM, CITRIX, and MICROSOFT, confirming the duplicated marquee content is rendered in the DOM. The direct asset check also confirms the source files resolve successfully. Further visual review is being used to tune the card presentation and loading fallback.
+
+## Focused Browser QA
+
+The live browser confirms the revised operating-layer section is rendered and the page scroll remains stable. The browser could not advance further with the second scroll because the current viewport was retained by the preview layer; full-page captures remain the primary marquee verification source.
+
+## Live Marquee Visual QA
+
+Focused browser inspection confirms the Technology Partners marquee renders visible grayscale partner logos inside the white cards, with the Citrix, Microsoft, Cisco, Fortinet, and Dell marks readable in the live viewport. The dark isometric partner background remains intact, the fading edge treatment is visible at both sides, and the View All Partners CTA remains positioned below the track.
+
+## Final Marquee QA
+
+Desktop live-browser inspection confirms the infinite marquee shows visible grayscale partner logos in white cards over the dark isometric partner background, with faded edges at the track boundaries and the View All Partners CTA intact. The mobile full-page capture confirms the marquee collapses cleanly to the narrow viewport, keeps partner labels readable, and preserves the existing page flow without horizontal overflow.
+
+## Partner Section Refinement QA
+
+The desktop preview confirms the Technology Partners section is materially shorter, the partner cards are larger, and the View All Partners CTA remains within the section. The footer now follows directly after the partner section with no standalone “Ready to transform your business?” CTA block. The mobile preview confirms the enlarged cards remain readable and the direct partner-to-footer flow does not introduce horizontal overflow.
+
+## Final Partner Size QA
+
+Desktop and mobile verification confirm the partner cards are larger at each breakpoint, the marquee remains within the dark Technology Partners section, the View All Partners CTA stays visible, and the footer follows immediately after the section. Mobile cards stack and crop cleanly without horizontal overflow.
+
+## Partners Headline QA
+
+Desktop verification confirms the Technology Partners heading now follows the operating-layer editorial system with a small uppercase eyebrow, large Manrope headline, and orange-to-red gradient emphasis on “Partners.” Mobile verification confirms the two-line headline remains legible, centered, and proportionate above the marquee without disturbing the shortened section flow.
+
+## Partners CTA Verification
+
+Desktop and mobile captures confirm the approved gradient headline remains responsive and centered above the marquee. The View All Partners control is now a functional accessible toggle with expanded-state semantics and a partner-name list, while the existing partner card loop and direct footer flow remain intact.
+
+## Semantic Directory QA
+
+The final desktop and mobile captures confirm the Technology Partners headline, marquee, View All Partners control, and footer flow remain visually consistent after the semantic `ul`/`li` directory conversion. The expanded directory is implemented as an accessible list controlled by `aria-expanded` and `aria-controls`, and the mobile layout remains readable without horizontal overflow.
+
+## Explicit Partner Directory Interaction QA
+
+A headless Chromium check exercised the View All Partners control at both 1280×720 desktop and 375×812 mobile viewports. In both cases the initial state reported `aria-expanded=false`; clicking changed it to `true`, revealed the semantic partner directory with eight list items, and the second click returned it to `false`. Both viewports reported no document horizontal overflow.

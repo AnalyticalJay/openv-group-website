@@ -49,3 +49,24 @@
 
 - [x] Add explicit keyboard-focus styling to the enhanced capability blocks
 - [x] Obtain human QA approval for the enhanced capability blocks on desktop and mobile
+
+- [x] Replace the Technology Partners carousel with a seamless infinite GSAP marquee
+- [x] Add CSS mask-image fading edges and a GPU-accelerated duplicated logo track
+- [x] Add smooth hover-to-pause marquee behavior and premium partner-card lift, glow, grayscale, and z-index states
+- [x] Add responsive marquee distance recalculation and ScrollTrigger entrance animation
+- [x] Verify the marquee on desktop and mobile and confirm the existing partner CTA remains functional
+
+- [x] Increase the Technology Partners logo-card dimensions across responsive breakpoints
+- [x] Reduce the vertical height and internal spacing of the Technology Partners section
+- [x] Remove the standalone CTA section immediately before the footer
+- [x] Verify the revised partner-to-footer flow on desktop and mobile
+
+- [x] Match the Technology Partners headline to the OpenV Group / One Operating Layer editorial treatment
+- [x] Apply the approved gradient emphasis while preserving dark-canvas contrast and responsive sizing
+- [x] Verify the revised partners heading on desktop and mobile
+
+- [x] Connect the View All Partners control to an accessible expanded partner list
+- [x] Verify the View All Partners interaction on desktop and mobile before checkpoint
+
+- [x] Use semantic list markup for the expanded partner directory
+- [x] Verify collapsed and expanded partner-directory states at desktop and mobile breakpoints

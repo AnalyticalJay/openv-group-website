@@ -1,7 +1,7 @@
 import { ArrowRight, Play, Building2, TrendingUp, Zap, Users, Lock, BarChart3, HelpCircle, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
 import { useAuth } from '@/_core/hooks/useAuth';
-import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, animateCounter, addLogoHoverEffect, addNavButtonHoverEffect, setupCarouselAutoScroll, addCarouselFadeTransition, animatePageLoad, animateSectionTransition, addMicroInteractions, prefersReducedMotion, optimizeElementsForGPU, lazyLoadAnimation, cleanupAnimations } from '@/lib/animations';
-import { useEffect, useRef } from 'react';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, animateCounter, animatePageLoad, animateSectionTransition, addMicroInteractions, prefersReducedMotion, optimizeElementsForGPU, lazyLoadAnimation, cleanupAnimations } from '@/lib/animations';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navigation from '@/components/Navigation';
@@ -9,7 +9,7 @@ import BackToTop from '@/components/BackToTop';
 import ContactFormModal from '@/components/ContactFormModal';
 import { useLenis } from '@/contexts/LenisContext';
 import { useContactForm } from '@/contexts/ContactFormContext';
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
+import PartnerMarquee from '@/components/PartnerMarquee';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,6 +26,17 @@ const capabilityLanes = [
 ];
 
 const industryLabels = ['Manufacturing', 'Healthcare', 'Professional Services', 'Construction', 'Retail', 'Financial Services', 'Education', 'Hospitality'];
+
+const technologyPartners = [
+  { name: 'Vodacom', logo: '/manus-storage/logo-vodacom_59076cbe.png' },
+  { name: 'Citrix', logo: '/manus-storage/logo-citrix_69ed1026.png' },
+  { name: 'Microsoft', logo: '/manus-storage/logo-microsoft_2384180c.png' },
+  { name: 'Cisco', logo: '/manus-storage/logo-cisco_47b2b265.png' },
+  { name: 'Fortinet', logo: '/manus-storage/logo-fortinet_989f697b.png' },
+  { name: 'Dell', logo: '/manus-storage/logo-dell_bc7519d8.png' },
+  { name: 'Nikon', logo: '/manus-storage/logo-nikon_0f9a3ad8.png' },
+  { name: 'CSI', logo: '/manus-storage/logo-csi_cf8c6ef2.png' },
+];
 
 function BrandVideoCard({ href, source, name }: BrandVideoCardProps) {
   const baseBorder = 'rgba(255, 107, 53, 0.32)';
@@ -71,7 +82,6 @@ export default function Home() {
   // nonce cookie and must run only at the moment of navigation.
   let { user, loading, error, isAuthenticated, logout } = useAuth();
 
-  const { openContactForm } = useContactForm();
   // Animation refs for each section
   const heroRef = useRef<HTMLDivElement>(null);
   const heroBackgroundRef = useRef<HTMLDivElement>(null);
@@ -79,16 +89,9 @@ export default function Home() {
   const heroGradientRef = useRef<HTMLSpanElement>(null);
   const exploreButtonRef = useRef<HTMLButtonElement>(null);
   const watchVideoButtonRef = useRef<HTMLButtonElement>(null);
-  const ctaBackgroundRef = useRef<HTMLDivElement>(null);
   const brandCardsRef = useRef<HTMLDivElement>(null);
   const capabilitiesRef = useRef<HTMLElement>(null);
-  const partnersRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const carouselRef = useRef<any>(null);
-  const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const swiperRef = useRef<any>(null);
-  const partnersCarouselRef = useRef<HTMLDivElement>(null);
-  const partnersNavButtonsRef = useRef<HTMLDivElement>(null);
+  const [showAllPartners, setShowAllPartners] = useState(false);
 
   // Add CSS animations for globe and connector movement
   useEffect(() => {
@@ -148,7 +151,6 @@ export default function Home() {
       const header = capabilitiesRef.current.querySelector('[data-capabilities-header]');
       if (header) animateFadeIn(header as HTMLElement);
     }
-    if (partnersRef.current) animateStaggerChildren(partnersRef.current, '[class*="bg-white"]', 0.08);
     // Apply parallax effects to background images
     if (heroBackgroundRef.current) createParallaxEffect(heroBackgroundRef.current, 0.4);
     // CTA section uses CSS backgroundAttachment: 'fixed' for parallax (like Partners section)
@@ -165,26 +167,6 @@ export default function Home() {
     };
   }, [lenis]);
 
-  // Auto-scroll carousel effect
-  useEffect(() => {
-    const startAutoScroll = () => {
-      autoScrollIntervalRef.current = setInterval(() => {
-        if (carouselRef.current?.scrollNext) {
-          carouselRef.current.scrollNext();
-        }
-      }, 4000); // Scroll every 4 seconds
-    };
-
-    const stopAutoScroll = () => {
-      if (autoScrollIntervalRef.current) {
-        clearInterval(autoScrollIntervalRef.current);
-      }
-    };
-
-    startAutoScroll();
-
-    return () => stopAutoScroll();
-  }, []);
 
   // Get contact form state from context
   const { isOpen: isContactModalOpen, closeContactForm } = useContactForm();
@@ -341,7 +323,7 @@ export default function Home() {
 
 
       {/* Partners Section */}
-      <section id="partners" className="py-12 md:py-20 lg:py-32 bg-navy relative overflow-hidden">
+      <section id="partners" className="py-8 sm:py-10 md:py-12 lg:py-16 bg-navy relative overflow-hidden">
         {/* Isometric Background */}
         <div className="absolute inset-0 opacity-30" style={{
           backgroundImage: 'url(/manus-storage/partners-bg-isometric_aabc2946.png)',
@@ -351,71 +333,46 @@ export default function Home() {
         }}></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
-            <h2 className="text-white uppercase tracking-widest text-base sm:text-lg md:text-2xl font-bold mb-2 md:mb-4 font-manrope">Our Technology Partners</h2>
-            <p className="text-white/70 text-xs sm:text-sm">World-class brands. Strategic partnerships. Real results.</p>
+          <div className="text-center mb-6 sm:mb-8 md:mb-10" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">OPENV GROUP / TECHNOLOGY PARTNERS</p>
+            <h2 className="mx-auto max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              Our Technology<br className="hidden sm:block" />
+              <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}> Partners.</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base">World-class brands. Strategic partnerships. Real results.</p>
           </div>
 
-          {/* Partner Logos Carousel */}
-          <Carousel ref={(el) => { carouselRef.current = el; }} className="w-full mb-6 sm:mb-8 md:mb-12" opts={{ align: 'center', loop: true, slidesToScroll: 1 }}>
-            <CarouselContent className="-ml-2 md:-ml-4" ref={partnersCarouselRef}>
-              {[
-                { name: 'Vodacom', logo: '/manus-storage/logo-vodacom_59076cbe.png' },
-                { name: 'Citrix', logo: '/manus-storage/logo-citrix_69ed1026.png' },
-                { name: 'Microsoft', logo: '/manus-storage/logo-microsoft_2384180c.png' },
-                { name: 'Cisco', logo: '/manus-storage/logo-cisco_47b2b265.png' },
-                { name: 'Fortinet', logo: '/manus-storage/logo-fortinet_989f697b.png' },
-                { name: 'Dell', logo: '/manus-storage/logo-dell_bc7519d8.png' },
-                { name: 'Nikon', logo: '/manus-storage/logo-nikon_0f9a3ad8.png' },
-                { name: 'CSI', logo: '/manus-storage/logo-csi_cf8c6ef2.png' },
-              ].map((partner, i) => (
-                <CarouselItem key={i} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
-                  <div className="flex items-center justify-center h-20 sm:h-24 md:h-32 transition-all duration-300" ref={(el) => { if (el) addLogoHoverEffect(el); }}>
-                    <img src={partner.logo} alt={partner.name} className="max-h-16 sm:max-h-20 md:max-h-28 max-w-full object-contain" />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12 lg:-left-16" ref={(el) => { if (el) addNavButtonHoverEffect(el); }} />
-            <CarouselNext className="hidden md:flex -right-12 lg:-right-16" ref={(el) => { if (el) addNavButtonHoverEffect(el); }} />
-          </Carousel>
+          {/* Infinite Partner Marquee */}
+          <PartnerMarquee partners={technologyPartners} className="mb-4 sm:mb-6 md:mb-8" />
 
           {/* View All Button */}
-          <div className="text-center" ref={partnersNavButtonsRef}>
-            <button className="inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 border-2 font-bold tracking-wider text-xs uppercase rounded transition-all" style={{borderColor: '#FF6B35', color: '#FF6B35'}} onMouseEnter={(e) => {e.currentTarget.style.background = '#FF6B35'; e.currentTarget.style.color = 'white';}} onMouseLeave={(e) => {e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#FF6B35';}}>
-              VIEW ALL PARTNERS
-              <ArrowRight className="ml-2 w-4 h-4" />
+          <div className="text-center">
+            <button
+              type="button"
+              aria-expanded={showAllPartners}
+              aria-controls="partners-list"
+              onClick={() => setShowAllPartners((current: boolean) => !current)}
+              className="inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 border-2 font-bold tracking-wider text-xs uppercase rounded transition-all"
+              style={{borderColor: '#FF6B35', color: '#FF6B35'}}
+              onMouseEnter={(e) => {e.currentTarget.style.background = '#FF6B35'; e.currentTarget.style.color = 'white';}}
+              onMouseLeave={(e) => {e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#FF6B35';}}
+            >
+              {showAllPartners ? 'HIDE PARTNERS' : 'VIEW ALL PARTNERS'}
+              <ArrowRight className={`ml-2 h-4 w-4 transition-transform duration-300 ${showAllPartners ? 'rotate-90' : ''}`} />
             </button>
           </div>
+          {showAllPartners && (
+            <ul id="partners-list" aria-label="Technology partner directory" className="mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-2 rounded-2xl border border-white/15 bg-white/5 p-4 text-left sm:grid-cols-3 md:grid-cols-6">
+              {technologyPartners.map((partner) => (
+                <li key={partner.name} className="rounded-lg border border-white/10 px-3 py-2 text-center text-[10px] font-bold uppercase tracking-[0.16em] text-white/70">
+                  {partner.name}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
 
-
-      {/* CTA Section */}
-      <section id="cta" className="py-8 sm:py-12 md:py-20 lg:py-32 bg-navy relative overflow-hidden">
-        {/* Isometric Background */}
-        <div className="absolute inset-0 opacity-30" style={{
-          backgroundImage: 'url(/manus-storage/partners-bg-isometric_aabc2946.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
-        }}></div>
-        <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-8 sm:mb-12 md:mb-16" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
-            <h2 className="text-white uppercase tracking-wider text-sm sm:text-base md:text-xl lg:text-2xl font-bold mb-2 md:mb-4 font-manrope">Ready to transform your business?</h2>
-            <p className="text-white/70 text-xs">Book us for team loyalty and discover how Open V Group can do more with your technology. Businesses across South Africa trust us.</p>
-          </div>
-
-          {/* CTA Button */}
-          <div className="text-center" ref={ctaRef}>
-            <button onClick={openContactForm} className="inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 border-2 font-bold tracking-wider text-xs uppercase rounded transition-all" style={{borderColor: '#FF6B35', color: '#FF6B35'}} onMouseEnter={(e) => {e.currentTarget.style.background = '#FF6B35'; e.currentTarget.style.color = 'white';}} onMouseLeave={(e) => {e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#FF6B35'}}>
-              BOOK A CONSULTATION
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="bg-navy border-t border-white/10 py-6 sm:py-8 md:py-12 lg:py-16">
