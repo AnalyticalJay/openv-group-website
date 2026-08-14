@@ -111,3 +111,23 @@ A real Chromium interaction pass confirmed that the hero CTA, OpenV brand card, 
 ## Comprehensive Homepage Interaction QA
 
 The full Chromium interaction matrix passed. Desktop hover state changes were confirmed for both hero CTA buttons, the OpenV brand card, a capability lane, and the View All Partners toggle. Mobile pointer press and release changes were confirmed for both hero CTA buttons, the OpenV brand card, a capability lane, and the View All Partners toggle.
+
+## Static Hero Brand Cards QA
+
+The three hero brand blocks now render without video elements and use lightweight static surfaces with branded monograms, editorial labels, concise capability descriptions, metadata tags, accent rails, subtle orbital graphics, click-through links, hover lift/glow, and keyboard focus treatment. Desktop and mobile screenshots confirm the cards blend with the continuous hero canvas, remain readable, and stack without horizontal overflow.
+
+## Corrected Brand Card Content QA
+
+Desktop and mobile previews confirm that CONNECT, ENABLE, and AMPLIFY no longer appear in the three hero brand cards. Each card now displays a lightweight inline logo treatment: OpenV, NEXT4, and SHIFTBRIDGE. NextFour now carries the Web, Marketing, and Digital Growth feature set, while ShiftBridge carries Software, Automation, and AI. Cards remain linked, responsive, and free of video backgrounds.
+
+## Uploaded Brand Logos QA
+
+The uploaded OpenV Business, NextFour, and ShiftBridge logo assets are now used directly inside the hero brand cards through persistent web storage URLs. The inline text logo treatments are removed. Desktop and mobile previews confirm all three uploaded marks load, preserve their aspect ratios, remain contained within the cards, and sit alongside the corrected feature assignments and existing interaction states.
+
+## Logo-Only Brand Card QA
+
+The company-name headings beneath the uploaded OpenV, NextFour, and ShiftBridge logos have been removed. Desktop and mobile screenshots confirm a cleaner logo-led hierarchy, preserved descriptions and feature tags, intact card links and interactions, and no layout overflow.
+
+## Enlarged Logo Card QA
+
+The adjacent card metadata labels have been removed and the uploaded logos now occupy a full-width responsive header zone. Desktop and mobile screenshots confirm that OpenV Business, NextFour, and ShiftBridge marks are substantially larger, preserve their aspect ratios, and remain balanced with the descriptions, feature tags, card links, and existing motion states.

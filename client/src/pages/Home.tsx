@@ -15,8 +15,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 type BrandVideoCardProps = {
   href: string;
-  source: string;
   name: string;
+  logo: string;
+  description: string;
+  accent: string;
+  tags: string[];
 };
 
 const capabilityLanes = [
@@ -38,23 +41,30 @@ const technologyPartners = [
   { name: 'CSI', logo: '/manus-storage/logo-csi_cf8c6ef2.png' },
 ];
 
-function BrandVideoCard({ href, source, name }: BrandVideoCardProps) {
-  const baseBorder = 'rgba(255, 107, 53, 0.32)';
-  const baseShadow = '0 8px 24px rgba(0, 0, 0, 0.16)';
+function BrandLogo({ logo, name }: { logo: string; name: string }) {
+  return (
+    <div className="flex h-16 w-full min-w-0 items-center sm:h-20 md:h-24">
+      <img src={logo} alt={`${name} logo`} className="h-full w-full object-contain object-left transition-transform duration-500 group-hover:scale-[1.03]" loading="eager" decoding="async" />
+    </div>
+  );
+}
+
+function BrandVideoCard({ href, name, logo, description, accent, tags }: BrandVideoCardProps) {
+  const baseBorder = `${accent}55`;
+  const baseShadow = '0 12px 32px rgba(3, 10, 18, 0.22)';
 
   return (
-          <a
+    <a
       data-motion-press
       href={href}
-
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Visit ${name}`}
-      className="group relative block h-48 cursor-pointer overflow-hidden rounded-lg bg-navy-medium/50 backdrop-blur-xl transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07111C] sm:h-56 md:h-64"
-      style={{ border: `1px solid ${baseBorder}`, boxShadow: baseShadow }}
+      className="group relative block h-48 cursor-pointer overflow-hidden rounded-2xl border bg-[#0A1828]/92 backdrop-blur-xl transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-2 focus-visible:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07111C] sm:h-56 md:h-64"
+      style={{ borderColor: baseBorder, boxShadow: baseShadow }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(255, 107, 53, 0.9)';
-        e.currentTarget.style.boxShadow = '0 20px 45px rgba(255, 107, 53, 0.22)';
+        e.currentTarget.style.borderColor = accent;
+        e.currentTarget.style.boxShadow = `0 24px 52px ${accent}35`;
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.borderColor = baseBorder;
@@ -64,14 +74,26 @@ function BrandVideoCard({ href, source, name }: BrandVideoCardProps) {
         if (el) addCardHoverEffect(el);
       }}
     >
-      <video className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
-        <source src={source} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07111C]/70 via-transparent to-[#07111C]/10 opacity-70 transition-opacity duration-500 group-hover:opacity-95" />
-      <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-inset ring-white/10 transition-colors duration-500 group-hover:ring-[#FF6B35]/50" />
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FF6B35] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-      <span className="sr-only">{name}</span>
+      <div className="pointer-events-none absolute inset-0 opacity-80" style={{ background: `radial-gradient(circle at 85% 16%, ${accent}28, transparent 34%), linear-gradient(135deg, transparent 0 45%, ${accent}12 45.2% 45.5%, transparent 45.7% 100%)` }} />
+      <div className="pointer-events-none absolute -right-10 -top-14 h-36 w-36 rounded-full border opacity-60 transition-transform duration-700 group-hover:scale-125" style={{ borderColor: `${accent}38` }} />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: `linear-gradient(90deg, transparent, ${accent}, transparent)` }} />
+
+      <div className="relative flex h-full flex-col justify-between p-5 sm:p-6 md:p-7">
+        <div className="w-full">
+          <BrandLogo logo={logo} name={name} />
+        </div>
+
+        <div className="min-w-0">
+          <p className="max-w-[19rem] text-xs leading-relaxed text-white/60">{description}</p>
+        </div>
+
+        <div className="flex items-center justify-between gap-3 border-t border-white/10 pt-3">
+          <div className="flex flex-wrap gap-1.5">
+            {tags.map((tag) => <span key={tag} className="rounded-full border border-white/10 px-2 py-1 text-[8px] font-bold uppercase tracking-[0.12em] text-white/48 transition-colors duration-300 group-hover:border-white/25 group-hover:text-white/75">{tag}</span>)}
+          </div>
+          <ArrowRight className="h-4 w-4 shrink-0 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white" style={{ color: `${accent}cc` }} />
+        </div>
+      </div>
     </a>
   );
 }
@@ -236,11 +258,11 @@ export default function Home() {
         <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl relative z-10">
           {/* Brand Cards */}
           <div ref={brandCardsRef} data-motion-child className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            <BrandVideoCard name="OpenV Business" href="https://www.openv.co.za/" source="/manus-storage/OpenV(1)_7faeea8b.mp4" />
+            <BrandVideoCard name="OpenV Business" href="https://www.openv.co.za/" logo="/manus-storage/openv-business-logo_9be9b2a7.png" description="Digital foundations for dependable business growth." accent="#FF6B35" tags={["Infrastructure", "Security", "Support"]} />
 
-            <BrandVideoCard name="NextFour" href="https://nextfour.co.za/" source="/manus-storage/NextFour(3)_1389b015.mp4" />
+            <BrandVideoCard name="NextFour" href="https://nextfour.co.za/" logo="/manus-storage/nextfour-logo_2b7d7e0d.png" description="Web, marketing and AI that make your value easier to find." accent="#1B8EFF" tags={["Web", "Marketing", "Digital Growth"]} />
 
-            <BrandVideoCard name="ShiftBridge" href="https://shiftbridge.co.za/" source="/manus-storage/ShiftBridge(1)_ae346aab.mp4" />
+            <BrandVideoCard name="ShiftBridge" href="https://shiftbridge.co.za/" logo="/manus-storage/shiftbridge-logo_cf5c7e03.png" description="Software and automation for operational momentum." accent="#FF4F8B" tags={["Software", "Automation", "AI"]} />
           </div>
         </div>
       </section>

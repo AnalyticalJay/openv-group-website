@@ -84,3 +84,27 @@
 
 - [x] Verify hover states for both hero CTA buttons, a brand card, a capability lane, and the View All Partners toggle in Chromium
 - [x] Verify mobile press behavior for both hero CTA buttons, a brand card, a capability lane, and the View All Partners toggle in Chromium
+
+- [x] Remove the three hero brand video backgrounds while preserving the brand-card links
+- [x] Replace the video surfaces with premium static brand treatments that blend with the hero canvas
+- [x] Improve logo hierarchy, brand labels, card depth, and hover/focus affordances for the three brands
+- [x] Keep the layout performant and responsive without adding heavy media assets
+- [x] Verify the revised brand section on desktop and mobile
+
+- [x] Remove the CONNECT, ENABLE, and AMPLIFY eyebrow text from the three static brand cards
+- [x] Add lightweight inline brand logo treatments for OpenV Business, NextFour, and ShiftBridge
+- [x] Swap the NextFour and ShiftBridge feature tags and descriptions as requested
+- [x] Verify the corrected brand-card content and logos on desktop and mobile
+
+- [x] Replace the inline OpenV, NextFour, and ShiftBridge text logo treatments with the uploaded logo assets
+- [x] Preserve per-logo aspect ratios and contain each uploaded mark cleanly inside the card header
+- [x] Verify the uploaded logos and existing feature assignments on desktop and mobile
+
+- [x] Remove the OpenV Business, NextFour, and ShiftBridge company-name headings beneath their uploaded logos
+- [x] Preserve the logo, feature tags, card links, hover/focus states, and responsive layout
+- [x] Verify the cleaner brand-card hierarchy on desktop and mobile
+
+- [x] Remove the 01 / GROUP, 03 / GROWTH, and 02 / INTELLIGENCE metadata labels beside the uploaded logos
+- [x] Increase each uploaded logo to span most of the card header while preserving aspect ratio
+- [x] Preserve descriptions, feature tags, links, hover/focus states, and responsive layout
+- [x] Verify the enlarged logo cards on desktop and mobile
