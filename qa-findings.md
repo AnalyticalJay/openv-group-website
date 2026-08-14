@@ -31,3 +31,23 @@ The desktop preview confirms the brand cards now sit closer to the hero CTA row,
 ## Header-to-Hero Spacing QA
 
 The desktop preview shows a clear, more comfortable breathing space between the header and the main hero headline without changing the headline scale or hierarchy. The mobile preview retains the same readable top separation while keeping the headline, CTA row, and continuous brand cards within the viewport flow.
+
+## Unified Capability Map QA
+
+The desktop full-page preview confirms the duplicate “ALL THE SOLUTIONS. WORKING TOGETHER.” and “Solutions For Every Industry” icon-grid sections have been replaced by one editorial capability map directly below the ecosystem strip. It uses a large technology-to-momentum visual, three connected capability lanes, and compact industry labels. The mobile preview confirms the hero, brand cards, and new section remain responsive without horizontal overflow.
+
+## Final Capability Map QA
+
+The final desktop capture shows the consolidated section directly beneath the ecosystem strip with the headline, dark operating-layer visual, three connected capability lanes, compact original solution-theme labels, and industry chips. The duplicate icon grids and repeated section messaging are gone. The final mobile capture confirms the existing hero flow remains stable and the new section is responsive; the capability lanes collapse naturally without horizontal overflow.
+
+## Operating-Layer Flow QA
+
+The desktop full-page preview confirms the ecosystem strip is absent: the hero and continuous brand-card composition transitions directly into the “OPENV GROUP / ONE OPERATING LAYER” section. The operating-layer visual is larger and more prominent, with expanded orbit geometry, connection line, node labels, and depth. The “BUILT FOR THE REAL WORLD” area is now a dark visual band with a large 08 sector count and structured sector map. The mobile preview confirms the hero remains stable and responsive.
+
+## Capability Block Enhancement QA
+
+The desktop preview confirms the three capability blocks now read as distinct premium cards with stronger depth, white surface contrast, colored left rails, larger numbered markers, clearer hierarchy, compact theme pills, and directional arrow treatments. The mobile preview confirms the existing hero remains stable and the responsive stacking behavior is preserved. The capability-card treatments remain consistent with the existing OpenV palette and motion language.
+
+## Final Capability Block QA
+
+The final desktop capture confirms the three capability blocks use the enhanced card treatment: separated surfaces, subtle depth, accent rails, numbered markers, theme pills, and directional arrows. The final mobile capture confirms the surrounding homepage flow remains stable and the card layout remains responsive. Each block now also has semantic group labeling, keyboard focusability, and visible focus-ring styling in addition to the hover treatment.

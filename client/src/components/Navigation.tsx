@@ -13,7 +13,6 @@ export default function Navigation() {
   const navLinks = [
     { label: 'Our Companies', href: '#companies' },
     { label: 'Solutions', href: '#solutions' },
-    { label: 'Industries', href: '#industries' },
     { label: 'Partners', href: '#partners' },
     { label: 'Contact', href: '#contact' },
   ];
