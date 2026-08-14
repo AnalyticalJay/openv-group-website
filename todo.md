@@ -108,3 +108,7 @@
 - [x] Increase each uploaded logo to span most of the card header while preserving aspect ratio
 - [x] Preserve descriptions, feature tags, links, hover/focus states, and responsive layout
 - [x] Verify the enlarged logo cards on desktop and mobile
+
+- [x] Add explicit Vite manual chunks for React/runtime, GSAP motion, UI/icons, and data/auth vendors
+- [x] Preserve the current application behavior and production deployment configuration
+- [x] Compare post-build chunk sizes and verify tests before checkpoint

@@ -167,6 +167,53 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return undefined;
+
+          const normalizedId = id.split(path.sep).join("/");
+
+          if (
+            normalizedId.includes("/react/") ||
+            normalizedId.includes("/react-dom/") ||
+            normalizedId.includes("/scheduler/") ||
+            normalizedId.includes("/use-sync-external-store/")
+          ) {
+            return "vendor-react";
+          }
+
+          if (normalizedId.includes("/gsap/") || normalizedId.includes("/lenis/")) {
+            return "vendor-motion";
+          }
+
+          if (
+            normalizedId.includes("/lucide-react/") ||
+            normalizedId.includes("/@radix-ui/") ||
+            normalizedId.includes("/framer-motion/") ||
+            normalizedId.includes("/embla-carousel-react/")
+          ) {
+            return "vendor-ui";
+          }
+
+          if (
+            normalizedId.includes("/@tanstack/") ||
+            normalizedId.includes("/@trpc/") ||
+            normalizedId.includes("/superjson/") ||
+            normalizedId.includes("/zod/") ||
+            normalizedId.includes("/axios/")
+          ) {
+            return "vendor-data";
+          }
+
+          if (normalizedId.includes("/three/") || normalizedId.includes("/three-globe/")) {
+            return "vendor-3d";
+          }
+
+          return "vendor-misc";
+        },
+      },
+    },
   },
   server: {
     host: true,
