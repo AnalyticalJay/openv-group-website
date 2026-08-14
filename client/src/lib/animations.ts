@@ -770,6 +770,80 @@ export const animateSectionTransition = (section: HTMLElement) => {
 };
 
 /**
+ * Orchestrate homepage section entrances, child staggers, and subtle depth motion.
+ * The helper scopes all ScrollTriggers to the provided root and returns a cleanup
+ * function so route transitions do not leak animations or event listeners.
+ */
+export const setupHomepageMotion = (root: HTMLElement) => {
+  const context = gsap.context(() => {
+    const sections = Array.from(root.querySelectorAll<HTMLElement>('[data-motion-section]'));
+    const reducedMotion = prefersReducedMotion();
+
+    sections.forEach((section, sectionIndex) => {
+      const children = Array.from(section.querySelectorAll<HTMLElement>('[data-motion-child]'));
+
+      if (reducedMotion) {
+        gsap.set([section, ...children], { clearProps: 'all', opacity: 1, x: 0, y: 0, scale: 1 });
+        return;
+      }
+
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: sectionIndex === 0 ? 16 : 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 86%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+
+      if (children.length > 0) {
+        gsap.fromTo(
+          children,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.62,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+    });
+
+    if (!reducedMotion) {
+      root.querySelectorAll<HTMLElement>('[data-motion-depth]').forEach((element) => {
+        const trigger = element.closest<HTMLElement>('[data-motion-section]') ?? element;
+        gsap.to(element, {
+          yPercent: -6,
+          ease: 'none',
+          scrollTrigger: {
+            trigger,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.8,
+          },
+        });
+      });
+    }
+  }, root);
+
+  return () => context.revert();
+};
+
+/**
  * Page load sequence with staggered element reveals
  */
 export const animatePageLoad = () => {
@@ -792,6 +866,42 @@ export const animatePageLoad = () => {
       { opacity: 1, duration: 0.8, delay: 0.2, ease: 'power2.out' }
     );
   }
+};
+
+/**
+ * Add GPU-safe press feedback to interactive homepage elements.
+ * Returns a disposer so every listener is removed when the page unmounts.
+ */
+export const addPressMotion = (elements: NodeListOf<HTMLElement> | HTMLElement[]) => {
+  const targets = Array.from(elements);
+  if (prefersReducedMotion()) return () => undefined;
+
+  const handlers = targets.map((element) => {
+    const press = () => {
+      gsap.to(element, { scale: 0.98, y: 1, duration: 0.12, ease: 'power2.out', overwrite: true });
+    };
+    const release = () => {
+      gsap.to(element, { scale: 1, y: 0, duration: 0.18, ease: 'power3.out', overwrite: true });
+    };
+
+    element.addEventListener('pointerdown', press);
+    element.addEventListener('pointerup', release);
+    element.addEventListener('pointercancel', release);
+    element.addEventListener('pointerleave', release);
+    element.addEventListener('blur', release);
+    return { element, press, release };
+  });
+
+  return () => {
+    handlers.forEach(({ element, press, release }) => {
+      element.removeEventListener('pointerdown', press);
+      element.removeEventListener('pointerup', release);
+      element.removeEventListener('pointercancel', release);
+      element.removeEventListener('pointerleave', release);
+      element.removeEventListener('blur', release);
+      gsap.killTweensOf(element);
+    });
+  };
 };
 
 /**

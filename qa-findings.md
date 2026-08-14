@@ -95,3 +95,19 @@ The final desktop and mobile captures confirm the Technology Partners headline, 
 ## Explicit Partner Directory Interaction QA
 
 A headless Chromium check exercised the View All Partners control at both 1280×720 desktop and 375×812 mobile viewports. In both cases the initial state reported `aria-expanded=false`; clicking changed it to `true`, revealed the semantic partner directory with eight list items, and the second click returned it to `false`. Both viewports reported no document horizontal overflow.
+
+## Homepage Motion QA
+
+Desktop and mobile captures confirm the homepage keeps the approved visual hierarchy after the motion pass: hero and brand composition remain stable, capability lanes retain their editorial card treatment, the operating-layer visual remains legible, the partner marquee remains visible, and the direct footer transition stays intact. The new motion system is scoped to section wrappers and child elements, while PartnerMarquee retains its own marquee lifecycle.
+
+## Homepage Motion Interaction QA
+
+Chromium QA at 1280×720 and 375×812 confirmed all motion sections remain fully visible under `prefers-reduced-motion: reduce`, with section opacities at 1 and no horizontal overflow. Pointer-based interaction checks on the capability lane produced measurable transform changes on press and returned toward the resting state after release at both breakpoints. The new press helper is scoped to hero CTAs, brand cards, capability lanes, and the View All Partners toggle and is removed during page cleanup.
+
+## Homepage Interaction QA
+
+A real Chromium interaction pass confirmed that the hero CTA, OpenV brand card, capability lane, and View All Partners control all change state on desktop hover. The capability lane also responds to pointer press and releases cleanly on mobile-sized viewport input. All interaction checks passed without horizontal overflow.
+
+## Comprehensive Homepage Interaction QA
+
+The full Chromium interaction matrix passed. Desktop hover state changes were confirmed for both hero CTA buttons, the OpenV brand card, a capability lane, and the View All Partners toggle. Mobile pointer press and release changes were confirmed for both hero CTA buttons, the OpenV brand card, a capability lane, and the View All Partners toggle.

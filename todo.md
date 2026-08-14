@@ -70,3 +70,17 @@
 
 - [x] Use semantic list markup for the expanded partner directory
 - [x] Verify collapsed and expanded partner-directory states at desktop and mobile breakpoints
+
+- [x] Add a reusable GSAP section-reveal system for the capabilities, partners, and footer content bands
+- [x] Add staggered child entrances and scroll-linked depth effects without conflicting with PartnerMarquee or BackToTop
+- [x] Add polished section transitions and hover/press motion while preserving the approved design language
+- [x] Respect prefers-reduced-motion and clean up all new ScrollTriggers/listeners on unmount
+- [x] Verify the enhanced homepage motion on desktop and mobile
+
+- [x] Add explicit GPU-safe press motion to key homepage CTAs, brand cards, capability lanes, and the partner directory toggle
+- [x] Verify hover and press interaction states on desktop and mobile before checkpoint
+
+- [x] Exercise hover states for hero CTAs, brand cards, capability lanes, and the partner toggle on desktop, plus touch-safe active behavior on mobile
+
+- [x] Verify hover states for both hero CTA buttons, a brand card, a capability lane, and the View All Partners toggle in Chromium
+- [x] Verify mobile press behavior for both hero CTA buttons, a brand card, a capability lane, and the View All Partners toggle in Chromium

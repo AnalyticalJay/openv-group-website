@@ -1,6 +1,6 @@
 import { ArrowRight, Play, Building2, TrendingUp, Zap, Users, Lock, BarChart3, HelpCircle, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
 import { useAuth } from '@/_core/hooks/useAuth';
-import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, animateCounter, animatePageLoad, animateSectionTransition, addMicroInteractions, prefersReducedMotion, optimizeElementsForGPU, lazyLoadAnimation, cleanupAnimations } from '@/lib/animations';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, animateCounter, animatePageLoad, animateSectionTransition, addMicroInteractions, addPressMotion, prefersReducedMotion, optimizeElementsForGPU, lazyLoadAnimation, setupHomepageMotion, cleanupAnimations } from '@/lib/animations';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -43,8 +43,10 @@ function BrandVideoCard({ href, source, name }: BrandVideoCardProps) {
   const baseShadow = '0 8px 24px rgba(0, 0, 0, 0.16)';
 
   return (
-    <a
+          <a
+      data-motion-press
       href={href}
+
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Visit ${name}`}
@@ -83,6 +85,7 @@ export default function Home() {
   let { user, loading, error, isAuthenticated, logout } = useAuth();
 
   // Animation refs for each section
+  const homepageMotionRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const heroBackgroundRef = useRef<HTMLDivElement>(null);
   const heroHeadlineRef = useRef<HTMLDivElement>(null);
@@ -126,43 +129,43 @@ export default function Home() {
 
   // Initialize GSAP with Lenis and apply section animations
   useEffect(() => {
-    // Initialize Lenis-GSAP integration
+    // Initialize Lenis-GSAP integration and the scoped homepage motion system.
     initLenisGSAPIntegration(lenis);
-    
-    // Page load animations
-    animatePageLoad();
-    
-    // Add micro-interactions to all interactive elements
-    addMicroInteractions();
+    const teardownHomepageMotion = homepageMotionRef.current
+      ? setupHomepageMotion(homepageMotionRef.current)
+      : undefined;
+    const reducedMotion = prefersReducedMotion();
+    const teardownPressMotion = addPressMotion(document.querySelectorAll<HTMLElement>('[data-motion-press]'));
 
-    // Hero section animations
-    if (heroHeadlineRef.current) animateHeroHeadline(heroHeadlineRef.current);
-    if (heroGradientRef.current) animateGradientText(heroGradientRef.current);
-    if (exploreButtonRef.current) animateButtonEntrance(exploreButtonRef.current, 0);
-    if (watchVideoButtonRef.current) animateButtonEntrance(watchVideoButtonRef.current, 0.1);
-    if (heroBackgroundRef.current) addFloatingAnimation(heroBackgroundRef.current);
+    if (!reducedMotion) {
+      animatePageLoad();
+      addMicroInteractions();
 
-    // Apply scroll-triggered animations to sections
-    if (brandCardsRef.current) animateStaggerChildren(brandCardsRef.current, '[class*="group"]', 0.15);
-    if (capabilitiesRef.current) {
-      const capabilityLanes = capabilitiesRef.current.querySelectorAll('[data-capability-lane]');
-      animateStaggerChildren(capabilitiesRef.current, '[data-capability-lane]', 0.12);
-      capabilityLanes.forEach((lane) => addCardHoverEffect(lane as HTMLElement));
-      const header = capabilitiesRef.current.querySelector('[data-capabilities-header]');
-      if (header) animateFadeIn(header as HTMLElement);
+      // Hero motion remains deliberately more expressive than scroll reveals.
+      if (heroHeadlineRef.current) animateHeroHeadline(heroHeadlineRef.current);
+      if (heroGradientRef.current) animateGradientText(heroGradientRef.current);
+      if (exploreButtonRef.current) animateButtonEntrance(exploreButtonRef.current, 0);
+      if (watchVideoButtonRef.current) animateButtonEntrance(watchVideoButtonRef.current, 0.1);
+      if (heroBackgroundRef.current) {
+        addFloatingAnimation(heroBackgroundRef.current);
+        createParallaxEffect(heroBackgroundRef.current, 0.4);
+      }
     }
-    // Apply parallax effects to background images
-    if (heroBackgroundRef.current) createParallaxEffect(heroBackgroundRef.current, 0.4);
-    // CTA section uses CSS backgroundAttachment: 'fixed' for parallax (like Partners section)
-    
-    // Performance optimization: GPU acceleration for animated elements
-    if (!prefersReducedMotion()) {
-      const animatedElements = document.querySelectorAll('[class*="animate"], button, a, .ecosystem-icon, [data-capability-lane], .partner-logo');
+
+    if (capabilitiesRef.current) {
+      capabilitiesRef.current.querySelectorAll('[data-capability-lane]').forEach((lane) => {
+        addCardHoverEffect(lane as HTMLElement);
+      });
+    }
+
+    if (!reducedMotion) {
+      const animatedElements = document.querySelectorAll('[class*="animate"], button, a, [data-motion-section], [data-motion-child], [data-capability-lane], .partner-logo');
       optimizeElementsForGPU(animatedElements as NodeListOf<Element>);
     }
-    
-    // Cleanup on unmount
+
     return () => {
+      teardownPressMotion?.();
+      teardownHomepageMotion?.();
       cleanupAnimations();
     };
   }, [lenis]);
@@ -172,7 +175,7 @@ export default function Home() {
   const { isOpen: isContactModalOpen, closeContactForm } = useContactForm();
 
   return (
-    <div className="min-h-screen bg-navy text-white">
+    <div ref={homepageMotionRef} className="min-h-screen bg-navy text-white">
       <Navigation />
       <BackToTop />
       {/* Hero Section */}
@@ -214,11 +217,11 @@ export default function Home() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 md:gap-6 pb-8 sm:pb-10 md:pb-12 lg:pb-16">
-              <button ref={exploreButtonRef} className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 text-white font-bold tracking-wider text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}>
+              <button ref={exploreButtonRef} data-motion-press className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 text-white font-bold tracking-wider text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}>
                 EXPLORE THE GROUP
                 <ArrowRight className="ml-2 w-4 h-4" />
               </button>
-              <button ref={watchVideoButtonRef} className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto text-white font-bold tracking-widest text-xs uppercase hover:text-orange-400 transition-colors">
+              <button ref={watchVideoButtonRef} data-motion-press className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto text-white font-bold tracking-widest text-xs uppercase hover:text-orange-400 transition-colors">
                 <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center mr-4 hover:border-orange-500 transition-colors">
                   <Play className="w-5 h-5 ml-1" style={{color: '#FF6B35'}} />
                 </div>
@@ -229,10 +232,10 @@ export default function Home() {
           </div>
 
       {/* Brands Section */}
-      <section id="companies" className="relative z-10 overflow-hidden bg-transparent pt-8 sm:pt-10 md:pt-14 lg:pt-20 pb-1 sm:pb-2 md:pb-3 lg:pb-4">
+      <section id="companies" data-motion-section className="relative z-10 overflow-hidden bg-transparent pt-8 sm:pt-10 md:pt-14 lg:pt-20 pb-1 sm:pb-2 md:pb-3 lg:pb-4">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl relative z-10">
           {/* Brand Cards */}
-          <div ref={brandCardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          <div ref={brandCardsRef} data-motion-child className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             <BrandVideoCard name="OpenV Business" href="https://www.openv.co.za/" source="/manus-storage/OpenV(1)_7faeea8b.mp4" />
 
             <BrandVideoCard name="NextFour" href="https://nextfour.co.za/" source="/manus-storage/NextFour(3)_1389b015.mp4" />
@@ -245,10 +248,10 @@ export default function Home() {
       </section>
 
       {/* Unified Capabilities + Industries Section */}
-      <section id="solutions" ref={capabilitiesRef} className="relative overflow-hidden border-t border-gray-200 bg-[#F8FAFC] py-12 sm:py-16 md:py-24 lg:py-32">
+      <section id="solutions" ref={capabilitiesRef} data-motion-section className="relative overflow-hidden border-t border-gray-200 bg-[#F8FAFC] py-12 sm:py-16 md:py-24 lg:py-32">
         <div className="absolute inset-0 pointer-events-none opacity-70" style={{background: 'radial-gradient(circle at 78% 18%, rgba(27, 142, 255, 0.10), transparent 32%), radial-gradient(circle at 18% 72%, rgba(255, 107, 53, 0.08), transparent 30%)'}}></div>
         <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
-          <div data-capabilities-header className="grid items-end gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20" style={{opacity: 0}}>
+          <div data-capabilities-header data-motion-child className="grid items-end gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
             <div>
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">OPENV GROUP / ONE OPERATING LAYER</p>
               <h2 className="max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:text-5xl lg:text-6xl">
@@ -260,7 +263,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="relative min-h-[280px] overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_28px_80px_rgba(7,17,28,0.24)] sm:min-h-[340px] sm:p-8 md:min-h-[380px] md:p-10">
+            <div data-motion-depth className="relative min-h-[280px] overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_28px_80px_rgba(7,17,28,0.24)] sm:min-h-[340px] sm:p-8 md:min-h-[380px] md:p-10">
               <div className="absolute -right-16 -top-20 h-64 w-64 rounded-full border border-[#1B8EFF]/30"></div>
               <div className="absolute -right-4 -top-4 h-80 w-80 rounded-full border border-[#FF6B35]/20"></div>
               <div className="absolute inset-0 opacity-70" style={{background: 'linear-gradient(135deg, transparent 0 38%, rgba(27,142,255,0.14) 38.2% 38.5%, transparent 38.7% 100%), radial-gradient(circle at 76% 30%, rgba(255,107,53,0.18), transparent 28%)'}}></div>
@@ -281,7 +284,7 @@ export default function Home() {
 
           <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-5 md:mt-20">
             {capabilityLanes.map((lane, index) => (
-              <article key={lane.eyebrow} data-capability-lane tabIndex={0} role="group" aria-label={`${lane.label}: ${lane.copy}`} className="group relative grid gap-5 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/85 p-5 shadow-[0_14px_34px_rgba(7,17,28,0.07)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:bg-white hover:shadow-[0_22px_44px_rgba(7,17,28,0.12)] focus-visible:-translate-y-1 focus-visible:border-[#FF6B35] focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8FAFC] focus-visible:shadow-[0_22px_44px_rgba(7,17,28,0.12)] sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:gap-7 sm:p-7 md:p-8">
+              <article key={lane.eyebrow} data-capability-lane data-motion-child data-motion-press tabIndex={0} role="group" aria-label={`${lane.label}: ${lane.copy}`} className="group relative grid gap-5 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/85 p-5 shadow-[0_14px_34px_rgba(7,17,28,0.07)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:bg-white hover:shadow-[0_22px_44px_rgba(7,17,28,0.12)] focus-visible:-translate-y-1 focus-visible:border-[#FF6B35] focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8FAFC] focus-visible:shadow-[0_22px_44px_rgba(7,17,28,0.12)] sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:gap-7 sm:p-7 md:p-8">
                 <span className="absolute inset-y-0 left-0 w-1 transition-all duration-300 group-hover:w-1.5" style={{background: lane.accent}}></span>
                 <span className="absolute -right-20 -top-20 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-20" style={{background: lane.accent}}></span>
                 <div className="relative flex h-12 w-12 items-center justify-center rounded-full border text-[10px] font-bold tracking-[0.18em] text-slate-500 transition-all duration-300 group-hover:scale-105 group-hover:text-[#07111C] sm:h-14 sm:w-14" style={{borderColor: `${lane.accent}55`, background: `${lane.accent}0d`}}>0{index + 1}</div>
@@ -298,7 +301,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_22px_60px_rgba(7,17,28,0.16)] sm:mt-16 sm:p-8 md:mt-20 md:p-10">
+          <div data-motion-child className="mt-12 overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_22px_60px_rgba(7,17,28,0.16)] sm:mt-16 sm:p-8 md:mt-20 md:p-10">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
               <div className="flex items-end gap-4 sm:gap-6">
                 <span className="font-manrope text-6xl font-black leading-none tracking-[-0.08em] text-white sm:text-7xl">08</span>
@@ -323,7 +326,7 @@ export default function Home() {
 
 
       {/* Partners Section */}
-      <section id="partners" className="py-8 sm:py-10 md:py-12 lg:py-16 bg-navy relative overflow-hidden">
+      <section id="partners" data-motion-section className="py-8 sm:py-10 md:py-12 lg:py-16 bg-navy relative overflow-hidden">
         {/* Isometric Background */}
         <div className="absolute inset-0 opacity-30" style={{
           backgroundImage: 'url(/manus-storage/partners-bg-isometric_aabc2946.png)',
@@ -333,7 +336,7 @@ export default function Home() {
         }}></div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-6 sm:mb-8 md:mb-10" style={{opacity: 0}} ref={(el) => { if (el) animateFadeIn(el); }}>
+          <div data-motion-child className="text-center mb-6 sm:mb-8 md:mb-10">
             <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">OPENV GROUP / TECHNOLOGY PARTNERS</p>
             <h2 className="mx-auto max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
               Our Technology<br className="hidden sm:block" />
@@ -346,9 +349,11 @@ export default function Home() {
           <PartnerMarquee partners={technologyPartners} className="mb-4 sm:mb-6 md:mb-8" />
 
           {/* View All Button */}
-          <div className="text-center">
-            <button
+          <div data-motion-child className="text-center">
+                          <button
               type="button"
+              data-motion-press
+
               aria-expanded={showAllPartners}
               aria-controls="partners-list"
               onClick={() => setShowAllPartners((current: boolean) => !current)}
@@ -375,9 +380,9 @@ export default function Home() {
 
 
       {/* Footer */}
-      <footer className="bg-navy border-t border-white/10 py-6 sm:py-8 md:py-12 lg:py-16">
+      <footer data-motion-section className="bg-navy border-t border-white/10 py-6 sm:py-8 md:py-12 lg:py-16">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-6 md:mb-8">
+          <div data-motion-child className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-6 md:mb-8">
             {/* Company Info */}
             <div>
               <h3 className="text-white font-bold mb-2 sm:mb-3 md:mb-4 text-xs sm:text-sm md:text-base">OpenV Group</h3>
@@ -415,7 +420,7 @@ export default function Home() {
           </div>
 
           {/* Footer Bottom */}
-          <div className="border-t border-white/10 pt-4 sm:pt-6 md:pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-white/60 gap-3 sm:gap-4 md:gap-0">
+          <div data-motion-child className="border-t border-white/10 pt-4 sm:pt-6 md:pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-white/60 gap-3 sm:gap-4 md:gap-0">
             <p>&copy; 2025 OpenV Group. All rights reserved.</p>
             <div className="flex gap-3 sm:gap-4 md:gap-6">
               <a href="#" className="hover:text-orange-400 transition-colors">Privacy Policy</a>
