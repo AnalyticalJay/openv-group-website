@@ -1,0 +1,51 @@
+# Changelog
+
+This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
+
+## Current documentation release — 2026-08-18
+
+**Added** a complete project README covering architecture, design system, development commands, production safeguards, accessibility, content governance, and publishing workflow. **Added** this changelog and a contribution guide for brand and content updates.
+
+## Mobile hero optimisation — checkpoint `65b46cd2`
+
+**Changed** the animated hero to use mobile-specific SVG stream geometry at 320px, 375px, and 430px. Orange, blue, and green technology streams now converge without crossing the headline or CTA region. Particle and node density is capped on smaller screens, the convergence point is repositioned, and reduced-motion behavior remains intact.
+
+## Production runtime recovery — checkpoints `251a0608`, `28c7cd74`
+
+**Fixed** a production-only white page caused by unsafe Vite manual chunk splitting. React-dependent packages now remain in Vite’s natural execution graph, while only self-contained motion and optional 3D packages are isolated. Both the custom domain and Manus domain were revalidated after publishing.
+
+## Connected-technology hero — checkpoint `2dc63173`
+
+**Added** a premium dark-navy hero background that represents OpenV Group’s three connected capability streams. The experience includes generated artwork, converging orange/blue/green paths, a convergence halo and orbit, particle flow, pulsing nodes, floating modules, parallax depth, and a protected text-safe area.
+
+## PDF-informed homepage narrative — checkpoint `6e2fedf7`
+
+**Added** the OpenV Group Advantage proof-point section, a fragmented-vendors-to-one-accountable-group visual, and an applied-AI rail. **Changed** hero, brand, operating-layer, partner, footer, and metadata copy to reflect the company document while keeping the landing page concise.
+
+## Navigation, header, and interaction polish — checkpoints `e1c81a06`, `fb924484`, `ad858ea7`
+
+**Changed** the header logo and consultation CTA to match the hero’s visual weight. **Added** desktop navigation underline motion, keyboard focus styling, reusable GSAP section reveals, scroll-linked depth, and touch-safe press interactions. Motion includes reduced-motion support and cleanup safeguards.
+
+## Technology Partners evolution — checkpoints `07b2abf8`, `368ec7e4`
+
+**Replaced** the original partner carousel with a continuous GSAP marquee featuring fading edges and an accessible expanded directory. **Changed** cards to larger full-colour logo surfaces and removed visual hover effects, while keeping the marquee continuous, responsive, and keyboard-safe.
+
+## Brand-card evolution — checkpoints `3e31fbec` and related revisions
+
+**Replaced** hero brand videos with static, lightweight brand cards that preserve direct links. **Added** uploaded OpenV, NextFour, and ShiftBridge logo assets. **Changed** feature assignment, removed redundant labels and metadata, and enlarged logo presentation for a cleaner hero composition.
+
+## Foundation, conversion, and responsive releases — historical milestones
+
+The earlier release line established the React/Vite application, responsive homepage structure, S3-backed assets, actual technology partner marks, GSAP/Lenis motion, contact-form validation, tRPC/database support, accessible navigation, mobile layout, and the initial visual design system. It also contains the historical splash-screen work, which was later removed from the live landing experience in favour of a direct homepage load.
+
+| Area | Published outcome |
+| --- | --- |
+| Foundation | Migrated the project to the current React, Vite, Tailwind, Express, tRPC, and Drizzle architecture. |
+| Responsive behavior | Established mobile, tablet, desktop, and ultra-wide layouts; later refined mobile header, hero, cards, and text scaling. |
+| Conversion | Added the globally accessible Book a Consultation modal with validation, success states, and navigation integration. |
+| Visual system | Standardised the navy canvas, orange/red editorial gradient, Manrope/Inter typography, shared buttons, card language, footer, and navigation. |
+| Motion and performance | Added GSAP/Lenis, scroll progress, section reveal primitives, reduced-motion safeguards, Chromium QA, and production asset-graph regression coverage. |
+
+## Release process
+
+Every material release should update this document under a dated heading, identify the relevant checkpoint, and summarise user-visible changes, production fixes, or design decisions. Publish only after `pnpm test`, `pnpm build`, responsive preview checks, and any production-specific validation have passed.

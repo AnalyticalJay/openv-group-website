@@ -150,3 +150,58 @@ Create a checkpoint after a validated change. To move a checkpoint to the live d
 ## Content Governance
 
 The homepage content is informed by the OpenV Group company document and is intentionally concise. It should continue to lead with business outcomes, accountability, specialist brand roles, and proof points. Detailed product catalogues, partner profiles, and long-form service descriptions belong on deeper brand, service, or partner pages rather than the homepage.
+
+## Lighthouse CI and Performance Budgets
+
+Lighthouse CI is recommended as a post-build quality gate for the published homepage. It should complement, rather than replace, the existing Vitest, production-build, browser QA, and live-domain checks. Lighthouse CI can collect multiple runs, apply assertions, and upload results from a CI workflow.[1]
+
+Install the CLI as a development dependency when the team is ready to automate it:
+
+```bash
+pnpm add -D @lhci/cli
+```
+
+Create a `lighthouserc.cjs` file with a production-like server command appropriate to the CI runner. The example below uses the built server and three collection runs; adjust the start command and ready pattern if the CI environment supplies its own preview server.
+
+```js
+module.exports = {
+  ci: {
+    collect: {
+      numberOfRuns: 3,
+      startServerCommand: 'pnpm start',
+      startServerReadyPattern: 'Server running',
+      url: ['http://127.0.0.1:3000/'],
+    },
+    assert: {
+      assertions: {
+        'categories:performance': ['error', { minScore: 0.9 }],
+        'categories:accessibility': ['error', { minScore: 0.95 }],
+        'categories:best-practices': ['error', { minScore: 0.9 }],
+        'categories:seo': ['error', { minScore: 0.95 }],
+        'first-contentful-paint': ['warn', { maxNumericValue: 2000 }],
+        'largest-contentful-paint': ['warn', { maxNumericValue: 2500 }],
+        'cumulative-layout-shift': ['error', { maxNumericValue: 0.1 }],
+        'total-blocking-time': ['warn', { maxNumericValue: 300 }],
+      },
+    },
+  },
+};
+```
+
+| Budget | Target | Reason |
+| --- | --- | --- |
+| Performance score | At least 0.90 | Keeps the visual experience responsive on representative mobile hardware. |
+| Accessibility score | At least 0.95 | Protects keyboard focus, semantics, contrast, and motion preferences. |
+| LCP | 2.5 seconds or less | Aligns with the Core Web Vitals “good” threshold.[2] |
+| CLS | 0.10 or less | Aligns with the Core Web Vitals “good” threshold.[2] |
+| TBT | 300 ms or less | Flags main-thread regressions from animation, scripts, or vendor changes. |
+| Initial JavaScript | 300 KiB gzip or less | Keeps the critical homepage script payload within the current safe bundle envelope. |
+| Initial CSS | 35 KiB gzip or less | Protects first render and avoids utility/style growth. |
+
+Run the proposed workflow with `pnpm exec lhci autorun` after `pnpm build`. Do not reintroduce broad Vite vendor splitting merely to satisfy a size warning: React-dependent packages must remain in a safe execution graph.
+
+## References
+
+[1] [Lighthouse CI documentation](https://github.com/GoogleChrome/lighthouse-ci)
+
+[2] [Web Vitals: LCP and CLS thresholds](https://web.dev/articles/vitals)

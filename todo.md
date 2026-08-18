@@ -168,3 +168,8 @@
 
 - [x] Create an accurate README covering the OpenV Group website overview, stack, design system, key features, development workflow, tests, and deployment notes
 - [x] Validate all README commands and claims against the current project configuration
+
+- [x] Create a CHANGELOG.md tracking published homepage releases and material changes
+- [x] Create a CONTRIBUTING.md guide for safe brand asset and content updates
+- [x] Add Lighthouse CI setup instructions and performance budgets to README.md
+- [x] Validate all new documentation against current project commands, asset workflow, and build output
