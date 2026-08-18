@@ -157,5 +157,5 @@
 
 - [x] Diagnose the production-only blank white page on www.openvgroup.com and the Manus published URL
 - [x] Fix the production runtime, asset, routing, or client error causing the live page to render blank
-- [ ] Validate the preview and both live production URLs after the fix
+- [x] Validate the preview and both live production URLs after the fix
 - [x] Add regression coverage preventing React-dependent vendor chunks from breaking the production runtime
