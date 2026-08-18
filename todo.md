@@ -165,3 +165,6 @@
 - [x] Tune mobile particle and node density for clear depth without visual clutter or overflow
 - [x] Preserve reduced-motion behavior and add focused narrow-mobile test coverage
 - [x] Verify the animated hero at 320px, 375px, and 430px mobile widths
+
+- [x] Create an accurate README covering the OpenV Group website overview, stack, design system, key features, development workflow, tests, and deployment notes
+- [x] Validate all README commands and claims against the current project configuration
