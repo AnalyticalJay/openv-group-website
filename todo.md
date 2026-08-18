@@ -116,3 +116,7 @@
 - [x] Increase the header OpenV Group logo size while preserving mobile alignment
 - [x] Match the header consultation button padding, height, gradient, radius, and typography to the hero CTA
 - [x] Verify the revised header logo and button weight on desktop and mobile
+
+- [x] Add a subtle animated underline hover effect to desktop header navigation links
+- [x] Preserve the active-section underline and add an accessible focus-visible treatment
+- [x] Verify hover, focus, and responsive navigation states on desktop and mobile

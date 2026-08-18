@@ -131,3 +131,7 @@ The company-name headings beneath the uploaded OpenV, NextFour, and ShiftBridge 
 ## Enlarged Logo Card QA
 
 The adjacent card metadata labels have been removed and the uploaded logos now occupy a full-width responsive header zone. Desktop and mobile screenshots confirm that OpenV Business, NextFour, and ShiftBridge marks are substantially larger, preserve their aspect ratios, and remain balanced with the descriptions, feature tags, card links, and existing motion states.
+
+## Navigation Underline QA
+
+Chromium verification at 1280×720 confirmed a non-active navigation link expands its gradient underline to computed scale `1` on hover. Keyboard navigation focused the expected “Our Companies” link and exposed the configured orange focus-ring color. The 375×812 mobile check confirmed the hamburger menu opens and remains visually unchanged by the desktop-only underline enhancement.

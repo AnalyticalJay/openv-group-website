@@ -78,15 +78,18 @@ export default function Navigation() {
                   }
                 }
               }}
-              className={`relative text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors py-1 px-2 bg-none border-none cursor-pointer ${
+              className={`group relative text-xs sm:text-sm font-bold tracking-wider uppercase transition-colors py-1 px-2 bg-none border-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 ${
                 activeSection === link.href ? 'text-gray-800' : 'text-gray-600 hover:text-gray-800'
               }`}
+              aria-current={activeSection === link.href ? 'page' : undefined}
             >
               {link.label}
-              <span 
-                className="nav-underline absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-orange-500 to-red-500 origin-left" 
-                style={{transform: activeSection === link.href ? 'scaleX(1)' : 'scaleX(0)'}}
-              ></span>
+              <span
+                aria-hidden="true"
+                className={`nav-underline pointer-events-none absolute bottom-0 left-0 h-0.5 w-full origin-left bg-gradient-to-r from-orange-500 to-red-500 motion-safe:transition-[scale] motion-safe:duration-300 motion-safe:ease-out ${
+                  activeSection === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100'
+                }`}
+              />
             </button>
           ))}
         </nav>
