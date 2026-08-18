@@ -41,7 +41,7 @@
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
   padding: 1.25rem;
-  transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1), border-color 260ms ease, box-shadow 260ms ease, background-color 260ms ease, z-index 0ms linear;
+  transition: none;
   outline: none;
 }
 
@@ -54,26 +54,10 @@
   max-height: none;
   object-fit: cover;
   object-position: center;
-  filter: grayscale(100%) contrast(1.28) brightness(0.86);
+  filter: none;
   opacity: 1;
-  transform: scale(1);
-  transition: filter 260ms ease, opacity 260ms ease, transform 260ms cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.partner-marquee__card:hover,
-.partner-marquee__card:focus-visible {
-  z-index: 10;
-  transform: translateY(-12px);
-  border-color: #13C46B;
-  background: #ffffff;
-  box-shadow: 0 18px 38px rgba(19, 196, 107, 0.2), 0 0 24px rgba(19, 196, 107, 0.16);
-}
-
-.partner-marquee__card:hover img,
-.partner-marquee__card:focus-visible img {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.06);
+  transform: none;
+  transition: none;
 }
 
 .partner-marquee__card:focus-visible {
@@ -169,11 +153,6 @@
   text-align: center;
   text-transform: uppercase;
   transition: color 260ms ease;
-}
-
-.partner-marquee__card:hover .partner-marquee__name,
-.partner-marquee__card:focus-visible .partner-marquee__name {
-  color: #07111C;
 }
 
 .partner-marquee__card img {

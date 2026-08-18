@@ -82,12 +82,12 @@ export default function PartnerMarquee({ partners, className = '' }: PartnerMarq
       });
     };
 
-    const pause = () => {
+    const pauseForKeyboardFocus = () => {
       if (reducedMotionRef.current || !tweenRef.current) return;
       gsap.to(tweenRef.current, { timeScale: 0, duration: 0.55, ease: 'power2.out', overwrite: true });
     };
 
-    const resume = () => {
+    const resumeAfterKeyboardFocus = () => {
       if (reducedMotionRef.current || !tweenRef.current) return;
       gsap.to(tweenRef.current, { timeScale: 1, duration: 0.8, ease: 'power2.out', overwrite: true });
     };
@@ -113,10 +113,8 @@ export default function PartnerMarquee({ partners, className = '' }: PartnerMarq
     });
 
     createTween();
-    viewport.addEventListener('mouseenter', pause);
-    viewport.addEventListener('mouseleave', resume);
-    viewport.addEventListener('focusin', pause);
-    viewport.addEventListener('focusout', resume);
+    viewport.addEventListener('focusin', pauseForKeyboardFocus);
+    viewport.addEventListener('focusout', resumeAfterKeyboardFocus);
 
     const resizeObserver = new ResizeObserver(() => {
       createTween();
@@ -134,10 +132,8 @@ export default function PartnerMarquee({ partners, className = '' }: PartnerMarq
       ScrollTrigger.getAll().forEach((trigger) => {
         if (trigger.trigger === section) trigger.kill();
       });
-      viewport.removeEventListener('mouseenter', pause);
-      viewport.removeEventListener('mouseleave', resume);
-      viewport.removeEventListener('focusin', pause);
-      viewport.removeEventListener('focusout', resume);
+      viewport.removeEventListener('focusin', pauseForKeyboardFocus);
+      viewport.removeEventListener('focusout', resumeAfterKeyboardFocus);
       resizeObserver.disconnect();
       window.removeEventListener('resize', createTween);
     };

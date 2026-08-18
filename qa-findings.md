@@ -151,3 +151,7 @@ The 1440×900 and 375×812 hero captures confirm the new artwork keeps the left 
 ## Intensified Hero Technology QA
 
 The refined desktop hero now exposes three primary and three secondary animated streams, a larger convergence halo and rotating orbit, 20 moving particles, nine pulsing nodes, and five floating technology modules. Mobile intentionally caps the visible density to 10 particles, five nodes, and one module while retaining all three stream families and the convergence point. Chromium confirmed particle movement, visible headline content, and no horizontal overflow at both breakpoints. Reduced-motion mode disables particle, stream, orbit, and convergence animations while retaining the static visual narrative.
+
+## Full-Colour Technology Partners QA
+
+Chromium confirmed that partner logo images render with `filter: none` on both desktop and mobile. Hovering a continuously moving desktop card leaves its transform, border, and shadow unchanged while the marquee track continues to move. The marquee retains its fading-edge presentation, responsive card sizing, accessible focus state, and no horizontal overflow at both breakpoints. Eight Vitest checks and the production build pass.

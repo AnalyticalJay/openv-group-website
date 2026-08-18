@@ -148,3 +148,9 @@
 - [x] Keep mobile density capped, the left text-safe zone protected, and reduced-motion behavior unchanged
 - [x] Extend tests and Chromium QA for the increased hero visual density
 - [x] Verify the intensified hero experience on desktop and mobile
+
+- [x] Show Technology Partners marquee logos in full colour at all times
+- [x] Remove partner-card/logo hover lift, glow, grayscale, and scale effects while preserving static accessibility focus
+- [x] Preserve marquee movement, fading edges, directory behavior, and responsive card sizing
+- [x] Verify the full-colour no-hover marquee on desktop and mobile
+- [x] Add test coverage for full-colour logos and no-hover marquee behavior
