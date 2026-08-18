@@ -120,3 +120,17 @@
 - [x] Add a subtle animated underline hover effect to desktop header navigation links
 - [x] Preserve the active-section underline and add an accessible focus-visible treatment
 - [x] Verify hover, focus, and responsive navigation states on desktop and mobile
+
+- [x] Analyse the uploaded OpenV Group PDF and extract the strongest company, brand, capability, and proof-point content
+- [x] Audit the current homepage and map PDF content into existing sections before creating anything new
+- [x] Refine existing homepage copy to be concise, visual, and non-repetitive
+- [x] Add only the necessary new visually led sections that materially improve the OpenV Group story
+- [x] Preserve the approved design system, GSAP motion language, accessibility, and mobile responsiveness
+- [x] Verify the PDF-informed homepage content hierarchy on desktop and mobile
+- [x] Add Vitest coverage for the PDF-informed homepage narrative and proof points
+
+- [x] Add a compact visual transformation from fragmented technology vendors to one accountable OpenV Group relationship
+- [x] Add a concise applied-AI visual covering Microsoft Copilot, AI threat detection, ShiftBridge workflows, and NextFour marketing
+- [x] Keep both new stories visually led, concise, motion-ready, and responsive
+- [x] Extend Vitest coverage for the two additional PDF-informed homepage narratives
+- [x] Verify the expanded homepage content flow on desktop and mobile

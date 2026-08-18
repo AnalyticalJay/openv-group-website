@@ -135,3 +135,11 @@ The adjacent card metadata labels have been removed and the uploaded logos now o
 ## Navigation Underline QA
 
 Chromium verification at 1280×720 confirmed a non-active navigation link expands its gradient underline to computed scale `1` on hover. Keyboard navigation focused the expected “Our Companies” link and exposed the configured orange focus-ring color. The 375×812 mobile check confirmed the hamburger menu opens and remains visually unchanged by the desktop-only underline enhancement.
+
+## PDF-Informed Homepage Content QA
+
+The 1440×900 desktop and 375×812 mobile full-page captures confirm the PDF content has been integrated without turning the homepage into a long-form brochure. The hero, three brand cards, operating-layer section, Technology Partners section, and footer now use concise PDF-informed positioning. One new visually led “OpenV Group Advantage” section communicates the consolidation promise through one headline, four proof metrics, and three accountability outcomes. Both viewports retain the approved visual system, GSAP section motion, readable hierarchy, and no horizontal overflow. The expanded Vitest suite verifies the core narrative, metrics, concise-copy constraint, title, and meta description.
+
+## Expanded PDF Content QA
+
+The desktop and mobile full-page captures confirm the additional PDF stories remain visual rather than text-heavy. “Technology breaks in the gaps” compares five separate supplier categories with one accountable OpenV Group relationship, while “AI inside the business. Not beside it.” presents four practical applications in one unified rail. Both sections inherit the approved gradient typography, navy and light section rhythm, GSAP section reveal hooks, compact responsive hierarchy, semantic lists, and no horizontal overflow. The expanded Vitest suite verifies both narratives and the named AI applications.

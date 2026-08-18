@@ -23,12 +23,36 @@ type BrandVideoCardProps = {
 };
 
 const capabilityLanes = [
-  { eyebrow: 'CONNECT', label: 'Digital foundation', copy: 'Infrastructure, cybersecurity and support that keep the business moving.', themes: ['Infrastructure', 'Cybersecurity', 'Support'], accent: '#FF6B35' },
-  { eyebrow: 'ENABLE', label: 'Business intelligence', copy: 'Software, automation and AI that turn operational complexity into momentum.', themes: ['Business Software', 'AI & Automation'], accent: '#1B8EFF' },
-  { eyebrow: 'AMPLIFY', label: 'Customer experience', copy: 'Web, marketing and digital growth that make your value easier to find.', themes: ['Digital Growth'], accent: '#FF1744' },
+  { eyebrow: 'CONNECT', label: 'Managed technology foundation', copy: '24/7 managed IT, cybersecurity, cloud and connectivity that keep the business moving.', themes: ['Managed IT', 'Cybersecurity', 'Cloud & Connectivity'], accent: '#FF6B35' },
+  { eyebrow: 'ENABLE', label: 'Connected business operations', copy: 'CRM, quoting, jobs, invoicing and AI-assisted workflows in one operational view.', themes: ['Business Software', 'Automation', 'AI Workflows'], accent: '#1B8EFF' },
+  { eyebrow: 'AMPLIFY', label: 'Digital growth engine', copy: 'Web, marketing, brand and CRM experiences built to turn visibility into growth.', themes: ['Web & CRM', 'Marketing', 'Brand'], accent: '#FF1744' },
 ];
 
 const industryLabels = ['Manufacturing', 'Healthcare', 'Professional Services', 'Construction', 'Retail', 'Financial Services', 'Education', 'Hospitality'];
+
+const groupProof = [
+  { value: '20+', label: 'Years in South Africa' },
+  { value: '45', label: 'ICT specialists' },
+  { value: '8', label: 'Corporate ICT partners' },
+  { value: '3', label: 'Integrated brands' },
+];
+
+const groupOutcomes = [
+  { index: '01', title: 'One call', copy: 'One team owns the issue from report to resolution.' },
+  { index: '02', title: 'One invoice', copy: 'Clearer reporting and more predictable technology spend.' },
+  { index: '03', title: 'One relationship', copy: 'Every technology layer working toward the same business goal.' },
+];
+
+const fragmentedVendors = ['IT support', 'Connectivity', 'Website', 'Cybersecurity', 'Business software'];
+
+const connectedOutcomes = ['Clear ownership', 'Connected systems', 'Predictable costs'];
+
+const appliedAi = [
+  { index: '01', label: 'Microsoft 365 Copilot', copy: 'Draft, summarise and analyse inside everyday tools.' },
+  { index: '02', label: 'AI threat detection', copy: 'Identify and respond to risk in real time.' },
+  { index: '03', label: 'ShiftBridge workflows', copy: 'Surface follow-ups, overdue work and operational signals.' },
+  { index: '04', label: 'NextFour marketing', copy: 'Optimise campaigns, content and customer response.' },
+];
 
 const technologyPartners = [
   { name: 'Vodacom', logo: '/manus-storage/logo-vodacom_59076cbe.png' },
@@ -234,7 +258,7 @@ export default function Home() {
 
             {/* Subheading */}
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/70 mb-6 sm:mb-8 md:mb-12 max-w-3xl font-light leading-relaxed">
-              Different expertise. One seamless partnership.
+              One accountable team across managed IT, digital growth and connected business software.
             </p>
 
             {/* CTAs */}
@@ -258,14 +282,111 @@ export default function Home() {
         <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-7xl relative z-10">
           {/* Brand Cards */}
           <div ref={brandCardsRef} data-motion-child className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            <BrandVideoCard name="OpenV Business" href="https://www.openv.co.za/" logo="/manus-storage/openv-business-logo_9be9b2a7.png" description="Digital foundations for dependable business growth." accent="#FF6B35" tags={["Infrastructure", "Security", "Support"]} />
+            <BrandVideoCard name="OpenV Business" href="https://www.openv.co.za/" logo="/manus-storage/openv-business-logo_9be9b2a7.png" description="Managed IT, cybersecurity, cloud and connectivity—proactive, monitored and SLA-backed." accent="#FF6B35" tags={["Managed IT", "Cybersecurity", "Cloud"]} />
 
-            <BrandVideoCard name="NextFour" href="https://nextfour.co.za/" logo="/manus-storage/nextfour-logo_2b7d7e0d.png" description="Web, marketing and AI that make your value easier to find." accent="#1B8EFF" tags={["Web", "Marketing", "Digital Growth"]} />
+            <BrandVideoCard name="NextFour" href="https://nextfour.co.za/" logo="/manus-storage/nextfour-logo_2b7d7e0d.png" description="Web, marketing, brand and CRM—built to turn visibility into measurable growth." accent="#1B8EFF" tags={["Web & CRM", "Marketing", "Brand"]} />
 
-            <BrandVideoCard name="ShiftBridge" href="https://shiftbridge.co.za/" logo="/manus-storage/shiftbridge-logo_cf5c7e03.png" description="Software and automation for operational momentum." accent="#FF4F8B" tags={["Software", "Automation", "AI"]} />
+            <BrandVideoCard name="ShiftBridge" href="https://shiftbridge.co.za/" logo="/manus-storage/shiftbridge-logo_cf5c7e03.png" description="CRM, quoting, jobs, invoicing and automation—one clear view of your operation." accent="#FF4F8B" tags={["Business OS", "Job Management", "Automation"]} />
           </div>
         </div>
       </section>
+        </div>
+      </section>
+
+      {/* Fragmented Vendors to One Accountable Group */}
+      <section id="why-group" data-motion-section className="relative overflow-hidden border-t border-slate-200 bg-[#F8FAFC] py-14 sm:py-18 md:py-24 lg:py-28">
+        <div className="pointer-events-none absolute inset-0 opacity-80" style={{background: 'radial-gradient(circle at 12% 22%, rgba(255,107,53,0.09), transparent 26%), radial-gradient(circle at 88% 72%, rgba(27,142,255,0.09), transparent 28%)'}} />
+        <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
+          <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.05fr_0.95fr] md:gap-12 lg:gap-20">
+            <div>
+              <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">WHY THE GROUP EXISTS</p>
+              <h2 className="max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:text-5xl lg:text-6xl">
+                Technology breaks<br />
+                <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>in the gaps.</span>
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:text-lg">Multiple suppliers create handoffs, blind spots and cost. OpenV Group replaces the gaps with one accountable operating relationship.</p>
+          </div>
+
+          <div data-motion-child className="mt-10 grid items-stretch gap-4 sm:mt-12 lg:grid-cols-[1fr_auto_1fr] lg:gap-6">
+            <div className="relative min-h-[300px] overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_55px_rgba(7,17,28,0.08)] sm:p-8">
+              <div className="pointer-events-none absolute inset-0 opacity-70" style={{background: 'linear-gradient(145deg, transparent 0 44%, rgba(255,107,53,0.10) 44.2% 44.5%, transparent 44.7% 100%), radial-gradient(circle at 50% 52%, rgba(255,23,68,0.08), transparent 30%)'}} />
+              <div className="relative flex items-center justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">FRAGMENTED MODEL</p><span className="h-2 w-2 rounded-full bg-[#FF1744] shadow-[0_0_18px_rgba(255,23,68,0.65)]" /></div>
+              <ul aria-label="Separate technology vendors" className="relative mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {fragmentedVendors.map((vendor, index) => (
+                  <li key={vendor} className={`flex min-h-20 items-center justify-center rounded-2xl border border-slate-200 bg-[#F8FAFC]/90 px-3 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500 ${index === fragmentedVendors.length - 1 ? 'col-span-2 sm:col-span-1' : ''}`}>{vendor}</li>
+                ))}
+              </ul>
+              <div className="relative mx-auto mt-5 flex w-fit items-center gap-3 rounded-full border border-[#FF1744]/20 bg-[#FF1744]/5 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.2em] text-[#FF1744]"><span className="h-1.5 w-1.5 rounded-full bg-[#FF1744]" />Handoffs / blind spots / cost</div>
+            </div>
+
+            <div aria-hidden="true" className="flex items-center justify-center py-1 lg:py-0"><div className="flex h-12 w-12 rotate-90 items-center justify-center rounded-full border border-[#FF6B35]/35 bg-white text-[#FF6B35] shadow-[0_12px_28px_rgba(255,107,53,0.18)] lg:rotate-0"><ArrowRight className="h-5 w-5" /></div></div>
+
+            <div data-motion-depth className="relative min-h-[300px] overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_26px_70px_rgba(7,17,28,0.20)] sm:p-8">
+              <div className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full border border-[#1B8EFF]/30" />
+              <div className="pointer-events-none absolute -right-2 -top-5 h-72 w-72 rounded-full border border-[#FF6B35]/18" />
+              <div className="relative flex items-center justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/45">CONNECTED MODEL</p><span className="h-2 w-2 rounded-full bg-[#13C46B] shadow-[0_0_18px_rgba(19,196,107,0.65)]" /></div>
+              <div className="relative mt-9 flex items-center gap-5">
+                <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full border border-[#FF6B35]/65 bg-[#FF6B35]/10 text-[11px] font-black uppercase tracking-[0.2em] text-[#FF6B35] shadow-[0_0_42px_rgba(255,107,53,0.22)]">OPENV</div>
+                <div><p className="font-manrope text-2xl font-black leading-tight sm:text-3xl">One accountable<br />technology partner.</p><p className="mt-3 text-xs leading-relaxed text-white/50 sm:text-sm">Every layer aligned under one relationship.</p></div>
+              </div>
+              <ul aria-label="Benefits of one accountable group" className="relative mt-8 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
+                {connectedOutcomes.map((outcome, index) => <li key={outcome} className="bg-[#0A1828]/95 p-4"><span className="text-[9px] font-bold tracking-[0.2em] text-[#1B8EFF]">0{index + 1}</span><p className="mt-2 text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em] text-white/65">{outcome}</p></li>)}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OpenV Group Advantage */}
+      <section id="advantage" data-motion-section className="relative overflow-hidden border-t border-slate-200 bg-white py-14 sm:py-18 md:py-24 lg:py-28">
+        <div className="pointer-events-none absolute inset-0 opacity-70" style={{background: 'radial-gradient(circle at 84% 12%, rgba(27,142,255,0.10), transparent 30%), radial-gradient(circle at 12% 88%, rgba(255,107,53,0.09), transparent 28%)'}} />
+        <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
+          <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.08fr_0.92fr] md:gap-12 lg:gap-20">
+            <div>
+              <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">THE OPENV GROUP ADVANTAGE</p>
+              <h2 className="max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:text-5xl lg:text-6xl">
+                Less complexity.<br />
+                <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>More capability.</span>
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:text-lg">
+              OpenV Group replaces fragmented suppliers with one accountable relationship across your technology, customer growth and business operations.
+            </p>
+          </div>
+
+          <div data-motion-child data-motion-depth className="relative mt-10 overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_30px_90px_rgba(7,17,28,0.22)] sm:mt-12 sm:p-8 md:mt-16 md:p-10 lg:p-12">
+            <div className="pointer-events-none absolute -right-24 -top-28 h-80 w-80 rounded-full border border-[#1B8EFF]/25" />
+            <div className="pointer-events-none absolute -right-6 -top-10 h-96 w-96 rounded-full border border-[#FF6B35]/15" />
+            <div className="pointer-events-none absolute inset-0 opacity-80" style={{background: 'linear-gradient(132deg, transparent 0 43%, rgba(27,142,255,0.11) 43.2% 43.5%, transparent 43.7% 100%), radial-gradient(circle at 78% 34%, rgba(255,107,53,0.16), transparent 27%)'}} />
+            <div className="relative grid gap-10 lg:grid-cols-[1.03fr_0.97fr] lg:items-end lg:gap-16">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.26em] text-white/45">ONE GROUP / COMPLETE TECHNOLOGY PARTNER</p>
+                <h3 className="mt-5 max-w-xl font-manrope text-3xl font-black leading-[1.06] tracking-tight sm:text-4xl md:text-5xl">
+                  One call.<br />One invoice.<br /><span className="text-[#FF6B35]">Total accountability.</span>
+                </h3>
+                <p className="mt-5 max-w-lg text-sm leading-relaxed text-white/60 sm:text-base">Managed IT. Digital growth. Business software. Designed to work as one.</p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10">
+                {groupProof.map((proof) => (
+                  <div key={proof.label} className="min-h-28 bg-[#0A1828]/95 p-5 sm:min-h-32 sm:p-6">
+                    <strong className="font-manrope text-3xl font-black tracking-tight text-white sm:text-4xl">{proof.value}</strong>
+                    <p className="mt-3 max-w-[9rem] text-[9px] font-bold uppercase leading-relaxed tracking-[0.16em] text-white/45 sm:text-[10px]">{proof.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div data-motion-child className="mt-7 grid border-y border-slate-200 md:grid-cols-3 md:divide-x md:divide-slate-200">
+            {groupOutcomes.map((outcome) => (
+              <div key={outcome.index} className="grid grid-cols-[auto_1fr] gap-4 border-b border-slate-200 py-6 last:border-b-0 md:border-b-0 md:px-6 md:first:pl-0 md:last:pr-0">
+                <span className="text-[9px] font-bold tracking-[0.2em] text-[#FF6B35]">{outcome.index}</span>
+                <div><h3 className="font-manrope text-lg font-bold text-[#07111C]">{outcome.title}</h3><p className="mt-1 text-xs leading-relaxed text-slate-500 sm:text-sm">{outcome.copy}</p></div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -281,7 +402,7 @@ export default function Home() {
                 <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>the whole business forward.</span>
               </h2>
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:mt-7 md:text-lg">
-                One connected capability layer across the systems, experiences and industries that shape modern growth.
+                One connected capability layer across managed technology, customer growth and day-to-day business operations.
               </p>
             </div>
 
@@ -346,6 +467,33 @@ export default function Home() {
       </section>
 
 
+      {/* Applied AI Section */}
+      <section id="applied-ai" data-motion-section className="relative overflow-hidden border-t border-white/10 bg-[#07111C] py-14 text-white sm:py-18 md:py-24 lg:py-28">
+        <div className="pointer-events-none absolute inset-0 opacity-75" style={{background: 'radial-gradient(circle at 18% 28%, rgba(27,142,255,0.18), transparent 28%), radial-gradient(circle at 82% 72%, rgba(255,107,53,0.16), transparent 30%), linear-gradient(135deg, transparent 0 48%, rgba(255,255,255,0.035) 48.2% 48.4%, transparent 48.6% 100%)'}} />
+        <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
+          <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.08fr_0.92fr] md:gap-12 lg:gap-20">
+            <div>
+              <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#1B8EFF] sm:text-xs">PRACTICAL AI / ALREADY AT WORK</p>
+              <h2 className="max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">AI inside the business.<br /><span style={{background: 'linear-gradient(135deg, #1B8EFF 0%, #13C46B 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>Not beside it.</span></h2>
+            </div>
+            <p className="max-w-xl text-sm leading-relaxed text-white/60 sm:text-base md:text-lg">We deploy AI where it makes the operation faster, safer and more effective—inside tools your team already uses.</p>
+          </div>
+
+          <ol data-motion-child className="relative mt-10 grid overflow-hidden rounded-3xl border border-white/10 bg-white/[0.035] sm:mt-12 md:grid-cols-2 lg:grid-cols-4">
+            <span aria-hidden="true" className="pointer-events-none absolute left-[8%] right-[8%] top-11 hidden h-px bg-gradient-to-r from-[#1B8EFF] via-[#13C46B] to-[#FF6B35] opacity-55 lg:block" />
+            {appliedAi.map((item) => (
+              <li key={item.index} className="group relative min-h-48 border-b border-white/10 p-6 last:border-b-0 md:[&:nth-child(odd)]:border-r lg:min-h-56 lg:border-b-0 lg:border-r lg:last:border-r-0 lg:p-8">
+                <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[#1B8EFF]/55 bg-[#1B8EFF]/10 text-[9px] font-black tracking-[0.18em] text-[#1B8EFF] transition-all duration-300 group-hover:scale-110 group-hover:border-[#13C46B] group-hover:text-[#13C46B]">{item.index}</div>
+                <h3 className="mt-7 font-manrope text-lg font-bold tracking-tight text-white sm:text-xl">{item.label}</h3>
+                <p className="mt-3 max-w-xs text-xs leading-relaxed text-white/50 sm:text-sm">{item.copy}</p>
+                <span className="absolute bottom-0 left-0 h-px w-0 bg-gradient-to-r from-[#1B8EFF] to-[#13C46B] transition-all duration-500 group-hover:w-full" />
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+
 
       {/* Partners Section */}
       <section id="partners" data-motion-section className="py-8 sm:py-10 md:py-12 lg:py-16 bg-navy relative overflow-hidden">
@@ -364,7 +512,7 @@ export default function Home() {
               Our Technology<br className="hidden sm:block" />
               <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}> Partners.</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base">World-class brands. Strategic partnerships. Real results.</p>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">Active partner relationships that unlock specialist support, technical depth and preferential procurement.</p>
           </div>
 
           {/* Infinite Partner Marquee */}
@@ -408,7 +556,7 @@ export default function Home() {
             {/* Company Info */}
             <div>
               <h3 className="text-white font-bold mb-2 sm:mb-3 md:mb-4 text-xs sm:text-sm md:text-base">OpenV Group</h3>
-              <p className="text-xs text-white/60">Three expert brands. One connected ecosystem. Empowering businesses across South Africa.</p>
+              <p className="text-xs text-white/60">Managed IT. Digital growth. Business software. One accountable South African technology group.</p>
             </div>
 
             {/* Quick Links */}
@@ -437,6 +585,7 @@ export default function Home() {
               <ul className="space-y-1 sm:space-y-2 text-xs text-white/60">
                 <li><a href="tel:0413790550" className="hover:text-orange-400 transition-colors">041 379 0550</a></li>
                 <li><a href="mailto:info@openv.co.za" className="hover:text-orange-400 transition-colors">info@openv.co.za</a></li>
+                <li className="text-white/45">Gqeberha &amp; Cape Town</li>
               </ul>
             </div>
           </div>
