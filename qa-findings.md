@@ -143,3 +143,11 @@ The 1440×900 desktop and 375×812 mobile full-page captures confirm the PDF con
 ## Expanded PDF Content QA
 
 The desktop and mobile full-page captures confirm the additional PDF stories remain visual rather than text-heavy. “Technology breaks in the gaps” compares five separate supplier categories with one accountable OpenV Group relationship, while “AI inside the business. Not beside it.” presents four practical applications in one unified rail. Both sections inherit the approved gradient typography, navy and light section rhythm, GSAP section reveal hooks, compact responsive hierarchy, semantic lists, and no horizontal overflow. The expanded Vitest suite verifies both narratives and the named AI applications.
+
+## Connected-Technology Hero QA
+
+The 1440×900 and 375×812 hero captures confirm the new artwork keeps the left headline and CTAs readable while three orange, blue, and green technology streams converge on the right. Chromium verified the generated background URL, 12 moving GPU-transformed data particles, six pulsing nodes, visible headline text, and no horizontal overflow at either breakpoint. With `prefers-reduced-motion: reduce`, particle and stream animations resolve to `none`, particles are hidden, headline content remains visible, and overflow remains false. Six Vitest checks and the production build pass.
+
+## Intensified Hero Technology QA
+
+The refined desktop hero now exposes three primary and three secondary animated streams, a larger convergence halo and rotating orbit, 20 moving particles, nine pulsing nodes, and five floating technology modules. Mobile intentionally caps the visible density to 10 particles, five nodes, and one module while retaining all three stream families and the convergence point. Chromium confirmed particle movement, visible headline content, and no horizontal overflow at both breakpoints. Reduced-motion mode disables particle, stream, orbit, and convergence animations while retaining the static visual narrative.

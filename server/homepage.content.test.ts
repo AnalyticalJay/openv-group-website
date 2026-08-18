@@ -10,6 +10,14 @@ const homepageDocument = readFileSync(
   resolve(process.cwd(), "client/index.html"),
   "utf8",
 );
+const heroVisualSource = readFileSync(
+  resolve(process.cwd(), "client/src/components/HeroTechnologyBackground.tsx"),
+  "utf8",
+);
+const heroVisualStyles = readFileSync(
+  resolve(process.cwd(), "client/src/components/hero-technology-background.css"),
+  "utf8",
+);
 
 describe("PDF-informed homepage content", () => {
   it("includes the consolidated group narrative and four proof points", () => {
@@ -41,5 +49,17 @@ describe("PDF-informed homepage content", () => {
     expect(homepageSource).toContain("Microsoft 365 Copilot");
     expect(homepageSource).toContain("ShiftBridge workflows");
     expect(homepageSource).toContain("NextFour marketing");
+  });
+
+  it("defines the connected hero visual, animated particles, and reduced-motion fallback", () => {
+    expect(heroVisualSource).toContain("openv-connected-technology-hero_29faa8b3.jpg");
+    expect(heroVisualSource).toContain("data-hero-particles");
+    expect(heroVisualSource).toContain("data-hero-nodes");
+    expect(heroVisualSource).toContain("hero-tech-stream--secondary");
+    expect(heroVisualSource).toContain("hero-tech-convergence");
+    expect(heroVisualStyles).toContain("@keyframes hero-data-particle");
+    expect(heroVisualStyles).toContain("@keyframes hero-convergence-pulse");
+    expect(heroVisualStyles).toContain("@media (prefers-reduced-motion: reduce)");
+    expect(homepageDocument).toContain('rel="preload" as="image"');
   });
 });

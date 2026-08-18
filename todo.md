@@ -134,3 +134,17 @@
 - [x] Keep both new stories visually led, concise, motion-ready, and responsive
 - [x] Extend Vitest coverage for the two additional PDF-informed homepage narratives
 - [x] Verify the expanded homepage content flow on desktop and mobile
+
+- [x] Create a premium dark-navy hero background showing three connected technology streams converging into one OpenV Group operating layer
+- [x] Preserve a calm text-safe area behind the hero headline and CTAs
+- [x] Add lightweight moving data particles, connected nodes, and subtle parallax depth without WebGL overhead
+- [x] Respect prefers-reduced-motion and keep the hero readable and performant on mobile
+- [x] Add focused test coverage for the new hero visual structure and accessibility safeguards
+- [x] Verify the premium hero background and motion on desktop and mobile
+
+- [x] Increase the orange, blue, and green stream stroke strength and expand the visible convergence zone
+- [x] Add more visible moving data particles and pulsing network nodes on desktop
+- [x] Add more floating technology modules and stronger restrained parallax depth
+- [x] Keep mobile density capped, the left text-safe zone protected, and reduced-motion behavior unchanged
+- [x] Extend tests and Chromium QA for the increased hero visual density
+- [x] Verify the intensified hero experience on desktop and mobile

@@ -1,6 +1,6 @@
 import { ArrowRight, Play, Building2, TrendingUp, Zap, Users, Lock, BarChart3, HelpCircle, ShoppingCart, DollarSign, BookOpen, Hotel } from 'lucide-react';
 import { useAuth } from '@/_core/hooks/useAuth';
-import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, addFloatingAnimation, animateCounter, animatePageLoad, animateSectionTransition, addMicroInteractions, addPressMotion, prefersReducedMotion, optimizeElementsForGPU, lazyLoadAnimation, setupHomepageMotion, cleanupAnimations } from '@/lib/animations';
+import { animateStaggerChildren, animateSlideUp, animateFadeIn, animateScale, initLenisGSAPIntegration, createParallaxEffect, animateHeroHeadline, animateGradientText, animateButtonEntrance, addCardHoverEffect, addIconHoverEffect, animateCounter, animatePageLoad, animateSectionTransition, addMicroInteractions, addPressMotion, prefersReducedMotion, optimizeElementsForGPU, lazyLoadAnimation, setupHomepageMotion, cleanupAnimations } from '@/lib/animations';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -10,6 +10,7 @@ import ContactFormModal from '@/components/ContactFormModal';
 import { useLenis } from '@/contexts/LenisContext';
 import { useContactForm } from '@/contexts/ContactFormContext';
 import PartnerMarquee from '@/components/PartnerMarquee';
+import HeroTechnologyBackground from '@/components/HeroTechnologyBackground';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -142,34 +143,6 @@ export default function Home() {
   const capabilitiesRef = useRef<HTMLElement>(null);
   const [showAllPartners, setShowAllPartners] = useState(false);
 
-  // Add CSS animations for globe and connector movement
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes floatGlobe {
-        0%, 100% { transform: translateY(0px) scale(1); }
-        50% { transform: translateY(-20px) scale(1.02); }
-      }
-      @keyframes rotateConnectors {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-      @keyframes pulseGlow {
-        0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.3)); }
-        50% { opacity: 0.9; filter: drop-shadow(0 0 40px rgba(255, 107, 53, 0.6)); }
-      }
-      .hero-background-animated {
-        animation: floatGlobe 6s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
-      }
-    `;
-    document.head.appendChild(style);
-    return () => {
-      if (style.parentNode) {
-        document.head.removeChild(style);
-      }
-    };
-  }, []);
-
   // Get Lenis instance for scroll integration
   const lenis = useLenis();
 
@@ -193,8 +166,7 @@ export default function Home() {
       if (exploreButtonRef.current) animateButtonEntrance(exploreButtonRef.current, 0);
       if (watchVideoButtonRef.current) animateButtonEntrance(watchVideoButtonRef.current, 0.1);
       if (heroBackgroundRef.current) {
-        addFloatingAnimation(heroBackgroundRef.current);
-        createParallaxEffect(heroBackgroundRef.current, 0.4);
+        createParallaxEffect(heroBackgroundRef.current, 0.24);
       }
     }
 
@@ -226,22 +198,8 @@ export default function Home() {
       <BackToTop />
       {/* Hero Section */}
       <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center pt-32 sm:pt-36 md:pt-48 lg:pt-52 pb-20 sm:pb-24 md:pb-28 lg:pb-32 overflow-hidden bg-navy" style={{opacity: 1}}>
-        {/* Abstract enterprise technology background with text-safe space */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <div 
-            ref={heroBackgroundRef}
-            className="absolute inset-0 w-full h-full hero-background-animated"
-            style={{
-              backgroundImage: 'url(/manus-storage/openv-hero-abstract-technology_3973bcae.jpg)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              opacity: 0.7
-            }}
-            onLoad={(e) => { if (heroBackgroundRef.current) addFloatingAnimation(heroBackgroundRef.current); }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/20 via-navy/40 to-navy/60 z-10"></div>
-        </div>
+        {/* Three connected capability streams converge into one OpenV Group operating layer. */}
+        <HeroTechnologyBackground ref={heroBackgroundRef} />
 
         <div className="relative z-20 w-full">
           <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-20 max-w-7xl">
