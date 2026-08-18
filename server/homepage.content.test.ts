@@ -56,9 +56,14 @@ describe("PDF-informed homepage content", () => {
     expect(heroVisualSource).toContain("data-hero-particles");
     expect(heroVisualSource).toContain("data-hero-nodes");
     expect(heroVisualSource).toContain("hero-tech-stream--secondary");
+    expect(heroVisualSource).toContain("hero-tech-streams__mobile");
+    expect(heroVisualSource).toContain("--particle-mobile-x");
     expect(heroVisualSource).toContain("hero-tech-convergence");
     expect(heroVisualStyles).toContain("@keyframes hero-data-particle");
+    expect(heroVisualStyles).toContain("@keyframes hero-data-particle-mobile");
     expect(heroVisualStyles).toContain("@keyframes hero-convergence-pulse");
+    expect(heroVisualStyles).toContain("@media (max-width: 480px)");
+    expect(heroVisualStyles).toContain("@media (max-width: 360px)");
     expect(heroVisualStyles).toContain("@media (prefers-reduced-motion: reduce)");
     expect(homepageDocument).toContain('rel="preload" as="image"');
   });

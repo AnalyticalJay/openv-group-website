@@ -52,18 +52,34 @@ const HeroTechnologyBackground = forwardRef<HTMLDivElement>(function HeroTechnol
       <div className="hero-tech-grid absolute inset-0" />
 
       <svg className="hero-tech-streams absolute inset-0 h-full w-full" viewBox="0 0 1600 900" preserveAspectRatio="none">
-        <path className="hero-tech-stream-glow hero-tech-stream-glow--orange" d="M1600 170 C1340 170 1240 330 1080 404 C980 450 900 468 812 472" />
-        <path className="hero-tech-stream-glow hero-tech-stream-glow--blue" d="M1600 445 C1370 442 1230 440 1085 456 C982 468 910 474 812 472" />
-        <path className="hero-tech-stream-glow hero-tech-stream-glow--green" d="M1600 740 C1360 720 1250 602 1080 528 C980 484 905 474 812 472" />
-        <path className="hero-tech-stream hero-tech-stream--orange" d="M1600 170 C1340 170 1240 330 1080 404 C980 450 900 468 812 472" />
-        <path className="hero-tech-stream hero-tech-stream--orange hero-tech-stream--secondary" d="M1600 240 C1370 238 1250 350 1090 418 C988 461 906 470 812 472" />
-        <path className="hero-tech-stream hero-tech-stream--blue" d="M1600 445 C1370 442 1230 440 1085 456 C982 468 910 474 812 472" />
-        <path className="hero-tech-stream hero-tech-stream--blue hero-tech-stream--secondary" d="M1600 516 C1382 505 1240 474 1088 472 C985 471 910 472 812 472" />
-        <path className="hero-tech-stream hero-tech-stream--green" d="M1600 740 C1360 720 1250 602 1080 528 C980 484 905 474 812 472" />
-        <path className="hero-tech-stream hero-tech-stream--green hero-tech-stream--secondary" d="M1600 812 C1374 776 1260 635 1090 546 C988 493 910 476 812 472" />
-        <circle className="hero-tech-core-orbit" cx="812" cy="472" r="52" />
-        <circle className="hero-tech-core-ring" cx="812" cy="472" r="24" />
-        <circle className="hero-tech-core" cx="812" cy="472" r="5" />
+        <g className="hero-tech-streams__desktop">
+          <path className="hero-tech-stream-glow hero-tech-stream-glow--orange" d="M1600 170 C1340 170 1240 330 1080 404 C980 450 900 468 812 472" />
+          <path className="hero-tech-stream-glow hero-tech-stream-glow--blue" d="M1600 445 C1370 442 1230 440 1085 456 C982 468 910 474 812 472" />
+          <path className="hero-tech-stream-glow hero-tech-stream-glow--green" d="M1600 740 C1360 720 1250 602 1080 528 C980 484 905 474 812 472" />
+          <path className="hero-tech-stream hero-tech-stream--orange" d="M1600 170 C1340 170 1240 330 1080 404 C980 450 900 468 812 472" />
+          <path className="hero-tech-stream hero-tech-stream--orange hero-tech-stream--secondary" d="M1600 240 C1370 238 1250 350 1090 418 C988 461 906 470 812 472" />
+          <path className="hero-tech-stream hero-tech-stream--blue" d="M1600 445 C1370 442 1230 440 1085 456 C982 468 910 474 812 472" />
+          <path className="hero-tech-stream hero-tech-stream--blue hero-tech-stream--secondary" d="M1600 516 C1382 505 1240 474 1088 472 C985 471 910 472 812 472" />
+          <path className="hero-tech-stream hero-tech-stream--green" d="M1600 740 C1360 720 1250 602 1080 528 C980 484 905 474 812 472" />
+          <path className="hero-tech-stream hero-tech-stream--green hero-tech-stream--secondary" d="M1600 812 C1374 776 1260 635 1090 546 C988 493 910 476 812 472" />
+          <circle className="hero-tech-core-orbit" cx="812" cy="472" r="52" />
+          <circle className="hero-tech-core-ring" cx="812" cy="472" r="24" />
+          <circle className="hero-tech-core" cx="812" cy="472" r="5" />
+        </g>
+        <g className="hero-tech-streams__mobile">
+          <path className="hero-tech-stream-glow hero-tech-stream-glow--orange" d="M1600 188 C1380 196 1250 300 1108 382 C987 452 882 473 790 486" />
+          <path className="hero-tech-stream-glow hero-tech-stream-glow--blue" d="M1600 455 C1380 458 1246 466 1100 477 C986 484 882 486 790 486" />
+          <path className="hero-tech-stream-glow hero-tech-stream-glow--green" d="M1600 730 C1384 710 1246 622 1105 552 C982 493 878 485 790 486" />
+          <path className="hero-tech-stream hero-tech-stream--orange" d="M1600 188 C1380 196 1250 300 1108 382 C987 452 882 473 790 486" />
+          <path className="hero-tech-stream hero-tech-stream--orange hero-tech-stream--secondary" d="M1600 254 C1388 252 1256 334 1118 401 C995 460 882 480 790 486" />
+          <path className="hero-tech-stream hero-tech-stream--blue" d="M1600 455 C1380 458 1246 466 1100 477 C986 484 882 486 790 486" />
+          <path className="hero-tech-stream hero-tech-stream--blue hero-tech-stream--secondary" d="M1600 520 C1388 508 1244 486 1108 486 C986 486 882 486 790 486" />
+          <path className="hero-tech-stream hero-tech-stream--green" d="M1600 730 C1384 710 1246 622 1105 552 C982 493 878 485 790 486" />
+          <path className="hero-tech-stream hero-tech-stream--green hero-tech-stream--secondary" d="M1600 804 C1388 768 1252 650 1116 566 C992 506 882 490 790 486" />
+          <circle className="hero-tech-core-orbit" cx="790" cy="486" r="45" />
+          <circle className="hero-tech-core-ring" cx="790" cy="486" r="22" />
+          <circle className="hero-tech-core" cx="790" cy="486" r="5" />
+        </g>
       </svg>
       <div className="hero-tech-convergence" />
 
@@ -78,6 +94,8 @@ const HeroTechnologyBackground = forwardRef<HTMLDivElement>(function HeroTechnol
             boxShadow: `0 0 14px ${particle.color}`,
             '--particle-x': particle.dx,
             '--particle-y': particle.dy,
+            '--particle-mobile-x': `${Math.round(Number.parseFloat(particle.dx) * 0.48)}px`,
+            '--particle-mobile-y': `${Math.round(Number.parseFloat(particle.dy) * 0.48)}px`,
             '--particle-duration': particle.duration,
             '--particle-delay': particle.delay,
           };

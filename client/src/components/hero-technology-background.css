@@ -27,6 +27,10 @@
   filter: drop-shadow(0 0 13px rgba(27, 142, 255, 0.28));
 }
 
+.hero-tech-streams__mobile {
+  display: none;
+}
+
 .hero-tech-stream-glow {
   fill: none;
   stroke-width: 14;
@@ -205,6 +209,13 @@
   100% { opacity: 0; transform: translate3d(var(--particle-x), var(--particle-y), 0) scale(1.1); }
 }
 
+@keyframes hero-data-particle-mobile {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.5); }
+  12% { opacity: 0.7; }
+  72% { opacity: 0.78; }
+  100% { opacity: 0; transform: translate3d(var(--particle-mobile-x), var(--particle-mobile-y), 0) scale(1.04); }
+}
+
 @keyframes hero-node-breathe {
   0%, 100% { opacity: 0.34; transform: translate3d(-50%, -50%, 0) scale(0.82); }
   50% { opacity: 0.82; transform: translate3d(-50%, -50%, 0) scale(1.16); }
@@ -248,6 +259,83 @@
     left: 63%;
     height: 118px;
     width: 118px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-tech-artwork {
+    background-position: 74% center;
+    opacity: 0.68;
+  }
+
+  .hero-tech-text-shield {
+    background: linear-gradient(90deg, rgba(7, 17, 28, 0.99) 0%, rgba(7, 17, 28, 0.94) 54%, rgba(7, 17, 28, 0.62) 76%, rgba(7, 17, 28, 0.2) 100%);
+  }
+
+  .hero-tech-streams {
+    opacity: 0.78;
+    transform: none;
+    filter: drop-shadow(0 0 10px rgba(27, 142, 255, 0.3));
+  }
+
+  .hero-tech-streams__desktop {
+    display: none;
+  }
+
+  .hero-tech-streams__mobile {
+    display: block;
+  }
+
+  .hero-tech-stream--secondary {
+    opacity: 0.52;
+  }
+
+  .hero-tech-particle {
+    animation-name: hero-data-particle-mobile;
+  }
+
+  .hero-tech-particle:nth-child(n + 10) {
+    display: none;
+  }
+
+  .hero-tech-module--two {
+    display: flex;
+    right: 6%;
+    top: 19%;
+    transform: scale(0.72) rotate(2deg);
+  }
+
+  .hero-tech-convergence {
+    left: 49.4%;
+    top: 54%;
+    height: 128px;
+    width: 128px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-tech-artwork {
+    background-position: 80% center;
+  }
+
+  .hero-tech-module--two {
+    right: 2%;
+    top: 16%;
+    transform: scale(0.64) rotate(2deg);
+  }
+
+  .hero-tech-convergence {
+    left: 49.4%;
+    top: 55%;
+    height: 108px;
+    width: 108px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-tech-particle:nth-child(n + 8),
+  .hero-tech-node:nth-child(n + 5) {
+    display: none;
   }
 }
 

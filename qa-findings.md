@@ -163,3 +163,7 @@ Both published domains returned HTTP 200 but rendered an empty `#root` with `Can
 The first post-checkpoint domain revalidation still returned the prior deployed asset graph (`index-D6858Xnx.js` plus the old `vendor-react`, `vendor-ui`, `vendor-data`, and `vendor-misc` chunks) and the same `createContext` error. The checkpointed fix builds a new entry graph (`index-1LvrLjCu.js` plus only `vendor-motion`) and is ready to publish; the live domains must be republished from the latest checkpoint before they can serve the corrected production build.
 
 After publishing checkpoint `251a0608`, both `https://www.openvgroup.com/` and `https://openvsite-fw27ucfq.manus.space/?code=9KT5LoMZizADZp9DnvGNh3` returned HTTP 200 with two populated root children and 4,030 characters of rendered page content. Both domains now serve the corrected entry graph (`index-CXhOKrPm.js` plus `vendor-motion`) with no page errors or asset request failures.
+
+## Narrow Mobile Hero QA
+
+Chromium verified the dedicated mobile stream geometry at 320×720, 375×812, and 430×932. All viewports display the mobile stream set while desktop streams are hidden, have no horizontal overflow, and keep the headline within the viewport. Density is capped at 7 particles / 4 nodes on 320px and 9 particles / 5 nodes on 375px and 430px, with one floating module. Reduced motion hides particles and disables stream/node animation while preserving overflow safety.

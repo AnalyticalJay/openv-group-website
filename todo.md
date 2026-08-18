@@ -159,3 +159,9 @@
 - [x] Fix the production runtime, asset, routing, or client error causing the live page to render blank
 - [x] Validate the preview and both live production URLs after the fix
 - [x] Add regression coverage preventing React-dependent vendor chunks from breaking the production runtime
+
+- [x] Refine the mobile geometry and visibility of all three animated technology stream families
+- [x] Reposition the mobile convergence point and floating components to protect the headline and CTAs
+- [x] Tune mobile particle and node density for clear depth without visual clutter or overflow
+- [x] Preserve reduced-motion behavior and add focused narrow-mobile test coverage
+- [x] Verify the animated hero at 320px, 375px, and 430px mobile widths
