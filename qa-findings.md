@@ -155,3 +155,7 @@ The refined desktop hero now exposes three primary and three secondary animated 
 ## Full-Colour Technology Partners QA
 
 Chromium confirmed that partner logo images render with `filter: none` on both desktop and mobile. Hovering a continuously moving desktop card leaves its transform, border, and shadow unchanged while the marquee track continues to move. The marquee retains its fading-edge presentation, responsive card sizing, accessible focus state, and no horizontal overflow at both breakpoints. Eight Vitest checks and the production build pass.
+
+## Production Blank-Page Diagnosis and Local Fix Validation
+
+Both published domains returned HTTP 200 but rendered an empty `#root` with `Cannot read properties of undefined (reading 'createContext')` in the production browser. All production assets loaded successfully, isolating the failure to the previous broad Vite manual-chunk graph that separated mutually dependent React, UI, and data modules. The chunk strategy now isolates only self-contained GSAP/Lenis and optional 3D dependencies, leaving the React dependency graph in Vite's natural execution order. A locally built production server now renders two root children and 4,030 characters of page content with no page errors or request failures.

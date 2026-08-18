@@ -154,3 +154,8 @@
 - [x] Preserve marquee movement, fading edges, directory behavior, and responsive card sizing
 - [x] Verify the full-colour no-hover marquee on desktop and mobile
 - [x] Add test coverage for full-colour logos and no-hover marquee behavior
+
+- [x] Diagnose the production-only blank white page on www.openvgroup.com and the Manus published URL
+- [x] Fix the production runtime, asset, routing, or client error causing the live page to render blank
+- [ ] Validate the preview and both live production URLs after the fix
+- [x] Add regression coverage preventing React-dependent vendor chunks from breaking the production runtime
