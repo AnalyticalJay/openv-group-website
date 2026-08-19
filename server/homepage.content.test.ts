@@ -51,6 +51,16 @@ describe("PDF-informed homepage content", () => {
     expect(homepageSource).toContain("NextFour marketing");
   });
 
+  it("clarifies the fragmented-versus-connected model with minimal before-and-after ownership cues", () => {
+    expect(homepageSource).toContain("data-model-comparison");
+    expect(homepageSource).toContain("Before / separate owners");
+    expect(homepageSource).toContain("After / one accountable owner");
+    expect(homepageSource).toContain("Handoffs create gaps");
+    expect(homepageSource).toContain("One shared operating view across every layer.");
+    expect(homepageSource).toContain("Technology', 'Operations', 'Growth");
+    expect(homepageSource).not.toContain("0{index + 1}</span><p className=\"mt-2 text-[10px]");
+  });
+
   it("defines the connected hero visual, animated particles, and reduced-motion fallback", () => {
     expect(heroVisualSource).toContain("openv-connected-technology-hero_29faa8b3.jpg");
     expect(heroVisualSource).toContain("data-hero-particles");

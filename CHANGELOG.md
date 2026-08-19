@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Operating-model clarity refinement — 2026-08-19
+
+**Clarified** the fragmented-versus-connected model comparison through compact Before/After ownership labels, a “handoffs create gaps” cue, a “one relationship” transition, and a minimal technology, operations, and growth coordination path. The visual keeps the approved model artwork and concise outcome cards while making the operating model easier to understand at a glance.
+
 ## Industry and trust hierarchy refinement — 2026-08-19
 
 **Removed** numeric prefixes from the One Group trust metrics and the one-call, one-invoice, one-relationship outcomes. **Redesigned** the Built for the Real World panel as a sector-led experience with a clearer headline, connected-delivery statement, colour-coded sector signals, and responsive industry cards—preserving the existing industries, capability story, and motion language.

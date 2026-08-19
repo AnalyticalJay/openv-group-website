@@ -266,32 +266,35 @@ export default function Home() {
             <p className="mx-auto max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:mx-0 md:text-lg">Multiple suppliers create handoffs, blind spots and cost. OpenV Group replaces the gaps with one accountable operating relationship.</p>
           </div>
 
-          <div data-motion-child className="mt-10 grid items-stretch gap-4 sm:mt-12 lg:grid-cols-[1fr_auto_1fr] lg:gap-6">
-            <div className="relative min-h-[300px] overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_55px_rgba(7,17,28,0.08)] sm:p-8">
+          <div data-model-comparison data-motion-child className="mt-10 grid items-stretch gap-4 sm:mt-12 lg:grid-cols-[1fr_auto_1fr] lg:gap-6">
+            <figure aria-labelledby="fragmented-model-title" className="relative min-h-[300px] overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_55px_rgba(7,17,28,0.08)] sm:p-8">
               <div className="pointer-events-none absolute inset-0 opacity-70" style={{background: 'linear-gradient(145deg, transparent 0 44%, rgba(255,107,53,0.10) 44.2% 44.5%, transparent 44.7% 100%), radial-gradient(circle at 50% 52%, rgba(255,23,68,0.08), transparent 30%)'}} />
-              <div className="relative flex items-center justify-center gap-3 sm:justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">FRAGMENTED MODEL</p><span className="h-2 w-2 rounded-full bg-[#FF1744] shadow-[0_0_18px_rgba(255,23,68,0.65)]" /></div>
-              <ul aria-label="Separate technology vendors" className="relative mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+              <figcaption className="relative flex items-center justify-center gap-3 sm:justify-between"><div><p id="fragmented-model-title" className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">FRAGMENTED MODEL</p><p className="mt-1 text-[9px] font-bold uppercase tracking-[0.16em] text-[#FF1744]">Before / separate owners</p></div><span className="h-2 w-2 rounded-full bg-[#FF1744] shadow-[0_0_18px_rgba(255,23,68,0.65)]" /></figcaption>
+              <ul aria-label="Separate technology vendors" className="relative mt-7 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {fragmentedVendors.map((vendor, index) => (
-                  <li key={vendor} className={`flex min-h-20 items-center justify-center rounded-2xl border border-slate-200 bg-[#F8FAFC]/90 px-3 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500 ${index === fragmentedVendors.length - 1 ? 'col-span-2 sm:col-span-1' : ''}`}>{vendor}</li>
+                  <li key={vendor} className={`group flex min-h-20 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-[#F8FAFC]/90 px-3 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500 transition-colors duration-300 hover:border-[#FF1744]/30 hover:bg-white ${index === fragmentedVendors.length - 1 ? 'col-span-2 sm:col-span-1' : ''}`}><span>{vendor}</span><span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-slate-300 transition-colors duration-300 group-hover:bg-[#FF1744]" /></li>
                 ))}
               </ul>
-              <div className="relative mx-auto mt-5 flex w-fit items-center gap-3 rounded-full border border-[#FF1744]/20 bg-[#FF1744]/5 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.2em] text-[#FF1744]"><span className="h-1.5 w-1.5 rounded-full bg-[#FF1744]" />Handoffs / blind spots / cost</div>
-            </div>
+              <div className="relative mx-auto mt-5 flex w-fit items-center gap-3 rounded-full border border-[#FF1744]/20 bg-[#FF1744]/5 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.2em] text-[#FF1744]"><span className="h-1.5 w-1.5 rounded-full bg-[#FF1744]" />Handoffs create gaps</div>
+            </figure>
 
-            <div aria-hidden="true" className="flex items-center justify-center py-1 lg:py-0"><div className="flex h-12 w-12 rotate-90 items-center justify-center rounded-full border border-[#FF6B35]/35 bg-white text-[#FF6B35] shadow-[0_12px_28px_rgba(255,107,53,0.18)] lg:rotate-0"><ArrowRight className="h-5 w-5" /></div></div>
+            <div aria-hidden="true" className="flex flex-col items-center justify-center gap-2 py-1 lg:py-0"><div className="flex h-12 w-12 rotate-90 items-center justify-center rounded-full border border-[#FF6B35]/35 bg-white text-[#FF6B35] shadow-[0_12px_28px_rgba(255,107,53,0.18)] lg:rotate-0"><ArrowRight className="h-5 w-5" /></div><span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#FF6B35] lg:whitespace-nowrap">One relationship</span></div>
 
-            <div data-motion-depth className="relative min-h-[300px] overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_26px_70px_rgba(7,17,28,0.20)] sm:p-8">
+            <figure data-motion-depth aria-labelledby="connected-model-title" className="relative min-h-[300px] overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_26px_70px_rgba(7,17,28,0.20)] sm:p-8">
               <div className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full border border-[#1B8EFF]/30" />
               <div className="pointer-events-none absolute -right-2 -top-5 h-72 w-72 rounded-full border border-[#FF6B35]/18" />
-              <div className="relative flex items-center justify-center gap-3 sm:justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/45">CONNECTED MODEL</p><span className="h-2 w-2 rounded-full bg-[#13C46B] shadow-[0_0_18px_rgba(19,196,107,0.65)]" /></div>
-              <div className="relative mt-9 flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
+              <figcaption className="relative flex items-center justify-center gap-3 sm:justify-between"><div><p id="connected-model-title" className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/45">CONNECTED MODEL</p><p className="mt-1 text-[9px] font-bold uppercase tracking-[0.16em] text-[#13C46B]">After / one accountable owner</p></div><span className="h-2 w-2 rounded-full bg-[#13C46B] shadow-[0_0_18px_rgba(19,196,107,0.65)]" /></figcaption>
+              <div className="relative mt-7 flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
                 <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full border border-[#FF6B35]/65 bg-[#FF6B35]/10 text-[11px] font-black uppercase tracking-[0.2em] text-[#FF6B35] shadow-[0_0_42px_rgba(255,107,53,0.22)]">OPENV</div>
-                <div><p className="font-manrope text-2xl font-black leading-tight sm:text-3xl">One accountable<br />technology partner.</p><p className="mt-3 text-xs leading-relaxed text-white/50 sm:text-sm">Every layer aligned under one relationship.</p></div>
+                <div><p className="font-manrope text-2xl font-black leading-tight sm:text-3xl">One accountable<br />technology partner.</p><p className="mt-3 text-xs leading-relaxed text-white/50 sm:text-sm">One shared operating view across every layer.</p></div>
               </div>
-              <ul aria-label="Benefits of one accountable group" className="relative mt-8 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
-                {connectedOutcomes.map((outcome, index) => <li key={outcome} className="bg-[#0A1828]/95 p-4"><span className="text-[9px] font-bold tracking-[0.2em] text-[#1B8EFF]">0{index + 1}</span><p className="mt-2 text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em] text-white/65">{outcome}</p></li>)}
+              <div aria-label="OpenV coordinates technology, operations, and growth" className="relative mt-6 grid grid-cols-3 gap-2 border-y border-white/10 py-4 text-center">
+                {['Technology', 'Operations', 'Growth'].map((layer, index) => <span key={layer} className="text-[8px] font-bold uppercase tracking-[0.13em] text-white/45"><span className="mx-auto mb-2 block h-1.5 w-1.5 rounded-full" style={{backgroundColor: ['#FF6B35', '#1B8EFF', '#13C46B'][index], boxShadow: `0 0 10px ${['#FF6B35', '#1B8EFF', '#13C46B'][index]}99`}} />{layer}</span>)}
+              </div>
+              <ul aria-label="Benefits of one accountable group" className="relative mt-6 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
+                {connectedOutcomes.map((outcome, index) => <li key={outcome} className="bg-[#0A1828]/95 p-4"><span className="h-1.5 w-1.5 rounded-full" style={{backgroundColor: ['#FF6B35', '#1B8EFF', '#13C46B'][index]}} /><p className="mt-3 text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em] text-white/65">{outcome}</p></li>)}
               </ul>
-            </div>
+            </figure>
           </div>
         </div>
       </section>

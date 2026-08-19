@@ -197,3 +197,7 @@
 - [x] Remove numeric prefixes from the One Group trust metrics and the three outcome blocks
 - [x] Refine the Built for the Real World panel into a clearer, more appealing sector-led presentation
 - [x] Preserve factual content, keyboard accessibility, responsive layout, and motion while validating the refinements
+
+- [x] Add minimal visual cues that make the fragmented-versus-connected model comparison immediately understandable
+- [x] Clarify the before-and-after ownership and outcome path without making the comparison text-heavy
+- [x] Preserve the approved model artwork, accessibility, responsive behavior, and motion while validating the refinement
