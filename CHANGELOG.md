@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Responsive alignment refinement — 2026-08-19
+
+**Changed** the homepage to use centered editorial alignment on mobile for headlines, supporting copy, CTAs, content cards, and footer information. **Changed** the OpenV Business, NextFour, and ShiftBridge hero brand cards so their uploaded logos, descriptions, tags, and directional links are centered across both mobile and desktop layouts. Desktop alignment remains unchanged outside the three hero brand cards.
+
 ## Current documentation release — 2026-08-18
 
 **Added** a complete project README covering architecture, design system, development commands, production safeguards, accessibility, content governance, and publishing workflow. **Added** this changelog and a contribution guide for brand and content updates.

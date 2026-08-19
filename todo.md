@@ -173,3 +173,7 @@
 - [x] Create a CONTRIBUTING.md guide for safe brand asset and content updates
 - [x] Add Lighthouse CI setup instructions and performance budgets to README.md
 - [x] Validate all new documentation against current project commands, asset workflow, and build output
+
+- [x] Center-align homepage headlines, supporting content, and CTA groupings on mobile breakpoints
+- [x] Center-align hero brand-card logos, descriptions, tags, and links on mobile and desktop
+- [x] Validate the responsive alignment updates with tests, a production build, and desktop/mobile visual QA

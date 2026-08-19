@@ -68,8 +68,8 @@ const technologyPartners = [
 
 function BrandLogo({ logo, name }: { logo: string; name: string }) {
   return (
-    <div className="flex h-16 w-full min-w-0 items-center sm:h-20 md:h-24">
-      <img src={logo} alt={`${name} logo`} className="h-full w-full object-contain object-left transition-transform duration-500 group-hover:scale-[1.03]" loading="eager" decoding="async" />
+    <div className="flex h-16 w-full min-w-0 items-center justify-center sm:h-20 md:h-24">
+      <img src={logo} alt={`${name} logo`} className="h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-[1.03]" loading="eager" decoding="async" />
     </div>
   );
 }
@@ -103,17 +103,17 @@ function BrandVideoCard({ href, name, logo, description, accent, tags }: BrandVi
       <div className="pointer-events-none absolute -right-10 -top-14 h-36 w-36 rounded-full border opacity-60 transition-transform duration-700 group-hover:scale-125" style={{ borderColor: `${accent}38` }} />
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: `linear-gradient(90deg, transparent, ${accent}, transparent)` }} />
 
-      <div className="relative flex h-full flex-col justify-between p-5 sm:p-6 md:p-7">
+      <div className="relative flex h-full flex-col items-center justify-between p-5 text-center sm:p-6 md:p-7">
         <div className="w-full">
           <BrandLogo logo={logo} name={name} />
         </div>
 
         <div className="min-w-0">
-          <p className="max-w-[19rem] text-xs leading-relaxed text-white/60">{description}</p>
+          <p className="mx-auto max-w-[19rem] text-xs leading-relaxed text-white/60">{description}</p>
         </div>
 
-        <div className="flex items-center justify-between gap-3 border-t border-white/10 pt-3">
-          <div className="flex flex-wrap gap-1.5">
+        <div className="flex w-full flex-col items-center justify-center gap-3 border-t border-white/10 pt-3">
+          <div className="flex flex-wrap justify-center gap-1.5">
             {tags.map((tag) => <span key={tag} className="rounded-full border border-white/10 px-2 py-1 text-[8px] font-bold uppercase tracking-[0.12em] text-white/48 transition-colors duration-300 group-hover:border-white/25 group-hover:text-white/75">{tag}</span>)}
           </div>
           <ArrowRight className="h-4 w-4 shrink-0 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white" style={{ color: `${accent}cc` }} />
@@ -193,7 +193,7 @@ export default function Home() {
   const { isOpen: isContactModalOpen, closeContactForm } = useContactForm();
 
   return (
-    <div ref={homepageMotionRef} className="min-h-screen bg-navy text-white">
+    <div ref={homepageMotionRef} className="min-h-screen bg-navy text-center text-white md:text-left">
       <Navigation />
       <BackToTop />
       {/* Hero Section */}
@@ -203,7 +203,7 @@ export default function Home() {
 
         <div className="relative z-20 w-full">
           <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-20 max-w-7xl">
-          <div className="max-w-4xl">
+          <div className="mx-auto max-w-4xl md:mx-0">
 
 
             {/* Headline */}
@@ -220,12 +220,12 @@ export default function Home() {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 md:gap-6 pb-8 sm:pb-10 md:pb-12 lg:pb-16">
-              <button ref={exploreButtonRef} data-motion-press className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 text-white font-bold tracking-wider text-xs uppercase rounded transition-colors hover:shadow-lg hover:shadow-orange-500/50" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}>
+            <div className="flex flex-col flex-wrap items-center justify-center gap-3 pb-8 sm:flex-row sm:gap-4 md:items-start md:justify-start md:gap-6 md:pb-12 lg:pb-16">
+              <button ref={exploreButtonRef} data-motion-press className="inline-flex w-full items-center justify-center px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:shadow-lg hover:shadow-orange-500/50 sm:w-auto sm:px-6 sm:py-3" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)'}}>
                 EXPLORE THE GROUP
                 <ArrowRight className="ml-2 w-4 h-4" />
               </button>
-              <button ref={watchVideoButtonRef} data-motion-press className="inline-flex items-center justify-center sm:justify-start w-full sm:w-auto text-white font-bold tracking-widest text-xs uppercase hover:text-orange-400 transition-colors">
+              <button ref={watchVideoButtonRef} data-motion-press className="inline-flex w-full items-center justify-center text-xs font-bold uppercase tracking-widest text-white transition-colors hover:text-orange-400 sm:w-auto">
                 <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center mr-4 hover:border-orange-500 transition-colors">
                   <Play className="w-5 h-5 ml-1" style={{color: '#FF6B35'}} />
                 </div>
@@ -255,21 +255,21 @@ export default function Home() {
       <section id="why-group" data-motion-section className="relative overflow-hidden border-t border-slate-200 bg-[#F8FAFC] py-14 sm:py-18 md:py-24 lg:py-28">
         <div className="pointer-events-none absolute inset-0 opacity-80" style={{background: 'radial-gradient(circle at 12% 22%, rgba(255,107,53,0.09), transparent 26%), radial-gradient(circle at 88% 72%, rgba(27,142,255,0.09), transparent 28%)'}} />
         <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
-          <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.05fr_0.95fr] md:gap-12 lg:gap-20">
+          <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.05fr_0.95fr] md:gap-12 md:text-left lg:gap-20">
             <div>
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">WHY THE GROUP EXISTS</p>
-              <h2 className="max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:text-5xl lg:text-6xl">
+              <h2 className="mx-auto max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:mx-0 md:text-5xl lg:text-6xl">
                 Technology breaks<br />
                 <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>in the gaps.</span>
               </h2>
             </div>
-            <p className="max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:text-lg">Multiple suppliers create handoffs, blind spots and cost. OpenV Group replaces the gaps with one accountable operating relationship.</p>
+            <p className="mx-auto max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:mx-0 md:text-lg">Multiple suppliers create handoffs, blind spots and cost. OpenV Group replaces the gaps with one accountable operating relationship.</p>
           </div>
 
           <div data-motion-child className="mt-10 grid items-stretch gap-4 sm:mt-12 lg:grid-cols-[1fr_auto_1fr] lg:gap-6">
             <div className="relative min-h-[300px] overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_55px_rgba(7,17,28,0.08)] sm:p-8">
               <div className="pointer-events-none absolute inset-0 opacity-70" style={{background: 'linear-gradient(145deg, transparent 0 44%, rgba(255,107,53,0.10) 44.2% 44.5%, transparent 44.7% 100%), radial-gradient(circle at 50% 52%, rgba(255,23,68,0.08), transparent 30%)'}} />
-              <div className="relative flex items-center justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">FRAGMENTED MODEL</p><span className="h-2 w-2 rounded-full bg-[#FF1744] shadow-[0_0_18px_rgba(255,23,68,0.65)]" /></div>
+              <div className="relative flex items-center justify-center gap-3 sm:justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">FRAGMENTED MODEL</p><span className="h-2 w-2 rounded-full bg-[#FF1744] shadow-[0_0_18px_rgba(255,23,68,0.65)]" /></div>
               <ul aria-label="Separate technology vendors" className="relative mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {fragmentedVendors.map((vendor, index) => (
                   <li key={vendor} className={`flex min-h-20 items-center justify-center rounded-2xl border border-slate-200 bg-[#F8FAFC]/90 px-3 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500 ${index === fragmentedVendors.length - 1 ? 'col-span-2 sm:col-span-1' : ''}`}>{vendor}</li>
@@ -283,8 +283,8 @@ export default function Home() {
             <div data-motion-depth className="relative min-h-[300px] overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_26px_70px_rgba(7,17,28,0.20)] sm:p-8">
               <div className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full border border-[#1B8EFF]/30" />
               <div className="pointer-events-none absolute -right-2 -top-5 h-72 w-72 rounded-full border border-[#FF6B35]/18" />
-              <div className="relative flex items-center justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/45">CONNECTED MODEL</p><span className="h-2 w-2 rounded-full bg-[#13C46B] shadow-[0_0_18px_rgba(19,196,107,0.65)]" /></div>
-              <div className="relative mt-9 flex items-center gap-5">
+              <div className="relative flex items-center justify-center gap-3 sm:justify-between"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/45">CONNECTED MODEL</p><span className="h-2 w-2 rounded-full bg-[#13C46B] shadow-[0_0_18px_rgba(19,196,107,0.65)]" /></div>
+              <div className="relative mt-9 flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
                 <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full border border-[#FF6B35]/65 bg-[#FF6B35]/10 text-[11px] font-black uppercase tracking-[0.2em] text-[#FF6B35] shadow-[0_0_42px_rgba(255,107,53,0.22)]">OPENV</div>
                 <div><p className="font-manrope text-2xl font-black leading-tight sm:text-3xl">One accountable<br />technology partner.</p><p className="mt-3 text-xs leading-relaxed text-white/50 sm:text-sm">Every layer aligned under one relationship.</p></div>
               </div>
@@ -300,15 +300,15 @@ export default function Home() {
       <section id="advantage" data-motion-section className="relative overflow-hidden border-t border-slate-200 bg-white py-14 sm:py-18 md:py-24 lg:py-28">
         <div className="pointer-events-none absolute inset-0 opacity-70" style={{background: 'radial-gradient(circle at 84% 12%, rgba(27,142,255,0.10), transparent 30%), radial-gradient(circle at 12% 88%, rgba(255,107,53,0.09), transparent 28%)'}} />
         <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
-          <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.08fr_0.92fr] md:gap-12 lg:gap-20">
+          <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.08fr_0.92fr] md:gap-12 md:text-left lg:gap-20">
             <div>
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">THE OPENV GROUP ADVANTAGE</p>
-              <h2 className="max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:text-5xl lg:text-6xl">
+              <h2 className="mx-auto max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:mx-0 md:text-5xl lg:text-6xl">
                 Less complexity.<br />
                 <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>More capability.</span>
               </h2>
             </div>
-            <p className="max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:text-lg">
+            <p className="mx-auto max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:mx-0 md:text-lg">
               OpenV Group replaces fragmented suppliers with one accountable relationship across your technology, customer growth and business operations.
             </p>
           </div>
@@ -320,10 +320,10 @@ export default function Home() {
             <div className="relative grid gap-10 lg:grid-cols-[1.03fr_0.97fr] lg:items-end lg:gap-16">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.26em] text-white/45">ONE GROUP / COMPLETE TECHNOLOGY PARTNER</p>
-                <h3 className="mt-5 max-w-xl font-manrope text-3xl font-black leading-[1.06] tracking-tight sm:text-4xl md:text-5xl">
+                <h3 className="mx-auto mt-5 max-w-xl font-manrope text-3xl font-black leading-[1.06] tracking-tight sm:text-4xl md:mx-0 md:text-5xl">
                   One call.<br />One invoice.<br /><span className="text-[#FF6B35]">Total accountability.</span>
                 </h3>
-                <p className="mt-5 max-w-lg text-sm leading-relaxed text-white/60 sm:text-base">Managed IT. Digital growth. Business software. Designed to work as one.</p>
+                <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-white/60 sm:text-base md:mx-0">Managed IT. Digital growth. Business software. Designed to work as one.</p>
               </div>
 
               <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10">
@@ -339,7 +339,7 @@ export default function Home() {
 
           <div data-motion-child className="mt-7 grid border-y border-slate-200 md:grid-cols-3 md:divide-x md:divide-slate-200">
             {groupOutcomes.map((outcome) => (
-              <div key={outcome.index} className="grid grid-cols-[auto_1fr] gap-4 border-b border-slate-200 py-6 last:border-b-0 md:border-b-0 md:px-6 md:first:pl-0 md:last:pr-0">
+              <div key={outcome.index} className="grid justify-items-center gap-2 border-b border-slate-200 py-6 text-center last:border-b-0 md:grid-cols-[auto_1fr] md:justify-items-start md:gap-4 md:border-b-0 md:px-6 md:text-left md:first:pl-0 md:last:pr-0">
                 <span className="text-[9px] font-bold tracking-[0.2em] text-[#FF6B35]">{outcome.index}</span>
                 <div><h3 className="font-manrope text-lg font-bold text-[#07111C]">{outcome.title}</h3><p className="mt-1 text-xs leading-relaxed text-slate-500 sm:text-sm">{outcome.copy}</p></div>
               </div>
@@ -352,14 +352,14 @@ export default function Home() {
       <section id="solutions" ref={capabilitiesRef} data-motion-section className="relative overflow-hidden border-t border-gray-200 bg-[#F8FAFC] py-12 sm:py-16 md:py-24 lg:py-32">
         <div className="absolute inset-0 pointer-events-none opacity-70" style={{background: 'radial-gradient(circle at 78% 18%, rgba(27, 142, 255, 0.10), transparent 32%), radial-gradient(circle at 18% 72%, rgba(255, 107, 53, 0.08), transparent 30%)'}}></div>
         <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
-          <div data-capabilities-header data-motion-child className="grid items-end gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+          <div data-capabilities-header data-motion-child className="grid items-end gap-10 md:text-left lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
             <div>
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">OPENV GROUP / ONE OPERATING LAYER</p>
-              <h2 className="max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:text-5xl lg:text-6xl">
+              <h2 className="mx-auto max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:mx-0 md:text-5xl lg:text-6xl">
                 Technology that moves<br />
                 <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>the whole business forward.</span>
               </h2>
-              <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:mt-7 md:text-lg">
+              <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:mx-0 md:mt-7 md:text-lg">
                 One connected capability layer across managed technology, customer growth and day-to-day business operations.
               </p>
             </div>
@@ -385,7 +385,7 @@ export default function Home() {
 
           <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-5 md:mt-20">
             {capabilityLanes.map((lane, index) => (
-              <article key={lane.eyebrow} data-capability-lane data-motion-child data-motion-press tabIndex={0} role="group" aria-label={`${lane.label}: ${lane.copy}`} className="group relative grid gap-5 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/85 p-5 shadow-[0_14px_34px_rgba(7,17,28,0.07)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:bg-white hover:shadow-[0_22px_44px_rgba(7,17,28,0.12)] focus-visible:-translate-y-1 focus-visible:border-[#FF6B35] focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8FAFC] focus-visible:shadow-[0_22px_44px_rgba(7,17,28,0.12)] sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:gap-7 sm:p-7 md:p-8">
+              <article key={lane.eyebrow} data-capability-lane data-motion-child data-motion-press tabIndex={0} role="group" aria-label={`${lane.label}: ${lane.copy}`} className="group relative grid justify-items-center gap-5 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/85 p-5 text-center shadow-[0_14px_34px_rgba(7,17,28,0.07)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:bg-white hover:shadow-[0_22px_44px_rgba(7,17,28,0.12)] focus-visible:-translate-y-1 focus-visible:border-[#FF6B35] focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8FAFC] focus-visible:shadow-[0_22px_44px_rgba(7,17,28,0.12)] sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:justify-items-start sm:gap-7 sm:p-7 sm:text-left md:p-8">
                 <span className="absolute inset-y-0 left-0 w-1 transition-all duration-300 group-hover:w-1.5" style={{background: lane.accent}}></span>
                 <span className="absolute -right-20 -top-20 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-20" style={{background: lane.accent}}></span>
                 <div className="relative flex h-12 w-12 items-center justify-center rounded-full border text-[10px] font-bold tracking-[0.18em] text-slate-500 transition-all duration-300 group-hover:scale-105 group-hover:text-[#07111C] sm:h-14 sm:w-14" style={{borderColor: `${lane.accent}55`, background: `${lane.accent}0d`}}>0{index + 1}</div>
@@ -393,17 +393,17 @@ export default function Home() {
                   <p className="text-[10px] font-bold uppercase tracking-[0.28em]" style={{color: lane.accent}}>{lane.eyebrow}</p>
                   <h3 className="mt-1 font-manrope text-2xl font-bold tracking-tight text-[#07111C] sm:text-3xl">{lane.label}</h3>
                   <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">{lane.copy}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">
                     {lane.themes.map((theme) => <span key={theme} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500 transition-all duration-300 group-hover:border-slate-300 group-hover:bg-white group-hover:text-[#07111C]">{theme}</span>)}
                   </div>
                 </div>
-                <div className="relative flex w-full items-center justify-end gap-3 pt-1 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400 transition-colors duration-300 group-hover:text-[#07111C] sm:w-auto sm:pt-0"><span className="h-px w-10 bg-slate-300 transition-all duration-300 group-hover:w-16" style={{backgroundColor: lane.accent}}></span><span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 transition-all duration-300 group-hover:border-transparent group-hover:bg-[#07111C] group-hover:text-white"><ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" /></span></div>
+                <div className="relative flex w-full items-center justify-center gap-3 pt-1 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400 transition-colors duration-300 group-hover:text-[#07111C] sm:w-auto sm:justify-end sm:pt-0"><span className="h-px w-10 bg-slate-300 transition-all duration-300 group-hover:w-16" style={{backgroundColor: lane.accent}}></span><span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 transition-all duration-300 group-hover:border-transparent group-hover:bg-[#07111C] group-hover:text-white"><ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" /></span></div>
               </article>
             ))}
           </div>
 
           <div data-motion-child className="mt-12 overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_22px_60px_rgba(7,17,28,0.16)] sm:mt-16 sm:p-8 md:mt-20 md:p-10">
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+            <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
               <div className="flex items-end gap-4 sm:gap-6">
                 <span className="font-manrope text-6xl font-black leading-none tracking-[-0.08em] text-white sm:text-7xl">08</span>
                 <div className="pb-1"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#FF6B35]">BUILT FOR THE REAL WORLD</p><p className="mt-2 max-w-sm text-sm leading-relaxed text-white/65">One group. Eight sectors. No disconnected handoffs.</p></div>
@@ -413,7 +413,7 @@ export default function Home() {
             </div>
             <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-3 border-t border-white/10 pt-6 sm:grid-cols-2 md:grid-cols-4">
               {industryLabels.map((label, index) => (
-                <div key={label} className="group flex items-center gap-3 border-b border-white/10 pb-3 transition-colors duration-300 hover:border-[#FF6B35]/70 md:border-b-0 md:pb-0">
+                <div key={label} className="group flex items-center justify-center gap-3 border-b border-white/10 pb-3 transition-colors duration-300 hover:border-[#FF6B35]/70 sm:justify-start md:border-b-0 md:pb-0">
                   <span className="text-[9px] font-bold tracking-[0.2em] text-white/35">{String(index + 1).padStart(2, '0')}</span>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-white/65 transition-colors duration-300 group-hover:text-white">{label}</span>
                   <span className="ml-auto h-px w-6 bg-white/15 transition-all duration-300 group-hover:w-10 group-hover:bg-[#FF6B35]" />
@@ -429,21 +429,21 @@ export default function Home() {
       <section id="applied-ai" data-motion-section className="relative overflow-hidden border-t border-white/10 bg-[#07111C] py-14 text-white sm:py-18 md:py-24 lg:py-28">
         <div className="pointer-events-none absolute inset-0 opacity-75" style={{background: 'radial-gradient(circle at 18% 28%, rgba(27,142,255,0.18), transparent 28%), radial-gradient(circle at 82% 72%, rgba(255,107,53,0.16), transparent 30%), linear-gradient(135deg, transparent 0 48%, rgba(255,255,255,0.035) 48.2% 48.4%, transparent 48.6% 100%)'}} />
         <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
-          <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.08fr_0.92fr] md:gap-12 lg:gap-20">
+          <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.08fr_0.92fr] md:gap-12 md:text-left lg:gap-20">
             <div>
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#1B8EFF] sm:text-xs">PRACTICAL AI / ALREADY AT WORK</p>
-              <h2 className="max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">AI inside the business.<br /><span style={{background: 'linear-gradient(135deg, #1B8EFF 0%, #13C46B 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>Not beside it.</span></h2>
+              <h2 className="mx-auto max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-white sm:text-4xl md:mx-0 md:text-5xl lg:text-6xl">AI inside the business.<br /><span style={{background: 'linear-gradient(135deg, #1B8EFF 0%, #13C46B 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>Not beside it.</span></h2>
             </div>
-            <p className="max-w-xl text-sm leading-relaxed text-white/60 sm:text-base md:text-lg">We deploy AI where it makes the operation faster, safer and more effective—inside tools your team already uses.</p>
+            <p className="mx-auto max-w-xl text-sm leading-relaxed text-white/60 sm:text-base md:mx-0 md:text-lg">We deploy AI where it makes the operation faster, safer and more effective—inside tools your team already uses.</p>
           </div>
 
           <ol data-motion-child className="relative mt-10 grid overflow-hidden rounded-3xl border border-white/10 bg-white/[0.035] sm:mt-12 md:grid-cols-2 lg:grid-cols-4">
             <span aria-hidden="true" className="pointer-events-none absolute left-[8%] right-[8%] top-11 hidden h-px bg-gradient-to-r from-[#1B8EFF] via-[#13C46B] to-[#FF6B35] opacity-55 lg:block" />
             {appliedAi.map((item) => (
-              <li key={item.index} className="group relative min-h-48 border-b border-white/10 p-6 last:border-b-0 md:[&:nth-child(odd)]:border-r lg:min-h-56 lg:border-b-0 lg:border-r lg:last:border-r-0 lg:p-8">
-                <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[#1B8EFF]/55 bg-[#1B8EFF]/10 text-[9px] font-black tracking-[0.18em] text-[#1B8EFF] transition-all duration-300 group-hover:scale-110 group-hover:border-[#13C46B] group-hover:text-[#13C46B]">{item.index}</div>
+              <li key={item.index} className="group relative min-h-48 border-b border-white/10 p-6 text-center last:border-b-0 md:text-left md:[&:nth-child(odd)]:border-r lg:min-h-56 lg:border-b-0 lg:border-r lg:last:border-r-0 lg:p-8">
+                <div className="relative mx-auto flex h-10 w-10 items-center justify-center rounded-full border border-[#1B8EFF]/55 bg-[#1B8EFF]/10 text-[9px] font-black tracking-[0.18em] text-[#1B8EFF] transition-all duration-300 group-hover:scale-110 group-hover:border-[#13C46B] group-hover:text-[#13C46B] md:mx-0">{item.index}</div>
                 <h3 className="mt-7 font-manrope text-lg font-bold tracking-tight text-white sm:text-xl">{item.label}</h3>
-                <p className="mt-3 max-w-xs text-xs leading-relaxed text-white/50 sm:text-sm">{item.copy}</p>
+                <p className="mx-auto mt-3 max-w-xs text-xs leading-relaxed text-white/50 sm:text-sm md:mx-0">{item.copy}</p>
                 <span className="absolute bottom-0 left-0 h-px w-0 bg-gradient-to-r from-[#1B8EFF] to-[#13C46B] transition-all duration-500 group-hover:w-full" />
               </li>
             ))}
@@ -495,7 +495,7 @@ export default function Home() {
             </button>
           </div>
           {showAllPartners && (
-            <ul id="partners-list" aria-label="Technology partner directory" className="mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-2 rounded-2xl border border-white/15 bg-white/5 p-4 text-left sm:grid-cols-3 md:grid-cols-6">
+            <ul id="partners-list" aria-label="Technology partner directory" className="mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-2 rounded-2xl border border-white/15 bg-white/5 p-4 text-center md:text-left sm:grid-cols-3 md:grid-cols-6">
               {technologyPartners.map((partner) => (
                 <li key={partner.name} className="rounded-lg border border-white/10 px-3 py-2 text-center text-[10px] font-bold uppercase tracking-[0.16em] text-white/70">
                   {partner.name}

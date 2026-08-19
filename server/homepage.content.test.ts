@@ -67,4 +67,13 @@ describe("PDF-informed homepage content", () => {
     expect(heroVisualStyles).toContain("@media (prefers-reduced-motion: reduce)");
     expect(homepageDocument).toContain('rel="preload" as="image"');
   });
+
+  it("keeps mobile homepage content centered and hero brand-card content centered at every breakpoint", () => {
+    expect(homepageSource).toContain('className="min-h-screen bg-navy text-center text-white md:text-left"');
+    expect(homepageSource).toContain('className="flex h-16 w-full min-w-0 items-center justify-center');
+    expect(homepageSource).toContain('object-contain object-center');
+    expect(homepageSource).toContain('flex h-full flex-col items-center justify-between p-5 text-center');
+    expect(homepageSource).toContain('flex w-full flex-col items-center justify-center gap-3 border-t');
+    expect(homepageSource).toContain('sm:justify-items-start sm:gap-7 sm:p-7 sm:text-left');
+  });
 });
