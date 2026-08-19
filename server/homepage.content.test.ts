@@ -105,4 +105,20 @@ describe("PDF-informed homepage content", () => {
     expect(homepageSource).toContain("ICT specialists");
     expect(homepageSource).toContain("Corporate ICT partners");
   });
+
+  it("removes numeric prefixes from the trust and outcome blocks while retaining their content", () => {
+    expect(homepageSource).not.toContain("/>0{index + 1}</dt>");
+    expect(homepageSource).not.toContain("{outcome.index}</span>");
+    expect(homepageSource).toContain("One call");
+    expect(homepageSource).toContain("One invoice");
+    expect(homepageSource).toContain("One relationship");
+  });
+
+  it("uses a refined sector-led Built for the Real World panel without numeric industry labels", () => {
+    expect(homepageSource).toContain("data-industry-panel");
+    expect(homepageSource).toContain('aria-label="Industries served"');
+    expect(homepageSource).toContain("Technology that understands");
+    expect(homepageSource).not.toContain("String(index + 1).padStart");
+    expect(homepageSource).not.toContain(">08</span>");
+  });
 });

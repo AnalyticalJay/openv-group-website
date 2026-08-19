@@ -338,9 +338,8 @@ export default function Home() {
                     const accent = ['#FF6B35', '#1B8EFF', '#13C46B', '#FF1744'][index];
                     return (
                       <div key={proof.label} className="group min-h-32 bg-[#0A1828]/80 px-4 py-5 text-center transition-colors duration-300 hover:bg-white/[0.045] sm:min-h-36 sm:px-5 sm:py-6 md:text-left">
-                        <dt className="flex items-center justify-center gap-2 text-[8px] font-bold uppercase tracking-[0.15em] text-white/42 md:justify-start"><span className="h-1.5 w-1.5 rounded-full" style={{backgroundColor: accent, boxShadow: `0 0 12px ${accent}99`}} />0{index + 1}</dt>
+                        <dt className="flex min-h-7 items-center justify-center gap-2 text-[8px] font-bold uppercase leading-relaxed tracking-[0.15em] text-white/48 md:justify-start"><span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{backgroundColor: accent, boxShadow: `0 0 12px ${accent}99`}} />{proof.label}</dt>
                         <dd className="mt-4 font-manrope text-4xl font-black leading-none tracking-tight text-white sm:text-5xl">{proof.value}</dd>
-                        <p className="mx-auto mt-3 max-w-[8.5rem] text-[9px] font-bold uppercase leading-relaxed tracking-[0.14em] text-white/48 md:mx-0">{proof.label}</p>
                       </div>
                     );
                   })}
@@ -350,9 +349,9 @@ export default function Home() {
           </div>
 
           <div data-motion-child className="mt-7 grid border-y border-slate-200 md:grid-cols-3 md:divide-x md:divide-slate-200">
-            {groupOutcomes.map((outcome) => (
-              <div key={outcome.index} className="grid justify-items-center gap-2 border-b border-slate-200 py-6 text-center last:border-b-0 md:grid-cols-[auto_1fr] md:justify-items-start md:gap-4 md:border-b-0 md:px-6 md:text-left md:first:pl-0 md:last:pr-0">
-                <span className="text-[9px] font-bold tracking-[0.2em] text-[#FF6B35]">{outcome.index}</span>
+            {groupOutcomes.map((outcome, index) => (
+              <div key={outcome.title} className="grid justify-items-center gap-3 border-b border-slate-200 py-6 text-center last:border-b-0 md:grid-cols-[auto_1fr] md:justify-items-start md:gap-4 md:border-b-0 md:px-6 md:text-left md:first:pl-0 md:last:pr-0">
+                <span className="mt-1 h-2 w-2 rounded-full" style={{backgroundColor: ['#FF6B35', '#1B8EFF', '#13C46B'][index], boxShadow: `0 0 12px ${['#FF6B35', '#1B8EFF', '#13C46B'][index]}88`}} />
                 <div><h3 className="font-manrope text-lg font-bold text-[#07111C]">{outcome.title}</h3><p className="mt-1 text-xs leading-relaxed text-slate-500 sm:text-sm">{outcome.copy}</p></div>
               </div>
             ))}
@@ -394,25 +393,29 @@ export default function Home() {
             ))}
           </div>
 
-          <div data-motion-child className="mt-12 overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_22px_60px_rgba(7,17,28,0.16)] sm:mt-16 sm:p-8 md:mt-20 md:p-10">
-            <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-              <div className="flex items-end gap-4 sm:gap-6">
-                <span className="font-manrope text-6xl font-black leading-none tracking-[-0.08em] text-white sm:text-7xl">08</span>
-                <div className="pb-1"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#FF6B35]">BUILT FOR THE REAL WORLD</p><p className="mt-2 max-w-sm text-sm leading-relaxed text-white/65">One group. Eight sectors. No disconnected handoffs.</p></div>
+          <section data-industry-panel data-motion-child aria-labelledby="industry-panel-title" className="relative mt-12 overflow-hidden rounded-3xl border border-white/10 bg-[#07111C] p-6 text-white shadow-[0_22px_60px_rgba(7,17,28,0.16)] sm:mt-16 sm:p-8 md:mt-20 md:p-10 lg:p-12">
+            <div className="pointer-events-none absolute -right-28 -top-28 h-80 w-80 rounded-full border border-[#1B8EFF]/20" />
+            <div className="pointer-events-none absolute -right-12 -top-10 h-56 w-56 rounded-full border border-[#FF6B35]/25" />
+            <div className="pointer-events-none absolute bottom-0 left-[18%] right-[18%] h-px bg-gradient-to-r from-transparent via-[#1B8EFF]/40 to-transparent" />
+            <div className="relative grid gap-8 lg:grid-cols-[1.12fr_0.88fr] lg:items-end lg:gap-16">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#FF6B35]">BUILT FOR THE REAL WORLD</p>
+                <h3 id="industry-panel-title" className="mt-4 max-w-2xl font-manrope text-3xl font-black leading-[1.06] tracking-tight text-white sm:text-4xl">Technology that understands <span className="text-[#1B8EFF]">your world.</span></h3>
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/62 sm:text-base">One group. Sector-aware technology. No disconnected handoffs between the systems your business depends on.</p>
               </div>
-              <div className="hidden h-px flex-1 bg-gradient-to-r from-[#FF6B35]/70 via-[#1B8EFF]/60 to-transparent lg:block"></div>
-              <p className="max-w-xs text-xs font-bold uppercase leading-relaxed tracking-[0.16em] text-white/40">Technology shaped around how your world actually works.</p>
+              <div className="border-l-0 border-white/10 pt-1 lg:border-l lg:pl-10">
+                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/38">One connected delivery model</p>
+                <div className="mt-4 flex items-center gap-3"><span className="h-px w-12 bg-gradient-to-r from-[#FF6B35] to-[#1B8EFF]" /><span className="h-2 w-2 rounded-full bg-[#13C46B] shadow-[0_0_14px_rgba(19,196,107,0.78)]" /></div>
+                <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/58">Your technology partner should fit your sector—not force your sector to fit the technology.</p>
+              </div>
             </div>
-            <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-3 border-t border-white/10 pt-6 sm:grid-cols-2 md:grid-cols-4">
-              {industryLabels.map((label, index) => (
-                <div key={label} className="group flex items-center justify-center gap-3 border-b border-white/10 pb-3 transition-colors duration-300 hover:border-[#FF6B35]/70 sm:justify-start md:border-b-0 md:pb-0">
-                  <span className="text-[9px] font-bold tracking-[0.2em] text-white/35">{String(index + 1).padStart(2, '0')}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/65 transition-colors duration-300 group-hover:text-white">{label}</span>
-                  <span className="ml-auto h-px w-6 bg-white/15 transition-all duration-300 group-hover:w-10 group-hover:bg-[#FF6B35]" />
-                </div>
-              ))}
-            </div>
-          </div>
+            <ul aria-label="Industries served" className="relative mt-8 grid grid-cols-1 gap-2 border-t border-white/10 pt-6 sm:grid-cols-2 sm:gap-3 lg:mt-10 lg:grid-cols-4">
+              {industryLabels.map((label, index) => {
+                const accent = ['#FF6B35', '#1B8EFF', '#13C46B', '#FF1744'][index % 4];
+                return <li key={label} className="group flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.035] px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.07]"><span className="h-2 w-2 shrink-0 rounded-full" style={{backgroundColor: accent, boxShadow: `0 0 12px ${accent}99`}} /><span className="text-[10px] font-bold uppercase tracking-[0.12em] text-white/70 transition-colors duration-300 group-hover:text-white">{label}</span><span className="ml-auto h-px w-5 bg-white/15 transition-all duration-300 group-hover:w-8" style={{backgroundColor: `${accent}aa`}} /></li>;
+              })}
+            </ul>
+          </section>
         </div>
       </section>
 

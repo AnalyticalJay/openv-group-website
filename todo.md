@@ -193,3 +193,7 @@
 - [x] Remove the duplicate Connect, Enable, Amplify capability summary from the operating-layer header
 - [x] Refine the three primary capability blocks with clearer hierarchy and less repetitive labeling
 - [x] Preserve core capability content, accessible interactions, responsive layouts, and section motion while validating the redesign
+
+- [x] Remove numeric prefixes from the One Group trust metrics and the three outcome blocks
+- [x] Refine the Built for the Real World panel into a clearer, more appealing sector-led presentation
+- [x] Preserve factual content, keyboard accessibility, responsive layout, and motion while validating the refinements

@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Industry and trust hierarchy refinement — 2026-08-19
+
+**Removed** numeric prefixes from the One Group trust metrics and the one-call, one-invoice, one-relationship outcomes. **Redesigned** the Built for the Real World panel as a sector-led experience with a clearer headline, connected-delivery statement, colour-coded sector signals, and responsive industry cards—preserving the existing industries, capability story, and motion language.
+
 ## Operating-layer hierarchy refinement — 2026-08-19
 
 **Removed** the repeated Connect, Enable, Amplify summary from beneath the operating-layer header. **Refined** the three primary capability blocks as the single expression of those specialist themes, with a clearer introductory statement, stronger numbered markers, signature accent rules, increased card spacing, distinct “Explore” affordances, and preserved feature tags.
