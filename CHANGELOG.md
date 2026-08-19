@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Single-flow operating model — 2026-08-19
+
+**Replaced** the two separate fragmented-versus-connected cards with one visual transformation flow. The revised model brings individual technology inputs through a visible convergence point into OpenV coordination, then finishes with the shared business outcomes. This creates a single cause-to-outcome narrative without expanding the section’s copy.
+
 ## Operating-model clarity refinement — 2026-08-19
 
 **Clarified** the fragmented-versus-connected model comparison through compact Before/After ownership labels, a “handoffs create gaps” cue, a “one relationship” transition, and a minimal technology, operations, and growth coordination path. The visual keeps the approved model artwork and concise outcome cards while making the operating model easier to understand at a glance.

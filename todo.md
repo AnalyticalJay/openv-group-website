@@ -201,3 +201,7 @@
 - [x] Add minimal visual cues that make the fragmented-versus-connected model comparison immediately understandable
 - [x] Clarify the before-and-after ownership and outcome path without making the comparison text-heavy
 - [x] Preserve the approved model artwork, accessibility, responsive behavior, and motion while validating the refinement
+
+- [x] Replace the two separate fragmented-versus-connected model cards with one visual transformation flow
+- [x] Show the multiple technology inputs converging into one coordinated OpenV operating model with minimal labels
+- [x] Preserve factual outcomes, accessibility, responsive behavior, and section motion while validating the redesign

@@ -44,21 +44,24 @@ describe("PDF-informed homepage content", () => {
   it("adds the vendor-consolidation and applied-AI visual narratives", () => {
     expect(homepageSource).toContain("WHY THE GROUP EXISTS");
     expect(homepageSource).toContain("Technology breaks<br />");
-    expect(homepageSource).toContain("One accountable<br />technology partner.");
+    expect(homepageSource).toContain("One coordinated<br />operating model.");
     expect(homepageSource).toContain("PRACTICAL AI / ALREADY AT WORK");
     expect(homepageSource).toContain("Microsoft 365 Copilot");
     expect(homepageSource).toContain("ShiftBridge workflows");
     expect(homepageSource).toContain("NextFour marketing");
   });
 
-  it("clarifies the fragmented-versus-connected model with minimal before-and-after ownership cues", () => {
-    expect(homepageSource).toContain("data-model-comparison");
-    expect(homepageSource).toContain("Before / separate owners");
-    expect(homepageSource).toContain("After / one accountable owner");
-    expect(homepageSource).toContain("Handoffs create gaps");
-    expect(homepageSource).toContain("One shared operating view across every layer.");
+  it("uses a single visual flow to show services converging into one accountable OpenV operating model", () => {
+    expect(homepageSource).toContain("data-operating-model-flow");
+    expect(homepageSource).toContain("data-model-inputs");
+    expect(homepageSource).toContain("data-model-coordination");
+    expect(homepageSource).toContain("From separate services to");
+    expect(homepageSource).toContain("OpenV coordinates every layer");
+    expect(homepageSource).toContain("One coordinated");
     expect(homepageSource).toContain("Technology', 'Operations', 'Growth");
-    expect(homepageSource).not.toContain("0{index + 1}</span><p className=\"mt-2 text-[10px]");
+    expect(homepageSource).not.toContain("FRAGMENTED MODEL");
+    expect(homepageSource).not.toContain("CONNECTED MODEL");
+    expect(homepageSource).not.toContain("data-model-comparison");
   });
 
   it("defines the connected hero visual, animated particles, and reduced-motion fallback", () => {
