@@ -224,3 +224,7 @@
 - [x] Add a See How It Works trigger to the operating-model flow
 - [x] Build an accessible animated walkthrough modal with concise operating-model steps
 - [x] Preserve reduced-motion support, keyboard handling, responsive layouts, and consultation conversion context while validating the modal
+
+- [x] Preserve the fixed premium dark experience without introducing a sitewide theme toggle
+- [x] Refine the consultation form modal into a more polished enterprise conversion layout
+- [x] Preserve existing validation, submission feedback, accessibility, responsive behavior, and modal interactions while validating the refinement

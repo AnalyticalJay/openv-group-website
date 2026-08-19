@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Premium consultation form refinement — 2026-08-19
+
+**Kept** the fixed premium dark experience rather than introducing a sitewide theme toggle. **Redesigned** the Book a Consultation modal as a dark enterprise two-column conversion experience, pairing decision-support content and response expectations with a clearer grouped form layout, stronger field states, preserved validation and feedback flows, improved mobile viewport handling, and accessible focus treatments.
+
 ## Operating-model walkthrough — 2026-08-19
 
 **Added** a concise See How It Works walkthrough to the operating-model flow. The accessible animated modal presents Align, Coordinate, and Progress as three selectable steps, advances automatically when motion is enabled, respects reduced-motion preferences, and maintains a direct Book a Consultation route at its conclusion.
