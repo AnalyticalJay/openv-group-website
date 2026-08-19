@@ -189,3 +189,7 @@
 - [x] Remove the duplicate operating-layer credibility metrics so the proof points appear once on the homepage
 - [x] Refine the One Group / Complete Technology Partner stat block as the primary trust presentation
 - [x] Preserve factual metrics, accessibility, responsive layout, and visual hierarchy while validating the consolidated design
+
+- [x] Remove the duplicate Connect, Enable, Amplify capability summary from the operating-layer header
+- [x] Refine the three primary capability blocks with clearer hierarchy and less repetitive labeling
+- [x] Preserve core capability content, accessible interactions, responsive layouts, and section motion while validating the redesign

@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Operating-layer hierarchy refinement — 2026-08-19
+
+**Removed** the repeated Connect, Enable, Amplify summary from beneath the operating-layer header. **Refined** the three primary capability blocks as the single expression of those specialist themes, with a clearer introductory statement, stronger numbered markers, signature accent rules, increased card spacing, distinct “Explore” affordances, and preserved feature tags.
+
 ## Consolidated trust metrics — 2026-08-19
 
 **Removed** the duplicate credibility metric row from the operating-layer section. **Refined** the One Group / Complete Technology Partner block into the homepage’s single primary trust presentation, with a Proven capability header, a restrained “Built for scale” indicator, numbered metric markers, accent dots, stronger values, and responsive hover treatment while preserving all established factual proof points.

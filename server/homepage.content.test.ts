@@ -74,17 +74,25 @@ describe("PDF-informed homepage content", () => {
     expect(homepageSource).toContain('object-contain object-center');
     expect(homepageSource).toContain('flex h-full flex-col items-center justify-between p-5 text-center');
     expect(homepageSource).toContain('flex w-full flex-col items-center justify-center gap-3 border-t');
-    expect(homepageSource).toContain('sm:justify-items-start sm:gap-7 sm:p-7 sm:text-left');
+    expect(homepageSource).toContain('sm:justify-items-start sm:gap-7 sm:p-8 sm:text-left');
   });
 
   it("uses a header-led operating-layer section instead of the duplicate illustration", () => {
-    expect(homepageSource).toContain("const operatingLayerPillars");
     expect(homepageSource).toContain("data-operating-layer-header");
-    expect(homepageSource).toContain('aria-label="Operating-layer capabilities"');
-    expect(homepageSource).toContain("One connected capability layer across managed technology");
+    expect(homepageSource).toContain("Three specialist capabilities. One accountable group.");
+    expect(homepageSource).not.toContain("const operatingLayerPillars");
+    expect(homepageSource).not.toContain('aria-label="Operating-layer capabilities"');
     expect(homepageSource).not.toContain("FROM FOUNDATION");
     expect(homepageSource).not.toContain("TO MOMENTUM");
     expect(homepageSource).not.toContain('data-motion-depth className="relative min-h-[280px]');
+  });
+
+  it("makes the three capability blocks the refined primary expression of Connect, Enable, and Amplify", () => {
+    expect(homepageSource).toContain("data-capability-refined");
+    expect(homepageSource).toContain("Managed technology foundation");
+    expect(homepageSource).toContain("Connected business operations");
+    expect(homepageSource).toContain("Digital growth engine");
+    expect(homepageSource).toContain("Explore");
   });
 
   it("presents the group metrics once in the primary advantage trust block", () => {

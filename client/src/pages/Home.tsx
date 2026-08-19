@@ -29,12 +29,6 @@ const capabilityLanes = [
   { eyebrow: 'AMPLIFY', label: 'Digital growth engine', copy: 'Web, marketing, brand and CRM experiences built to turn visibility into growth.', themes: ['Web & CRM', 'Marketing', 'Brand'], accent: '#FF1744' },
 ];
 
-const operatingLayerPillars = [
-  { label: 'Connect', detail: 'Technology foundation', accent: '#FF6B35' },
-  { label: 'Enable', detail: 'Business operations', accent: '#1B8EFF' },
-  { label: 'Amplify', detail: 'Digital growth', accent: '#FF1744' },
-];
-
 const industryLabels = ['Manufacturing', 'Healthcare', 'Professional Services', 'Construction', 'Retail', 'Financial Services', 'Education', 'Hospitality'];
 
 const groupProof = [
@@ -377,33 +371,25 @@ export default function Home() {
               <span className="block" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>the whole business forward.</span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base md:mt-7 md:text-lg">
-              One connected capability layer across managed technology, customer growth and day-to-day business operations—designed around the way your business actually works.
+              Three specialist capabilities. One accountable group. Choose the technology, operational and growth support that moves your business forward.
             </p>
-            <ul aria-label="Operating-layer capabilities" className="mx-auto mt-8 grid max-w-4xl gap-3 border-y border-slate-200 py-5 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-slate-200 sm:py-6">
-              {operatingLayerPillars.map((pillar, index) => (
-                <li key={pillar.label} className="flex items-center justify-center gap-3 px-4 py-2 sm:py-0">
-                  <span className="h-2 w-2 rounded-full" style={{backgroundColor: pillar.accent, boxShadow: `0 0 14px ${pillar.accent}66`}} />
-                  <span><strong className="block text-[10px] font-black uppercase tracking-[0.2em] text-[#07111C]">0{index + 1} / {pillar.label}</strong><span className="mt-1 block text-[10px] font-medium uppercase tracking-[0.14em] text-slate-400">{pillar.detail}</span></span>
-                </li>
-              ))}
-            </ul>
           </header>
 
-          <div className="mt-10 space-y-4 sm:mt-12 sm:space-y-5 md:mt-16">
+          <div className="mt-12 space-y-4 sm:mt-14 sm:space-y-5 md:mt-18">
             {capabilityLanes.map((lane, index) => (
-              <article key={lane.eyebrow} data-capability-lane data-motion-child data-motion-press tabIndex={0} role="group" aria-label={`${lane.label}: ${lane.copy}`} className="group relative grid justify-items-center gap-5 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/85 p-5 text-center shadow-[0_14px_34px_rgba(7,17,28,0.07)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:bg-white hover:shadow-[0_22px_44px_rgba(7,17,28,0.12)] focus-visible:-translate-y-1 focus-visible:border-[#FF6B35] focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8FAFC] focus-visible:shadow-[0_22px_44px_rgba(7,17,28,0.12)] sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:justify-items-start sm:gap-7 sm:p-7 sm:text-left md:p-8">
+              <article key={lane.eyebrow} data-capability-lane data-capability-refined data-motion-child data-motion-press tabIndex={0} role="group" aria-label={`${lane.label}: ${lane.copy}`} className="group relative grid justify-items-center gap-5 overflow-hidden rounded-[1.35rem] border border-slate-200/80 bg-white/90 p-6 text-center shadow-[0_16px_38px_rgba(7,17,28,0.07)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:bg-white hover:shadow-[0_24px_50px_rgba(7,17,28,0.13)] focus-visible:-translate-y-1 focus-visible:border-[#FF6B35] focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8FAFC] focus-visible:shadow-[0_24px_50px_rgba(7,17,28,0.13)] sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:justify-items-start sm:gap-7 sm:p-8 sm:text-left md:p-9">
                 <span className="absolute inset-y-0 left-0 w-1 transition-all duration-300 group-hover:w-1.5" style={{background: lane.accent}}></span>
-                <span className="absolute -right-20 -top-20 h-48 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-20" style={{background: lane.accent}}></span>
-                <div className="relative flex h-12 w-12 items-center justify-center rounded-full border text-[10px] font-bold tracking-[0.18em] text-slate-500 transition-all duration-300 group-hover:scale-105 group-hover:text-[#07111C] sm:h-14 sm:w-14" style={{borderColor: `${lane.accent}55`, background: `${lane.accent}0d`}}>0{index + 1}</div>
+                <span className="absolute -right-20 -top-20 h-52 w-52 rounded-full opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-20" style={{background: lane.accent}}></span>
+                <div className="relative flex h-14 w-14 flex-col items-center justify-center rounded-2xl border text-[10px] font-bold tracking-[0.16em] text-slate-500 transition-all duration-300 group-hover:scale-105 group-hover:text-[#07111C] sm:h-16 sm:w-16" style={{borderColor: `${lane.accent}55`, background: `${lane.accent}0d`}}><span>0{index + 1}</span><span className="mt-1 h-1 w-1 rounded-full" style={{backgroundColor: lane.accent}} /></div>
                 <div className="relative min-w-0">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.28em]" style={{color: lane.accent}}>{lane.eyebrow}</p>
-                  <h3 className="mt-1 font-manrope text-2xl font-bold tracking-tight text-[#07111C] sm:text-3xl">{lane.label}</h3>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">{lane.copy}</p>
+                  <div className="flex items-center justify-center gap-3 sm:justify-start"><p className="text-[10px] font-bold uppercase tracking-[0.28em]" style={{color: lane.accent}}>{lane.eyebrow}</p><span className="h-px w-8 opacity-50" style={{backgroundColor: lane.accent}} /></div>
+                  <h3 className="mt-2 font-manrope text-2xl font-bold tracking-tight text-[#07111C] sm:text-3xl">{lane.label}</h3>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">{lane.copy}</p>
                   <div className="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">
                     {lane.themes.map((theme) => <span key={theme} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500 transition-all duration-300 group-hover:border-slate-300 group-hover:bg-white group-hover:text-[#07111C]">{theme}</span>)}
                   </div>
                 </div>
-                <div className="relative flex w-full items-center justify-center gap-3 pt-1 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400 transition-colors duration-300 group-hover:text-[#07111C] sm:w-auto sm:justify-end sm:pt-0"><span className="h-px w-10 bg-slate-300 transition-all duration-300 group-hover:w-16" style={{backgroundColor: lane.accent}}></span><span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 transition-all duration-300 group-hover:border-transparent group-hover:bg-[#07111C] group-hover:text-white"><ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" /></span></div>
+                <div className="relative flex w-full items-center justify-center gap-3 pt-1 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400 transition-colors duration-300 group-hover:text-[#07111C] sm:w-auto sm:justify-end sm:pt-0"><span className="hidden sm:block">Explore</span><span className="h-px w-10 bg-slate-300 transition-all duration-300 group-hover:w-16" style={{backgroundColor: lane.accent}}></span><span className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 transition-all duration-300 group-hover:border-transparent group-hover:bg-[#07111C] group-hover:text-white"><ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" /></span></div>
               </article>
             ))}
           </div>
