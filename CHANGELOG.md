@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Consolidated trust metrics — 2026-08-19
+
+**Removed** the duplicate credibility metric row from the operating-layer section. **Refined** the One Group / Complete Technology Partner block into the homepage’s single primary trust presentation, with a Proven capability header, a restrained “Built for scale” indicator, numbered metric markers, accent dots, stronger values, and responsive hover treatment while preserving all established factual proof points.
+
 ## Operating-layer proof points — 2026-08-19
 
 **Added** a compact three-metric proof-point row beneath the operating-layer capability summary. It surfaces established OpenV Group facts—20+ years in South Africa, 45 ICT specialists, and 8 corporate ICT partners—without interrupting the header-led hierarchy or the existing capability-lane flow.

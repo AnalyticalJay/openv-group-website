@@ -332,13 +332,25 @@ export default function Home() {
                 <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-white/60 sm:text-base md:mx-0">Managed IT. Digital growth. Business software. Designed to work as one.</p>
               </div>
 
-              <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10">
-                {groupProof.map((proof) => (
-                  <div key={proof.label} className="min-h-28 bg-[#0A1828]/95 p-5 sm:min-h-32 sm:p-6">
-                    <strong className="font-manrope text-3xl font-black tracking-tight text-white sm:text-4xl">{proof.value}</strong>
-                    <p className="mt-3 max-w-[9rem] text-[9px] font-bold uppercase leading-relaxed tracking-[0.16em] text-white/45 sm:text-[10px]">{proof.label}</p>
-                  </div>
-                ))}
+              <div aria-label="OpenV Group trust metrics" className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0A1828]/90 shadow-[0_20px_55px_rgba(0,0,0,0.20)]">
+                <div className="pointer-events-none absolute -right-16 -top-20 h-52 w-52 rounded-full border border-[#1B8EFF]/20" />
+                <div className="pointer-events-none absolute -right-5 -top-8 h-40 w-40 rounded-full border border-[#FF6B35]/20" />
+                <div className="relative flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-6">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-white/40">Proven capability</span>
+                  <span className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.16em] text-[#13C46B]"><span className="h-1.5 w-1.5 rounded-full bg-[#13C46B] shadow-[0_0_12px_rgba(19,196,107,0.8)]" />Built for scale</span>
+                </div>
+                <dl className="relative grid grid-cols-2 divide-x divide-y divide-white/10 md:grid-cols-4 md:divide-y-0">
+                  {groupProof.map((proof, index) => {
+                    const accent = ['#FF6B35', '#1B8EFF', '#13C46B', '#FF1744'][index];
+                    return (
+                      <div key={proof.label} className="group min-h-32 bg-[#0A1828]/80 px-4 py-5 text-center transition-colors duration-300 hover:bg-white/[0.045] sm:min-h-36 sm:px-5 sm:py-6 md:text-left">
+                        <dt className="flex items-center justify-center gap-2 text-[8px] font-bold uppercase tracking-[0.15em] text-white/42 md:justify-start"><span className="h-1.5 w-1.5 rounded-full" style={{backgroundColor: accent, boxShadow: `0 0 12px ${accent}99`}} />0{index + 1}</dt>
+                        <dd className="mt-4 font-manrope text-4xl font-black leading-none tracking-tight text-white sm:text-5xl">{proof.value}</dd>
+                        <p className="mx-auto mt-3 max-w-[8.5rem] text-[9px] font-bold uppercase leading-relaxed tracking-[0.14em] text-white/48 md:mx-0">{proof.label}</p>
+                      </div>
+                    );
+                  })}
+                </dl>
               </div>
             </div>
           </div>
@@ -375,14 +387,6 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <dl aria-label="OpenV Group proof points" className="mx-auto mt-8 grid max-w-4xl grid-cols-3 divide-x divide-slate-200 border-y border-slate-200 bg-white/70 py-4 shadow-[0_10px_30px_rgba(7,17,28,0.05)] sm:mt-10 sm:py-5">
-              {groupProof.slice(0, 3).map((proof) => (
-                <div key={proof.label} className="px-2 sm:px-5">
-                  <dd className="font-manrope text-2xl font-black leading-none tracking-tight text-[#07111C] sm:text-3xl md:text-4xl">{proof.value}</dd>
-                  <dt className="mx-auto mt-2 max-w-20 text-[8px] font-bold uppercase leading-relaxed tracking-[0.13em] text-slate-400 sm:max-w-none sm:text-[9px]">{proof.label}</dt>
-                </div>
-              ))}
-            </dl>
           </header>
 
           <div className="mt-10 space-y-4 sm:mt-12 sm:space-y-5 md:mt-16">

@@ -185,3 +185,7 @@
 - [x] Add a concise trust-building proof-point row beneath the operating-layer header using established OpenV Group metrics
 - [x] Preserve the header-led hierarchy, responsive alignment, accessibility, and existing capability-lane flow
 - [x] Validate the proof-point row with tests, production build, and desktop/mobile visual QA
+
+- [x] Remove the duplicate operating-layer credibility metrics so the proof points appear once on the homepage
+- [x] Refine the One Group / Complete Technology Partner stat block as the primary trust presentation
+- [x] Preserve factual metrics, accessibility, responsive layout, and visual hierarchy while validating the consolidated design

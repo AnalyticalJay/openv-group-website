@@ -87,9 +87,12 @@ describe("PDF-informed homepage content", () => {
     expect(homepageSource).not.toContain('data-motion-depth className="relative min-h-[280px]');
   });
 
-  it("adds a concise operating-layer proof-point row using established group metrics", () => {
-    expect(homepageSource).toContain('aria-label="OpenV Group proof points"');
-    expect(homepageSource).toContain("groupProof.slice(0, 3)");
+  it("presents the group metrics once in the primary advantage trust block", () => {
+    expect(homepageSource).toContain('aria-label="OpenV Group trust metrics"');
+    expect(homepageSource).toContain("Proven capability");
+    expect(homepageSource).toContain("Built for scale");
+    expect(homepageSource).not.toContain('aria-label="OpenV Group proof points"');
+    expect(homepageSource).not.toContain("groupProof.slice(0, 3)");
     expect(homepageSource).toContain("Years in South Africa");
     expect(homepageSource).toContain("ICT specialists");
     expect(homepageSource).toContain("Corporate ICT partners");
