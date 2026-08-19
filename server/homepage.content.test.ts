@@ -64,6 +64,20 @@ describe("PDF-informed homepage content", () => {
     expect(homepageSource).not.toContain("data-model-comparison");
   });
 
+  it("adds reduced-motion-safe convergence motion, outcome explanations, and consultation conversion actions", () => {
+    expect(homepageSource).toContain("data-convergence-lines");
+    expect(homepageSource).toContain("data-convergence-line");
+    expect(homepageSource).toContain("prefersReducedMotion()");
+    expect(homepageSource).toContain("data-model-outcome");
+    expect(homepageSource).toContain("aria-expanded={isActive}");
+    expect(homepageSource).toContain("onFocus={() => setActiveModelOutcome(index)}");
+    expect(homepageSource).toContain("Discuss this outcome");
+    expect(homepageSource).toContain("Book a consultation");
+    expect(homepageSource).toContain("openContactForm");
+    expect(homepageSource).toContain("onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ')");
+    expect(homepageSource).toContain("One accountable team owns the path from issue to resolution.");
+  });
+
   it("defines the connected hero visual, animated particles, and reduced-motion fallback", () => {
     expect(heroVisualSource).toContain("openv-connected-technology-hero_29faa8b3.jpg");
     expect(heroVisualSource).toContain("data-hero-particles");

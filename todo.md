@@ -205,3 +205,18 @@
 - [x] Replace the two separate fragmented-versus-connected model cards with one visual transformation flow
 - [x] Show the multiple technology inputs converging into one coordinated OpenV operating model with minimal labels
 - [x] Preserve factual outcomes, accessibility, responsive behavior, and section motion while validating the redesign
+
+- [x] Add subtle reduced-motion-safe scroll-driven convergence animation to the operating-model flow lines
+- [x] Make each operating-model outcome reveal a concise one-sentence explanation on click and keyboard focus
+- [x] Connect the operating-model outcome row to the existing Book a Consultation modal with accessible conversion actions
+- [x] Validate interactive behavior, build output, and responsive desktop/mobile presentation
+
+- [x] Verify each operating-model outcome opens its explanation on click and keyboard focus at desktop and mobile breakpoints
+- [x] Verify the new outcome conversion actions open the Book a Consultation modal with intact focus behavior
+- [x] Exercise the convergence effect and confirm reduced-motion cleanly disables the animation
+
+- [x] Verify outcome explanations and conversion focus behavior at mobile breakpoints using an interactive viewport
+- [x] Verify the per-outcome and row consultation actions from keyboard focus at desktop and mobile breakpoints
+- [x] Verify in-browser reduced-motion behavior disables the convergence animation cleanly
+
+- [x] Verify the per-outcome and row consultation actions with real keyboard activation at desktop and 375px mobile breakpoints

@@ -46,7 +46,11 @@ const groupOutcomes = [
 
 const fragmentedVendors = ['IT support', 'Connectivity', 'Website', 'Cybersecurity', 'Business software'];
 
-const connectedOutcomes = ['Clear ownership', 'Connected systems', 'Predictable costs'];
+const connectedOutcomes = [
+  { label: 'Clear ownership', explanation: 'One accountable team owns the path from issue to resolution.' },
+  { label: 'Connected systems', explanation: 'Technology, operations and growth work from one coordinated view.' },
+  { label: 'Predictable costs', explanation: 'Consolidated planning gives you clearer reporting and more predictable spend.' },
+];
 
 const appliedAi = [
   { index: '01', label: 'Microsoft 365 Copilot', copy: 'Draft, summarise and analyse inside everyday tools.' },
@@ -141,7 +145,9 @@ export default function Home() {
   const watchVideoButtonRef = useRef<HTMLButtonElement>(null);
   const brandCardsRef = useRef<HTMLDivElement>(null);
   const capabilitiesRef = useRef<HTMLElement>(null);
+  const operatingModelRef = useRef<HTMLElement>(null);
   const [showAllPartners, setShowAllPartners] = useState(false);
+  const [activeModelOutcome, setActiveModelOutcome] = useState<number | null>(null);
 
   // Get Lenis instance for scroll integration
   const lenis = useLenis();
@@ -188,9 +194,62 @@ export default function Home() {
     };
   }, [lenis]);
 
+  useEffect(() => {
+    const model = operatingModelRef.current;
+    if (!model || prefersReducedMotion()) return;
+
+    const context = gsap.context(() => {
+      const lines = model.querySelectorAll<HTMLElement>('[data-convergence-line]');
+      const inputNodes = model.querySelectorAll<HTMLElement>('[data-model-input-node]');
+      const coordination = model.querySelector<HTMLElement>('[data-model-coordination]');
+
+      gsap.set(lines, { transformOrigin: 'right center' });
+      gsap.fromTo(lines, { scaleX: 0.18, opacity: 0.18 }, {
+        scaleX: 1,
+        opacity: 0.95,
+        ease: 'none',
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: model,
+          start: 'top 78%',
+          end: 'center 55%',
+          scrub: 0.7,
+        },
+      });
+
+      gsap.fromTo(inputNodes, { x: -10, opacity: 0.58 }, {
+        x: 0,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.06,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: model,
+          start: 'top 76%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      if (coordination) {
+        gsap.fromTo(coordination, { scale: 0.975, y: 10 }, {
+          scale: 1,
+          y: 0,
+          duration: 0.65,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: model,
+            start: 'top 70%',
+            toggleActions: 'play none none reverse',
+          },
+        });
+      }
+    }, model);
+
+    return () => context.revert();
+  }, []);
 
   // Get contact form state from context
-  const { isOpen: isContactModalOpen, closeContactForm } = useContactForm();
+  const { isOpen: isContactModalOpen, openContactForm, closeContactForm } = useContactForm();
 
   return (
     <div ref={homepageMotionRef} className="min-h-screen bg-navy text-center text-white md:text-left">
@@ -266,24 +325,29 @@ export default function Home() {
             <p className="mx-auto max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:mx-0 md:text-lg">Multiple suppliers create handoffs, blind spots and cost. OpenV Group replaces the gaps with one accountable operating relationship.</p>
           </div>
 
-          <figure data-operating-model-flow data-motion-child aria-labelledby="operating-model-title" className="relative mt-10 overflow-hidden rounded-[2rem] bg-[#07111C] p-6 text-white shadow-[0_28px_75px_rgba(7,17,28,0.20)] sm:mt-12 sm:p-8 md:p-10 lg:p-12">
+          <figure ref={operatingModelRef} data-operating-model-flow data-motion-child aria-labelledby="operating-model-title" className="relative mt-10 overflow-hidden rounded-[2rem] bg-[#07111C] p-6 text-white shadow-[0_28px_75px_rgba(7,17,28,0.20)] sm:mt-12 sm:p-8 md:p-10 lg:p-12">
             <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full border border-[#FF6B35]/18" />
             <div className="pointer-events-none absolute -right-16 -top-24 h-80 w-80 rounded-full border border-[#1B8EFF]/25" />
             <div className="pointer-events-none absolute inset-0 opacity-80" style={{background: 'linear-gradient(120deg, transparent 0 31%, rgba(255,107,53,0.10) 31.2% 31.45%, transparent 31.7% 100%), linear-gradient(60deg, transparent 0 68%, rgba(27,142,255,0.10) 68.2% 68.45%, transparent 68.7% 100%)'}} />
             <figcaption className="relative mx-auto max-w-2xl text-center"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#FF6B35]">ONE OPERATING MODEL</p><h3 id="operating-model-title" className="mt-3 font-manrope text-2xl font-black leading-tight sm:text-3xl">From separate services to <span className="text-[#13C46B]">one accountable outcome.</span></h3><p className="mt-3 text-xs leading-relaxed text-white/55 sm:text-sm">OpenV coordinates every layer, so your business moves as one.</p></figcaption>
 
             <div className="relative mt-9 grid items-center gap-7 lg:grid-cols-[1fr_136px_1fr] lg:gap-10">
-              <div data-model-inputs className="rounded-2xl border border-white/10 bg-white/[0.035] p-5 sm:p-6">
+              <div data-convergence-lines aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
+                <span data-convergence-line className="absolute right-[48%] top-[28%] h-px w-[23%] bg-gradient-to-r from-[#FF6B35]/10 via-[#FF6B35] to-[#1B8EFF]/70" />
+                <span data-convergence-line className="absolute right-[48%] top-1/2 h-px w-[23%] bg-gradient-to-r from-[#1B8EFF]/10 via-[#1B8EFF] to-[#13C46B]/70" />
+                <span data-convergence-line className="absolute right-[48%] bottom-[28%] h-px w-[23%] bg-gradient-to-r from-[#13C46B]/10 via-[#13C46B] to-[#FF6B35]/70" />
+              </div>
+              <div data-model-inputs className="relative z-10 rounded-2xl border border-white/10 bg-white/[0.035] p-5 sm:p-6">
                 <div className="flex items-center justify-between"><p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/42">Your technology inputs</p><span className="h-2 w-2 rounded-full bg-[#FF1744] shadow-[0_0_16px_rgba(255,23,68,0.72)]" /></div>
                 <ul aria-label="Technology services coordinated by OpenV" className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3">
-                  {fragmentedVendors.map((vendor, index) => <li key={vendor} className={`flex min-h-16 items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#0A1828]/75 px-3 text-center text-[9px] font-bold uppercase leading-relaxed tracking-[0.12em] text-white/62 ${index === fragmentedVendors.length - 1 ? 'col-span-2 sm:col-span-1' : ''}`}><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF6B35]" />{vendor}</li>)}
+                  {fragmentedVendors.map((vendor, index) => <li data-model-input-node key={vendor} className={`flex min-h-16 items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#0A1828]/75 px-3 text-center text-[9px] font-bold uppercase leading-relaxed tracking-[0.12em] text-white/62 ${index === fragmentedVendors.length - 1 ? 'col-span-2 sm:col-span-1' : ''}`}><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF6B35]" />{vendor}</li>)}
                 </ul>
                 <p className="mt-4 text-[9px] font-bold uppercase tracking-[0.15em] text-white/36">Previously managed in isolation</p>
               </div>
 
-              <div aria-hidden="true" className="flex flex-col items-center justify-center gap-3"><div className="hidden h-px w-full bg-gradient-to-r from-[#FF6B35]/25 via-[#FF6B35] to-[#1B8EFF]/45 lg:block" /><div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#FF6B35]/60 bg-[#FF6B35]/10 shadow-[0_0_38px_rgba(255,107,53,0.22)]"><ArrowRight className="h-6 w-6 text-[#FF6B35]" /></div><div className="h-10 w-px bg-gradient-to-b from-[#FF6B35] to-[#1B8EFF] lg:hidden" /></div>
+              <div aria-hidden="true" className="relative z-10 flex flex-col items-center justify-center gap-3"><div className="hidden h-px w-full bg-gradient-to-r from-[#FF6B35]/25 via-[#FF6B35] to-[#1B8EFF]/45 lg:block" /><div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#FF6B35]/60 bg-[#FF6B35]/10 shadow-[0_0_38px_rgba(255,107,53,0.22)]"><ArrowRight className="h-6 w-6 text-[#FF6B35]" /></div><div data-convergence-line className="h-10 w-px origin-top bg-gradient-to-b from-[#FF6B35] via-[#1B8EFF] to-[#13C46B] lg:hidden" /></div>
 
-              <div data-model-coordination className="relative rounded-2xl border border-[#13C46B]/25 bg-[#07111C]/90 p-5 shadow-[0_0_0_1px_rgba(19,196,107,0.07)] sm:p-6">
+              <div data-model-coordination className="relative z-10 rounded-2xl border border-[#13C46B]/25 bg-[#07111C]/90 p-5 shadow-[0_0_0_1px_rgba(19,196,107,0.07)] sm:p-6">
                 <div className="pointer-events-none absolute -right-6 -top-7 h-28 w-28 rounded-full border border-[#1B8EFF]/20" />
                 <div className="relative flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
                   <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-[#FF6B35]/70 bg-[#FF6B35]/10 text-[10px] font-black uppercase tracking-[0.2em] text-[#FF6B35] shadow-[0_0_36px_rgba(255,107,53,0.25)]">OPENV</div>
@@ -295,9 +359,16 @@ export default function Home() {
               </div>
             </div>
 
-            <ul aria-label="Business outcomes from OpenV coordination" className="relative mt-7 grid overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] sm:grid-cols-3">
-              {connectedOutcomes.map((outcome, index) => <li key={outcome} className="flex items-center justify-center gap-3 border-b border-white/10 px-5 py-4 text-center last:border-b-0 sm:justify-start sm:border-b-0 sm:border-r sm:last:border-r-0"><span className="h-2 w-2 shrink-0 rounded-full" style={{backgroundColor: ['#FF6B35', '#1B8EFF', '#13C46B'][index], boxShadow: `0 0 12px ${['#FF6B35', '#1B8EFF', '#13C46B'][index]}99`}} /><span className="text-[9px] font-bold uppercase leading-relaxed tracking-[0.14em] text-white/75">{outcome}</span></li>)}
-            </ul>
+            <div data-model-outcome-row className="relative mt-7 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
+              <ul aria-label="Business outcomes from OpenV coordination" className="grid sm:grid-cols-3">
+                {connectedOutcomes.map((outcome, index) => {
+                  const isActive = activeModelOutcome === index;
+                  const outcomeId = `model-outcome-${index}`;
+                  return <li key={outcome.label} className="border-b border-white/10 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"><button type="button" data-model-outcome data-motion-press aria-expanded={isActive} aria-controls={outcomeId} onFocus={() => setActiveModelOutcome(index)} onClick={() => setActiveModelOutcome(index)} className="flex w-full items-center justify-center gap-3 px-5 py-4 text-center transition-colors duration-300 hover:bg-white/[0.045] focus-visible:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#13C46B] sm:justify-start"><span className="h-2 w-2 shrink-0 rounded-full" style={{backgroundColor: ['#FF6B35', '#1B8EFF', '#13C46B'][index], boxShadow: `0 0 12px ${['#FF6B35', '#1B8EFF', '#13C46B'][index]}99`}} /><span className="text-[9px] font-bold uppercase leading-relaxed tracking-[0.14em] text-white/75">{outcome.label}</span><span aria-hidden="true" className={`ml-auto text-base leading-none text-white/45 transition-transform duration-300 ${isActive ? 'rotate-45 text-[#13C46B]' : ''}`}>+</span></button><div id={outcomeId} role="region" aria-label={`${outcome.label} explanation`} className={`grid transition-[grid-template-rows,opacity] duration-300 ${isActive ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}><div className="overflow-hidden"><div className="border-t border-white/10 px-5 pb-5 pt-4 text-center sm:text-left"><p className="text-xs leading-relaxed text-white/58">{outcome.explanation}</p><button type="button" onClick={openContactForm} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openContactForm(); } }} className="mt-4 inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.14em] text-[#13C46B] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#13C46B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07111C]">Discuss this outcome <ArrowRight className="h-3.5 w-3.5" /></button></div></div></div></li>;
+                })}
+              </ul>
+              <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 px-5 py-4 text-center sm:flex-row sm:text-left"><p className="text-xs leading-relaxed text-white/52">Want this operating model in your business?</p><button type="button" data-motion-press onClick={openContactForm} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openContactForm(); } }} className="inline-flex items-center gap-2 rounded-full border border-[#13C46B]/45 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-[#13C46B] transition-all duration-300 hover:border-[#13C46B] hover:bg-[#13C46B] hover:text-[#07111C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#13C46B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07111C]">Book a consultation <ArrowRight className="h-3.5 w-3.5" /></button></div>
+            </div>
           </figure>
         </div>
       </section>

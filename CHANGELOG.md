@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Operating-model interaction and conversion enhancement — 2026-08-19
+
+**Added** scroll-driven convergence motion to the operating-model flow lines and input services, with a reduced-motion fallback. **Added** keyboard-accessible outcome controls that reveal concise explanations on focus or click. **Connected** each outcome and the outcome-row CTA directly to the existing Book a Consultation modal for a clear conversion path.
+
 ## Single-flow operating model — 2026-08-19
 
 **Replaced** the two separate fragmented-versus-connected cards with one visual transformation flow. The revised model brings individual technology inputs through a visible convergence point into OpenV coordination, then finishes with the shared business outcomes. This creates a single cause-to-outcome narrative without expanding the section’s copy.
