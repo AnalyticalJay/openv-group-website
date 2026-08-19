@@ -177,3 +177,7 @@
 - [x] Center-align homepage headlines, supporting content, and CTA groupings on mobile breakpoints
 - [x] Center-align hero brand-card logos, descriptions, tags, and links on mobile and desktop
 - [x] Validate the responsive alignment updates with tests, a production build, and desktop/mobile visual QA
+
+- [x] Remove the duplicate operating-layer illustration from the OpenV Group / One Operating Layer section
+- [x] Restructure the operating-layer section as a stronger header-led composition without duplicating hero brand-card visual language
+- [x] Preserve capability lanes, mobile responsiveness, accessibility, and section motion while validating the redesign

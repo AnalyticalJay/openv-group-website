@@ -76,4 +76,14 @@ describe("PDF-informed homepage content", () => {
     expect(homepageSource).toContain('flex w-full flex-col items-center justify-center gap-3 border-t');
     expect(homepageSource).toContain('sm:justify-items-start sm:gap-7 sm:p-7 sm:text-left');
   });
+
+  it("uses a header-led operating-layer section instead of the duplicate illustration", () => {
+    expect(homepageSource).toContain("const operatingLayerPillars");
+    expect(homepageSource).toContain("data-operating-layer-header");
+    expect(homepageSource).toContain('aria-label="Operating-layer capabilities"');
+    expect(homepageSource).toContain("One connected capability layer across managed technology");
+    expect(homepageSource).not.toContain("FROM FOUNDATION");
+    expect(homepageSource).not.toContain("TO MOMENTUM");
+    expect(homepageSource).not.toContain('data-motion-depth className="relative min-h-[280px]');
+  });
 });

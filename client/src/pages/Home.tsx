@@ -29,6 +29,12 @@ const capabilityLanes = [
   { eyebrow: 'AMPLIFY', label: 'Digital growth engine', copy: 'Web, marketing, brand and CRM experiences built to turn visibility into growth.', themes: ['Web & CRM', 'Marketing', 'Brand'], accent: '#FF1744' },
 ];
 
+const operatingLayerPillars = [
+  { label: 'Connect', detail: 'Technology foundation', accent: '#FF6B35' },
+  { label: 'Enable', detail: 'Business operations', accent: '#1B8EFF' },
+  { label: 'Amplify', detail: 'Digital growth', accent: '#FF1744' },
+];
+
 const industryLabels = ['Manufacturing', 'Healthcare', 'Professional Services', 'Construction', 'Retail', 'Financial Services', 'Education', 'Hospitality'];
 
 const groupProof = [
@@ -352,38 +358,26 @@ export default function Home() {
       <section id="solutions" ref={capabilitiesRef} data-motion-section className="relative overflow-hidden border-t border-gray-200 bg-[#F8FAFC] py-12 sm:py-16 md:py-24 lg:py-32">
         <div className="absolute inset-0 pointer-events-none opacity-70" style={{background: 'radial-gradient(circle at 78% 18%, rgba(27, 142, 255, 0.10), transparent 32%), radial-gradient(circle at 18% 72%, rgba(255, 107, 53, 0.08), transparent 30%)'}}></div>
         <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
-          <div data-capabilities-header data-motion-child className="grid items-end gap-10 md:text-left lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
-            <div>
-              <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">OPENV GROUP / ONE OPERATING LAYER</p>
-              <h2 className="mx-auto max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:mx-0 md:text-5xl lg:text-6xl">
-                Technology that moves<br />
-                <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>the whole business forward.</span>
-              </h2>
-              <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:mx-0 md:mt-7 md:text-lg">
-                One connected capability layer across managed technology, customer growth and day-to-day business operations.
-              </p>
-            </div>
+          <header data-capabilities-header data-operating-layer-header data-motion-child className="mx-auto max-w-5xl text-center">
+            <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">OPENV GROUP / ONE OPERATING LAYER</p>
+            <h2 className="font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:text-5xl lg:text-6xl">
+              Technology that moves
+              <span className="block" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>the whole business forward.</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base md:mt-7 md:text-lg">
+              One connected capability layer across managed technology, customer growth and day-to-day business operations—designed around the way your business actually works.
+            </p>
+            <ul aria-label="Operating-layer capabilities" className="mx-auto mt-8 grid max-w-4xl gap-3 border-y border-slate-200 py-5 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-slate-200 sm:py-6">
+              {operatingLayerPillars.map((pillar, index) => (
+                <li key={pillar.label} className="flex items-center justify-center gap-3 px-4 py-2 sm:py-0">
+                  <span className="h-2 w-2 rounded-full" style={{backgroundColor: pillar.accent, boxShadow: `0 0 14px ${pillar.accent}66`}} />
+                  <span><strong className="block text-[10px] font-black uppercase tracking-[0.2em] text-[#07111C]">0{index + 1} / {pillar.label}</strong><span className="mt-1 block text-[10px] font-medium uppercase tracking-[0.14em] text-slate-400">{pillar.detail}</span></span>
+                </li>
+              ))}
+            </ul>
+          </header>
 
-            <div data-motion-depth className="relative min-h-[280px] overflow-hidden rounded-3xl bg-[#07111C] p-6 text-white shadow-[0_28px_80px_rgba(7,17,28,0.24)] sm:min-h-[340px] sm:p-8 md:min-h-[380px] md:p-10">
-              <div className="absolute -right-16 -top-20 h-64 w-64 rounded-full border border-[#1B8EFF]/30"></div>
-              <div className="absolute -right-4 -top-4 h-80 w-80 rounded-full border border-[#FF6B35]/20"></div>
-              <div className="absolute inset-0 opacity-70" style={{background: 'linear-gradient(135deg, transparent 0 38%, rgba(27,142,255,0.14) 38.2% 38.5%, transparent 38.7% 100%), radial-gradient(circle at 76% 30%, rgba(255,107,53,0.18), transparent 28%)'}}></div>
-              <div className="absolute left-[9%] right-[9%] top-[48%] h-px bg-gradient-to-r from-[#FF6B35] via-[#1B8EFF] to-transparent"></div>
-              <div className="absolute left-[43%] top-[48%] h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-[#FF6B35] shadow-[0_0_22px_rgba(255,107,53,0.9)]"></div>
-              <div className="absolute left-[9%] right-[9%] top-[69%] border-t border-white/10"></div>
-              <div className="relative flex h-full min-h-[230px] flex-col justify-between sm:min-h-[280px] md:min-h-[320px]">
-                <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.24em] text-white/50"><span>FROM FOUNDATION</span><span>TO MOMENTUM</span></div>
-                <div className="relative mt-8 flex flex-1 items-center justify-between">
-                  <div className="relative flex h-24 w-24 shrink-0 items-center justify-center rounded-full border border-[#FF6B35]/70 bg-[#FF6B35]/10 text-center shadow-[0_0_42px_rgba(255,107,53,0.24)] sm:h-32 sm:w-32"><span className="text-xs font-black uppercase tracking-[0.22em] text-[#FF6B35]">OPENV</span><span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/45">01 / GROUP</span></div>
-                  <div className="absolute left-[40%] top-1/2 -translate-y-1/2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/40">OPERATING LAYER</div>
-                  <div className="relative mr-1 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-[#1B8EFF]/70 bg-[#1B8EFF]/10 text-center shadow-[0_0_38px_rgba(27,142,255,0.22)] sm:h-24 sm:w-24"><span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#1B8EFF]">GROW</span><span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/45">02 / IMPACT</span></div>
-                </div>
-                <div className="flex items-center justify-between border-t border-white/10 pt-5 text-[10px] font-bold uppercase tracking-[0.24em] text-white/65"><span>CONNECT</span><span>ENABLE</span><span>SCALE</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-5 md:mt-20">
+          <div className="mt-10 space-y-4 sm:mt-12 sm:space-y-5 md:mt-16">
             {capabilityLanes.map((lane, index) => (
               <article key={lane.eyebrow} data-capability-lane data-motion-child data-motion-press tabIndex={0} role="group" aria-label={`${lane.label}: ${lane.copy}`} className="group relative grid justify-items-center gap-5 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/85 p-5 text-center shadow-[0_14px_34px_rgba(7,17,28,0.07)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:bg-white hover:shadow-[0_22px_44px_rgba(7,17,28,0.12)] focus-visible:-translate-y-1 focus-visible:border-[#FF6B35] focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8FAFC] focus-visible:shadow-[0_22px_44px_rgba(7,17,28,0.12)] sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:justify-items-start sm:gap-7 sm:p-7 sm:text-left md:p-8">
                 <span className="absolute inset-y-0 left-0 w-1 transition-all duration-300 group-hover:w-1.5" style={{background: lane.accent}}></span>

@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Operating-layer header redesign — 2026-08-19
+
+**Removed** the duplicated dark operating-layer illustration from the OpenV Group / One Operating Layer section. **Changed** the section into a focused header-led composition with a concise connected-capability statement and a three-part Connect, Enable, Amplify summary, allowing the existing capability lanes to become the primary visual narrative.
+
 ## Responsive alignment refinement — 2026-08-19
 
 **Changed** the homepage to use centered editorial alignment on mobile for headlines, supporting copy, CTAs, content cards, and footer information. **Changed** the OpenV Business, NextFour, and ShiftBridge hero brand cards so their uploaded logos, descriptions, tags, and directional links are centered across both mobile and desktop layouts. Desktop alignment remains unchanged outside the three hero brand cards.
