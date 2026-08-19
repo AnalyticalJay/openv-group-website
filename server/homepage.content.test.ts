@@ -18,6 +18,10 @@ const heroVisualStyles = readFileSync(
   resolve(process.cwd(), "client/src/components/hero-technology-background.css"),
   "utf8",
 );
+const walkthroughModalSource = readFileSync(
+  resolve(process.cwd(), "client/src/components/OperatingModelWalkthroughModal.tsx"),
+  "utf8",
+);
 
 describe("PDF-informed homepage content", () => {
   it("includes the consolidated group narrative and four proof points", () => {
@@ -76,6 +80,16 @@ describe("PDF-informed homepage content", () => {
     expect(homepageSource).toContain("openContactForm");
     expect(homepageSource).toContain("onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ')");
     expect(homepageSource).toContain("One accountable team owns the path from issue to resolution.");
+  });
+
+  it("provides a concise animated walkthrough modal for the operating model", () => {
+    expect(homepageSource).toContain("OperatingModelWalkthroughModal");
+    expect(homepageSource).toContain("See how it works");
+    expect(homepageSource).toContain("isWalkthroughOpen");
+    expect(homepageSource).toContain("onBookConsultation");
+    expect(walkthroughModalSource).toContain("HOW THE OPERATING MODEL WORKS");
+    expect(walkthroughModalSource).toContain("prefersReducedMotion");
+    expect(walkthroughModalSource).toContain("Book a consultation");
   });
 
   it("defines the connected hero visual, animated particles, and reduced-motion fallback", () => {

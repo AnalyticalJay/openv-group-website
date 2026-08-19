@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Operating-model walkthrough — 2026-08-19
+
+**Added** a concise See How It Works walkthrough to the operating-model flow. The accessible animated modal presents Align, Coordinate, and Progress as three selectable steps, advances automatically when motion is enabled, respects reduced-motion preferences, and maintains a direct Book a Consultation route at its conclusion.
+
 ## Operating-model interaction and conversion enhancement — 2026-08-19
 
 **Added** scroll-driven convergence motion to the operating-model flow lines and input services, with a reduced-motion fallback. **Added** keyboard-accessible outcome controls that reveal concise explanations on focus or click. **Connected** each outcome and the outcome-row CTA directly to the existing Book a Consultation modal for a clear conversion path.

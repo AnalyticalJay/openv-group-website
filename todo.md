@@ -220,3 +220,7 @@
 - [x] Verify in-browser reduced-motion behavior disables the convergence animation cleanly
 
 - [x] Verify the per-outcome and row consultation actions with real keyboard activation at desktop and 375px mobile breakpoints
+
+- [x] Add a See How It Works trigger to the operating-model flow
+- [x] Build an accessible animated walkthrough modal with concise operating-model steps
+- [x] Preserve reduced-motion support, keyboard handling, responsive layouts, and consultation conversion context while validating the modal

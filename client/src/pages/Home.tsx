@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navigation from '@/components/Navigation';
 import BackToTop from '@/components/BackToTop';
 import ContactFormModal from '@/components/ContactFormModal';
+import OperatingModelWalkthroughModal from '@/components/OperatingModelWalkthroughModal';
 import { useLenis } from '@/contexts/LenisContext';
 import { useContactForm } from '@/contexts/ContactFormContext';
 import PartnerMarquee from '@/components/PartnerMarquee';
@@ -148,6 +149,7 @@ export default function Home() {
   const operatingModelRef = useRef<HTMLElement>(null);
   const [showAllPartners, setShowAllPartners] = useState(false);
   const [activeModelOutcome, setActiveModelOutcome] = useState<number | null>(null);
+  const [isWalkthroughOpen, setIsWalkthroughOpen] = useState(false);
 
   // Get Lenis instance for scroll integration
   const lenis = useLenis();
@@ -329,7 +331,7 @@ export default function Home() {
             <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full border border-[#FF6B35]/18" />
             <div className="pointer-events-none absolute -right-16 -top-24 h-80 w-80 rounded-full border border-[#1B8EFF]/25" />
             <div className="pointer-events-none absolute inset-0 opacity-80" style={{background: 'linear-gradient(120deg, transparent 0 31%, rgba(255,107,53,0.10) 31.2% 31.45%, transparent 31.7% 100%), linear-gradient(60deg, transparent 0 68%, rgba(27,142,255,0.10) 68.2% 68.45%, transparent 68.7% 100%)'}} />
-            <figcaption className="relative mx-auto max-w-2xl text-center"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#FF6B35]">ONE OPERATING MODEL</p><h3 id="operating-model-title" className="mt-3 font-manrope text-2xl font-black leading-tight sm:text-3xl">From separate services to <span className="text-[#13C46B]">one accountable outcome.</span></h3><p className="mt-3 text-xs leading-relaxed text-white/55 sm:text-sm">OpenV coordinates every layer, so your business moves as one.</p></figcaption>
+            <figcaption className="relative mx-auto max-w-2xl text-center"><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#FF6B35]">ONE OPERATING MODEL</p><h3 id="operating-model-title" className="mt-3 font-manrope text-2xl font-black leading-tight sm:text-3xl">From separate services to <span className="text-[#13C46B]">one accountable outcome.</span></h3><p className="mt-3 text-xs leading-relaxed text-white/55 sm:text-sm">OpenV coordinates every layer, so your business moves as one.</p><button type="button" data-motion-press onClick={() => setIsWalkthroughOpen(true)} className="mt-5 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#13C46B] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#13C46B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07111C]">See how it works <ArrowRight className="h-3.5 w-3.5" /></button></figcaption>
 
             <div className="relative mt-9 grid items-center gap-7 lg:grid-cols-[1fr_136px_1fr] lg:gap-10">
               <div data-convergence-lines aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
@@ -633,6 +635,7 @@ export default function Home() {
 
       {/* Contact Form Modal */}
       <ContactFormModal isOpen={isContactModalOpen} onClose={closeContactForm} />
+      <OperatingModelWalkthroughModal isOpen={isWalkthroughOpen} onClose={() => setIsWalkthroughOpen(false)} onBookConsultation={() => { setIsWalkthroughOpen(false); openContactForm(); }} />
     </div>
   );
 }
