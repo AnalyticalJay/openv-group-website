@@ -86,4 +86,12 @@ describe("PDF-informed homepage content", () => {
     expect(homepageSource).not.toContain("TO MOMENTUM");
     expect(homepageSource).not.toContain('data-motion-depth className="relative min-h-[280px]');
   });
+
+  it("adds a concise operating-layer proof-point row using established group metrics", () => {
+    expect(homepageSource).toContain('aria-label="OpenV Group proof points"');
+    expect(homepageSource).toContain("groupProof.slice(0, 3)");
+    expect(homepageSource).toContain("Years in South Africa");
+    expect(homepageSource).toContain("ICT specialists");
+    expect(homepageSource).toContain("Corporate ICT partners");
+  });
 });

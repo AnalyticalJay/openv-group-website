@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Operating-layer proof points — 2026-08-19
+
+**Added** a compact three-metric proof-point row beneath the operating-layer capability summary. It surfaces established OpenV Group facts—20+ years in South Africa, 45 ICT specialists, and 8 corporate ICT partners—without interrupting the header-led hierarchy or the existing capability-lane flow.
+
 ## Operating-layer header redesign — 2026-08-19
 
 **Removed** the duplicated dark operating-layer illustration from the OpenV Group / One Operating Layer section. **Changed** the section into a focused header-led composition with a concise connected-capability statement and a three-part Connect, Enable, Amplify summary, allowing the existing capability lanes to become the primary visual narrative.

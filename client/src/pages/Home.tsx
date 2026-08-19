@@ -375,6 +375,14 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+            <dl aria-label="OpenV Group proof points" className="mx-auto mt-8 grid max-w-4xl grid-cols-3 divide-x divide-slate-200 border-y border-slate-200 bg-white/70 py-4 shadow-[0_10px_30px_rgba(7,17,28,0.05)] sm:mt-10 sm:py-5">
+              {groupProof.slice(0, 3).map((proof) => (
+                <div key={proof.label} className="px-2 sm:px-5">
+                  <dd className="font-manrope text-2xl font-black leading-none tracking-tight text-[#07111C] sm:text-3xl md:text-4xl">{proof.value}</dd>
+                  <dt className="mx-auto mt-2 max-w-20 text-[8px] font-bold uppercase leading-relaxed tracking-[0.13em] text-slate-400 sm:max-w-none sm:text-[9px]">{proof.label}</dt>
+                </div>
+              ))}
+            </dl>
           </header>
 
           <div className="mt-10 space-y-4 sm:mt-12 sm:space-y-5 md:mt-16">

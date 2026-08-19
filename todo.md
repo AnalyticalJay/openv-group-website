@@ -181,3 +181,7 @@
 - [x] Remove the duplicate operating-layer illustration from the OpenV Group / One Operating Layer section
 - [x] Restructure the operating-layer section as a stronger header-led composition without duplicating hero brand-card visual language
 - [x] Preserve capability lanes, mobile responsiveness, accessibility, and section motion while validating the redesign
+
+- [x] Add a concise trust-building proof-point row beneath the operating-layer header using established OpenV Group metrics
+- [x] Preserve the header-led hierarchy, responsive alignment, accessibility, and existing capability-lane flow
+- [x] Validate the proof-point row with tests, production build, and desktop/mobile visual QA
