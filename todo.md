@@ -233,3 +233,8 @@
 - [x] Standardize non-hero homepage section headings to one consistent type size while preserving the hero headline treatment
 - [x] Standardize non-hero homepage supporting text to one consistent type size with responsive readability
 - [x] Validate font loading, visual hierarchy, responsive rendering, tests, and production build
+
+- [x] Audit current GitHub Dependabot critical and high-severity findings against the repository dependency graph
+- [x] Apply safe compatible dependency upgrades and regenerate the lockfile without changing application behavior
+- [x] Run security audit, tests, type validation, production build, and review remaining critical/high findings
+- [x] Synchronize the remediated dependency state back to the connected GitHub repository

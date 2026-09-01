@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Dependency security remediation — 2026-09-01
+
+**Resolved** all critical and high-severity package audit findings. Upgraded Express to 5.2.1 with Express 5-safe wildcard routes, upgraded Recharts to 3.10.1 with compatible template chart typings, removed unused Three Globe dependencies, and refreshed the lockfile. Final audit result: 0 critical, 0 high, 1 moderate (`esbuild` in legacy Drizzle tooling), and 1 low (`@babel/core` in tooling).
+
 ## Elvon Grotesk typography system — 2026-09-01
 
 **Integrated** the user-provided Elvon Grotesk WOFF2 weights through production-safe font-face declarations and a preloaded regular weight. **Standardized** all non-hero homepage section headings to one shared responsive display scale and all non-hero supporting paragraphs to one consistent 16px reading size, while intentionally preserving the hero headline’s existing scale and treatment.
