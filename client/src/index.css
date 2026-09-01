@@ -1,6 +1,38 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Elvon Grotesk";
+  src: url("https://files.manuscdn.com/user_upload_by_module/session_file/310519663454322251/TPQWRUKkXHnKZcrq.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Elvon Grotesk";
+  src: url("https://files.manuscdn.com/user_upload_by_module/session_file/310519663454322251/mTuWaYBJvIOMMqrQ.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Elvon Grotesk";
+  src: url("https://files.manuscdn.com/user_upload_by_module/session_file/310519663454322251/trVNPEAkISaNVmsT.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Elvon Grotesk";
+  src: url("https://files.manuscdn.com/user_upload_by_module/session_file/310519663454322251/vxXlaCaOXYpmShys.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
@@ -11,6 +43,9 @@
     --color-accent-orange: #FF6B35;
     --color-accent-red: #FF1744;
     --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #FF1744 100%);
+    --font-elvon: "Elvon Grotesk", Arial, sans-serif;
+    --section-heading-size: clamp(2rem, 4vw, 3.75rem);
+    --section-support-size: 1rem;
   }
 }
 
@@ -21,6 +56,8 @@
   --color-accent-orange: #FF6B35;
   --color-accent-red: #FF1744;
   --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #FF1744 100%);
+  --font-sans: "Elvon Grotesk", Arial, sans-serif;
+  --font-manrope: "Elvon Grotesk", Arial, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -136,6 +173,9 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-elvon);
+    font-size: 1rem;
+    line-height: 1.6;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -151,6 +191,25 @@
 }
 
 @layer components {
+  .font-manrope,
+  .font-sans {
+    font-family: var(--font-elvon);
+  }
+
+  .section-heading {
+    font-family: var(--font-elvon);
+    font-size: var(--section-heading-size);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+  }
+
+  .section-support {
+    font-family: var(--font-elvon);
+    font-size: var(--section-support-size);
+    line-height: 1.7;
+  }
+
   /**
    * Custom container utility that centers content and adds responsive padding.
    *

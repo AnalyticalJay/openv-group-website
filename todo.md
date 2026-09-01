@@ -228,3 +228,8 @@
 - [x] Preserve the fixed premium dark experience without introducing a sitewide theme toggle
 - [x] Refine the consultation form modal into a more polished enterprise conversion layout
 - [x] Preserve existing validation, submission feedback, accessibility, responsive behavior, and modal interactions while validating the refinement
+
+- [x] Extract and integrate the uploaded Elvon Grotesk webfont using the managed asset workflow
+- [x] Standardize non-hero homepage section headings to one consistent type size while preserving the hero headline treatment
+- [x] Standardize non-hero homepage supporting text to one consistent type size with responsive readability
+- [x] Validate font loading, visual hierarchy, responsive rendering, tests, and production build

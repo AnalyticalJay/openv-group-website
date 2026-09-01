@@ -10,6 +10,10 @@ const homepageDocument = readFileSync(
   resolve(process.cwd(), "client/index.html"),
   "utf8",
 );
+const globalStyles = readFileSync(
+  resolve(process.cwd(), "client/src/index.css"),
+  "utf8",
+);
 const heroVisualSource = readFileSync(
   resolve(process.cwd(), "client/src/components/HeroTechnologyBackground.tsx"),
   "utf8",
@@ -43,6 +47,18 @@ describe("PDF-informed homepage content", () => {
   it("uses the complete technology partner positioning in SEO metadata", () => {
     expect(homepageDocument).toContain("OpenV Group | Your Complete Technology Partner");
     expect(homepageDocument).toContain("managed IT, cybersecurity, cloud, digital growth and business software");
+  });
+
+  it("loads Elvon Grotesk and standardizes non-hero section typography", () => {
+    expect(homepageDocument).toContain('rel="preload" href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663454322251/TPQWRUKkXHnKZcrq.woff2" as="font"');
+    expect(globalStyles).toContain('font-family: "Elvon Grotesk"');
+    expect(globalStyles).toContain("--section-heading-size: clamp(2rem, 4vw, 3.75rem)");
+    expect(globalStyles).toContain("--section-support-size: 1rem");
+    expect(globalStyles).toContain(".section-heading");
+    expect(globalStyles).toContain(".section-support");
+    expect(homepageSource).not.toContain("sm:text-4xl md:mx-0 md:text-5xl lg:text-6xl");
+    expect(homepageSource).toContain('className="section-heading');
+    expect(homepageSource).toContain('className="section-support');
   });
 
   it("adds the vendor-consolidation and applied-AI visual narratives", () => {

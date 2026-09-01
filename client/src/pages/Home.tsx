@@ -319,12 +319,12 @@ export default function Home() {
           <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.05fr_0.95fr] md:gap-12 md:text-left lg:gap-20">
             <div>
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">WHY THE GROUP EXISTS</p>
-              <h2 className="mx-auto max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:mx-0 md:text-5xl lg:text-6xl">
+              <h2 className="section-heading mx-auto max-w-3xl text-[#07111C] md:mx-0">
                 Technology breaks<br />
                 <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>in the gaps.</span>
               </h2>
             </div>
-            <p className="mx-auto max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:mx-0 md:text-lg">Multiple suppliers create handoffs, blind spots and cost. OpenV Group replaces the gaps with one accountable operating relationship.</p>
+            <p className="section-support mx-auto max-w-xl text-slate-600 md:mx-0">Multiple suppliers create handoffs, blind spots and cost. OpenV Group replaces the gaps with one accountable operating relationship.</p>
           </div>
 
           <figure ref={operatingModelRef} data-operating-model-flow data-motion-child aria-labelledby="operating-model-title" className="relative mt-10 overflow-hidden rounded-[2rem] bg-[#07111C] p-6 text-white shadow-[0_28px_75px_rgba(7,17,28,0.20)] sm:mt-12 sm:p-8 md:p-10 lg:p-12">
@@ -382,12 +382,12 @@ export default function Home() {
           <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.08fr_0.92fr] md:gap-12 md:text-left lg:gap-20">
             <div>
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">THE OPENV GROUP ADVANTAGE</p>
-              <h2 className="mx-auto max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:mx-0 md:text-5xl lg:text-6xl">
+              <h2 className="section-heading mx-auto max-w-3xl text-[#07111C] md:mx-0">
                 Less complexity.<br />
                 <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>More capability.</span>
               </h2>
             </div>
-            <p className="mx-auto max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base md:mx-0 md:text-lg">
+            <p className="section-support mx-auto max-w-xl text-slate-600 md:mx-0">
               OpenV Group replaces fragmented suppliers with one accountable relationship across your technology, customer growth and business operations.
             </p>
           </div>
@@ -402,7 +402,7 @@ export default function Home() {
                 <h3 className="mx-auto mt-5 max-w-xl font-manrope text-3xl font-black leading-[1.06] tracking-tight sm:text-4xl md:mx-0 md:text-5xl">
                   One call.<br />One invoice.<br /><span className="text-[#FF6B35]">Total accountability.</span>
                 </h3>
-                <p className="mx-auto mt-5 max-w-lg text-sm leading-relaxed text-white/60 sm:text-base md:mx-0">Managed IT. Digital growth. Business software. Designed to work as one.</p>
+                <p className="section-support mx-auto mt-5 max-w-lg text-white/60 md:mx-0">Managed IT. Digital growth. Business software. Designed to work as one.</p>
               </div>
 
               <div aria-label="OpenV Group trust metrics" className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0A1828]/90 shadow-[0_20px_55px_rgba(0,0,0,0.20)]">
@@ -444,11 +444,11 @@ export default function Home() {
         <div className="container relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
           <header data-capabilities-header data-operating-layer-header data-motion-child className="mx-auto max-w-5xl text-center">
             <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">OPENV GROUP / ONE OPERATING LAYER</p>
-            <h2 className="font-manrope text-3xl font-black leading-[1.04] tracking-tight text-[#07111C] sm:text-4xl md:text-5xl lg:text-6xl">
+            <h2 className="section-heading text-[#07111C]">
               Technology that moves
               <span className="block" style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>the whole business forward.</span>
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base md:mt-7 md:text-lg">
+            <p className="section-support mx-auto mt-5 max-w-2xl text-slate-600 md:mt-7">
               Three specialist capabilities. One accountable group. Choose the technology, operational and growth support that moves your business forward.
             </p>
           </header>
@@ -506,9 +506,9 @@ export default function Home() {
           <div data-motion-child className="grid items-end gap-6 md:grid-cols-[1.08fr_0.92fr] md:gap-12 md:text-left lg:gap-20">
             <div>
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#1B8EFF] sm:text-xs">PRACTICAL AI / ALREADY AT WORK</p>
-              <h2 className="mx-auto max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-white sm:text-4xl md:mx-0 md:text-5xl lg:text-6xl">AI inside the business.<br /><span style={{background: 'linear-gradient(135deg, #1B8EFF 0%, #13C46B 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>Not beside it.</span></h2>
+              <h2 className="section-heading mx-auto max-w-3xl text-white md:mx-0">AI inside the business.<br /><span style={{background: 'linear-gradient(135deg, #1B8EFF 0%, #13C46B 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}>Not beside it.</span></h2>
             </div>
-            <p className="mx-auto max-w-xl text-sm leading-relaxed text-white/60 sm:text-base md:mx-0 md:text-lg">We deploy AI where it makes the operation faster, safer and more effective—inside tools your team already uses.</p>
+            <p className="section-support mx-auto max-w-xl text-white/60 md:mx-0">We deploy AI where it makes the operation faster, safer and more effective—inside tools your team already uses.</p>
           </div>
 
           <ol data-motion-child className="relative mt-10 grid overflow-hidden rounded-3xl border border-white/10 bg-white/[0.035] sm:mt-12 md:grid-cols-2 lg:grid-cols-4">
@@ -540,11 +540,11 @@ export default function Home() {
           {/* Section Header */}
           <div data-motion-child className="text-center mb-6 sm:mb-8 md:mb-10">
             <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF6B35] sm:text-xs">OPENV GROUP / TECHNOLOGY PARTNERS</p>
-            <h2 className="mx-auto max-w-3xl font-manrope text-3xl font-black leading-[1.04] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h2 className="section-heading mx-auto max-w-3xl text-white">
               Our Technology<br className="hidden sm:block" />
               <span style={{background: 'linear-gradient(135deg, #FF6B35 0%, #FF1744 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', color: 'transparent'}}> Partners.</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">Active partner relationships that unlock specialist support, technical depth and preferential procurement.</p>
+            <p className="section-support mx-auto mt-4 max-w-2xl text-white/70">Active partner relationships that unlock specialist support, technical depth and preferential procurement.</p>
           </div>
 
           {/* Infinite Partner Marquee */}

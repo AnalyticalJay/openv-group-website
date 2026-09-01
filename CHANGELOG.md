@@ -2,6 +2,10 @@
 
 This document records the material, user-facing homepage releases for the OpenV Group website. It is a curated product history; the complete commit-level record remains available through `git log`.
 
+## Elvon Grotesk typography system — 2026-09-01
+
+**Integrated** the user-provided Elvon Grotesk WOFF2 weights through production-safe font-face declarations and a preloaded regular weight. **Standardized** all non-hero homepage section headings to one shared responsive display scale and all non-hero supporting paragraphs to one consistent 16px reading size, while intentionally preserving the hero headline’s existing scale and treatment.
+
 ## Premium consultation form refinement — 2026-08-19
 
 **Kept** the fixed premium dark experience rather than introducing a sitewide theme toggle. **Redesigned** the Book a Consultation modal as a dark enterprise two-column conversion experience, pairing decision-support content and response expectations with a clearer grouped form layout, stronger field states, preserved validation and feedback flows, improved mobile viewport handling, and accessible focus treatments.
